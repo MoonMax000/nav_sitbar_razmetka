@@ -298,9 +298,9 @@ const ProfileNew: FC = () => {
             {/* Second Row - Three Column Layout */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               {/* My Withdraws & Purchases */}
-              <div className="flex flex-col gap-4 p-4 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px]">
+              <div className="flex flex-col gap-3 p-4 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px]">
                 <div className="flex justify-between items-center pb-2">
-                  <h3 className="text-2xl font-bold text-white flex-1">My Withdraws & Purchases</h3>
+                  <h3 className="text-xl md:text-2xl font-bold text-white flex-1">My Withdraws & Purchases</h3>
                   <div className="flex items-center gap-1 px-1 py-0.5 rounded bg-[#1C3430]">
                     <span className="text-xs font-bold text-green">Live</span>
                   </div>
@@ -308,22 +308,22 @@ const ProfileNew: FC = () => {
 
                 <div className="flex justify-between items-center">
                   <div className="flex items-center gap-3">
-                    <button className="flex items-center gap-2 h-10 px-4 rounded-[32px] border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[58.33px] text-white text-sm font-bold">
+                    <button className="flex items-center gap-2 h-8 px-3 rounded-[32px] border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[58.33px] text-white text-sm font-bold">
                       Withdraws
                     </button>
-                    <button className="flex items-center gap-2 h-10 px-4 rounded-[32px] bg-gradient-to-r from-primary to-[#482090] backdrop-blur-[58.33px] text-white text-sm font-bold">
+                    <button className="flex items-center gap-2 h-8 px-3 rounded-[32px] bg-gradient-to-r from-primary to-[#482090] backdrop-blur-[58.33px] text-white text-sm font-bold">
                       Purchases
                     </button>
                   </div>
                   <a href="#" className="text-sm font-bold text-primary underline">View All</a>
                 </div>
 
-                <div className="flex flex-col gap-4">
-                  <div className="flex items-center text-xs font-bold uppercase text-webGray">
+                <div className="flex flex-col gap-3 max-h-56 overflow-y-auto pr-1">
+                  <div className="flex items-center text-[11px] font-bold uppercase text-webGray">
                     <div className="flex-1">Product</div>
                     <div className="w-14 text-center">Amount</div>
-                    <div className="w-20 text-right">Date</div>
-                    <div className="w-20 text-right">Status</div>
+                    <div className="w-16 text-right">Date</div>
+                    <div className="w-16 text-right">Status</div>
                   </div>
 
                   {[
@@ -334,11 +334,11 @@ const ProfileNew: FC = () => {
                     { name: 'BTC/USDT Grid-Bot HODL', amount: '$9.99', date: '06.12.25', status: 'Approved', statusColor: 'text-green' },
                     { name: 'RiskMaster - powerful tool for traders', amount: '$11.99', date: '06.12.25', status: 'Approved', statusColor: 'text-green' },
                   ].map((item, idx) => (
-                    <div key={idx} className="flex items-center text-sm">
+                    <div key={idx} className="flex items-center text-xs sm:text-sm py-1">
                       <div className="flex-1 text-white font-normal">{item.name}</div>
                       <div className="w-14 text-center text-white font-bold">{item.amount}</div>
-                      <div className="w-20 text-right text-white font-normal">{item.date}</div>
-                      <div className={`w-20 text-right font-bold ${item.statusColor}`}>{item.status}</div>
+                      <div className="w-16 text-right text-white font-normal">{item.date}</div>
+                      <div className={`w-16 text-right font-bold ${item.statusColor}`}>{item.status}</div>
                     </div>
                   ))}
                 </div>
