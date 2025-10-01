@@ -11,8 +11,10 @@ import { store } from './store/store';
 import Index from "./pages/Index";
 import Dashboard from "./pages/Dashboard";
 import Settings from "./pages/Settings";
+import Pricing from "./pages/Pricing";
 import NotFound from "./pages/NotFound";
 import { ClientLayout } from "./components/ClientLayout/ClientLayout";
+import { PricingLayout } from "./components/PricingLayout/PricingLayout";
 
 const queryClient = new QueryClient({
   defaultOptions: { queries: { staleTime: 6000, refetchOnWindowFocus: false } },
