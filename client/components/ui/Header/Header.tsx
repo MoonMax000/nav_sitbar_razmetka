@@ -47,6 +47,9 @@ export const Header: FC<HeaderProps> = ({ rightMenuOpen = false, setRightMenuOpe
       {/* Right actions */}
       <div className='flex items-center justify-end max-w-[350px] gap-4'>
         <Link to='/profile' aria-label='Profile' className='size-10 rounded-full bg-moonlessNight' />
+        {setRightMenuOpen && (
+          <RightBarButton isCollapsed={rightMenuOpen} setIsCollapsed={setRightMenuOpen} />
+        )}
       </div>
     </header>
   );
