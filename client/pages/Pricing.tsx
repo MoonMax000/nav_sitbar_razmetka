@@ -225,7 +225,7 @@ const Pricing: FC = () => {
         </div>
       </div>
 
-      <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8 items-stretch'>
+      <div className='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-5 items-stretch max-w-[1300px] mx-auto'>
         <PricingCard title='Momentum' planKey='momentum' features={momentumFeatures} billingPeriod={billingPeriod} />
         <PricingCard title='Platinum' planKey='platinum' features={platinumFeatures} isPopular billingPeriod={billingPeriod} />
         <PricingCard title='Imperium' planKey='imperium' features={imperiumFeatures} isGold billingPeriod={billingPeriod} />
