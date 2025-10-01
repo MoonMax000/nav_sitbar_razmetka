@@ -27,25 +27,39 @@ const NewNavBar: FC<Props> = ({ variant = 'primal' }) => {
             aria-controls={`${el.title}-submenu`}
           >
             <div
-              className={cn('flex items-center gap-2 pl-2 hover:text-white hover:border-l-[2px] hover:border-purple', {
+              className={cn('flex items-center gap-2 pl-2 hover:text-white hover:border-l-[2px] hover:border-purple overflow-hidden', {
                 'text-white border-l-[2px] border-purple': isOpen,
                 'text-[#B0B0B0]': !isOpen,
                 'ml-[5px]': isCollapsed,
               })}
             >
-              <div className='size-5'>{el.icon}</div>
-              {!isCollapsed && <span className='text-[15px] font-semibold'>{el.title}</span>}
+              <div className='size-5 flex-shrink-0'>{el.icon}</div>
+              <span
+                className={cn('text-[15px] font-semibold whitespace-nowrap transition-all duration-300', {
+                  'opacity-0 w-0': isCollapsed,
+                  'opacity-100 w-auto': !isCollapsed,
+                })}
+              >
+                {el.title}
+              </span>
             </div>
-            {!isCollapsed && <ChevronDown className={cn('h-4 w-4 transition-transform', isOpen && 'rotate-180')} />}
+            {!isCollapsed && <ChevronDown className={cn('h-4 w-4 transition-transform flex-shrink-0', isOpen && 'rotate-180')} />}
           </button>
           {isOpen && !isCollapsed && (
             <div id={`${el.title}-submenu`} className='ml-6 flex flex-col gap-1'>
               {el.children.map((child) => (
                 <NavLink key={child.title} to={child.route ?? '#'} className={cn('px-3')}>
                   {({ isActive }) => (
-                    <div className={cn('flex items-center gap-2 pl-2 py-2 hover:custom-bg-blur hover:text-white hover:border-l-[2px] hover:border-purple', isActive ? 'text-white' : 'text-[#B0B0B0]')}>
-                      <div className='size-5'>{child.icon}</div>
-                      {!isCollapsed && <span className='text-[15px] font-semibold'>{child.title}</span>}
+                    <div className={cn('flex items-center gap-2 pl-2 py-2 hover:custom-bg-blur hover:text-white hover:border-l-[2px] hover:border-purple overflow-hidden', isActive ? 'text-white' : 'text-[#B0B0B0]')}>
+                      <div className='size-5 flex-shrink-0'>{child.icon}</div>
+                      <span
+                        className={cn('text-[15px] font-semibold whitespace-nowrap transition-all duration-300', {
+                          'opacity-0 w-0': isCollapsed,
+                          'opacity-100 w-auto': !isCollapsed,
+                        })}
+                      >
+                        {child.title}
+                      </span>
                     </div>
                   )}
                 </NavLink>
@@ -60,9 +74,16 @@ const NewNavBar: FC<Props> = ({ variant = 'primal' }) => {
       return (
         <NavLink key={el.title} to={el.route} className={cn('px-3 py-[14px]', { 'ml-[5px]': isCollapsed })}>
           {({ isActive }) => (
-            <div className={cn('flex items-center gap-2 pl-2 transition hover:text-white hover:border-l-[2px] hover:border-purple', isActive ? 'text-white' : 'text-[#B0B0B0]')}>
-              <div className='size-5'>{el.icon}</div>
-              {!isCollapsed && <span className='text-[15px] font-semibold'>{el.title}</span>}
+            <div className={cn('flex items-center gap-2 pl-2 transition hover:text-white hover:border-l-[2px] hover:border-purple overflow-hidden', isActive ? 'text-white' : 'text-[#B0B0B0]')}>
+              <div className='size-5 flex-shrink-0'>{el.icon}</div>
+              <span
+                className={cn('text-[15px] font-semibold whitespace-nowrap transition-all duration-300', {
+                  'opacity-0 w-0': isCollapsed,
+                  'opacity-100 w-auto': !isCollapsed,
+                })}
+              >
+                {el.title}
+              </span>
             </div>
           )}
         </NavLink>
@@ -71,9 +92,16 @@ const NewNavBar: FC<Props> = ({ variant = 'primal' }) => {
 
     return (
       <div key={el.title} className={cn('px-3 py-[14px]', { 'ml-[5px]': isCollapsed })}>
-        <div className='flex items-center gap-2 pl-2 text-[#B0B0B0] hover:text-white hover:border-l-[2px] hover:border-purple'>
-          <div className='size-5'>{el.icon}</div>
-          {!isCollapsed && <span className='text-[15px] font-semibold'>{el.title}</span>}
+        <div className='flex items-center gap-2 pl-2 text-[#B0B0B0] hover:text-white hover:border-l-[2px] hover:border-purple overflow-hidden'>
+          <div className='size-5 flex-shrink-0'>{el.icon}</div>
+          <span
+            className={cn('text-[15px] font-semibold whitespace-nowrap transition-all duration-300', {
+              'opacity-0 w-0': isCollapsed,
+              'opacity-100 w-auto': !isCollapsed,
+            })}
+          >
+            {el.title}
+          </span>
         </div>
       </div>
     );
@@ -87,10 +115,10 @@ const NewNavBar: FC<Props> = ({ variant = 'primal' }) => {
           `bg-[linear-gradient(170.22deg,#523A83_0.01%,rgba(82,58,131,0)_8.28%),linear-gradient(350.89deg,#523A83_0%,rgba(82,58,131,0)_8.04%)]`
         )}
       >
-        <div className={cn('flex flex-col py-4 transition-all duration-300 custom-bg-blur rounded-[12px]', isCollapsed ? 'w-[72px]' : 'w-[222px]')}>
+        <div className={cn('flex flex-col py-4 transition-all duration-300 custom-bg-blur rounded-[12px] overflow-hidden', isCollapsed ? 'w-[72px]' : 'w-[222px]')}>
           <div className='absolute right-[-12px] top-[14px]'>
             <button
-              className='w-[26px] h-[26px] rounded-lg border border-[#181B22] custom-bg-blur hover:bg-[#1E1E1E] flex items-center justify-center transition-colors'
+              className='w-[26px] h-[26px] rounded-xl border border-[#181B22] custom-bg-blur hover:bg-[#1E1E1E] flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-md'
               onClick={() => setIsCollapsed(!isCollapsed)}
               aria-label='Toggle compact menu'
               aria-pressed={isCollapsed}
