@@ -168,7 +168,7 @@ const ProfileNew: FC = () => {
               </div>
 
               <div className="flex flex-col gap-4 flex-1">
-                <div className="flex justify-between items-center">
+                <div className="flex flex-wrap items-center justify-between gap-2">
                   <div className="flex flex-col gap-2 flex-1">
                     <span className="text-xs font-bold uppercase text-webGray">Stream iN</span>
                     <span className="text-sm font-bold text-white">2 Hours</span>
@@ -306,8 +306,8 @@ const ProfileNew: FC = () => {
                   </div>
                 </div>
 
-                <div className="flex justify-between items-center">
-                  <div className="flex items-center gap-3">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <div className="flex flex-wrap items-center gap-2 md:gap-3 min-w-0">
                     <button className="flex items-center gap-2 h-8 px-3 rounded-[32px] border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[58.33px] text-white text-sm font-bold">
                       Withdraws
                     </button>
@@ -315,7 +315,7 @@ const ProfileNew: FC = () => {
                       Purchases
                     </button>
                   </div>
-                  <a href="#" className="text-sm font-bold text-primary underline">View All</a>
+                  <a href="#" className="whitespace-nowrap text-xs md:text-sm font-bold text-primary underline">View All</a>
                 </div>
 
                 <div className="flex flex-col gap-3 max-h-56 overflow-y-auto pr-1">
@@ -353,22 +353,22 @@ const ProfileNew: FC = () => {
                   </div>
                 </div>
 
-                <div className="flex justify-between items-center">
-                  <div className="flex items-center gap-3">
-                    <button className="h-10 px-4 rounded-[32px] border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[58.33px] text-white text-sm font-bold">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <div className="flex flex-wrap items-center gap-2 md:gap-3 min-w-0">
+                    <button className="h-8 px-3 md:h-10 md:px-4 rounded-[32px] border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[58.33px] text-white text-sm font-bold">
                       Posts
                     </button>
-                    <button className="h-10 px-4 rounded-[32px] border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[58.33px] text-white text-sm font-bold">
+                    <button className="h-8 px-3 md:h-10 md:px-4 rounded-[32px] border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[58.33px] text-white text-sm font-bold">
                       Chats
                     </button>
-                    <button className="h-10 px-4 rounded-[32px] bg-gradient-to-r from-primary to-[#482090] backdrop-blur-[58.33px] text-white text-sm font-bold">
+                    <button className="h-8 px-3 md:h-10 md:px-4 rounded-[32px] bg-gradient-to-r from-primary to-[#482090] backdrop-blur-[58.33px] text-white text-sm font-bold">
                       Groups
                     </button>
-                    <button className="h-10 px-4 rounded-[32px] border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[58.33px] text-white text-sm font-bold">
+                    <button className="h-8 px-3 md:h-10 md:px-4 rounded-[32px] border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[58.33px] text-white text-sm font-bold">
                       Streams
                     </button>
                   </div>
-                  <a href="#" className="text-sm font-bold text-primary underline">View All</a>
+                  <a href="#" className="whitespace-nowrap text-xs md:text-sm font-bold text-primary underline">View All</a>
                 </div>
 
                 <div className="grid grid-cols-2 gap-2.5">
@@ -400,19 +400,19 @@ const ProfileNew: FC = () => {
                   </div>
                 </div>
 
-                <div className="flex justify-between items-center">
-                  <div className="flex items-center gap-3">
-                    <button className="h-10 px-4 rounded-[32px] bg-gradient-to-r from-primary to-[#482090] backdrop-blur-[58.33px] text-white text-sm font-bold">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <div className="flex flex-wrap items-center gap-2 md:gap-3 min-w-0">
+                    <button className="h-8 px-3 md:h-10 md:px-4 rounded-[32px] bg-gradient-to-r from-primary to-[#482090] backdrop-blur-[58.33px] text-white text-sm font-bold">
                       New
                     </button>
-                    <button className="h-10 px-4 rounded-[32px] border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[58.33px] text-white text-sm font-bold">
+                    <button className="h-8 px-3 md:h-10 md:px-4 rounded-[32px] border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[58.33px] text-white text-sm font-bold">
                       Top
                     </button>
-                    <button className="h-10 px-4 rounded-[32px] border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[58.33px] text-white text-sm font-bold">
+                    <button className="h-8 px-3 md:h-10 md:px-4 rounded-[32px] border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[58.33px] text-white text-sm font-bold">
                       All
                     </button>
                   </div>
-                  <a href="#" className="text-sm font-bold text-primary underline">View all</a>
+                  <a href="#" className="whitespace-nowrap text-xs md:text-sm font-bold text-primary underline">View all</a>
                 </div>
 
                 <div className="grid grid-cols-2 gap-2.5">
