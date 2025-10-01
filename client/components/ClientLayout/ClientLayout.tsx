@@ -38,10 +38,11 @@ export const ClientLayout: FC<Props> = ({
   const layoutVariant: LayoutVariant = PagesBg.secondary.includes(currentPage)
     ? 'secondary'
     : 'primal';
+  const [rightMenuOpen, setRightMenuOpen] = useState(false);
 
   return (
     <AppBackground variant={layoutVariant}>
-      <Header />
+      <Header rightMenuOpen={rightMenuOpen} setRightMenuOpen={setRightMenuOpen} />
       <div className="flex justify-start mb-60">
         <NewNavBar variant={layoutVariant} />
         <main className="flex-1">
@@ -49,6 +50,7 @@ export const ClientLayout: FC<Props> = ({
             {children}
           </ContentWrapper>
         </main>
+        <RightMenu isCollapsed={rightMenuOpen} />
       </div>
       <Footer />
     </AppBackground>
