@@ -649,80 +649,155 @@ const ProfileNew: FC = () => {
           </div>
         )}
 
-        {activeTab === 'profile' && (
+        {activeTab === 'profile' && activeProfileSubTab === 'profile' && (
           <div className="flex flex-col gap-6">
-            <div className="container-card p-6">
-              <div className="flex flex-col gap-3">
-                <h1 className="text-2xl font-bold text-white">Profile Overview</h1>
-                <p className="text-sm text-webGray">
-                  Manage your personal information, contact details, and account preferences in one place.
-                </p>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="rounded-2xl bg-[#0C101480] border border-[#181B22] p-4">
-                    <p className="text-webGray text-xs uppercase tracking-wide">Status</p>
-                    <p className="mt-2 text-white text-lg font-semibold">Active</p>
-                    <p className="mt-1 text-xs text-webGray">Member since January 2024</p>
-                  </div>
-                  <div className="rounded-2xl bg-[#0C101480] border border-[#181B22] p-4">
-                    <p className="text-webGray text-xs uppercase tracking-wide">Plan</p>
-                    <p className="mt-2 text-white text-lg font-semibold">Platinum</p>
-                    <p className="mt-1 text-xs text-webGray">Next renewal: 14 Jul 2024</p>
-                  </div>
-                  <div className="rounded-2xl bg-[#0C101480] border border-[#181B22] p-4">
-                    <p className="text-webGray text-xs uppercase tracking-wide">Security</p>
-                    <p className="mt-2 text-white text-lg font-semibold">Two-factor enabled</p>
-                    <p className="mt-1 text-xs text-webGray">Last login: 2 hours ago</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {/* Cover Image and Profile Picture */}
+            <div className="relative h-48 rounded-3xl overflow-hidden">
+              <img
+                src="https://api.builder.io/api/v1/image/assets/TEMP/c246284386eea63955b14b07c828e0c320177523?width=2118"
+                alt="Cover"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black/5 backdrop-blur-[2px]" />
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <div className="container-card p-6">
-                <h2 className="text-xl font-semibold text-white">Personal Details</h2>
-                <div className="mt-4 flex flex-col gap-4 text-sm text-white/80">
-                  <div className="flex flex-col">
-                    <span className="text-xs uppercase text-webGray">Full Name</span>
-                    <span className="mt-1 font-medium">Devid Stone</span>
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-xs uppercase text-webGray">Email</span>
-                    <span className="mt-1 font-medium">devid.stone@example.com</span>
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-xs uppercase text-webGray">Location</span>
-                    <span className="mt-1 font-medium">Warsaw, Poland</span>
-                  </div>
+              {/* Profile Picture */}
+              <div className="absolute left-4 top-4">
+                <div className="relative">
+                  <img
+                    src="https://api.builder.io/api/v1/image/assets/TEMP/2ab9127034625eee34d806e48fd64bc5995be0ce?width=320"
+                    alt="Profile"
+                    className="w-40 h-40 rounded-2xl border-[3px] border-[#523A83] shadow-lg"
+                  />
+                  <button className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-black/0 hover:bg-black/50 transition-all backdrop-blur-0 hover:backdrop-blur-[50px] rounded-2xl group">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="opacity-0 group-hover:opacity-100 transition-opacity">
+                      <path d="M5.83268 5C4.81548 5.00305 4.25254 5.02738 3.78995 5.22154C3.14201 5.4935 2.61435 5.99586 2.3061 6.63425C2.0545 7.15532 2.01333 7.82292 1.93098 9.15813L1.80195 11.2504C1.59717 14.5707 1.49478 16.2309 2.46909 17.2819C3.44339 18.3329 5.08479 18.3329 8.36761 18.3329H11.6311C14.9139 18.3329 16.5553 18.3329 17.5296 17.2819C18.5039 16.2309 18.4015 14.5707 18.1968 11.2504L18.0677 9.15813C17.9854 7.82292 17.9442 7.15532 17.6926 6.63425C17.3844 5.99586 16.8567 5.4935 16.2088 5.22154C15.7462 5.02738 15.1832 5.00305 14.166 5" stroke="#B0B0B0" strokeWidth="1.5" strokeLinecap="round" />
+                      <path d="M14.1673 5.83366L13.4292 3.98818C13.1107 3.19196 12.8335 2.28874 12.0145 1.88328C11.5777 1.66699 11.052 1.66699 10.0007 1.66699C8.94932 1.66699 8.42365 1.66699 7.98678 1.88328C7.16782 2.28874 6.89066 3.19196 6.57218 3.98818L5.83398 5.83366" stroke="#B0B0B0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      <path d="M12.9173 11.6667C12.9173 13.2775 11.6115 14.5833 10.0007 14.5833C8.38982 14.5833 7.08398 13.2775 7.08398 11.6667C7.08398 10.0558 8.38982 8.75 10.0007 8.75C11.6115 8.75 12.9173 10.0558 12.9173 11.6667Z" stroke="#B0B0B0" strokeWidth="1.5" />
+                      <path d="M10 5H10.0075" stroke="#B0B0B0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                    <span className="text-xs text-webGray opacity-0 group-hover:opacity-100 transition-opacity text-center px-2 font-bold">Update profile picture</span>
+                  </button>
                 </div>
               </div>
 
-              <div className="container-card p-6">
-                <h2 className="text-xl font-semibold text-white">Preferences</h2>
-                <div className="mt-4 flex flex-col gap-4 text-sm text-white/80">
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <p className="font-medium">Email Notifications</p>
-                      <p className="text-xs text-webGray mt-1">Receive weekly summaries and announcements.</p>
-                    </div>
-                    <span className="rounded-full bg-primary/20 text-primary px-3 py-1 text-xs font-semibold">Enabled</span>
-                  </div>
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <p className="font-medium">AI Recommendations</p>
-                      <p className="text-xs text-webGray mt-1">Personalized suggestions for market opportunities.</p>
-                    </div>
-                    <span className="rounded-full bg-primary/20 text-primary px-3 py-1 text-xs font-semibold">Enabled</span>
-                  </div>
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <p className="font-medium">Two-Factor Auth</p>
-                      <p className="text-xs text-webGray mt-1">Secure your account with an extra verification step.</p>
-                    </div>
-                    <span className="rounded-full bg-green/10 text-green px-3 py-1 text-xs font-semibold">Active</span>
+              {/* Update Cover Button */}
+              <button className="absolute right-4 top-4 flex items-center gap-2 px-4 py-2.5 rounded-lg border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px] text-white text-sm font-bold hover:bg-[rgba(12,16,20,0.7)] transition-all">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M4.16602 17.4996C7.67433 13.5402 11.617 8.28922 17.4993 12.2275" stroke="#B0B0B0" strokeWidth="1.5" />
+                  <path d="M11.666 2.50193C11.2743 2.5 10.0249 2.5 9.58268 2.5C5.85073 2.5 3.98476 2.5 2.82538 3.65937C1.66602 4.81874 1.66602 6.68472 1.66602 10.4167C1.66602 14.1486 1.66602 16.0146 2.82538 17.174C3.98476 18.3333 5.85073 18.3333 9.58268 18.3333C13.3146 18.3333 15.1806 18.3333 16.34 17.174C17.4554 16.0586 17.4977 14.2892 17.4993 10.8333" stroke="#B0B0B0" strokeWidth="1.5" strokeLinecap="round" />
+                  <path d="M14.166 6.25033C14.5756 6.67174 15.6658 8.33366 16.2493 8.33366M16.2493 8.33366C16.8328 8.33366 17.9231 6.67174 18.3327 6.25033M16.2493 8.33366V1.66699" stroke="#B0B0B0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                Update cover
+              </button>
+            </div>
+
+            {/* Profile Form */}
+            <div className="flex flex-col gap-6">
+              {/* Display Name and Username */}
+              <div className="flex flex-col md:flex-row gap-4">
+                <div className="flex-1 flex flex-col gap-2">
+                  <label className="text-xs font-bold uppercase text-webGray">Display name</label>
+                  <input
+                    type="text"
+                    defaultValue="Jane Doe"
+                    className="px-4 py-3 rounded-lg border border-[#181B22] bg-[rgba(12,16,20,0.5)] shadow-[0_4px_8px_0_rgba(0,0,0,0.24)] backdrop-blur-[50px] text-white text-sm font-bold focus:outline-none focus:ring-2 focus:ring-primary/50"
+                  />
+                </div>
+                <div className="flex-1 flex flex-col gap-2">
+                  <label className="text-xs font-bold uppercase text-webGray">User name</label>
+                  <div className="relative">
+                    <input
+                      type="text"
+                      defaultValue="beautydoe"
+                      className="w-full px-4 py-3 pr-10 rounded-lg border border-[#181B22] bg-[rgba(12,16,20,0.5)] shadow-[0_4px_8px_0_rgba(0,0,0,0.24)] backdrop-blur-[50px] text-white text-sm font-bold focus:outline-none focus:ring-2 focus:ring-primary/50"
+                    />
+                    <svg className="absolute right-3 top-1/2 -translate-y-1/2" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                      <path d="M4.16602 12.083C4.16602 12.083 5.41602 12.083 7.08268 14.9997C7.08268 14.9997 11.715 7.36078 15.8327 5.83301" stroke="#2EBD85" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
                   </div>
                 </div>
               </div>
+
+              {/* Location and Website */}
+              <div className="flex flex-col md:flex-row gap-4">
+                <div className="flex-1 flex flex-col gap-2">
+                  <label className="text-xs font-bold uppercase text-webGray">Location</label>
+                  <input
+                    type="text"
+                    defaultValue="Amsterdam, Netherlands"
+                    className="px-4 py-3 rounded-lg border border-[#181B22] bg-[rgba(12,16,20,0.5)] shadow-[0_4px_8px_0_rgba(0,0,0,0.24)] backdrop-blur-[50px] text-white text-sm font-bold focus:outline-none focus:ring-2 focus:ring-primary/50"
+                  />
+                </div>
+                <div className="flex-1 flex flex-col gap-2">
+                  <label className="text-xs font-bold uppercase text-webGray">Website / URL</label>
+                  <input
+                    type="text"
+                    defaultValue="https://example.com/beautydoe"
+                    className="px-4 py-3 rounded-lg border border-[#181B22] bg-[rgba(12,16,20,0.5)] shadow-[0_4px_8px_0_rgba(0,0,0,0.24)] backdrop-blur-[50px] text-white text-sm font-bold focus:outline-none focus:ring-2 focus:ring-primary/50"
+                  />
+                </div>
+              </div>
+
+              {/* Role and Sector */}
+              <div className="flex flex-col md:flex-row gap-4 md:gap-6">
+                <div className="w-full md:w-80 flex flex-col gap-2">
+                  <label className="text-xs font-bold uppercase text-webGray">Role</label>
+                  <div className="relative">
+                    <select className="w-full px-4 py-3 pr-10 rounded-lg border border-[#181B22] bg-[rgba(12,16,20,0.5)] shadow-[0_4px_8px_0_rgba(0,0,0,0.24)] backdrop-blur-[50px] text-white text-sm font-bold appearance-none focus:outline-none focus:ring-2 focus:ring-primary/50">
+                      <option>Individual Investor</option>
+                      <option>Professional Trader</option>
+                      <option>Institutional Investor</option>
+                    </select>
+                    <svg className="absolute right-4 top-1/2 -translate-y-1/2 rotate-90 pointer-events-none" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                      <path d="M7.05807 8.9502L9.99974 11.8835L12.9414 8.9502" stroke="#B0B0B0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </div>
+                </div>
+                <div className="flex-1 flex flex-col gap-2">
+                  <label className="text-xs font-bold uppercase text-webGray">Sector</label>
+                  <div className="flex flex-wrap items-center gap-4 md:gap-6 py-3">
+                    {['Stock Market', 'Crypto', 'Forex'].map((sector) => (
+                      <label key={sector} className="flex items-center gap-2 cursor-pointer">
+                        <div className="relative w-[18px] h-[18px]">
+                          <div className="w-[18px] h-[18px] rounded-[3px] bg-primary" />
+                          <svg className="absolute left-1 top-[6px]" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                            <path d="M1 2.5L5 6.5L10.5 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </div>
+                        <span className="text-sm font-bold text-white">{sector}</span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* BIO */}
+              <div className="flex flex-col gap-2">
+                <label className="text-xs font-bold uppercase text-webGray">BIO</label>
+                <textarea
+                  rows={5}
+                  defaultValue="Hi, I'm Jane Doe. I'm a self-taught investor exploring markets with curiosity and discipline. I focus on long-term value, smart risk-taking, and staying calm when the market isn't. Always learning, always adapting."
+                  className="px-4 py-3 rounded-lg border border-[#181B22] bg-[rgba(12,16,20,0.5)] shadow-[0_4px_8px_0_rgba(0,0,0,0.24)] backdrop-blur-[50px] text-white text-sm font-normal resize-none focus:outline-none focus:ring-2 focus:ring-primary/50"
+                />
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex flex-wrap items-center gap-6">
+                <button className="px-4 h-[42px] rounded-lg border border-[#181B22] bg-[rgba(12,16,20,0.5)] shadow-[0_4px_8px_0_rgba(0,0,0,0.24)] backdrop-blur-[50px] text-white text-sm font-bold hover:bg-[rgba(12,16,20,0.7)] transition-all min-w-[180px]">
+                  Reset
+                </button>
+                <button className="px-4 h-[42px] rounded-lg bg-gradient-to-r from-primary to-[#482090] text-white text-sm font-bold hover:opacity-90 transition-opacity min-w-[180px]">
+                  Save Changes
+                </button>
+              </div>
             </div>
+          </div>
+        )}
+
+        {activeTab === 'profile' && activeProfileSubTab !== 'profile' && (
+          <div className="container-card p-6">
+            <h2 className="text-2xl font-bold text-white capitalize">{activeProfileSubTab}</h2>
+            <p className="mt-2 text-sm text-webGray">Content for {activeProfileSubTab} tab will be here.</p>
           </div>
         )}
 
