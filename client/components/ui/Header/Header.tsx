@@ -22,10 +22,33 @@ export const Header: FC<HeaderProps> = ({
 
       {/* Center: Search + Assistant (desktop) */}
       <div className="hidden md:flex items-center gap-4 w-full max-w-[800px]">
-        <div className="relative w-full max-w-[540px]">
+        <div className="flex items-center gap-2 h-10 px-4 rounded-3xl border border-[#A06AFFCC] backdrop-blur-[50px] w-full max-w-[256px]">
+          <svg
+            className="w-6 h-6 flex-shrink-0"
+            width="25"
+            height="24"
+            viewBox="0 0 25 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12 21C17.2467 21 21.5 16.7467 21.5 11.5C21.5 6.25329 17.2467 2 12 2C6.75329 2 2.5 6.25329 2.5 11.5C2.5 16.7467 6.75329 21 12 21Z"
+              stroke="#C2C2C2"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M22.5 22L20.5 20"
+              stroke="#C2C2C2"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
           <input
-            className="h-11 w-full rounded-[12px] border border-[#181B22] bg-[#0C101480] px-4 text-white placeholder:text-webGray outline-none"
-            placeholder="Search"
+            className="bg-transparent text-[#C2C2C2] text-[15px] font-bold placeholder:text-[#C2C2C2] outline-none w-full"
+            placeholder="Search (Ctrl + K)"
           />
         </div>
         <a
