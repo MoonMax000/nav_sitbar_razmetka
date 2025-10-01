@@ -44,14 +44,8 @@ const NewNavBar: FC<Props> = ({ variant = 'primal' }) => {
     () => [
       {
         id: 'home',
-        label: 'Home',
-        to: '/',
-        icon: HomeIcon,
-      },
-      {
-        id: 'dashboard',
         label: 'Dashboard',
-        to: '/dashboard',
+        to: '/',
         icon: LayoutDashboard,
       },
       {
@@ -113,7 +107,7 @@ const NewNavBar: FC<Props> = ({ variant = 'primal' }) => {
           <span className='mr-2 grid place-items-center rounded-sm bg-indigo px-[6px] py-[4px] text-white'>
             <HomeIcon className='h-4 w-4' />
           </span>
-          <span className='font-bold text-[15px] text-lighterAluminum uppercase'>Home</span>
+          <span className='font-bold text-[15px] text-lighterAluminum uppercase'>Dashboard</span>
         </div>
 
         <div
