@@ -27,13 +27,21 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <ClientLayout>
-            <Routes>
-              <Route path="/" element={<Dashboard />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </ClientLayout>
+          <Routes>
+            {/* Pricing page with special layout (no side menus) */}
+            <Route path="/pricing" element={<PricingLayout><Pricing /></PricingLayout>} />
+
+            {/* Standard pages with ClientLayout */}
+            <Route path="*" element={
+              <ClientLayout>
+                <Routes>
+                  <Route path="/" element={<Dashboard />} />
+                  {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </ClientLayout>
+            } />
+          </Routes>
         </BrowserRouter>
       </TooltipProvider>
     </Provider>
