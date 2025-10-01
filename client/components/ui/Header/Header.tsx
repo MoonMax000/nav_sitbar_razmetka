@@ -1,6 +1,8 @@
 import { FC, Dispatch, SetStateAction } from "react";
 import { Link } from "react-router-dom";
 import RightBarButton from "../RightBar/RightBarButton";
+import { AnimatedLogo } from '../AnimatedLogo/AnimatedLogo';
+import { AvatarDropdown } from '../AvatarDropdown/AvatarDropdown';
 
 interface HeaderProps {
   rightMenuOpen?: boolean;
@@ -15,12 +17,7 @@ export const Header: FC<HeaderProps> = ({
     <header className="pb-1 pt-3 w-full pl-[30px] pr-[24px] flex justify-between bg-background items-center gap-2 mb-6">
       {/* Brand */}
       <div className="min-w-[230px]">
-        <Link to="/" className="flex gap-[10px] items-center">
-          <div className="w-[35px] h-[40px] rounded-[6px] bg-primary flex items-center justify-center font-extrabold text-white">
-            T
-          </div>
-          <span className="text-2xl font-bold text-white">Tyrian Trade</span>
-        </Link>
+        <AnimatedLogo />
       </div>
 
       {/* Center: Search + Assistant (desktop) */}
@@ -51,11 +48,7 @@ export const Header: FC<HeaderProps> = ({
 
       {/* Right actions */}
       <div className="flex items-center justify-end max-w-[350px] gap-4">
-        <Link
-          to="/profile"
-          aria-label="Profile"
-          className="size-10 rounded-full bg-moonlessNight"
-        />
+        <AvatarDropdown />
         {setRightMenuOpen && (
           <RightBarButton
             isCollapsed={rightMenuOpen}
