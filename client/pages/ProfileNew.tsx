@@ -654,7 +654,7 @@ const ProfileNew: FC = () => {
             {/* Cover Image and Profile Picture */}
             <div className="relative h-48 rounded-3xl overflow-hidden">
               <img
-                src="https://api.builder.io/api/v1/image/assets/TEMP/c246284386eea63955b14b07c828e0c320177523?width=2118"
+                src="https://cdn.builder.io/api/v1/image/assets%2F7ee0e08331ad4de59dd7fa404556ca59%2F64ebe2e51c6d46bcab38ebc9e0f78a15?format=webp&width=2118"
                 alt="Cover"
                 className="w-full h-full object-cover"
               />
@@ -664,7 +664,7 @@ const ProfileNew: FC = () => {
               <div className="absolute left-4 top-4">
                 <div className="relative">
                   <img
-                    src="https://api.builder.io/api/v1/image/assets/TEMP/2ab9127034625eee34d806e48fd64bc5995be0ce?width=320"
+                    src="https://cdn.builder.io/api/v1/image/assets%2F7ee0e08331ad4de59dd7fa404556ca59%2F18a068f999d64b54b143e3afad1942e8?format=webp&width=320"
                     alt="Profile"
                     className="w-40 h-40 rounded-2xl border-[3px] border-[#523A83] shadow-lg"
                   />
