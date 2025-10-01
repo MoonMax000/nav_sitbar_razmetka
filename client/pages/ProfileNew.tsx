@@ -3,6 +3,7 @@ import UserHeader from '@/components/UserHeader/UserHeader';
 import { cn } from '@/lib/utils';
 
 type Tab = 'dashboard' | 'profile' | 'marketplace' | 'streaming' | 'social' | 'portfolios';
+type ProfileSubTab = 'profile' | 'security' | 'notifications' | 'billing' | 'referrals' | 'api' | 'kyc';
 
 const tabs = [
   {
@@ -71,8 +72,92 @@ const tabs = [
   },
 ];
 
+const profileSubTabs = [
+  {
+    id: 'profile' as ProfileSubTab,
+    label: 'Profile',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M5.48131 12.9017C4.30234 13.6037 1.21114 15.0371 3.09389 16.8308C4.01359 17.707 5.03791 18.3337 6.32573 18.3337H13.6743C14.9621 18.3337 15.9864 17.707 16.9061 16.8308C18.7888 15.0371 15.6977 13.6037 14.5187 12.9017C11.754 11.2554 8.24599 11.2554 5.48131 12.9017Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M13.75 5.41699C13.75 7.48806 12.0711 9.16699 10 9.16699C7.92893 9.16699 6.25 7.48806 6.25 5.41699C6.25 3.34593 7.92893 1.66699 10 1.66699C12.0711 1.66699 13.75 3.34593 13.75 5.41699Z" stroke="currentColor" strokeWidth="1.5" />
+      </svg>
+    ),
+  },
+  {
+    id: 'security' as ProfileSubTab,
+    label: 'Security',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M15.5907 2.91311C14.0137 2.12851 12.0841 1.66699 10 1.66699C7.91592 1.66699 5.98625 2.12851 4.4093 2.91311C3.63598 3.29788 3.24932 3.49026 2.87467 4.09514C2.5 4.70003 2.5 5.28573 2.5 6.45711V9.36458C2.5 14.1007 6.2853 16.734 8.4775 17.8618C9.08892 18.1764 9.39458 18.3337 10 18.3337C10.6054 18.3337 10.9111 18.1764 11.5224 17.8618C13.7147 16.734 17.5 14.1007 17.5 9.36458V6.45711C17.5 5.28573 17.5 4.70004 17.1253 4.09514C16.7507 3.49025 16.364 3.29788 15.5907 2.91311Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M7.5 9.58366C7.5 9.58366 8.67325 9.79358 9.16667 11.2503C9.16667 11.2503 10.4167 8.75033 12.5 7.91699" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+  },
+  {
+    id: 'notifications' as ProfileSubTab,
+    label: 'Notifications',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M2.10892 12.3083C1.93171 13.47 2.72399 14.2763 3.69403 14.6782C7.41299 16.2188 12.5883 16.2188 16.3072 14.6782C17.2773 14.2763 18.0696 13.47 17.8924 12.3083C17.7835 11.5944 17.245 10.9999 16.846 10.4194C16.3234 9.64974 16.2715 8.81016 16.2714 7.91699C16.2714 4.46521 13.4639 1.66699 10.0007 1.66699C6.53743 1.66699 3.72993 4.46521 3.72993 7.91699C3.72984 8.81016 3.67792 9.64974 3.15533 10.4194C2.75635 10.9999 2.21783 11.5944 2.10892 12.3083Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M6.66602 15.833C7.04809 17.2707 8.3956 18.333 9.99935 18.333C11.6031 18.333 12.9506 17.2707 13.3327 15.833" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+  },
+  {
+    id: 'billing' as ProfileSubTab,
+    label: 'Billing',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M1.66602 9.99967C1.66602 7.05177 1.66602 5.57782 2.54335 4.59376C2.68367 4.43637 2.83833 4.2908 3.00557 4.15873C4.05112 3.33301 5.6172 3.33301 8.74935 3.33301H11.2493C14.3815 3.33301 15.9476 3.33301 16.9931 4.15873C17.1603 4.2908 17.315 4.43637 17.4553 4.59376C18.3327 5.57782 18.3327 7.05177 18.3327 9.99967C18.3327 12.9476 18.3327 14.4215 17.4553 15.4056C17.315 15.563 17.1603 15.7085 16.9931 15.8406C15.9476 16.6663 14.3815 16.6663 11.2493 16.6663H8.74935C5.6172 16.6663 4.05112 16.6663 3.00557 15.8406C2.83833 15.7085 2.68367 15.563 2.54335 15.4056C1.66602 14.4215 1.66602 12.9476 1.66602 9.99967Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M8.33398 13.333H9.58398" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M12.084 13.333H15.0007" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M1.66602 7.5H18.3327" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+      </svg>
+    ),
+  },
+  {
+    id: 'referrals' as ProfileSubTab,
+    label: 'Referrals',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M12.9173 9.16667C12.9173 7.55583 11.6115 6.25 10.0007 6.25C8.38982 6.25 7.08398 7.55583 7.08398 9.16667C7.08398 10.7775 8.38982 12.0833 10.0007 12.0833C11.6115 12.0833 12.9173 10.7775 12.9173 9.16667Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M12.9022 9.45825C13.1705 9.53958 13.4551 9.58333 13.7499 9.58333C15.3607 9.58333 16.6666 8.2775 16.6666 6.66667C16.6666 5.05583 15.3607 3.75 13.7499 3.75C12.2375 3.75 10.9939 4.90117 10.8477 6.37511" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M9.1529 6.37511C9.00665 4.90117 7.76308 3.75 6.25065 3.75C4.63982 3.75 3.33398 5.05583 3.33398 6.66667C3.33398 8.2775 4.63982 9.58333 6.25065 9.58333C6.54549 9.58333 6.83011 9.53958 7.09838 9.45825" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M18.3333 13.7497C18.3333 11.4485 16.2813 9.58301 13.75 9.58301" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M14.5827 16.2497C14.5827 13.9485 12.5307 12.083 9.99935 12.083C7.46804 12.083 5.41602 13.9485 5.41602 16.2497" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M6.24935 9.58301C3.71804 9.58301 1.66602 11.4485 1.66602 13.7497" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+  },
+  {
+    id: 'api' as ProfileSubTab,
+    label: 'API',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M2.08398 9.99967C2.08398 6.26772 2.08398 4.40175 3.24335 3.24237C4.40273 2.08301 6.2687 2.08301 10.0007 2.08301C13.7326 2.08301 15.5986 2.08301 16.758 3.24237C17.9173 4.40175 17.9173 6.26772 17.9173 9.99967C17.9173 13.7316 17.9173 15.5976 16.758 16.757C15.5986 17.9163 13.7326 17.9163 10.0007 17.9163C6.2687 17.9163 4.40273 17.9163 3.24335 16.757C2.08398 15.5976 2.08398 13.7316 2.08398 9.99967Z" stroke="currentColor" strokeWidth="1.5" />
+        <path d="M5.00065 11.25L6.25065 7.5L7.81315 11.25M5.00065 11.25L4.58398 12.5M5.00065 11.25H7.81315M7.81315 11.25L8.33398 12.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M10.416 10V8.08333C10.416 7.92822 10.416 7.85068 10.4364 7.78791C10.4776 7.66106 10.5771 7.56161 10.7039 7.52039C10.7667 7.5 10.8443 7.5 10.9993 7.5H12.0827C12.773 7.5 13.3327 8.05964 13.3327 8.75C13.3327 9.44033 12.773 10 12.0827 10H10.416ZM10.416 10V12.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M15.416 7.5V12.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+  },
+  {
+    id: 'kyc' as ProfileSubTab,
+    label: 'KYC',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M1.66602 10C1.66602 6.46447 1.66602 4.6967 2.88641 3.59835C4.10679 2.5 6.07098 2.5 9.99935 2.5C13.9277 2.5 15.8919 2.5 17.1123 3.59835C18.3327 4.6967 18.3327 6.46447 18.3327 10C18.3327 13.5355 18.3327 15.3033 17.1123 16.4017C15.8919 17.5 13.9277 17.5 9.99935 17.5C6.07098 17.5 4.10679 17.5 2.88641 16.4017C1.66602 15.3033 1.66602 13.5355 1.66602 10Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M4.16602 13.75C5.17294 11.5991 8.92618 11.4576 9.99935 13.75M8.74935 7.91667C8.74935 8.83717 8.00316 9.58333 7.08268 9.58333C6.16221 9.58333 5.41602 8.83717 5.41602 7.91667C5.41602 6.99619 6.16221 6.25 7.08268 6.25C8.00316 6.25 8.74935 6.99619 8.74935 7.91667Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        <path d="M12.5 8.33301H15.8333" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M12.5 11.667H15.8333" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+  },
+];
+
 const ProfileNew: FC = () => {
   const [activeTab, setActiveTab] = useState<Tab>('dashboard');
+  const [activeProfileSubTab, setActiveProfileSubTab] = useState<ProfileSubTab>('profile');
 
   return (
     <div className="flex flex-col gap-6">
@@ -80,14 +165,14 @@ const ProfileNew: FC = () => {
       <UserHeader isOwn={true} />
 
       {/* Navigation Tabs */}
-      <div className="flex justify-center">
-        <div className="inline-flex items-center gap-3 p-1 rounded-[36px] border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px]">
+      <div className="flex flex-col items-center gap-4">
+        <div className="inline-flex flex-wrap items-center justify-center gap-2 md:gap-3 p-1 rounded-[36px] border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px]">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={cn(
-                'flex items-center gap-2 px-4 py-3 rounded-[32px] text-sm font-bold transition-all',
+                'flex items-center gap-2 px-3 md:px-4 py-2.5 md:py-3 rounded-[32px] text-xs md:text-sm font-bold transition-all whitespace-nowrap',
                 activeTab === tab.id
                   ? 'bg-gradient-to-r from-primary to-[#482090] text-white backdrop-blur-[58.33px]'
                   : 'border border-[#181B22] bg-[rgba(12,16,20,0.5)] text-webGray hover:text-white backdrop-blur-[58.33px]'
@@ -98,6 +183,27 @@ const ProfileNew: FC = () => {
             </button>
           ))}
         </div>
+
+        {/* Profile Sub-Navigation */}
+        {activeTab === 'profile' && (
+          <div className="inline-flex flex-wrap items-center justify-center gap-2 p-1 rounded-[36px] border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px]">
+            {profileSubTabs.map((subTab) => (
+              <button
+                key={subTab.id}
+                onClick={() => setActiveProfileSubTab(subTab.id)}
+                className={cn(
+                  'flex items-center gap-2 px-3 md:px-4 py-2 md:py-2.5 rounded-[32px] text-xs md:text-sm font-bold transition-all whitespace-nowrap',
+                  activeProfileSubTab === subTab.id
+                    ? 'bg-gradient-to-r from-primary to-[#482090] text-white backdrop-blur-[58.33px]'
+                    : 'border border-[#181B22] bg-[rgba(12,16,20,0.5)] text-webGray hover:text-white backdrop-blur-[58.33px]'
+                )}
+              >
+                <span className={activeProfileSubTab === subTab.id ? 'text-white' : 'text-webGray'}>{subTab.icon}</span>
+                {subTab.label}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Tab content */}
