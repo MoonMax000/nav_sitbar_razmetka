@@ -14,9 +14,10 @@ const UserHeader: FC<Props> = ({ isOwn = true, className }) => {
         <img
           src="https://api.builder.io/api/v1/image/assets/TEMP/9dba922c17079743c98bfcfbc646bac784f973ae?width=3840"
           alt=""
-          className="w-full h-full object-cover backdrop-blur-[17.4px]"
+          className="w-full h-full object-cover"
+          style={{ backdropFilter: 'blur(17.4px)' }}
         />
-        <div className="absolute inset-0 bg-black/[0.01] backdrop-blur-[6.65px]" />
+        <div className="absolute inset-0 bg-black/[0.01]" style={{ backdropFilter: 'blur(6.65px)' }} />
       </div>
 
       {/* Main content */}
