@@ -142,4 +142,16 @@ textarea::-webkit-scrollbar-track {
     background-color: rgba(12, 16, 20, 0.48);
     backdrop-filter: blur(100px);
   }
+
+  .text-gradient-purple {
+    @apply bg-gradient-to-r from-[#A06AFF] to-[#6AA5FF] bg-clip-text text-transparent;
+  }
+
+  .text-gradient-gold {
+    @apply bg-gradient-to-r from-[#FFD700] via-[#FFA500] to-[#A06AFF] bg-clip-text text-transparent;
+  }
+
+  .glow-intense {
+    box-shadow: 0 0 20px rgba(160, 106, 255, 0.5), 0 0 40px rgba(160, 106, 255, 0.3);
+  }
 }
