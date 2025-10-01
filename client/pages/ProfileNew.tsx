@@ -103,12 +103,194 @@ const ProfileNew: FC = () => {
       {/* Tab content */}
       <div className="mt-4">
         {activeTab === 'dashboard' && (
-          <div className="flex flex-col gap-6">
-            <div className="container-card p-6">
-              <h2 className="text-2xl font-bold text-white">Dashboard Overview</h2>
-              <p className="mt-2 text-sm text-webGray">
-                Your dashboard statistics and analytics will be displayed here.
-              </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+            {/* My Revenue Card */}
+            <div className="flex flex-col justify-center gap-4 p-4 h-[325px] rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px] relative overflow-hidden">
+              <div className="flex justify-between items-center pb-2">
+                <h3 className="text-2xl font-bold text-white flex-1">My Revenue</h3>
+                <div className="flex items-center gap-1 px-1 py-0.5 rounded bg-[#1C3430]">
+                  <span className="text-xs font-bold text-green">Growing</span>
+                </div>
+              </div>
+
+              <div className="flex flex-col flex-1 justify-between">
+                <div className="flex items-center gap-2">
+                  <div className="flex flex-col gap-0.5 flex-1">
+                    <span className="text-xs font-bold uppercase text-webGray">Value</span>
+                    <span className="text-3xl font-bold text-white">$72,450.00</span>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <div className="flex flex-col gap-2">
+                    <span className="text-xs font-bold uppercase text-webGray">Today Change</span>
+                    <span className="text-sm font-bold text-green">+2.4%</span>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <span className="text-xs font-bold uppercase text-webGray">All time</span>
+                    <span className="text-sm font-bold text-green">+15.7%</span>
+                  </div>
+                </div>
+              </div>
+
+              <button className="flex items-center justify-center gap-1 h-[26px] px-4 py-2.5 rounded-lg bg-gradient-to-r from-primary to-[#482090] backdrop-blur-[50px] text-white font-bold text-sm hover:opacity-90 transition-opacity">
+                <svg width="20" height="20" viewBox="0 0 21 20" fill="none">
+                  <path d="M7.25 16L13.25 10L7.25 4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                View Portfolio
+              </button>
+
+              {/* Chart SVG */}
+              <svg className="absolute left-4 bottom-12 w-[calc(100%-32px)] h-44" viewBox="0 0 369 184" fill="none" preserveAspectRatio="none">
+                <path d="M13.1267 160.619L9 158.493V184H360V27.916L357.02 36.115L354.956 50.0837L352.664 49.1727L351.517 52.2094L348.766 23.9683L347.849 27.916L346.244 26.094L342.805 29.4343L340.971 44.0104L339.596 40.3664C339.061 43.7067 337.991 50.3267 337.991 50.0837C337.991 49.8408 337.074 45.3263 336.615 43.0994L335.24 50.3874L333.406 42.7957L331.113 40.67L329.967 20.9316L326.528 30.649H325.381L324.464 32.7747L323.777 29.1307L321.713 46.7434L321.025 41.8847L318.733 40.67L317.357 45.8324L316.899 34.9003L315.752 40.67L314.148 32.7747L312.772 37.026L312.084 34.9003L311.396 36.115L310.021 25.4867L308.875 48.2617L307.04 38.5444L305.206 36.115L303.372 51.9057L300.392 61.0158L298.099 59.1938L297.87 66.7854L296.724 60.7121L294.89 68.9111L293.514 87.4348L291.909 88.3458L290.304 89.5605L289.387 101.404L288.241 102.922L285.49 101.404L282.051 94.7229L280.905 103.833L277.924 107.173L276.778 105.959L276.319 108.995L273.339 103.833L272.88 106.262L269.671 104.744L266.92 111.121L266.69 115.676L265.315 114.461L263.71 119.016L262.564 115.676H259.813L259.354 117.194H258.437L256.832 120.838L254.081 117.802L252.705 111.425L251.101 111.728L249.496 119.016L248.349 116.587L247.662 119.927L246.515 117.802L242.618 119.927L240.784 127.823L238.033 125.697L237.116 131.467L235.052 129.037L233.447 134.807L232.301 136.629L230.926 136.933L229.091 132.681L227.945 133.592L227.028 128.126L225.882 129.948L223.131 125.697L222.214 126.912L221.297 125.697L220.15 117.802H217.399L216.024 124.786L215.794 123.268L215.106 127.215H214.189L213.043 131.467L211.438 127.823L210.063 132.074L208.229 125.09L206.395 127.215L206.165 132.074L205.248 128.43L203.873 129.037L203.414 127.215L202.268 138.755L200.892 137.54L199.746 141.488L198.37 130.556L197.224 129.037L196.078 123.268L195.161 125.09L192.639 117.802L191.951 118.713H190.575C190.27 120.433 189.658 123.936 189.658 124.179C189.658 124.422 187.213 118.611 185.99 115.676L183.468 118.713L182.322 122.357L180.717 119.927L179.571 128.43L175.673 134.503L174.986 132.074L173.61 135.111H172.234L171.547 131.467L170.171 133.896C169.101 131.264 166.916 125.818 166.732 125.09C166.549 124.361 164.516 128.43 163.523 130.556L161.001 126.001L159.854 129.037L158.02 119.927L155.957 121.446L154.811 126.608L153.435 116.891L149.767 117.802L148.162 113.247L147.245 115.676L145.411 111.121L144.723 113.247H143.806L141.972 108.692L140.138 113.247L137.157 113.854L136.011 112.032L135.553 115.069L133.948 114.461L132.114 112.032H130.738L130.28 113.247L128.904 112.639L125.924 106.87C125.694 109.603 125.236 115.433 125.236 116.891C125.236 118.348 123.707 114.664 122.943 112.639L121.797 116.283L121.109 114.461L120.192 122.66L119.275 119.927L117.899 122.66L116.524 123.268L115.836 117.802L114.231 123.268L110.792 116.891L109.417 118.713V125.09L107.583 126.001L105.749 115.676L104.373 119.927L102.31 115.676L100.934 116.283L99.0999 111.121L98.4121 115.069L97.4951 113.247L95.4317 115.676L94.5147 119.927L93.8269 114.461L91.7635 116.283L91.305 113.247L90.1587 116.283L87.8661 104.744L86.2613 107.781L85.8027 104.137L84.1979 111.121L82.1346 109.299L80.759 114.461L78.2371 104.137L76.403 107.173L75.2567 104.744L74.3396 107.781L72.047 105.351L69.2959 117.802L67.2325 110.514L66.0862 120.838L65.1692 112.639L64.2521 109.299L63.3351 115.069L62.418 108.692L60.5839 103.226L59.8961 106.262L58.5206 105.351L57.8328 110.514L55.9987 111.121L53.4768 118.713L51.6427 109.906C50.8785 113.145 49.3501 119.867 49.3501 120.838V120.231L47.9745 122.964L46.1404 120.231V128.734C46.1404 128.977 44.7649 134.503 44.0771 137.236L42.7015 136.325L41.0967 138.147L39.4918 136.325L38.5748 138.755L37.4285 137.236L36.2822 138.755L35.3651 136.325L32.3847 143.006L31.4677 142.095L24.8191 155.456L22.7557 153.938L20.4631 156.367L18.629 155.456L17.9412 157.886L15.6486 156.367L13.1267 160.619Z" fill="url(#paint0_linear_revenue)" />
+                <path d="M9 146.086L13.1267 148.205L15.6486 143.968L17.9412 145.481L18.629 143.06L20.4631 143.968L22.7557 141.547L24.8191 143.06L31.4677 129.745L32.3847 130.653L35.3651 123.995L36.2822 126.416L37.4285 124.903L38.5748 126.416L39.4918 123.995L41.0967 125.811L42.7015 123.995L44.0771 124.903C44.7649 122.179 46.1404 116.672 46.1404 116.43C46.1404 116.188 46.1404 110.68 46.1404 107.956L47.9745 110.68L49.3501 107.956C49.3501 108.562 49.3501 109.53 49.3501 108.562C49.3501 107.593 50.8785 100.895 51.6427 97.6673L53.4768 106.443L55.9987 98.8777L57.8328 98.2725L58.5206 93.128L59.8961 94.0358L60.5839 91.0096L62.418 96.4568L63.3351 102.812L64.2521 97.062L65.1692 100.391L66.0862 108.562L67.2325 98.2725L69.2959 105.535L72.047 93.128L74.3396 95.5489L75.2567 92.5227L76.403 94.9437L78.2371 91.9175L80.759 102.207L82.1345 97.062L84.1979 98.8777L85.8027 91.9175L86.2613 95.5489L87.8661 92.5227L90.1587 104.022L91.305 100.996L91.7636 104.022L93.8269 102.207L94.5147 107.654L95.4317 103.417L97.4951 100.996L98.4121 102.812L99.0999 98.8777L100.934 104.022L102.31 103.417L104.373 107.654L105.749 103.417L107.583 113.706L109.417 112.798V106.443L110.792 104.627L114.231 110.982L115.836 105.535L116.524 110.982L117.899 110.377L119.275 107.654L120.192 110.377L121.109 102.207L121.797 104.022L122.943 100.391C123.707 102.408 125.236 106.08 125.236 104.627C125.236 103.175 125.694 97.3646 125.924 94.6411L128.904 100.391L130.28 100.996L130.738 99.7856H132.114L133.948 102.207L135.553 102.812L136.011 99.7856L137.157 101.601L140.138 100.996L141.972 96.4568L143.806 100.996H144.723L145.411 98.8777L147.245 103.417L148.162 100.996L149.767 105.535L153.435 104.627L154.811 114.311L155.957 109.167L158.02 107.654L159.854 116.732L161.001 113.706L163.523 118.245C164.516 116.127 166.549 112.072 166.732 112.798C166.916 113.524 169.101 118.951 170.171 121.574L171.547 119.153L172.234 122.785H173.61L174.986 119.758L175.673 122.179L179.571 116.127L180.717 107.654L182.322 110.075L183.468 106.443L185.99 103.417C187.213 106.342 189.658 112.132 189.658 111.89C189.658 111.648 190.27 108.158 190.575 106.443H191.951L192.639 105.535L195.161 112.798L196.078 110.982L197.224 116.732L198.37 118.245L199.746 129.14L200.892 125.206L202.268 126.416L203.414 114.917L203.873 116.732L205.248 116.127L206.165 119.758L206.395 114.917L208.229 112.798L210.063 119.758L211.438 115.522L213.043 119.153L214.189 114.917H215.106L215.794 110.982L216.024 112.496L217.399 105.535H220.15L221.297 113.403L222.214 114.614L223.131 113.403L225.882 117.64L227.028 115.824L227.945 121.271L229.091 120.364L230.926 124.6L232.301 124.298L233.447 122.482L235.052 116.732L237.116 119.153L238.033 113.403L240.784 115.522L242.618 107.654L246.515 105.535L247.662 107.654L248.349 104.325L249.496 106.746L251.101 99.483L252.705 99.1803L254.081 105.535L256.832 108.562L258.437 104.93H259.354L259.813 103.417H262.564L263.71 106.746L265.315 102.207L266.69 103.417L266.92 98.8777L269.671 92.5227L272.88 94.0358L273.339 91.6149L276.319 96.7594L276.778 93.7332L277.924 94.9437L280.905 91.6149L282.051 82.5363L285.49 89.1939L288.241 90.707L289.387 89.1939L290.304 77.3918L291.909 76.1813L293.514 75.2735L294.89 56.8137L296.724 48.643L297.87 54.6954L298.099 47.1299L300.392 48.9457L303.372 39.8671L305.206 24.1309L307.04 26.5519L308.875 36.2357L310.021 13.5393L311.396 24.1309L312.084 22.9205L312.772 25.0388L314.148 20.8021L315.752 28.6702L316.899 22.9205L317.357 33.8147L318.733 28.6702L321.025 29.8807L321.713 34.7226L323.777 17.1707L324.464 20.8021L325.381 18.6838H326.528L329.967 9L331.113 28.6702L333.406 30.7885L335.24 38.354L336.615 31.0912C337.074 33.3104 337.991 37.8093 337.991 38.0514C337.991 38.2935 339.061 31.6964 339.596 28.3676L340.971 31.999L342.805 17.4733L346.244 14.1445L347.849 15.9602L348.766 12.0262L351.517 40.1697L352.664 37.1435L354.956 38.0514L357.02 24.1309L360 15.9602" stroke="url(#paint1_linear_revenue)" strokeWidth="1.5" strokeLinecap="round" filter="drop-shadow(0 0 8px rgba(160, 106, 255, 0.24))" />
+                <defs>
+                  <linearGradient id="paint0_linear_revenue" x1="184.5" y1="20.9316" x2="184.5" y2="184" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#A06AFF" stopOpacity="0.32" />
+                    <stop offset="1" stopColor="#181A20" stopOpacity="0" />
+                  </linearGradient>
+                  <linearGradient id="paint1_linear_revenue" x1="360" y1="78.6023" x2="9" y2="78.6023" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#A06AFF" />
+                    <stop offset="1" stopColor="#482090" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+
+            {/* Live Streaming Card */}
+            <div className="flex flex-col justify-between gap-4 p-4 h-[325px] rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px]">
+              <div className="flex justify-between items-center pb-2">
+                <h3 className="text-2xl font-bold text-white flex-1">Live Streaming</h3>
+                <div className="flex items-center gap-1 px-1 py-0.5 rounded bg-[rgba(255,168,0,0.16)]">
+                  <span className="text-xs font-bold text-[#FFA800]">Soon</span>
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-4 flex-1">
+                <div className="flex justify-between items-center">
+                  <div className="flex flex-col gap-2 flex-1">
+                    <span className="text-xs font-bold uppercase text-webGray">Stream iN</span>
+                    <span className="text-sm font-bold text-white">2 Hours</span>
+                  </div>
+                  <div className="flex flex-col gap-2 flex-1">
+                    <span className="text-xs font-bold uppercase text-webGray">Channel</span>
+                    <span className="text-sm font-bold text-white">beautydoe</span>
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <span className="text-xs font-bold uppercase text-webGray">topic</span>
+                  <p className="text-sm font-bold text-white">Investing in a new Solana solutions for the market</p>
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <span className="text-xs font-bold uppercase text-webGray">Start</span>
+                  <span className="text-sm font-bold text-white">18:30 MSK</span>
+                </div>
+              </div>
+
+              <button className="flex items-center justify-center gap-2 h-[26px] px-4 py-2.5 rounded-lg bg-gradient-to-r from-primary to-[#482090] backdrop-blur-[50px] text-white font-bold text-sm hover:opacity-90 transition-opacity">
+                <svg width="20" height="20" viewBox="0 0 21 20" fill="none">
+                  <path d="M3.58398 9.99983V7.03316C3.58398 3.34982 6.19232 1.8415 9.38398 3.68317L11.959 5.1665L14.534 6.64983C17.7257 8.4915 17.7257 11.5082 14.534 13.3498L11.959 14.8332L9.38398 16.3165C6.19232 18.1582 3.58398 16.6498 3.58398 12.9665V9.99983Z" stroke="white" strokeWidth="2" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                Join Stream
+              </button>
+            </div>
+
+            {/* AI Assistant Card */}
+            <div className="flex flex-col justify-center gap-4 p-4 h-[325px] rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px]">
+              <div className="flex justify-between items-center pb-2">
+                <h3 className="text-2xl font-bold text-white flex-1">AI Assistant</h3>
+                <div className="flex items-center gap-1 px-1 py-0.5 rounded bg-[#2E2744]">
+                  <span className="text-xs font-bold text-primary">New Tip</span>
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-1">
+                <h4 className="text-lg font-bold text-white">Monitor SOL support at $120</h4>
+                <p className="text-sm text-webGray">Technical analysis suggests a potential rebound</p>
+              </div>
+
+              <div className="flex flex-col gap-2 flex-1">
+                <div className="flex items-start justify-between gap-4 p-2 px-4 rounded-lg border border-[#181B22] bg-[rgba(11,14,17,0.5)] backdrop-blur-[50px]">
+                  <div className="flex flex-col gap-1 flex-1">
+                    <span className="text-xs font-bold uppercase text-white">BTC/USD long</span>
+                    <span className="text-xs font-bold text-webGray">Entry: $45,230</span>
+                  </div>
+                  <div className="flex flex-col items-end gap-1">
+                    <div className="flex items-center gap-1 px-1 py-0.5 rounded bg-[#1C3430]">
+                      <span className="text-xs font-bold text-green">+12.4%</span>
+                    </div>
+                    <span className="text-xs font-bold text-webGray">2h ago</span>
+                  </div>
+                </div>
+
+                <div className="flex items-start justify-between gap-4 p-2 px-4 rounded-lg border border-[#181B22] bg-[rgba(11,14,17,0.5)] backdrop-blur-[50px]">
+                  <div className="flex flex-col gap-1 flex-1">
+                    <span className="text-xs font-bold uppercase text-white">ETH/USD Short</span>
+                    <span className="text-xs font-bold text-webGray">Entry: $3,120</span>
+                  </div>
+                  <div className="flex flex-col items-end gap-1">
+                    <div className="flex items-center gap-1 px-1 py-0.5 rounded bg-[#3A2127]">
+                      <span className="text-xs font-bold text-[#EF454A]">-3.2%</span>
+                    </div>
+                    <span className="text-xs font-bold text-webGray">5h ago</span>
+                  </div>
+                </div>
+              </div>
+
+              <button className="flex items-center justify-center gap-2 h-[26px] px-4 py-2.5 rounded-lg bg-gradient-to-r from-primary to-[#482090] backdrop-blur-[50px] text-white font-bold text-sm hover:opacity-90 transition-opacity">
+                <svg width="20" height="20" viewBox="0 0 21 20" fill="none">
+                  <path d="M11.9167 10.5403L13.8923 8.56458C14.1363 8.32058 14.2583 8.19856 14.3236 8.06693C14.4477 7.8165 14.4477 7.52247 14.3236 7.27203C14.2583 7.14041 14.1363 7.01839 13.8923 6.77436C13.6482 6.53032 13.5262 6.4083 13.3947 6.34307C13.1442 6.21898 12.8502 6.21898 12.5997 6.34307C12.4681 6.4083 12.3461 6.53032 12.1021 6.77436L10.1264 8.75M11.9167 10.5403L5.06462 17.3923C4.82058 17.6363 4.69856 17.7583 4.56693 17.8236C4.3165 17.9477 4.02247 17.9477 3.77203 17.8236C3.64041 17.7583 3.51839 17.6363 3.27436 17.3923C3.03032 17.1482 2.9083 17.0262 2.84307 16.8947C2.71898 16.6442 2.71898 16.3502 2.84307 16.0997C2.9083 15.9681 3.03032 15.8461 3.27436 15.6021L10.1264 8.75M11.9167 10.5403L10.1264 8.75" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M16.5 2.08301L16.4079 2.33195C16.2871 2.65837 16.2267 2.82158 16.1077 2.94065C15.9886 3.05971 15.8253 3.12011 15.4989 3.24089L15.25 3.33301L15.4989 3.42512C15.8253 3.54591 15.9886 3.60631 16.1077 3.72537C16.2267 3.84443 16.2871 4.00764 16.4079 4.33407L16.5 4.58301L16.5921 4.33407C16.7129 4.00764 16.7733 3.84443 16.8923 3.72537C17.0114 3.60631 17.1747 3.54591 17.5011 3.42512L17.75 3.33301L17.5011 3.24089C17.1747 3.12011 17.0114 3.05971 16.8923 2.94065C16.7733 2.82158 16.7129 2.65837 16.5921 2.33195L16.5 2.08301Z" stroke="white" strokeWidth="1.5" strokeLinejoin="round" />
+                  <path d="M16.5 10.417L16.4079 10.6659C16.2871 10.9923 16.2267 11.1556 16.1077 11.2747C15.9886 11.3937 15.8253 11.4541 15.4989 11.5749L15.25 11.667L15.4989 11.7591C15.8253 11.8799 15.9886 11.9403 16.1077 12.0593C16.2267 12.1784 16.2871 12.3417 16.4079 12.6681L16.5 12.917L16.5921 12.6681C16.7129 12.3417 16.7733 12.1784 16.8923 12.0593C17.0114 11.9403 17.1747 11.8799 17.5011 11.7591L17.75 11.667L17.5011 11.5749C17.1747 11.4541 17.0114 11.3937 16.8923 11.2747C16.7733 11.1556 16.7129 10.9923 16.5921 10.6659L16.5 10.417Z" stroke="white" strokeWidth="1.5" strokeLinejoin="round" />
+                  <path d="M9 2.08301L8.90792 2.33195C8.78708 2.65837 8.72667 2.82158 8.60767 2.94065C8.48857 3.05971 8.32537 3.12011 7.99894 3.24089L7.75 3.33301L7.99894 3.42512C8.32537 3.54591 8.48857 3.60631 8.60767 3.72537C8.72667 3.84443 8.78708 4.00764 8.90792 4.33407L9 4.58301L9.09208 4.33407C9.21292 4.00764 9.27333 3.84443 9.39233 3.72537C9.51142 3.60631 9.67467 3.54591 10.0011 3.42512L10.25 3.33301L10.0011 3.24089C9.67467 3.12011 9.51142 3.05971 9.39233 2.94065C9.27333 2.82158 9.21292 2.65837 9.09208 2.33195L9 2.08301Z" stroke="white" strokeWidth="1.5" strokeLinejoin="round" />
+                </svg>
+                Open AI Assistant
+              </button>
+            </div>
+
+            {/* Social Network Card */}
+            <div className="flex flex-col justify-center gap-4 p-4 h-[325px] rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px]">
+              <div className="flex justify-between items-center pb-2">
+                <h3 className="text-2xl font-bold text-white">Social Network</h3>
+                <div className="flex items-center gap-1 px-1 py-0.5 rounded bg-[#2E2744]">
+                  <span className="text-xs font-bold text-primary">12 new messages</span>
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-4 flex-1">
+                <div className="flex items-center gap-2">
+                  <img src="https://api.builder.io/api/v1/image/assets/TEMP/7746a2e8ebde2c6e52ec623079f09df3e63924fe?width=88" alt="Sophia Light" className="w-11 h-11 rounded-full" />
+                  <div className="flex flex-col gap-0.5 flex-1">
+                    <span className="text-sm font-bold text-primary">Sophia Light</span>
+                    <span className="text-sm text-webGray">Check out new ETH Analysis...</span>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <img src="https://api.builder.io/api/v1/image/assets/TEMP/23996870cb880292839824f9010dd522308f5fac?width=88" alt="Market Chat" className="w-11 h-11 rounded-full" />
+                  <div className="flex flex-col gap-0.5 flex-1">
+                    <span className="text-sm font-bold text-primary">Market Chat</span>
+                    <span className="text-sm text-webGray">3 new messages in the group</span>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <img src="https://api.builder.io/api/v1/image/assets/TEMP/68682742732be9f94522a43dd137511874548bb4?width=88" alt="Macro Outlook 2025" className="w-11 h-11 rounded-full" />
+                  <div className="flex flex-col gap-0.5 flex-1">
+                    <span className="text-sm font-bold text-primary">Macro Outlook 2025</span>
+                    <span className="text-sm text-webGray">17 new messages in the group</span>
+                  </div>
+                </div>
+              </div>
+
+              <button className="flex items-center justify-center gap-1 h-[26px] px-4 py-2.5 rounded-lg bg-gradient-to-r from-primary to-[#482090] backdrop-blur-[50px] text-white font-bold text-sm hover:opacity-90 transition-opacity">
+                <svg width="20" height="20" viewBox="0 0 21 20" fill="none">
+                  <path d="M7.25 16L13.25 10L7.25 4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                Open Feed
+              </button>
             </div>
           </div>
         )}
