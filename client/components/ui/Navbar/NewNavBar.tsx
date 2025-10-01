@@ -115,10 +115,10 @@ const NewNavBar: FC<Props> = ({ variant = 'primal' }) => {
           `bg-[linear-gradient(170.22deg,#523A83_0.01%,rgba(82,58,131,0)_8.28%),linear-gradient(350.89deg,#523A83_0%,rgba(82,58,131,0)_8.04%)]`
         )}
       >
-        <div className={cn('flex flex-col py-4 transition-all duration-300 custom-bg-blur rounded-[12px] overflow-hidden', isCollapsed ? 'w-[72px]' : 'w-[222px]')}>
+        <div className={cn('flex flex-col py-4 transition-all duration-300 custom-bg-blur rounded-[12px]', isCollapsed ? 'w-[72px]' : 'w-[222px]')}>
           <div className='absolute right-[-12px] top-[14px]'>
             <button
-              className='w-[26px] h-[26px] rounded-xl border border-[#181B22] custom-bg-blur hover:bg-[#1E1E1E] flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-md'
+              className='w-[26px] h-[26px] rounded-[12px] border border-[#181B22] custom-bg-blur hover:bg-[#1E1E1E] flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-md z-20'
               onClick={() => setIsCollapsed(!isCollapsed)}
               aria-label='Toggle compact menu'
               aria-pressed={isCollapsed}
