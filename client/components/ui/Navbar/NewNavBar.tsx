@@ -3,7 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { LayoutVariant } from '../AppBackground/AppBackground';
 import { cn } from '@/lib/utils';
 import { navElements, NavElementProps } from './constants';
-import { ChevronDown, DoubleArrow } from './icons';
+import { ChevronDown, DoubleArrow, ChevronLeft } from './icons';
 
 interface Props {
   variant?: LayoutVariant;
