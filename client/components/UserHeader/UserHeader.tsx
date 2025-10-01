@@ -12,7 +12,7 @@ const UserHeader: FC<Props> = ({ isOwn = true, className }) => {
       {/* Background with blur effect */}
       <div className="absolute inset-0 -z-10 h-48 overflow-hidden">
         <img
-          src="https://api.builder.io/api/v1/image/assets/TEMP/9dba922c17079743c98bfcfbc646bac784f973ae?width=3840"
+          src="https://cdn.builder.io/api/v1/image/assets%2F7ee0e08331ad4de59dd7fa404556ca59%2F64ebe2e51c6d46bcab38ebc9e0f78a15?format=webp&width=3840"
           alt=""
           className="w-full h-full object-cover"
           style={{ backdropFilter: 'blur(17.4px)' }}
@@ -26,7 +26,7 @@ const UserHeader: FC<Props> = ({ isOwn = true, className }) => {
         <div className="flex flex-col sm:flex-row items-start gap-4">
           {/* Avatar */}
           <img
-            src="https://api.builder.io/api/v1/image/assets/TEMP/7cf2eef49d11fd4f043c096c66c5f97bdaaa59e9?width=320"
+            src="https://cdn.builder.io/api/v1/image/assets%2F7ee0e08331ad4de59dd7fa404556ca59%2F18a068f999d64b54b143e3afad1942e8?format=webp&width=320"
             alt="Profile"
             className="w-40 h-40 rounded-2xl border border-[#181B22] shadow-[0_6.711px_11.409px_-1.342px_rgba(0,0,0,0.28)] flex-shrink-0"
           />
