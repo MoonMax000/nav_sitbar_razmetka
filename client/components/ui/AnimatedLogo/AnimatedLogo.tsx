@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 export const AnimatedLogo: FC = () => {
   return (
     <Link to="/" className="flex gap-[10px] items-center group">
-      <svg 
-        className="w-[18px] h-[22px] transition-transform duration-300 group-hover:rotate-[-3deg]" 
-        width="18" 
-        height="23" 
-        viewBox="0 0 18 23" 
-        fill="none" 
+      <svg
+        className="w-[18px] h-[22px] transition-transform duration-300 group-hover:rotate-[6deg] group-hover:scale-110"
+        width="18"
+        height="23"
+        viewBox="0 0 18 23"
+        fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path 
@@ -33,7 +33,7 @@ export const AnimatedLogo: FC = () => {
         </defs>
       </svg>
 
-      <span className="text-2xl font-bold text-white transition-transform duration-300 group-hover:rotate-[-1deg]">
+      <span className="text-2xl font-bold text-white transition-colors duration-300">
         Tyrian Trade
       </span>
     </Link>
