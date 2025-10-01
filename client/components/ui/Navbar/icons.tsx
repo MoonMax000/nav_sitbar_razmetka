@@ -76,6 +76,12 @@ export const BadgeCheck: FC<IconProps> = ({ className }) => (
   </svg>
 );
 
+export const FolderLibary: FC<IconProps> = ({ className }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M3 7h5l2 2h11v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z" />
+  </svg>
+);
+
 export const ChevronDown: FC<IconProps> = ({ className }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M6 9l6 6 6-6" />
