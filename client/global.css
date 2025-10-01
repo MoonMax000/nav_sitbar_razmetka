@@ -155,3 +155,20 @@ textarea::-webkit-scrollbar-track {
     box-shadow: 0 0 20px rgba(160, 106, 255, 0.5), 0 0 40px rgba(160, 106, 255, 0.3);
   }
 }
+
+/* Animated gradient utility used by AnimatedLogo */
+@keyframes gradient-xy {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes shine-move {
+  0% { transform: translateX(-150%) skewX(-12deg); }
+  100% { transform: translateX(150%) skewX(-12deg); }
+}
+
+@layer utilities {
+  .animate-gradient-xy { background-size: 200% 200%; animation: gradient-xy 8s ease infinite; }
+  .animate-shine { animation: shine-move 2.2s linear infinite; }
+}
