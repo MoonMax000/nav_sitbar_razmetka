@@ -11,6 +11,7 @@ interface Props {
 
 const NewNavBar: FC<Props> = ({ variant = 'primal' }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isDocked, setIsDocked] = useState(false);
   const [openGroup, setOpenGroup] = useState<string | null>(null);
 
   const toggleGroup = (title: string) => setOpenGroup(openGroup === title ? null : title);
@@ -81,11 +82,20 @@ const NewNavBar: FC<Props> = ({ variant = 'primal' }) => {
 
   return (
     <div className='relative mt-8 ml-8 hidden lg:block'>
+      <button
+        className={cn('absolute top-[21px] right-[-16px] z-50 p-2 container-card rounded-[8px] flex items-center justify-center text-[#B0B0B0] transition-all duration-300 hover:bg-[#181B20]')}
+        onClick={() => setIsDocked((v) => !v)}
+        aria-label='Toggle dock'
+        aria-pressed={isDocked}
+      >
+        <ChevronLeft className={cn('h-5 w-5 transition-transform', isDocked && 'rotate-180')} />
+      </button>
       <div
         className={cn(
-          'bg-transparent relative h-fit rounded-[12px] p-[1px] w-fit',
+          'bg-transparent relative h-fit rounded-[12px] p-[1px] w-fit transition-transform duration-300',
           `bg-[linear-gradient(170.22deg,#523A83_0.01%,rgba(82,58,131,0)_8.28%),linear-gradient(350.89deg,#523A83_0%,rgba(82,58,131,0)_8.04%)]`
         )}
+        style={{ transform: isDocked ? `translateX(-${isCollapsed ? 56 : 206}px)` : 'translateX(0)' }}
       >
         <div className={cn('flex flex-col py-4 transition-all duration-300 custom-bg-blur rounded-[12px]', isCollapsed ? 'w-[72px]' : 'w-[222px]')}>
           <div className='absolute right-[-12px] top-[14px]'>
