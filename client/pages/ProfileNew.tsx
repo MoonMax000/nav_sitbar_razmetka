@@ -103,7 +103,8 @@ const ProfileNew: FC = () => {
       {/* Tab content */}
       <div className="mt-4">
         {activeTab === 'dashboard' && (
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+          <div className="flex flex-col gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
             {/* My Revenue Card */}
             <div className="flex flex-col justify-center gap-4 p-4 h-[325px] rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px] relative overflow-hidden">
               <div className="flex justify-between items-center pb-2">
@@ -291,6 +292,253 @@ const ProfileNew: FC = () => {
                 </svg>
                 Open Feed
               </button>
+            </div>
+            </div>
+
+            {/* Second Row - Three Column Layout */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              {/* My Withdraws & Purchases */}
+              <div className="flex flex-col gap-4 p-4 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px]">
+                <div className="flex justify-between items-center pb-2">
+                  <h3 className="text-2xl font-bold text-white flex-1">My Withdraws & Purchases</h3>
+                  <div className="flex items-center gap-1 px-1 py-0.5 rounded bg-[#1C3430]">
+                    <span className="text-xs font-bold text-green">Live</span>
+                  </div>
+                </div>
+
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center gap-3">
+                    <button className="flex items-center gap-2 h-10 px-4 rounded-[32px] border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[58.33px] text-white text-sm font-bold">
+                      Withdraws
+                    </button>
+                    <button className="flex items-center gap-2 h-10 px-4 rounded-[32px] bg-gradient-to-r from-primary to-[#482090] backdrop-blur-[58.33px] text-white text-sm font-bold">
+                      Purchases
+                    </button>
+                  </div>
+                  <a href="#" className="text-sm font-bold text-primary underline">View All</a>
+                </div>
+
+                <div className="flex flex-col gap-4">
+                  <div className="flex items-center text-xs font-bold uppercase text-webGray">
+                    <div className="flex-1">Product</div>
+                    <div className="w-14 text-center">Amount</div>
+                    <div className="w-20 text-right">Date</div>
+                    <div className="w-20 text-right">Status</div>
+                  </div>
+
+                  {[
+                    { name: 'RiskMaster - powerful tool for traders', amount: '$39.99', date: '06.12.25', status: 'Pending', statusColor: 'text-primary' },
+                    { name: 'BTC/USDT Grid-Bot HODL', amount: '$14.99', date: '06.12.25', status: 'Approved', statusColor: 'text-green' },
+                    { name: 'RiskMaster - powerful tool for traders', amount: '$8.99', date: '06.12.25', status: 'Approved', statusColor: 'text-green' },
+                    { name: 'Momentum Brealout: Signals with ...', amount: '$1.99', date: '06.12.25', status: 'Declined', statusColor: 'text-[#EF454A]' },
+                    { name: 'BTC/USDT Grid-Bot HODL', amount: '$9.99', date: '06.12.25', status: 'Approved', statusColor: 'text-green' },
+                    { name: 'RiskMaster - powerful tool for traders', amount: '$11.99', date: '06.12.25', status: 'Approved', statusColor: 'text-green' },
+                  ].map((item, idx) => (
+                    <div key={idx} className="flex items-center text-sm">
+                      <div className="flex-1 text-white font-normal">{item.name}</div>
+                      <div className="w-14 text-center text-white font-bold">{item.amount}</div>
+                      <div className="w-20 text-right text-white font-normal">{item.date}</div>
+                      <div className={`w-20 text-right font-bold ${item.statusColor}`}>{item.status}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* My Social Life */}
+              <div className="flex flex-col gap-4 p-4 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px]">
+                <div className="flex justify-between items-center pb-2">
+                  <h3 className="text-2xl font-bold text-white">My Social Life</h3>
+                  <div className="flex items-center gap-1 px-1 py-0.5 rounded bg-[#2E2744]">
+                    <span className="text-xs font-bold text-primary">19 new interactions</span>
+                  </div>
+                </div>
+
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center gap-3">
+                    <button className="h-10 px-4 rounded-[32px] border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[58.33px] text-white text-sm font-bold">
+                      Posts
+                    </button>
+                    <button className="h-10 px-4 rounded-[32px] border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[58.33px] text-white text-sm font-bold">
+                      Chats
+                    </button>
+                    <button className="h-10 px-4 rounded-[32px] bg-gradient-to-r from-primary to-[#482090] backdrop-blur-[58.33px] text-white text-sm font-bold">
+                      Groups
+                    </button>
+                    <button className="h-10 px-4 rounded-[32px] border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[58.33px] text-white text-sm font-bold">
+                      Streams
+                    </button>
+                  </div>
+                  <a href="#" className="text-sm font-bold text-primary underline">View All</a>
+                </div>
+
+                <div className="grid grid-cols-2 gap-2.5">
+                  <div className="flex flex-col gap-4 p-4 rounded-2xl border border-[#181B22] bg-[rgba(11,14,17,0.5)] backdrop-blur-[50px]">
+                    <span className="text-xs font-bold uppercase text-webGray">Total Revenue</span>
+                    <span className="text-2xl font-bold text-white">$0</span>
+                  </div>
+                  <div className="flex flex-col gap-4 p-4 rounded-2xl border border-[#181B22] bg-[rgba(11,14,17,0.5)] backdrop-blur-[50px]">
+                    <span className="text-xs font-bold uppercase text-webGray">Active Subs</span>
+                    <span className="text-2xl font-bold text-white">0</span>
+                  </div>
+                  <div className="flex flex-col gap-4 p-4 rounded-2xl border border-[#181B22] bg-[rgba(11,14,17,0.5)] backdrop-blur-[50px]">
+                    <span className="text-xs font-bold uppercase text-webGray">Today's New Subs</span>
+                    <span className="text-2xl font-bold text-white">0</span>
+                  </div>
+                  <div className="flex flex-col gap-4 p-4 rounded-2xl border border-[#181B22] bg-[rgba(11,14,17,0.5)] backdrop-blur-[50px]">
+                    <span className="text-xs font-bold uppercase text-webGray">Average raiting</span>
+                    <span className="text-2xl font-bold text-white">0.0</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* My Marketplace */}
+              <div className="flex flex-col gap-4 p-4 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px]">
+                <div className="flex justify-between items-center pb-2">
+                  <h3 className="text-2xl font-bold text-white">My Marketplace</h3>
+                  <div className="flex items-center gap-1 px-1 py-0.5 rounded bg-[#1C3430]">
+                    <span className="text-xs font-bold text-green">3 new sales</span>
+                  </div>
+                </div>
+
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center gap-3">
+                    <button className="h-10 px-4 rounded-[32px] bg-gradient-to-r from-primary to-[#482090] backdrop-blur-[58.33px] text-white text-sm font-bold">
+                      New
+                    </button>
+                    <button className="h-10 px-4 rounded-[32px] border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[58.33px] text-white text-sm font-bold">
+                      Top
+                    </button>
+                    <button className="h-10 px-4 rounded-[32px] border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[58.33px] text-white text-sm font-bold">
+                      All
+                    </button>
+                  </div>
+                  <a href="#" className="text-sm font-bold text-primary underline">View all</a>
+                </div>
+
+                <div className="grid grid-cols-2 gap-2.5">
+                  <div className="flex flex-col gap-4 p-4 rounded-2xl border border-[#181B22] bg-[rgba(11,14,17,0.5)] backdrop-blur-[50px]">
+                    <span className="text-xs font-bold uppercase text-webGray">Total Revenue</span>
+                    <span className="text-2xl font-bold text-white">$0</span>
+                  </div>
+                  <div className="flex flex-col gap-4 p-4 rounded-2xl border border-[#181B22] bg-[rgba(11,14,17,0.5)] backdrop-blur-[50px]">
+                    <span className="text-xs font-bold uppercase text-webGray">Total Downloads</span>
+                    <span className="text-2xl font-bold text-white">0</span>
+                  </div>
+                  <div className="flex flex-col gap-4 p-4 rounded-2xl border border-[#181B22] bg-[rgba(11,14,17,0.5)] backdrop-blur-[50px]">
+                    <span className="text-xs font-bold uppercase text-webGray">Active subscriptions</span>
+                    <span className="text-2xl font-bold text-white">0</span>
+                  </div>
+                  <div className="flex flex-col gap-4 p-4 rounded-2xl border border-[#181B22] bg-[rgba(11,14,17,0.5)] backdrop-blur-[50px]">
+                    <span className="text-xs font-bold uppercase text-webGray">Average raiting</span>
+                    <span className="text-2xl font-bold text-white">0.0</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Third Row - Three Column Layout */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              {/* Following on Marketplace */}
+              <div className="flex flex-col justify-between gap-4 p-4 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px]">
+                <div className="flex justify-between items-baseline pb-2">
+                  <h3 className="text-2xl font-bold text-white flex-1">Following on Marketplace</h3>
+                </div>
+
+                <div className="flex flex-col gap-4 flex-1">
+                  {[
+                    { image: 'https://api.builder.io/api/v1/image/assets/TEMP/5dad0d4f76c7f3927fd2ce9dfc5e32e8a9127e58?width=244', name: 'RiskMaster - powerful tool for traders' },
+                    { image: 'https://api.builder.io/api/v1/image/assets/TEMP/ca710cd801967c54c06ec127f796d210acf62902?width=244', name: 'Momentum Brealout: Signals with 65% accuracy' },
+                    { image: 'https://api.builder.io/api/v1/image/assets/TEMP/a049817adf1840513df051b8d1be7ee4276c4801?width=244', name: 'BTC/USDT Grid-Bot HODL' },
+                    { image: 'https://api.builder.io/api/v1/image/assets/TEMP/5dad0d4f76c7f3927fd2ce9dfc5e32e8a9127e58?width=244', name: 'RiskMaster - powerful tool for traders' },
+                  ].map((item, idx) => (
+                    <div key={idx} className="flex items-center gap-2">
+                      <img src={item.image} alt={item.name} className="w-[122px] h-16 rounded-lg object-cover" />
+                      <div className="flex-1 text-sm font-bold text-white">{item.name}</div>
+                    </div>
+                  ))}
+                </div>
+
+                <button className="flex items-center justify-center gap-1 h-[26px] px-4 py-2.5 rounded-lg bg-gradient-to-r from-primary to-[#482090] backdrop-blur-[50px] text-white font-bold text-sm hover:opacity-90 transition-opacity">
+                  <svg width="20" height="20" viewBox="0 0 21 20" fill="none">
+                    <path d="M7.39258 11.9422C7.39258 13.0172 8.21758 13.8838 9.24259 13.8838H11.3343C12.2259 13.8838 12.9509 13.1255 12.9509 12.1922C12.9509 11.1755 12.5093 10.8172 11.8509 10.5838L8.49257 9.41715C7.83424 9.18382 7.39258 8.82549 7.39258 7.80885C7.39258 6.87552 8.11757 6.11719 9.00926 6.11719H11.1009C12.1259 6.11719 12.9509 6.98385 12.9509 8.05885" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M10.166 5V15" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M10.1654 18.3327C14.7677 18.3327 18.4987 14.6017 18.4987 9.99935C18.4987 5.39697 14.7677 1.66602 10.1654 1.66602C5.56299 1.66602 1.83203 5.39697 1.83203 9.99935C1.83203 14.6017 5.56299 18.3327 10.1654 18.3327Z" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  View Purchases
+                </button>
+              </div>
+
+              {/* Following Portfolios */}
+              <div className="flex flex-col justify-between gap-4 p-4 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px]">
+                <div className="flex justify-between items-baseline pb-2">
+                  <h3 className="text-2xl font-bold text-white flex-1">Following Portfolios</h3>
+                </div>
+
+                <div className="flex flex-col gap-2.5 flex-1">
+                  {[
+                    { name: 'Crypto Expert', desc: 'High-risk BTC Strategy with sharp swings', growth: '+12.3%', growthColor: 'text-green' },
+                    { name: 'Long-Term HODL', desc: 'Steady ETH-focused portfolio for long-term gains', growth: '+4.8%', growthColor: 'text-green' },
+                    { name: 'DeFi Radar', desc: 'Yield farming and token rotation', growth: '-2.1%', growthColor: 'text-[#EF454A]' },
+                  ].map((portfolio, idx) => (
+                    <div key={idx} className="flex items-center gap-2 p-2 px-4 rounded-2xl border border-[#181B22] bg-[rgba(11,14,17,0.5)] backdrop-blur-[50px]">
+                      <div className="flex flex-col gap-1 flex-1">
+                        <span className="text-lg font-bold text-white">{portfolio.name}</span>
+                        <span className="text-sm font-normal text-white">{portfolio.desc}</span>
+                        <div className="flex items-center gap-1">
+                          <span className="text-xs font-bold uppercase text-webGray">Growth:</span>
+                          <span className={`text-xs font-bold uppercase ${portfolio.growthColor}`}>{portfolio.growth}</span>
+                        </div>
+                      </div>
+                      <svg width="24" height="24" viewBox="0 0 25 25" fill="none">
+                        <path d="M9.66797 6.33301L15.668 12.333L9.66797 18.333" stroke="#A06AFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </div>
+                  ))}
+                </div>
+
+                <button className="flex items-center justify-center gap-1 h-[26px] px-4 py-2.5 rounded-lg bg-gradient-to-r from-primary to-[#482090] backdrop-blur-[50px] text-white font-bold text-sm hover:opacity-90 transition-opacity">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M8.33398 10.2771C8.33398 10.0188 8.33398 9.8896 8.3624 9.78368C8.4394 9.4961 8.66407 9.27143 8.95165 9.19443C9.05757 9.16602 9.18673 9.16602 9.44507 9.16602H10.5562C10.8146 9.16602 10.9437 9.16602 11.0497 9.19443C11.3372 9.27143 11.5619 9.4961 11.6389 9.78368C11.6673 9.8896 11.6673 10.0188 11.6673 10.2771V10.8327C11.6673 11.7532 10.9212 12.4993 10.0007 12.4993C9.08015 12.4993 8.33398 11.7532 8.33398 10.8327V10.2771Z" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M11.502 10.8333C11.7616 10.7579 12.0561 10.6671 12.4006 10.5608L15.8766 9.48883C17.1138 9.10733 17.7193 8.4425 17.851 7.29148C17.9099 6.77665 17.9394 6.51923 17.898 6.30852C17.7797 5.7072 17.2747 5.21962 16.6017 5.05699C16.3659 5 16.0698 5 15.4776 5H4.52362C3.93148 5 3.63542 5 3.39957 5.05699C2.72657 5.21962 2.22157 5.7072 2.10334 6.30852C2.06191 6.51923 2.09137 6.77665 2.15028 7.29148C2.28202 8.4425 2.88752 9.10733 4.12467 9.48883L7.60062 10.5608C7.94512 10.6671 8.23968 10.7579 8.49932 10.8333" stroke="white" strokeWidth="1.5" />
+                    <path d="M2.88569 9.16602L2.72215 10.9763C2.42901 14.2212 2.28243 15.8436 3.22278 16.8798C4.16313 17.916 5.78209 17.916 9.02 17.916H10.98C14.2179 17.916 15.8368 17.916 16.7772 16.8798C17.7176 15.8436 17.571 14.2212 17.2778 10.9763L17.1143 9.16602" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M12.9173 4.58398L12.8529 4.36323C12.5321 3.26319 12.3717 2.71318 11.9897 2.39858C11.6078 2.08398 11.1006 2.08398 10.0859 2.08398H9.9154C8.90073 2.08398 8.39348 2.08398 8.01156 2.39858C7.62963 2.71318 7.46922 3.26319 7.14838 4.36323L7.08398 4.58398" stroke="white" strokeWidth="1.5" />
+                  </svg>
+                  View Portfolios
+                </button>
+              </div>
+
+              {/* Following Group Chats */}
+              <div className="flex flex-col gap-4 p-4 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px]">
+                <div className="flex items-center gap-2 pb-2">
+                  <h3 className="text-2xl font-bold text-white">Following Group Chats</h3>
+                </div>
+
+                <div className="flex flex-col gap-4 flex-1">
+                  {[
+                    { image: 'https://api.builder.io/api/v1/image/assets/TEMP/a41932045d11fb04b12ef9336587c545788a4897?width=88', name: 'Crypto Basics - Live Q&A', subs: '72 subscribers' },
+                    { image: 'https://api.builder.io/api/v1/image/assets/TEMP/2fed6ad136bda82afad8c1217f85da48694cef42?width=88', name: 'Macro Outlook 2025', subs: '2,369 subscribers' },
+                    { image: 'https://api.builder.io/api/v1/image/assets/TEMP/5eb00142623d95405333abe65d6e36c1831036f7?width=88', name: 'Ask Jane: Portfolio Diversification', subs: '86 subscribers' },
+                    { image: 'https://api.builder.io/api/v1/image/assets/TEMP/128f58d068f62f85b2902e36565aaef59e190b49?width=88', name: 'Fed Policy & Inflation', subs: '823 subscribers' },
+                    { image: 'https://api.builder.io/api/v1/image/assets/TEMP/193725c84dab4dcd05d7a90347c68161b6a82c94?width=88', name: 'ETH ETF Approval: What\'s Next?', subs: '72 subscribers' },
+                  ].map((chat, idx) => (
+                    <div key={idx} className="flex items-center gap-2">
+                      <img src={chat.image} alt={chat.name} className="w-11 h-11 rounded-full" />
+                      <div className="flex flex-col gap-0.5 flex-1">
+                        <span className="text-sm font-bold text-primary">{chat.name}</span>
+                        <span className="text-sm font-normal text-webGray">{chat.subs}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <button className="flex items-center justify-center gap-1 h-[26px] px-4 py-2.5 rounded-lg bg-gradient-to-r from-primary to-[#482090] backdrop-blur-[50px] text-white font-bold text-sm hover:opacity-90 transition-opacity">
+                  <svg width="20" height="20" viewBox="0 0 21 20" fill="none">
+                    <path d="M17.498 7.49935C16.8354 4.17814 13.7587 1.66602 10.0641 1.66602C5.88595 1.66602 2.49805 4.87869 2.49805 8.84102C2.49805 10.7448 3.27987 12.4747 4.55517 13.7583C4.83596 14.041 5.02342 14.4272 4.94776 14.8246C4.8229 15.4744 4.53993 16.0806 4.12559 16.5858C5.21574 16.7868 6.34927 16.6058 7.32139 16.0933C7.66504 15.9122 7.83685 15.8216 7.9581 15.8032C8.04298 15.7903 8.15354 15.8023 8.33138 15.8328" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M9.99805 13.5508C9.99805 15.9722 12.0504 17.9355 14.5814 17.9355C14.879 17.9358 15.1757 17.9083 15.468 17.8535C15.6785 17.8139 15.7837 17.7942 15.8571 17.8054C15.9305 17.8166 16.0347 17.872 16.2429 17.9827C16.8317 18.2958 17.5184 18.4064 18.1788 18.2836C17.9278 17.9749 17.7564 17.6045 17.6807 17.2073C17.6349 16.9645 17.7485 16.7285 17.9185 16.5558C18.6911 15.7713 19.1647 14.7142 19.1647 13.5508C19.1647 11.1293 17.1124 9.16602 14.5814 9.16602C12.0504 9.16602 9.99805 11.1293 9.99805 13.5508Z" stroke="white" strokeWidth="1.5" strokeLinejoin="round" />
+                  </svg>
+                  Show All Groups
+                </button>
+              </div>
             </div>
           </div>
         )}
