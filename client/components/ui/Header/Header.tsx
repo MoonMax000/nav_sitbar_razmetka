@@ -1,8 +1,8 @@
 import { FC, Dispatch, SetStateAction } from "react";
 import { Link } from "react-router-dom";
 import RightBarButton from "../RightBar/RightBarButton";
-import { AnimatedLogo } from '../AnimatedLogo/AnimatedLogo';
-import { AvatarDropdown } from '../AvatarDropdown/AvatarDropdown';
+import { AnimatedLogo } from "../AnimatedLogo/AnimatedLogo";
+import { AvatarDropdown } from "../AvatarDropdown/AvatarDropdown";
 
 interface HeaderProps {
   rightMenuOpen?: boolean;

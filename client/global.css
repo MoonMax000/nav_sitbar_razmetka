@@ -45,7 +45,12 @@ body {
   color: var(--foreground);
   background: var(--background);
   overflow-y: scroll;
-  font-family: 'Nunito Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-family:
+    "Nunito Sans",
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    sans-serif;
 }
 
 ul {
@@ -61,7 +66,9 @@ input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 1000px #0c101480 inset !important;
   -webkit-text-fill-color: var(--color-white) !important;
   caret-color: var(--color-white) !important;
-  transition: background-color 5000s ease-in-out 0s, color 5000s ease-in-out 0s !important;
+  transition:
+    background-color 5000s ease-in-out 0s,
+    color 5000s ease-in-out 0s !important;
 }
 
 input,
@@ -152,23 +159,40 @@ textarea::-webkit-scrollbar-track {
   }
 
   .glow-intense {
-    box-shadow: 0 0 20px rgba(160, 106, 255, 0.5), 0 0 40px rgba(160, 106, 255, 0.3);
+    box-shadow:
+      0 0 20px rgba(160, 106, 255, 0.5),
+      0 0 40px rgba(160, 106, 255, 0.3);
   }
 }
 
 /* Animated gradient utility used by AnimatedLogo */
 @keyframes gradient-xy {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 @keyframes shine-move {
-  0% { transform: translateX(-150%) skewX(-12deg); }
-  100% { transform: translateX(150%) skewX(-12deg); }
+  0% {
+    transform: translateX(-150%) skewX(-12deg);
+  }
+  100% {
+    transform: translateX(150%) skewX(-12deg);
+  }
 }
 
 @layer utilities {
-  .animate-gradient-xy { background-size: 200% 200%; animation: gradient-xy 8s ease infinite; }
-  .animate-shine { animation: shine-move 2.2s linear infinite; }
+  .animate-gradient-xy {
+    background-size: 200% 200%;
+    animation: gradient-xy 8s ease infinite;
+  }
+  .animate-shine {
+    animation: shine-move 2.2s linear infinite;
+  }
 }
