@@ -99,7 +99,7 @@ const PricingCard: FC<PricingCardProps> = ({
   return (
     <div
       className={cn(
-        'relative flex w-full max-w-[417px] flex-col items-start gap-6 md:gap-10 rounded-3xl p-4 md:p-6 pb-4 pt-8 md:pt-12 transition-all duration-500 ease-out hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/20 hover:border-primary/60 group',
+        'relative flex w-full flex-col h-full items-start gap-6 md:gap-10 rounded-3xl p-4 md:p-6 pb-4 pt-8 md:pt-12 transition-all duration-500 ease-out hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/20 hover:border-primary/60 group',
         cardClasses,
         borderClasses
       )}
@@ -173,36 +173,38 @@ const Pricing: FC = () => {
       <div className='flex flex-col items-center gap-8'>
         <h1 className='text-4xl md:text-5xl font-bold text-white text-center'>Choose Your Plan</h1>
 
-        <div className='flex items-center gap-4 p-2 bg-[#0C101480] backdrop-blur-[100px] rounded-2xl border border-[#181B22]'>
-          <button
-            onClick={() => setBillingPeriod('monthly')}
-            className={cn(
-              'px-6 py-3 rounded-xl transition-all duration-300 font-bold text-sm',
-              billingPeriod === 'monthly'
-                ? 'bg-gradient-to-r from-primary to-[#482090] text-white shadow-lg shadow-primary/30'
-                : 'text-webGray hover:text-white'
-            )}
-          >
-            Monthly
-          </button>
-          <button
-            onClick={() => setBillingPeriod('yearly')}
-            className={cn(
-              'px-6 py-3 rounded-xl transition-all duration-300 font-bold text-sm relative',
-              billingPeriod === 'yearly'
-                ? 'bg-gradient-to-r from-primary to-[#482090] text-white shadow-lg shadow-primary/30'
-                : 'text-webGray hover:text-white'
-            )}
-          >
-            Yearly
-            {billingPeriod !== 'yearly' && (
-              <span className='absolute -top-2 -right-2 bg-green text-white text-[10px] font-bold px-2 py-0.5 rounded-full'>Save 20%</span>
-            )}
-          </button>
+        <div className='relative inline-flex p-1 rounded-full border border-[#181B22] bg-[#0C101480] backdrop-blur-[100px] w-[320px] max-w-full'>
+          <div className={cn(
+            'absolute top-1 bottom-1 left-1 w-1/2 rounded-full bg-gradient-to-r from-primary to-[#482090] shadow-lg shadow-primary/30 transition-transform duration-300',
+            billingPeriod === 'monthly' ? 'translate-x-0' : 'translate-x-full'
+          )} />
+          <div className='relative grid grid-cols-2 w-full z-10'>
+            <button
+              onClick={() => setBillingPeriod('monthly')}
+              className={cn(
+                'px-6 py-2 rounded-full text-sm font-bold transition-colors duration-300',
+                billingPeriod === 'monthly' ? 'text-white' : 'text-webGray hover:text-white'
+              )}
+              aria-pressed={billingPeriod === 'monthly'}
+            >
+              Monthly
+            </button>
+            <button
+              onClick={() => setBillingPeriod('yearly')}
+              className={cn(
+                'px-6 py-2 rounded-full text-sm font-bold transition-colors duration-300 relative',
+                billingPeriod === 'yearly' ? 'text-white' : 'text-webGray hover:text-white'
+              )}
+              aria-pressed={billingPeriod === 'yearly'}
+            >
+              Yearly
+              <span className='ml-2 inline-flex items-center justify-center px-2 py-[2px] rounded-full text-[10px] font-bold bg-green text-white'>-20%</span>
+            </button>
+          </div>
         </div>
       </div>
 
-      <div className='flex flex-wrap justify-center gap-6 lg:gap-8'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8 items-stretch'>
         <PricingCard title='Momentum' planKey='momentum' features={momentumFeatures} billingPeriod={billingPeriod} />
         <PricingCard title='Platinum' planKey='platinum' features={platinumFeatures} isPopular billingPeriod={billingPeriod} />
         <PricingCard title='Imperium' planKey='imperium' features={imperiumFeatures} isGold billingPeriod={billingPeriod} />
