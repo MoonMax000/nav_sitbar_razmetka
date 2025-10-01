@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react';
+import { FC, ReactNode, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { AppBackground } from '../ui/AppBackground/AppBackground';
 import { Header } from '../ui/Header/Header';
@@ -6,6 +6,7 @@ import ContentWrapper from '../ui/ContentWrapper/ContentWrapper';
 import Footer from '../ui/Footer/Footer';
 import { LayoutVariant } from '../ui/AppBackground/AppBackground';
 import NewNavBar from '../ui/Navbar/NewNavBar';
+import { RightMenu } from '../ui/RightMenu/RightMenu';
 
 const PagesBg: Record<LayoutVariant, string[]> = {
   primal: [''],
