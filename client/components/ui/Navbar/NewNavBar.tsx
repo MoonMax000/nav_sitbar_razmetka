@@ -37,7 +37,7 @@ const NewNavBar: FC<Props> = ({ variant = 'primal' }) => {
               <div className='size-5'>{el.icon}</div>
               {!isCollapsed && <span className='text-[15px] font-semibold'>{el.title}</span>}
             </div>
-            {!isCollapsed && <ChevronDown className={cn(isOpen && 'rotate-180')} />}
+            {!isCollapsed && <ChevronDown className={cn('h-4 w-4 transition-transform', isOpen && 'rotate-180')} />}
           </button>
           {isOpen && !isCollapsed && (
             <div id={`${el.title}-submenu`} className='ml-6 flex flex-col gap-1'>
@@ -82,41 +82,51 @@ const NewNavBar: FC<Props> = ({ variant = 'primal' }) => {
 
   return (
     <div className='relative mt-8 ml-8 hidden lg:block'>
-      <button
-        className={cn('absolute top-[21px] right-[-16px] z-50 p-2 container-card rounded-[8px] flex items-center justify-center text-[#B0B0B0] transition-all duration-300 hover:bg-[#181B20]')}
-        onClick={() => setIsDocked((v) => !v)}
-        aria-label='Toggle dock'
-        aria-pressed={isDocked}
-      >
-        <ChevronLeft className={cn('h-5 w-5 transition-transform', isDocked && 'rotate-180')} />
-      </button>
       <div
-        className={cn(
-          'bg-transparent relative h-fit rounded-[12px] p-[1px] w-fit transition-transform duration-300',
-          `bg-[linear-gradient(170.22deg,#523A83_0.01%,rgba(82,58,131,0)_8.28%),linear-gradient(350.89deg,#523A83_0%,rgba(82,58,131,0)_8.04%)]`
-        )}
+        className='relative transition-transform duration-300'
         style={{ transform: isDocked ? `translateX(-${isCollapsed ? 56 : 206}px)` : 'translateX(0)' }}
       >
-        <div className={cn('flex flex-col py-4 transition-all duration-300 custom-bg-blur rounded-[12px]', isCollapsed ? 'w-[72px]' : 'w-[222px]')}>
-          <div className='absolute right-[-12px] top-[14px]'>
-            <button
-              className='w-[26px] h-[26px] rounded-lg border border-[#181B22] custom-bg-blur hover:bg-[#1E1E1E] flex items-center justify-center'
-              onClick={() => setIsCollapsed(!isCollapsed)}
-              aria-label='Collapse menu'
-              aria-pressed={isCollapsed}
-            >
-              <DoubleArrow className={cn(isCollapsed ? '' : 'rotate-180')} />
-            </button>
-          </div>
+        <button
+          className={cn(
+            'absolute top-[21px] z-50 p-2 container-card rounded-[8px] flex items-center justify-center text-[#B0B0B0] transition-all duration-300 hover:bg-[#181B20]',
+            isDocked ? 'right-[-48px]' : 'right-[-16px]'
+          )}
+          onClick={() => setIsDocked((v) => !v)}
+          style={{ boxShadow: '0 0 8px rgba(82,58,131,0.1)' }}
+          aria-label='Toggle dock'
+          aria-pressed={isDocked}
+        >
+          <ChevronLeft className={cn('h-5 w-5 transition-transform duration-300', isDocked && 'rotate-180')} />
+        </button>
 
-          <div className='flex flex-col gap-1'>
-            {navElements.slice(0, 1).map((el) => renderElement(el))}
-            <div className={cn('my-[14px] bg-[linear-gradient(90deg,rgba(82,58,131,0)_0%,#523A83_50%,rgba(82,58,131,0)_100%)] mx-auto h-[2px]', {
-              'w-[190px]': !isCollapsed,
-              'w-[40px]': isCollapsed,
-            })}
-            />
-            {navElements.slice(1).map((el) => renderElement(el))}
+        <div
+          className={cn(
+            'bg-transparent relative h-fit rounded-[12px] p-[1px] w-fit',
+            `bg-[linear-gradient(170.22deg,#523A83_0.01%,rgba(82,58,131,0)_8.28%),linear-gradient(350.89deg,#523A83_0%,rgba(82,58,131,0)_8.04%)]`
+          )}
+        >
+          <div className={cn('flex flex-col py-4 transition-all duration-300 custom-bg-blur rounded-[12px]', isCollapsed ? 'w-[72px]' : 'w-[222px]')}>
+            <div className='absolute right-[-12px] top-[14px]'>
+              <button
+                className='w-[26px] h-[26px] rounded-lg border border-[#181B22] custom-bg-blur hover:bg-[#1E1E1E] flex items-center justify-center'
+                onClick={() => setIsCollapsed(!isCollapsed)}
+                aria-label='Collapse menu'
+                aria-pressed={isCollapsed}
+              >
+                <DoubleArrow className={cn('h-4 w-4 transition-transform', isCollapsed ? '' : 'rotate-180')} />
+              </button>
+            </div>
+
+            <div className='flex flex-col gap-1'>
+              {navElements.slice(0, 1).map((el) => renderElement(el))}
+              <div
+                className={cn('my-[14px] bg-[linear-gradient(90deg,rgba(82,58,131,0)_0%,#523A83_50%,rgba(82,58,131,0)_100%)] mx-auto h-[2px]', {
+                  'w-[190px]': !isCollapsed,
+                  'w-[40px]': isCollapsed,
+                })}
+              />
+              {navElements.slice(1).map((el) => renderElement(el))}
+            </div>
           </div>
         </div>
       </div>
