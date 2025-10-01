@@ -22,7 +22,7 @@ export const Header: FC<HeaderProps> = ({
 
       {/* Center: Search + Assistant (desktop) */}
       <div className="hidden md:flex items-center gap-4 w-full max-w-[800px]">
-        <div className="flex items-center gap-2 h-10 px-4 rounded-3xl border-[0.5px] border-[#A06AFFCC] backdrop-blur-[50px] w-full max-w-[256px]">
+        <div className="flex items-center gap-2 h-10 px-4 rounded-3xl border border-[#A06AFFCC] backdrop-blur-[50px] w-full max-w-[256px]">
           <svg
             className="w-6 h-6 flex-shrink-0"
             width="25"
