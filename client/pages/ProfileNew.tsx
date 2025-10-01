@@ -666,7 +666,7 @@ const ProfileNew: FC = () => {
                   <img
                     src="https://cdn.builder.io/api/v1/image/assets%2F7ee0e08331ad4de59dd7fa404556ca59%2F18a068f999d64b54b143e3afad1942e8?format=webp&width=320"
                     alt="Profile"
-                    className="w-40 h-40 rounded-2xl border-[3px] border-[#523A83] shadow-lg"
+                    className="w-40 h-40 rounded-2xl border border-[#181B22] shadow-[0_6.711px_11.409px_-1.342px_rgba(0,0,0,0.28)] object-cover"
                   />
                   <button className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-black/0 hover:bg-black/50 transition-all backdrop-blur-0 hover:backdrop-blur-[50px] rounded-2xl group">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="opacity-0 group-hover:opacity-100 transition-opacity">
