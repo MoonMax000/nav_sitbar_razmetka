@@ -1,7 +1,37 @@
-import { FC, useState } from 'react';
+import { FC, useMemo, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { LayoutVariant } from '../AppBackground/AppBackground';
 import { cn } from '@/lib/utils';
+import {
+  Home as HomeIcon,
+  LayoutDashboard,
+  Settings as SettingsIcon,
+  Shield,
+  CreditCard,
+  Api as ApiIcon,
+  Bell,
+  UsersRound,
+  UserCog,
+  BadgeCheck,
+  ChevronDown,
+  ChevronLeft,
+  Dot,
+} from 'lucide-react';
+
+interface NavChildItem {
+  id: string;
+  to: string;
+  label: string;
+  icon?: FC<{ className?: string }>;
+}
+
+interface NavItem {
+  id: string;
+  label: string;
+  to?: string;
+  icon?: FC<{ className?: string }>;
+  children?: NavChildItem[];
+}
 
 interface Props {
   variant?: LayoutVariant;
@@ -9,14 +39,42 @@ interface Props {
 
 const NewNavBar: FC<Props> = ({ variant = 'primal' }) => {
   const [navbarOpen, setNavbarOpen] = useState(true);
-  const navItems = [
-    { to: '/', label: 'Profile' },
-    { to: '/dashboard', label: 'Dashboard' },
-    { to: '/settings', label: 'Settings' },
-    { to: '/security', label: 'Security' },
-    { to: '/billing', label: 'Billing' },
-    { to: '/api', label: 'API' },
-  ];
+
+  const navItems: NavItem[] = useMemo(
+    () => [
+      {
+        id: 'home',
+        label: 'Home',
+        to: '/',
+        icon: HomeIcon,
+      },
+      {
+        id: 'dashboard',
+        label: 'Dashboard',
+        to: '/dashboard',
+        icon: LayoutDashboard,
+      },
+      {
+        id: 'settings',
+        label: 'Settings',
+        icon: SettingsIcon,
+        children: [
+          { id: 'security', to: '/security', label: 'Security', icon: Shield },
+          { id: 'billing', to: '/billing', label: 'Billing', icon: CreditCard },
+          { id: 'api', to: '/api', label: 'API', icon: ApiIcon },
+          { id: 'notifications', to: '/notifications', label: 'Notifications', icon: Bell },
+          { id: 'kyc', to: '/kyc', label: 'KYC', icon: BadgeCheck },
+          { id: 'referrals', to: '/referrals', label: 'Referrals', icon: UsersRound },
+          { id: 'profile_settings', to: '/profile_settings', label: 'Profile settings', icon: UserCog },
+        ],
+      },
+    ],
+    []
+  );
+
+  const [openSections, setOpenSections] = useState<Record<string, boolean>>({ settings: true });
+  const toggleOpen = (id: string) =>
+    setOpenSections((prev) => ({ ...prev, [id]: !prev[id] }));
 
   return (
     <div className='relative mt-8 ml-8 hidden lg:block'>
@@ -30,14 +88,15 @@ const NewNavBar: FC<Props> = ({ variant = 'primal' }) => {
         aria-label='Toggle menu'
         aria-expanded={navbarOpen}
       >
-        <svg className={cn('h-5 w-5 transition-transform duration-[800ms]', !navbarOpen && 'rotate-180')} viewBox='0 0 24 24' fill='none' stroke='currentColor'><path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M15 19l-7-7 7-7'/></svg>
+        <ChevronLeft className={cn('h-5 w-5 transition-transform duration-[800ms]', !navbarOpen && 'rotate-180')} />
       </button>
 
-      <div
+      <nav
         className={cn(
           'container-card border-none flex flex-col h-fit gap-[28px] px-4 py-[24px] relative rounded-[12px] transition-all duration-[800ms]',
           navbarOpen ? 'translate-x-0 opacity-100 pointer-events-auto' : '-translate-x-[222px] opacity-0 pointer-events-none'
         )}
+        aria-label='Primary'
       >
         <div
           className='absolute inset-0 rounded-[12px] pointer-events-none w-[100.2%] h-[100.2%]'
@@ -51,7 +110,9 @@ const NewNavBar: FC<Props> = ({ variant = 'primal' }) => {
         />
 
         <div className='flex items-center px-4 py-2'>
-          <span className='mr-2 h-4 w-4 rounded-sm bg-indigo block' />
+          <span className='mr-2 grid place-items-center rounded-sm bg-indigo px-[6px] py-[4px] text-white'>
+            <HomeIcon className='h-4 w-4' />
+          </span>
           <span className='font-bold text-[15px] text-lighterAluminum uppercase'>Home</span>
         </div>
 
@@ -62,31 +123,101 @@ const NewNavBar: FC<Props> = ({ variant = 'primal' }) => {
           }}
         />
 
-        <ul className='flex flex-col gap-[28px]'>
-          {navItems.map((item) => (
-            <li key={item.to}>
-              <div className='flex items-center'>
-                <NavLink
-                  to={item.to}
-                  end={item.to === '/'}
-                  className={({ isActive }) =>
-                    cn(
-                      'flex-1 flex items-center text-left px-4 rounded hover:bg-gray-700 transition font-bold text-[15px]',
-                      isActive ? 'text-white' : 'text-lighterAluminum'
-                    )
-                  }
-                >
-                  <span className='mr-2 h-3 w-3 rounded-full bg-primary/70' />
-                  {item.label}
-                </NavLink>
-                <button type='button' className='mr-4 flex items-center opacity-50'>
-                  <svg className='h-4 w-4' viewBox='0 0 24 24' fill='none' stroke='currentColor'><path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M6 9l6 6 6-6'/></svg>
-                </button>
-              </div>
-            </li>
-          ))}
+        <ul className='flex flex-col gap-[12px]'>
+          {navItems.map((item) => {
+            const isSection = !!item.children?.length;
+            const isOpen = !!openSections[item.id];
+            const Icon = item.icon;
+
+            return (
+              <li key={item.id}>
+                <div className='flex items-center'>
+                  {item.to ? (
+                    <NavLink
+                      to={item.to}
+                      end={item.to === '/'}
+                      className={({ isActive }) =>
+                        cn(
+                          'flex-1 flex items-center text-left px-4 py-2 rounded hover:bg-[#181B20] transition font-bold text-[15px] focus:outline-none focus:ring-2 focus:ring-[#523A83]/40',
+                          isActive ? 'text-white' : 'text-lighterAluminum'
+                        )
+                      }
+                    >
+                      {Icon ? <Icon className='mr-2 h-[18px] w-[18px] opacity-90' /> : <Dot className='mr-2 h-4 w-4 opacity-60' />}
+                      {item.label}
+                    </NavLink>
+                  ) : (
+                    <button
+                      type='button'
+                      className={cn(
+                        'flex-1 flex items-center text-left px-4 py-2 rounded hover:bg-[#181B20] transition font-bold text-[15px] text-lighterAluminum focus:outline-none focus:ring-2 focus:ring-[#523A83]/40'
+                      )}
+                      onClick={() => isSection && toggleOpen(item.id)}
+                      aria-expanded={isSection ? isOpen : undefined}
+                      aria-controls={isSection ? `${item.id}-submenu` : undefined}
+                    >
+                      {Icon ? <Icon className='mr-2 h-[18px] w-[18px] opacity-90' /> : <Dot className='mr-2 h-4 w-4 opacity-60' />}
+                      {item.label}
+                    </button>
+                  )}
+
+                  {isSection && (
+                    <button
+                      type='button'
+                      className='ml-2 mr-2 flex items-center text-lighterAluminum/70 hover:text-white transition'
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        toggleOpen(item.id);
+                      }}
+                      aria-label='Toggle submenu'
+                      aria-expanded={isOpen}
+                      aria-controls={`${item.id}-submenu`}
+                    >
+                      <ChevronDown className={cn('h-4 w-4 transition-transform', isOpen && 'rotate-180')} />
+                    </button>
+                  )}
+                </div>
+
+                {isSection && (
+                  <ul
+                    id={`${item.id}-submenu`}
+                    className={cn(
+                      'ml-8 mt-2 flex flex-col gap-2 overflow-hidden transition-all duration-300',
+                      isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                    )}
+                    role='group'
+                    aria-label={`${item.label} submenu`}
+                  >
+                    {item.children!.map((child) => {
+                      const ChildIcon = child.icon;
+                      return (
+                        <li key={child.id}>
+                          <NavLink
+                            to={child.to}
+                            className={({ isActive }) =>
+                              cn(
+                                'flex items-center rounded px-4 py-[6px] text-[14px] hover:bg-[#181B20] transition focus:outline-none focus:ring-2 focus:ring-[#523A83]/40',
+                                isActive ? 'text-white' : 'text-lighterAluminum'
+                              )
+                            }
+                          >
+                            {ChildIcon ? (
+                              <ChildIcon className='mr-2 h-[16px] w-[16px] opacity-80' />
+                            ) : (
+                              <Dot className='mr-2 h-4 w-4 opacity-60' />
+                            )}
+                            {child.label}
+                          </NavLink>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )}
+              </li>
+            );
+          })}
         </ul>
-      </div>
+      </nav>
     </div>
   );
 };
