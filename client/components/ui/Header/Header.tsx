@@ -14,14 +14,14 @@ export const Header: FC<HeaderProps> = ({
   setRightMenuOpen,
 }) => {
   return (
-    <header className="pb-1 pt-3 w-full pl-[30px] pr-[24px] flex justify-between bg-background items-center gap-2 mb-6">
+    <header className="pb-1 pt-3 w-full pl-[30px] pr-[24px] grid grid-cols-[1fr_auto_1fr] bg-background items-center gap-2 mb-6">
       {/* Brand */}
-      <div className="min-w-[230px]">
+      <div className="min-w-[230px] justify-self-start">
         <AnimatedLogo />
       </div>
 
       {/* Center: Search + Assistant (desktop) */}
-      <div className="hidden md:flex items-center gap-4 w-full max-w-[800px]">
+      <div className="hidden md:flex items-center gap-4 justify-self-center">
         <div className="flex items-center gap-2 h-10 px-4 rounded-3xl border border-[#A06AFFCC] backdrop-blur-[50px] w-full max-w-[256px]">
           <svg
             className="w-6 h-6 flex-shrink-0"
@@ -70,7 +70,7 @@ export const Header: FC<HeaderProps> = ({
       </div>
 
       {/* Right actions */}
-      <div className="flex items-center justify-end max-w-[350px] gap-4">
+      <div className="flex items-center justify-end max-w-[350px] gap-4 justify-self-end">
         <AvatarDropdown />
         {setRightMenuOpen && (
           <RightBarButton
