@@ -22,7 +22,7 @@ export const Header: FC<HeaderProps> = ({
 
       {/* Center: Search + Assistant (desktop) */}
       <div className="hidden md:flex items-center gap-4 w-full max-w-[800px]">
-        <div className="flex items-center gap-2 h-10 px-4 rounded-3xl border border-[#A06AFFCC] backdrop-blur-[50px] w-full max-w-[256px]">
+        <div className="flex items-center gap-2 h-10 px-4 rounded-3xl border-[0.8px] border-[#A06AFFCC] backdrop-blur-[50px] w-full max-w-[256px]">
           <svg
             className="w-6 h-6 flex-shrink-0"
             width="25"
@@ -34,14 +34,14 @@ export const Header: FC<HeaderProps> = ({
             <path
               d="M12 21C17.2467 21 21.5 16.7467 21.5 11.5C21.5 6.25329 17.2467 2 12 2C6.75329 2 2.5 6.25329 2.5 11.5C2.5 16.7467 6.75329 21 12 21Z"
               stroke="#C2C2C2"
-              strokeWidth="2"
+              strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
             />
             <path
               d="M22.5 22L20.5 20"
               stroke="#C2C2C2"
-              strokeWidth="2"
+              strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
             />
