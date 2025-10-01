@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import plugin from 'tailwindcss/plugin';
 
 export default {
   darkMode: ["class"],
@@ -15,63 +16,54 @@ export default {
     extend: {
       fontFamily: {
         sans: [
-          "Inter",
+          "Nunito Sans",
           "ui-sans-serif",
           "system-ui",
           "-apple-system",
-          "Segoe UI",
-          "Roboto",
-          "Helvetica Neue",
-          "Arial",
-          "Noto Sans",
-          "Apple Color Emoji",
-          "Segoe UI Emoji"
+          "sans-serif",
         ],
       },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
-        sidebar: {
-          DEFAULT: "hsl(var(--sidebar-background))",
-          foreground: "hsl(var(--sidebar-foreground))",
-          primary: "hsl(var(--sidebar-primary))",
-          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
-          accent: "hsl(var(--sidebar-accent))",
-          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
-          border: "hsl(var(--sidebar-border))",
-          ring: "hsl(var(--sidebar-ring))",
-        },
+        background: "var(--color-bg)",
+        foreground: "var(--foreground)",
+        primary: '#A06AFF',
+        secondary: '#808283',
+        card: 'var(--card)',
+
+        blackedGray: 'var(--color-darkCharcoal)',
+        purple: 'var(--color-lavenderIndigo)',
+
+        moonlessNight: 'var(--color-moonlessNight)',
+        onyxGrey: 'var(--color-onyxGrey)',
+
+        white: 'var(--color-white)',
+        webGray: 'var(--color-webGray)',
+        black: 'var(--color-black)',
+
+        green: 'var(--color-mountainMeadow)',
+        red: 'var(--color-fieryRose)',
+
+        orange: 'var(--color-orangePeel)',
+        darkOrange: 'var(--color-darkOrange)',
+        blue: 'var(--color-cornflowerBlue)',
+        darkGreen: 'var(--color-darkJungleGreen)',
+        darkRed: 'var(--color-darkSienna)',
+        gunpowder: 'var(--color-gunpowder)',
+        regaliaPurple: 'var(--color-regaliaPurple)',
+        lighterAluminum: 'var(--color-lighterAluminum)',
+        indigo: 'var(--color-indigo)',
+        darkPurple: 'var(--color-darkPurple)',
+        lightPurple: 'var(--color-lightPurple)',
+        richBlack: 'var(--color-richBlack)',
+
+        lightGray: '#1F2229',
+        gray: '#272A32',
+      },
+      boxShadow: {
+        'avatar-shadow': '0 6.71px 11.41px -1.34px rgba(0,0,0,0.28)',
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -102,5 +94,16 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    plugin(function ({ addUtilities }) {
+      addUtilities({
+        '.custom-bg-blur': {
+          'background-color': '#0C101480',
+          'backdrop-filter': 'blur(100px)',
+          '-webkit-backdrop-filter': 'blur(100px)',
+        },
+      });
+    }),
+  ],
 } satisfies Config;

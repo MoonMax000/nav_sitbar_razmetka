@@ -1,109 +1,145 @@
-/** @import must precede all other statements */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800;900&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  /**
-   * Tailwind CSS theme
-   * tailwind.config.ts expects the following color variables to be expressed as HSL values.
-   * A different format will require also updating the theme in tailwind.config.ts.
-  */
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+:root {
+  --background: #0b0e11;
+  --foreground: #ffffff;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+  /* Primary Color */
+  --color-bg: #0b0e11;
+  --color-darkCharcoal: #181a20;
+  --color-lavenderIndigo: #a06aff;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+  /* Supporting Color */
+  --color-moonlessNight: #23252d;
+  --color-onyxGrey: #313338;
 
-    --primary: 256 72% 55%;
-    --primary-foreground: 0 0% 100%;
+  /* Text Color */
+  --color-white: #ffffff;
+  --color-webGray: #808283;
+  --color-black: #000000;
 
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
+  /* Indication Color */
+  --color-mountainMeadow: #2ebd85;
+  --color-fieryRose: #ef454a;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 256 72% 55%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 256 72% 55%;
-
-    --sidebar-primary-foreground: 0 0% 100%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 256 72% 55%;
-  }
-
-  .dark {
-    --background: 240 10% 4%;
-    --foreground: 0 0% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 257 65% 60%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 257 65% 60%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 256 72% 55%;
-  }
+  /* Accent Color */
+  --color-orangePeel: #ffa800;
+  --color-darkOrange: #ffa80029;
+  --color-cornflowerBlue: #6aa5ff;
+  --color-darkJungleGreen: #1c3430;
+  --color-darkSienna: #3a2127;
+  --color-gunpowder: #2e2744;
+  --color-regaliaPurple: #523a83;
+  --color-lighterAluminum: #b0b0b0;
+  --color-indigo: #a88cff;
+  --color-darkPurple: #482090;
+  --color-lightPurple: #a06aff;
+  --color-richBlack: #0c1014;
 }
 
-@layer base {
-  * {
-    @apply border-border;
+body {
+  color: var(--foreground);
+  background: var(--background);
+  overflow-y: scroll;
+  font-family: 'Nunito Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #0c101480 inset !important;
+  -webkit-text-fill-color: var(--color-white) !important;
+  caret-color: var(--color-white) !important;
+  transition: background-color 5000s ease-in-out 0s, color 5000s ease-in-out 0s !important;
+}
+
+input,
+textarea {
+  color: var(--color-white) !important;
+  background-color: #0c101480 !important;
+  backdrop-filter: blur(100px);
+}
+
+input:-moz-autofill,
+input:-moz-autofill:hover,
+input:-moz-autofill:focus,
+input:-moz-autofill:active {
+  filter: none;
+  background-color: #0c101480 !important;
+  backdrop-filter: blur(100px);
+
+  color: var(--color-white) !important;
+}
+
+.blur-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(12, 16, 20, 0.48);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+textarea::-webkit-scrollbar {
+  width: 6px;
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+textarea::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+textarea::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@layer components {
+  .container-card {
+    @apply border border-[#181B22] rounded-[24px] max-w-[1340px] bg-[#0C101480] backdrop-blur-[100px];
   }
 
-  body {
-    @apply bg-background text-foreground font-sans;
+  .search-input {
+    @apply bg-transparent backdrop-filter-none;
+    background-color: transparent !important;
+    backdrop-filter: none !important;
+  }
+
+  .search-wrapper {
+    background-color: rgba(12, 16, 20, 0.48);
+    backdrop-filter: blur(100px);
   }
 }
