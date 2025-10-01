@@ -58,12 +58,8 @@ export const Header: FC<HeaderProps> = ({
           className="flex gap-[6px] items-center"
           aria-label="Open AI Assistant"
         >
-          <div className="p-[0.5px] rounded-[4px] bg-gradient-to-r from-[#A06AFF] via-[#A06AFF] to-transparent size-[32px] flex items-center justify-center">
-            <div className="p-[2px] bg-black rounded-[4px] size-[29px]">
-              <div className="size-[26px] rounded-[4px] bg-background p-[5px] text-white flex items-center justify-center">
-                AI
-              </div>
-            </div>
+          <div className="size-[32px] rounded-[4px] border border-[#A06AFF] bg-background flex items-center justify-center">
+            <span className="text-white text-sm font-bold">AI</span>
           </div>
           <span className="font-medium text-[15px] text-white">Assistant</span>
         </a>
