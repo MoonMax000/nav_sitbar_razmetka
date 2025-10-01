@@ -14,7 +14,6 @@ import Settings from "./pages/Settings";
 import Pricing from "./pages/Pricing";
 import NotFound from "./pages/NotFound";
 import { ClientLayout } from "./components/ClientLayout/ClientLayout";
-import { PricingLayout } from "./components/PricingLayout/PricingLayout";
 
 const queryClient = new QueryClient({
   defaultOptions: { queries: { staleTime: 6000, refetchOnWindowFocus: false } },
@@ -28,14 +27,12 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <Routes>
-            {/* Pricing page with special layout (no side menus) */}
-            <Route path="/pricing" element={<PricingLayout><Pricing /></PricingLayout>} />
-
             {/* Standard pages with ClientLayout */}
             <Route path="*" element={
               <ClientLayout>
                 <Routes>
                   <Route path="/" element={<Dashboard />} />
+                  <Route path="/pricing" element={<Pricing />} />
                   {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                   <Route path="*" element={<NotFound />} />
                 </Routes>
