@@ -13,6 +13,7 @@ import Dashboard from "./pages/Dashboard";
 import Settings from "./pages/Settings";
 import Pricing from "./pages/Pricing";
 import Profile from "./pages/Profile";
+import ProfileNew from "./pages/ProfileNew";
 import Billing from "./pages/Billing";
 import NotFound from "./pages/NotFound";
 import { ClientLayout } from "./components/ClientLayout/ClientLayout";
@@ -35,13 +36,14 @@ const App = () => (
               element={
                 <ClientLayout>
                   <Routes>
-                    <Route path="/" element={<Dashboard />} />
-                    <Route path="/pricing" element={<Pricing />} />
-                    <Route path="/profile" element={<Profile />} />
-                    <Route path="/billing" element={<Billing />} />
-                    {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-                    <Route path="*" element={<NotFound />} />
-                  </Routes>
+                  <Route path="/" element={<Dashboard />} />
+                  <Route path="/pricing" element={<Pricing />} />
+                  <Route path="/profile" element={<ProfileNew />} />
+                  <Route path="/profile-old" element={<Profile />} />
+                  <Route path="/billing" element={<Billing />} />
+                  {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
                 </ClientLayout>
               }
             />
