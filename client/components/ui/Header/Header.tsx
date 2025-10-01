@@ -3,18 +3,33 @@ import { Link } from 'react-router-dom';
 
 export const Header: FC = () => {
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[#181B22] bg-background/80 backdrop-blur">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4">
-        <Link to="/" className="flex items-center gap-2">
-          <div className="h-8 w-8 rounded-md bg-primary flex items-center justify-center text-white font-bold">
-            T
+    <header className='relative z-[1000] border-b-[2px] border-[#523A83] bg-[#0C101480] backdrop-blur-[100px]'>
+      <div className='flex items-center w-full max-w-[1920px] justify-between mx-auto py-5 pl-[30px] pr-[30px] transition-all duration-300'>
+        {/* Brand */}
+        <div className='flex gap-[10px] min-w-[230px] items-center'>
+          <Link to='/'>
+            <div className='w-[35px] h-[40px] rounded-[6px] bg-primary flex items-center justify-center font-extrabold text-white'>T</div>
+          </Link>
+          <span className='text-[31px] font-bold text-white'>Tyrian Trade</span>
+        </div>
+        {/* Center actions (simplified) */}
+        <div className='hidden md:flex gap-[10px] items-center'>
+          <div className='hidden md:block'>
+            <input
+              className='h-11 w-[540px] rounded-[12px] border border-[#181B22] bg-[#0C101480] px-4 text-white placeholder:text-webGray outline-none'
+              placeholder='Search'
+            />
           </div>
-          <span className="text-lg font-semibold text-white">TTT</span>
-        </Link>
-        <div className="flex items-center gap-4">
-          <button className="rounded-md bg-primary px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90">
-            Profile
-          </button>
+          <div className='flex gap-[10px] min-w-[150px] items-center'>
+            <button className='h-11 w-11 rounded-[12px] bg-primary text-white grid place-items-center'>
+              AI
+            </button>
+            <span className='font-medium text-[15px] text-white'>AI Assistant</span>
+          </div>
+        </div>
+        {/* Right actions */}
+        <div className='flex items-center justify-end max-w-[350px] gap-4'>
+          <Link to='/profile' aria-label='Profile' className='size-11 min-w-11 min-h-11 rounded-full bg-moonlessNight' />
         </div>
       </div>
     </header>
