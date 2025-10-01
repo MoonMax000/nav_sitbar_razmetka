@@ -1,7 +1,13 @@
-import { FC } from 'react';
+import { FC, Dispatch, SetStateAction } from 'react';
 import { Link } from 'react-router-dom';
+import RightBarButton from '../RightBar/RightBarButton';
 
-export const Header: FC = () => {
+interface HeaderProps {
+  rightMenuOpen?: boolean;
+  setRightMenuOpen?: Dispatch<SetStateAction<boolean>>;
+}
+
+export const Header: FC<HeaderProps> = ({ rightMenuOpen = false, setRightMenuOpen }) => {
   return (
     <header className='pb-1 pt-3 w-full pl-[30px] pr-[24px] flex justify-between bg-background items-center gap-2 mb-6'>
       {/* Brand */}
