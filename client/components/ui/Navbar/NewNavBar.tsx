@@ -16,7 +16,7 @@ import {
   ChevronDown,
   ChevronLeft,
   Dot,
-} from 'lucide-react';
+} from './icons';
 
 interface NavChildItem {
   id: string;
