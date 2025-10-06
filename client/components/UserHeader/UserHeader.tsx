@@ -63,7 +63,7 @@ const UserHeader: FC<Props> = ({ isOwn = true, className }) => {
           </div>
 
           {/* Badges */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 pb-[2px]">
             {/* Tier badge */}
             <div className="inline-flex items-center justify-center gap-1">
               <span className="text-xs font-bold uppercase text-white">Tier</span>
