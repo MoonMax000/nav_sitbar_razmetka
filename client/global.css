@@ -5,11 +5,11 @@
 @tailwind utilities;
 
 :root {
-  --background: #0b0e11;
+  --background: #000000;
   --foreground: #ffffff;
 
   /* Primary Color */
-  --color-bg: #0b0e11;
+  --color-bg: #000000;
   --color-darkCharcoal: #181a20;
   --color-lavenderIndigo: #a06aff;
 
