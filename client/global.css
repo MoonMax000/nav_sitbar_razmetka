@@ -141,7 +141,7 @@ textarea::-webkit-scrollbar-track {
 }
 
 .compact-posts-scroll::-webkit-scrollbar-thumb {
-  background: #2F3240;
+  background: #2f3240;
   border-radius: 4px;
 }
 
