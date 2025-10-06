@@ -34,9 +34,9 @@ const UserHeader: FC<Props> = ({ isOwn = true, className }) => {
         {/* Profile picture - positioned to overlap bottom of cover */}
         <div className="absolute left-4 -bottom-16 sm:-bottom-20 z-10">
           <img
-            src="https://api.builder.io/api/v1/image/assets/TEMP/206adecf29ac0c9a506069fea2436d00fcbf9067?width=320"
+            src="https://api.builder.io/api/v1/image/assets/TEMP/8dcd522167ed749bb95dadfd1a39f43e695d33a0?width=320"
             alt="Profile"
-            className="w-40 h-40 rounded-2xl border-2 border-[#181B22] shadow-[0_6.711px_11.409px_-1.342px_rgba(0,0,0,0.28)] object-cover"
+            className="w-40 h-40 rounded-2xl border-2 border-[#181B22] object-cover"
           />
         </div>
       </div>
