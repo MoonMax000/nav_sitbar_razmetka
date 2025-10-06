@@ -10,13 +10,15 @@ const UserHeader: FC<Props> = ({ isOwn = true, className }) => {
   return (
     <div className={cn('relative w-full', className)}>
       {/* Cover image section */}
-      <div className="relative w-full h-48 overflow-hidden rounded-3xl mb-16 sm:mb-20">
-        <img
-          src="https://api.builder.io/api/v1/image/assets/TEMP/df14e9248350a32d57d5b54a31308a2e855bb11e?width=2118"
-          alt=""
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-black/[0.04] backdrop-blur-[2px]" />
+      <div className="relative w-full h-48 rounded-3xl mb-16 sm:mb-20">
+        <div className="w-full h-full overflow-hidden rounded-3xl">
+          <img
+            src="https://api.builder.io/api/v1/image/assets/TEMP/df14e9248350a32d57d5b54a31308a2e855bb11e?width=2118"
+            alt=""
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/[0.04] backdrop-blur-[2px]" />
+        </div>
 
         {/* Edit profile button - only show if it's own profile */}
         {isOwn && (
