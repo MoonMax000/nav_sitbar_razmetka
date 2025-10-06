@@ -367,8 +367,11 @@ const streamsData = [
   },
 ];
 
-const LiveStreamingSettings: FC = () => {
-  const [activeTab, setActiveTab] = useState<StreamingTab>("profile");
+interface LiveStreamingSettingsProps {
+  activeTab?: StreamingTab;
+}
+
+const LiveStreamingSettings: FC<LiveStreamingSettingsProps> = ({ activeTab = "profile" }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [subscriptionTab, setSubscriptionTab] = useState<
     "my-subscribers" | "subscribed-to"
@@ -391,37 +394,6 @@ const LiveStreamingSettings: FC = () => {
 
   return (
     <div className="flex flex-col gap-6">
-      {/* Profile Settings Card */}
-      <div className="flex flex-col gap-6 p-4 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px]">
-        <h2 className="text-2xl font-bold text-white">Profile Settings</h2>
-        <p className="text-sm text-webGray">
-          Configure your streaming profile settings here.
-        </p>
-      </div>
-
-      {/* Tabs */}
-      <div className="inline-flex flex-wrap items-center justify-center gap-2 p-1 rounded-[36px] border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px]">
-        {streamingTabs.map((tab) => (
-          <button
-            key={tab.id}
-            onClick={() => setActiveTab(tab.id)}
-            className={cn(
-              "flex items-center gap-2 px-3 md:px-4 py-2.5 md:py-3 rounded-[32px] text-xs md:text-[15px] font-bold transition-all whitespace-nowrap",
-              activeTab === tab.id
-                ? "bg-gradient-to-r from-primary to-[#482090] text-white backdrop-blur-[58.33px]"
-                : "border border-[#181B22] bg-[rgba(12,16,20,0.5)] text-webGray hover:text-white backdrop-blur-[58.33px]",
-            )}
-          >
-            <span
-              className={activeTab === tab.id ? "text-white" : "text-webGray"}
-            >
-              {tab.icon}
-            </span>
-            {tab.label}
-          </button>
-        ))}
-      </div>
-
       {/* Tab Content */}
       <div className="mt-4">
         {activeTab === "profile" && (
