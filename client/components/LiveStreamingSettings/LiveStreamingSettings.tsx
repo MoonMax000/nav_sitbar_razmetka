@@ -249,6 +249,7 @@ const streamsData = [
 const LiveStreamingSettings: FC = () => {
   const [activeTab, setActiveTab] = useState<StreamingTab>('profile');
   const [currentPage, setCurrentPage] = useState(1);
+  const [subscriptionTab, setSubscriptionTab] = useState<'my-subscribers' | 'subscribed-to'>('my-subscribers');
   const [notificationSettings, setNotificationSettings] = useState({
     streamGoingLive: true,
     replayOfPastStreams: true,
@@ -671,10 +672,26 @@ const LiveStreamingSettings: FC = () => {
           <div className="flex flex-col gap-6">
             {/* Subscription Type Tabs */}
             <div className="inline-flex flex-wrap items-center gap-3 p-1 rounded-[36px] border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px] w-full sm:w-auto">
-              <button className="flex items-center justify-center px-4 py-3 rounded-[32px] bg-gradient-to-r from-primary to-[#482090] backdrop-blur-[58.33px] text-white text-[15px] font-bold flex-1 sm:flex-initial">
+              <button
+                onClick={() => setSubscriptionTab('my-subscribers')}
+                className={cn(
+                  'flex items-center justify-center px-4 py-3 rounded-[32px] backdrop-blur-[58.33px] text-[15px] font-bold flex-1 sm:flex-initial transition-all',
+                  subscriptionTab === 'my-subscribers'
+                    ? 'bg-gradient-to-r from-primary to-[#482090] text-white'
+                    : 'border border-[#181B22] bg-[rgba(12,16,20,0.5)] text-webGray hover:text-white'
+                )}
+              >
                 My subscribers
               </button>
-              <button className="flex items-center justify-center px-4 py-3 rounded-[32px] border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[58.33px] text-webGray text-[15px] font-bold hover:text-white transition-colors flex-1 sm:flex-initial">
+              <button
+                onClick={() => setSubscriptionTab('subscribed-to')}
+                className={cn(
+                  'flex items-center justify-center px-4 py-3 rounded-[32px] backdrop-blur-[58.33px] text-[15px] font-bold flex-1 sm:flex-initial transition-all',
+                  subscriptionTab === 'subscribed-to'
+                    ? 'bg-gradient-to-r from-primary to-[#482090] text-white'
+                    : 'border border-[#181B22] bg-[rgba(12,16,20,0.5)] text-webGray hover:text-white'
+                )}
+              >
                 Subscribed to
               </button>
             </div>
@@ -696,7 +713,7 @@ const LiveStreamingSettings: FC = () => {
 
               {/* Subscribers List */}
               <div className="flex flex-col gap-4">
-                {[
+                {(subscriptionTab === 'my-subscribers' ? [
                   { name: 'AlexanderBrave', status: 'online', subscribers: '17', isSubscribed: true },
                   { name: 'OlgaTender', status: 'online', subscribers: '5', isSubscribed: true },
                   { name: 'VictorBold', status: 'online', subscribers: '1,022,000', isSubscribed: true },
@@ -713,7 +730,14 @@ const LiveStreamingSettings: FC = () => {
                   { name: 'MaximCreator', status: 'offline', subscribers: '1', isSubscribed: false },
                   { name: 'MaximCreator', status: 'online', subscribers: '8', isSubscribed: true },
                   { name: 'AlexanderBrave', status: 'online', subscribers: '4', isSubscribed: true },
-                ].map((subscriber, index) => (
+                ] : [
+                  { name: 'AlexanderBrave', status: 'online', subscribers: '9 839 942' },
+                  { name: 'OlgaTender', status: 'online', subscribers: '4 452 113' },
+                  { name: 'VictorBold', status: 'online', subscribers: '1,022,000' },
+                  { name: 'MaximCreator', status: 'online', subscribers: '724 055' },
+                  { name: 'AlexanderBrave', status: 'offline', subscribers: '211 458' },
+                  { name: 'MaximCreator', status: 'offline', subscribers: '15 442 089' },
+                ]).map((subscriber, index) => (
                   <div key={index}>
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                       {/* Left Side - User Info */}
@@ -752,14 +776,19 @@ const LiveStreamingSettings: FC = () => {
                       {/* Right Side - Action Button */}
                       <button className={cn(
                         'w-full sm:w-[180px] px-4 py-2.5 rounded-lg text-[14px] font-bold transition-all',
-                        subscriber.isSubscribed
-                          ? 'border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px] text-white hover:bg-[rgba(12,16,20,0.7)]'
+                        subscriptionTab === 'my-subscribers'
+                          ? (subscriber.isSubscribed
+                            ? 'border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px] text-white hover:bg-[rgba(12,16,20,0.7)]'
+                            : 'border border-[#3A2127] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px] text-[#EF454A] hover:bg-[#3A2127]')
                           : 'border border-[#3A2127] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px] text-[#EF454A] hover:bg-[#3A2127]'
                       )}>
-                        {subscriber.isSubscribed ? 'Subscribe' : 'Unfollow'}
+                        {subscriptionTab === 'my-subscribers'
+                          ? (subscriber.isSubscribed ? 'Subscribe' : 'Unfollow')
+                          : 'Unfollow'
+                        }
                       </button>
                     </div>
-                    {index < 15 && <div className="h-px bg-[#181B22] mt-4" />}
+                    {index < (subscriptionTab === 'my-subscribers' ? 15 : 5) && <div className="h-px bg-[#181B22] mt-4" />}
                   </div>
                 ))}
               </div>
