@@ -1,252 +1,145 @@
-import { FC } from 'react';
+import { FC } from "react";
+import { cn } from "@/lib/utils";
 
-interface CheckboxProps {
-  checked?: boolean;
-  onChange?: () => void;
-}
-
-const Checkbox: FC<CheckboxProps> = ({ checked = true }) => (
-  <div className="relative w-[18px] h-[18px] flex-shrink-0">
-    <div className={`w-[18px] h-[18px] rounded-[3px] ${checked ? 'bg-primary' : 'border border-[#2E2744]'}`} />
+const Checkbox: FC<{ checked: boolean }> = ({ checked }) => (
+  <span
+    className={cn(
+      "relative inline-flex h-[18px] w-[18px] items-center justify-center rounded-[3px]",
+      checked ? "bg-primary" : "border border-[#2E2744] bg-transparent"
+    )}
+    aria-hidden
+  >
     {checked && (
-      <svg className="absolute left-1 top-[6px]" width="12" height="8" viewBox="0 0 12 8" fill="none">
+      <svg className="absolute" width="12" height="8" viewBox="0 0 12 8" fill="none">
         <path d="M1 2.5L5 6.5L10.5 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     )}
-  </div>
+  </span>
+);
+
+type NotificationSectionConfig = {
+  title: string;
+  channelNames?: string[];
+  items: {
+    label: string;
+    states: boolean[];
+  }[];
+};
+
+const sections: NotificationSectionConfig[] = [
+  {
+    title: "Notifications",
+    items: [
+      { label: "Enable notification sound", states: [true] },
+      { label: "Show desktop notifications", states: [true] },
+      { label: "Emails about suspicious login attempts to your account", states: [true] },
+    ],
+  },
+  {
+    title: "Your Profile",
+    channelNames: ["Email", "Web"],
+    items: [
+      { label: "When someone follows you", states: [false, true] },
+      { label: "When someone mentions you in idea comments", states: [true, true] },
+      { label: "When you're mentioned in chat while offline", states: [true, true] },
+    ],
+  },
+  {
+    title: "Your Ideas",
+    channelNames: ["Email", "Web"],
+    items: [
+      { label: "When someone comments on your idea", states: [true, true] },
+      { label: "When someone liked your idea", states: [true, true] },
+    ],
+  },
+  {
+    title: "Authors You Follow",
+    channelNames: ["Email", "Web"],
+    items: [
+      { label: "When they publish a new idea", states: [true, true] },
+      { label: "When they post a new post", states: [true, true] },
+    ],
+  },
+  {
+    title: "Ideas You Follow",
+    channelNames: ["Email", "Web"],
+    items: [{ label: "When there's an update", states: [true, true] }],
+  },
+  {
+    title: "Products You've Favorited or Rated",
+    channelNames: ["Email", "Web"],
+    items: [{ label: "When there's an update", states: [true, true] }],
+  },
+  {
+    title: "Opinions",
+    channelNames: ["Email", "Web"],
+    items: [
+      { label: "When someone mentions you in an opinion", states: [true, true] },
+      { label: "When someone mentions you in a comment on an opinion", states: [true, true] },
+    ],
+  },
+];
+
+const NotificationRow: FC<{ label: string; states: boolean[]; channelNames?: string[] }> = ({ label, states, channelNames }) => {
+  const hasChannels = Boolean(channelNames?.length);
+
+  return (
+    <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+      <span className="text-sm font-bold text-white md:text-[15px] md:leading-snug">{label}</span>
+      {hasChannels ? (
+        <div className="flex w-full flex-col gap-3 self-end sm:w-auto sm:flex-row sm:items-center sm:justify-end sm:gap-8">
+          {channelNames!.map((channel, idx) => (
+            <div key={`${label}-${channel}`} className="flex items-center gap-3 sm:flex-col sm:gap-2 sm:text-center">
+              <span className="text-xs font-bold uppercase text-webGray sm:hidden">{channel}</span>
+              <Checkbox checked={states[idx] ?? false} />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="flex w-full justify-end self-end sm:w-auto">
+          <Checkbox checked={states[0] ?? false} />
+        </div>
+      )}
+    </div>
+  );
+};
+
+const NotificationSection: FC<NotificationSectionConfig> = ({ title, channelNames, items }) => (
+  <section className="w-full">
+    <div className="flex w-full flex-col gap-6 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] p-4 sm:p-6 backdrop-blur-[50px]">
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+        <h2 className="text-xl font-bold text-white sm:text-2xl">{title}</h2>
+        {channelNames && (
+          <div className="hidden items-center gap-8 sm:flex">
+            {channelNames.map((channel) => (
+              <span key={`${title}-${channel}`} className="w-[60px] text-center text-xs font-bold uppercase text-webGray">
+                {channel}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+      <div className="flex flex-col gap-5 sm:gap-6">
+        {items.map(({ label, states }) => (
+          <NotificationRow key={`${title}-${label}`} label={label} states={states} channelNames={channelNames} />
+        ))}
+      </div>
+    </div>
+  </section>
 );
 
 const NotificationsSettings: FC = () => {
   return (
-    <div className="flex flex-col items-center gap-6 w-full max-w-[1059px] mx-auto">
-      {/* Notifications Section */}
-      <div className="flex flex-col gap-6 p-4 w-full rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px]">
-        <div className="flex pb-2">
-          <h2 className="text-xl md:text-2xl font-bold text-white">Notifications</h2>
-        </div>
+    <div className="flex w-full max-w-[1059px] flex-col items-center gap-6">
+      {sections.map((section) => (
+        <NotificationSection key={section.title} {...section} />
+      ))}
 
-        <div className="flex flex-col gap-6">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-            <span className="text-sm md:text-[15px] font-bold text-white flex-1">Enable notification sound</span>
-            <Checkbox checked={true} />
-          </div>
-
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-            <span className="text-sm md:text-[15px] font-bold text-white flex-1">Show desktop notifications</span>
-            <Checkbox checked={true} />
-          </div>
-
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-            <span className="text-sm md:text-[15px] font-bold text-white flex-1">Emails about suspicious login attempts to your account</span>
-            <Checkbox checked={true} />
-          </div>
-        </div>
-      </div>
-
-      {/* Your Profile Section */}
-      <div className="flex flex-col gap-6 p-4 w-full rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px]">
-        <div className="flex pb-2">
-          <h2 className="text-xl md:text-2xl font-bold text-white flex-1">Your Profile</h2>
-        </div>
-
-        <div className="flex flex-col gap-6">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-            <span className="text-sm md:text-[15px] font-bold text-white flex-1">When someone follows you</span>
-            <div className="flex items-center gap-6 sm:gap-[76px]">
-              <div className="flex flex-col items-center gap-1">
-                <span className="text-xs font-bold text-webGray">Email</span>
-                <Checkbox checked={false} />
-              </div>
-              <div className="flex flex-col items-center gap-1">
-                <span className="text-xs font-bold text-webGray">Web</span>
-                <Checkbox checked={true} />
-              </div>
-            </div>
-          </div>
-
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-            <span className="text-sm md:text-[15px] font-bold text-white flex-1">When someone mentions you in idea comments</span>
-            <div className="flex items-center gap-6 sm:gap-[76px]">
-              <div className="flex flex-col items-center gap-1">
-                <Checkbox checked={true} />
-              </div>
-            </div>
-          </div>
-
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-            <span className="text-sm md:text-[15px] font-bold text-white flex-1">When you're mentioned in chat while offline</span>
-            <div className="flex items-center gap-6 sm:gap-[76px]">
-              <div className="flex flex-col items-center gap-1">
-                <span className="text-xs font-bold text-webGray sm:hidden">Email</span>
-                <Checkbox checked={true} />
-              </div>
-              <div className="flex flex-col items-center gap-1">
-                <span className="text-xs font-bold text-webGray sm:hidden">Web</span>
-                <Checkbox checked={true} />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Your Ideas Section */}
-      <div className="flex flex-col gap-6 p-4 w-full rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px]">
-        <div className="flex pb-2">
-          <h2 className="text-xl md:text-2xl font-bold text-white">Your Ideas</h2>
-        </div>
-
-        <div className="flex flex-col gap-6">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-            <span className="text-sm md:text-[15px] font-bold text-white flex-1">When someone comments on your idea</span>
-            <div className="flex items-center gap-6 sm:gap-[76px]">
-              <div className="flex flex-col items-center gap-1">
-                <span className="text-xs font-bold text-webGray sm:hidden">Email</span>
-                <Checkbox checked={true} />
-              </div>
-              <div className="flex flex-col items-center gap-1">
-                <span className="text-xs font-bold text-webGray sm:hidden">Web</span>
-                <Checkbox checked={true} />
-              </div>
-            </div>
-          </div>
-
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-            <span className="text-sm md:text-[15px] font-bold text-white flex-1">When someone liked your idea</span>
-            <div className="flex items-center gap-6 sm:gap-[76px]">
-              <div className="flex flex-col items-center gap-1">
-                <span className="text-xs font-bold text-webGray sm:hidden">Email</span>
-                <Checkbox checked={true} />
-              </div>
-              <div className="flex flex-col items-center gap-1">
-                <span className="text-xs font-bold text-webGray sm:hidden">Web</span>
-                <Checkbox checked={true} />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Authors You Follow Section */}
-      <div className="flex flex-col gap-6 p-4 w-full rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px]">
-        <div className="flex pb-2">
-          <h2 className="text-xl md:text-2xl font-bold text-white">Authors You Follow</h2>
-        </div>
-
-        <div className="flex flex-col gap-6">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-            <span className="text-sm md:text-[15px] font-bold text-white flex-1">When they publish a new idea</span>
-            <div className="flex items-center gap-6 sm:gap-[76px]">
-              <div className="flex flex-col items-center gap-1">
-                <span className="text-xs font-bold text-webGray sm:hidden">Email</span>
-                <Checkbox checked={true} />
-              </div>
-              <div className="flex flex-col items-center gap-1">
-                <span className="text-xs font-bold text-webGray sm:hidden">Web</span>
-                <Checkbox checked={true} />
-              </div>
-            </div>
-          </div>
-
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-            <span className="text-sm md:text-[15px] font-bold text-white flex-1">When they post a new post</span>
-            <div className="flex items-center gap-6 sm:gap-[76px]">
-              <div className="flex flex-col items-center gap-1">
-                <span className="text-xs font-bold text-webGray sm:hidden">Email</span>
-                <Checkbox checked={true} />
-              </div>
-              <div className="flex flex-col items-center gap-1">
-                <span className="text-xs font-bold text-webGray sm:hidden">Web</span>
-                <Checkbox checked={true} />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Ideas You Follow Section */}
-      <div className="flex flex-col gap-6 p-4 w-full rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px]">
-        <div className="flex pb-2">
-          <h2 className="text-xl md:text-2xl font-bold text-white">Ideas You Follow</h2>
-        </div>
-
-        <div className="flex flex-col gap-6">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-            <span className="text-sm md:text-[15px] font-bold text-white flex-1">When there's an update</span>
-            <div className="flex items-center gap-6 sm:gap-[76px]">
-              <div className="flex flex-col items-center gap-1">
-                <span className="text-xs font-bold text-webGray sm:hidden">Email</span>
-                <Checkbox checked={true} />
-              </div>
-              <div className="flex flex-col items-center gap-1">
-                <span className="text-xs font-bold text-webGray sm:hidden">Web</span>
-                <Checkbox checked={true} />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Products You've Favorited or Rated Section */}
-      <div className="flex flex-col gap-6 p-4 w-full rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px]">
-        <div className="flex pb-2">
-          <h2 className="text-xl md:text-2xl font-bold text-white">Products You've Favorited or Rated</h2>
-        </div>
-
-        <div className="flex flex-col gap-6">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-            <span className="text-sm md:text-[15px] font-bold text-white flex-1">When there's an update</span>
-            <div className="flex items-center gap-6 sm:gap-[76px]">
-              <div className="flex flex-col items-center gap-1">
-                <span className="text-xs font-bold text-webGray sm:hidden">Email</span>
-                <Checkbox checked={true} />
-              </div>
-              <div className="flex flex-col items-center gap-1">
-                <span className="text-xs font-bold text-webGray sm:hidden">Web</span>
-                <Checkbox checked={true} />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Opinions Section */}
-      <div className="flex flex-col gap-6 p-4 w-full rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px]">
-        <div className="flex pb-2">
-          <h2 className="text-xl md:text-2xl font-bold text-white">Opinions</h2>
-        </div>
-
-        <div className="flex flex-col gap-6">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-            <span className="text-sm md:text-[15px] font-bold text-white flex-1">When someone mentions you in an opinion</span>
-            <div className="flex items-center gap-6 sm:gap-[76px]">
-              <div className="flex flex-col items-center gap-1">
-                <span className="text-xs font-bold text-webGray sm:hidden">Email</span>
-                <Checkbox checked={true} />
-              </div>
-              <div className="flex flex-col items-center gap-1">
-                <span className="text-xs font-bold text-webGray sm:hidden">Web</span>
-                <Checkbox checked={true} />
-              </div>
-            </div>
-          </div>
-
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-            <span className="text-sm md:text-[15px] font-bold text-white flex-1">When someone mentions you in a comment on an opinion</span>
-            <div className="flex items-center gap-6 sm:gap-[76px]">
-              <div className="flex flex-col items-center gap-1">
-                <Checkbox checked={true} />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Action Buttons */}
-      <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full mt-2 mb-4">
-        <button className="w-full sm:w-[180px] h-[42px] px-4 flex items-center justify-center rounded-lg border border-[#181B22] bg-[rgba(12,16,20,0.5)] shadow-[0_4px_8px_0_rgba(0,0,0,0.24)] backdrop-blur-[50px] text-white text-sm font-bold hover:bg-[rgba(12,16,20,0.7)] transition-all">
+      <div className="flex w-full flex-col-reverse items-center justify-center gap-4 pb-2 pt-4 sm:flex-row sm:pb-0">
+        <button className="w-full sm:w-[200px] h-[42px] rounded-lg border border-[#181B22] bg-[rgba(12,16,20,0.5)] px-4 text-sm font-bold text-white shadow-[0_4px_8px_rgba(0,0,0,0.24)] backdrop-blur-[50px] transition-colors hover:bg-[rgba(12,16,20,0.7)]">
           Unsubscribe from all
         </button>
-        <button className="w-full sm:w-[180px] h-[42px] px-4 flex items-center justify-center rounded-lg bg-gradient-to-r from-primary to-[#482090] text-white text-sm font-bold hover:opacity-90 transition-opacity">
+        <button className="w-full sm:w-[200px] h-[42px] rounded-lg bg-gradient-to-r from-primary to-[#482090] px-4 text-sm font-bold text-white transition-opacity hover:opacity-90">
           Save changes
         </button>
       </div>
