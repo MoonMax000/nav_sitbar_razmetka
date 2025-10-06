@@ -1,5 +1,7 @@
 import { FC } from 'react';
 
+import { FC } from 'react';
+
 const UserInfoCards: FC = () => {
   return (
     <div className="flex w-full flex-col gap-4 sm:flex-row sm:flex-wrap">
