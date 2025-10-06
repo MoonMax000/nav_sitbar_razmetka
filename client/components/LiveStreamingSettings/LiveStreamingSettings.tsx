@@ -371,7 +371,9 @@ interface LiveStreamingSettingsProps {
   activeTab?: StreamingTab;
 }
 
-const LiveStreamingSettings: FC<LiveStreamingSettingsProps> = ({ activeTab = "profile" }) => {
+const LiveStreamingSettings: FC<LiveStreamingSettingsProps> = ({
+  activeTab = "profile",
+}) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [subscriptionTab, setSubscriptionTab] = useState<
     "my-subscribers" | "subscribed-to"
