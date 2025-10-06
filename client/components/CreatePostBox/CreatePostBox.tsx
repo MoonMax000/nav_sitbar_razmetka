@@ -131,32 +131,65 @@ const CreatePostBox: FC = () => {
           </div>
 
           {/* Media buttons */}
-          <div className="flex items-center gap-2">
-            <button className="flex h-5 w-5 items-center justify-center">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path d="M6.25 7.5C6.94036 7.5 7.5 6.94036 7.5 6.25C7.5 5.55964 6.94036 5 6.25 5C5.55964 5 5 5.55964 5 6.25C5 6.94036 5.55964 7.5 6.25 7.5Z" stroke="#B0B0B0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M2.08301 10C2.08301 6.26809 2.08301 4.40212 3.24237 3.24274C4.40175 2.08337 6.26772 2.08337 9.99967 2.08337C13.7316 2.08337 15.5976 2.08337 16.757 3.24274C17.9163 4.40212 17.9163 6.26809 17.9163 10C17.9163 13.732 17.9163 15.598 16.757 16.7574C15.5976 17.9167 13.7316 17.9167 9.99967 17.9167C6.26772 17.9167 4.40175 17.9167 3.24237 16.7574C2.08301 15.598 2.08301 13.732 2.08301 10Z" stroke="#B0B0B0" strokeWidth="1.5"/>
-                <path d="M4.16699 17.5C7.81071 13.1458 11.8954 7.40334 17.9149 11.2853" stroke="#B0B0B0" strokeWidth="1.5"/>
+          <div className="flex items-center gap-2.5">
+            <button
+              type="button"
+              aria-label="Add media"
+              className="group inline-flex h-9 w-9 items-center justify-center rounded-full border border-transparent bg-[#A06AFF]/8 text-[#B0B0B0] transition-all duration-200 hover:border-[#A06AFF] hover:bg-[#A06AFF]/20 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF]/50"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 transition-transform duration-200 group-hover:scale-110"
+              >
+                <path d="M6.25 7.5C6.94036 7.5 7.5 6.94036 7.5 6.25C7.5 5.55964 6.94036 5 6.25 5C5.55964 5 5 5.55964 5 6.25C5 6.94036 5.55964 7.5 6.25 7.5Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M2.08301 10C2.08301 6.26809 2.08301 4.40212 3.24237 3.24274C4.40175 2.08337 6.26772 2.08337 9.99967 2.08337C13.7316 2.08337 15.5976 2.08337 16.757 3.24274C17.9163 4.40212 17.9163 6.26809 17.9163 10C17.9163 13.732 17.9163 15.598 16.757 16.7574C15.5976 17.9167 13.7316 17.9167 9.99967 17.9167C6.26772 17.9167 4.40175 17.9167 3.24237 16.7574C2.08301 15.598 2.08301 13.732 2.08301 10Z" stroke="currentColor" strokeWidth="1.5" />
+                <path d="M4.16699 17.5C7.81071 13.1458 11.8954 7.40334 17.9149 11.2853" stroke="currentColor" strokeWidth="1.5" />
               </svg>
             </button>
-            <button className="flex h-5 w-5 items-center justify-center">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <button
+              type="button"
+              aria-label="Add emoji"
+              className="group inline-flex h-9 w-9 items-center justify-center rounded-full border border-transparent bg-[#A06AFF]/8 text-[#B0B0B0] transition-all duration-200 hover:border-[#A06AFF] hover:bg-[#A06AFF]/20 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF]/50"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 transition-transform duration-200 group-hover:scale-110"
+              >
                 <g clipPath="url(#clip0_emoji)">
-                  <path d="M10.0003 18.3333C14.6027 18.3333 18.3337 14.6023 18.3337 9.99996C18.3337 5.39759 14.6027 1.66663 10.0003 1.66663C5.39795 1.66663 1.66699 5.39759 1.66699 9.99996C1.66699 14.6023 5.39795 18.3333 10.0003 18.3333Z" stroke="#B0B0B0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M6.66699 12.5C7.42709 13.512 8.63724 14.1667 10.0003 14.1667C11.3634 14.1667 12.5736 13.512 13.3337 12.5" stroke="#B0B0B0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M6.67447 7.5H6.66699M13.3337 7.5H13.3262" stroke="#B0B0B0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M10.0003 18.3333C14.6027 18.3333 18.3337 14.6023 18.3337 9.99996C18.3337 5.39759 14.6027 1.66663 10.0003 1.66663C5.39795 1.66663 1.66699 5.39759 1.66699 9.99996C1.66699 14.6023 5.39795 18.3333 10.0003 18.3333Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M6.66699 12.5C7.42709 13.512 8.63724 14.1667 10.0003 14.1667C11.3634 14.1667 12.5736 13.512 13.3337 12.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M6.67447 7.5H6.66699M13.3337 7.5H13.3262" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </g>
                 <defs>
                   <clipPath id="clip0_emoji">
-                    <rect width="20" height="20" fill="white"/>
+                    <rect width="20" height="20" fill="white" />
                   </clipPath>
                 </defs>
               </svg>
             </button>
-            <button className="flex h-5 w-5 items-center justify-center">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path d="M5.55523 16.25H6.66634V17.5C6.66634 17.9603 6.29324 18.3334 5.83301 18.3334H4.16634C3.70611 18.3334 3.33301 17.9603 3.33301 17.5V14.1667C3.33301 13.7065 3.70611 13.3334 4.16634 13.3334H5.83301C6.29324 13.3334 6.66634 13.7065 6.66634 14.1667M9.16634 13.3334H10.4163M10.4163 13.3334H11.6663M10.4163 13.3334V18.3334M10.4163 18.3334H9.16634M10.4163 18.3334H11.6663M16.6663 13.3334H14.9997C14.5394 13.3334 14.1663 13.7065 14.1663 14.1667V15.8334M14.1663 15.8334V18.3334M14.1663 15.8334H16.2497" stroke="#B0B0B0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M16.6663 10.8333V8.88071C16.6663 8.19942 16.6663 7.85879 16.5395 7.55251C16.4126 7.24623 16.1718 7.00537 15.69 6.52365L11.7429 2.57653C11.3272 2.16079 11.1193 1.95292 10.8618 1.82975C10.8082 1.80413 10.7533 1.78139 10.6973 1.76163C10.4281 1.66663 10.1342 1.66663 9.54617 1.66663C6.84202 1.66663 5.48993 1.66663 4.57412 2.40502C4.3891 2.55419 4.22057 2.72272 4.0714 2.90773C3.33301 3.82355 3.33301 5.17564 3.33301 7.87983V10.8333M10.833 2.08329V2.49996C10.833 4.85698 10.833 6.03549 11.5653 6.76773C12.2975 7.49996 13.476 7.49996 15.833 7.49996H16.2497" stroke="#B0B0B0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <button
+              type="button"
+              aria-label="Add attachment"
+              className="group inline-flex h-9 w-9 items-center justify-center rounded-full border border-transparent bg-[#A06AFF]/8 text-[#B0B0B0] transition-all duration-200 hover:border-[#A06AFF] hover:bg-[#A06AFF]/20 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF]/50"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 transition-transform duration-200 group-hover:scale-110"
+              >
+                <path d="M5.55523 16.25H6.66634V17.5C6.66634 17.9603 6.29324 18.3334 5.83301 18.3334H4.16634C3.70611 18.3334 3.33301 17.9603 3.33301 17.5V14.1667C3.33301 13.7065 3.70611 13.3334 4.16634 13.3334H5.83301C6.29324 13.3334 6.66634 13.7065 6.66634 14.1667M9.16634 13.3334H10.4163M10.4163 13.3334H11.6663M10.4163 13.3334V18.3334M10.4163 18.3334H9.16634M10.4163 18.3334H11.6663M16.6663 13.3334H14.9997C14.5394 13.3334 14.1663 13.7065 14.1663 14.1667V15.8334M14.1663 15.8334V18.3334M14.1663 15.8334H16.2497" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M16.6663 10.8333V8.88071C16.6663 8.19942 16.6663 7.85879 16.5395 7.55251C16.4126 7.24623 16.1718 7.00537 15.69 6.52365L11.7429 2.57653C11.3272 2.16079 11.1193 1.95292 10.8618 1.82975C10.8082 1.80413 10.7533 1.78139 10.6973 1.76163C10.4281 1.66663 10.1342 1.66663 9.54617 1.66663C6.84202 1.66663 5.48993 1.66663 4.57412 2.40502C4.3891 2.55419 4.22057 2.72272 4.0714 2.90773C3.33301 3.82355 3.33301 5.17564 3.33301 7.87983V10.8333M10.833 2.08329V2.49996C10.833 4.85698 10.833 6.03549 11.5653 6.76773C12.2975 7.49996 13.476 7.49996 15.833 7.49996H16.2497" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
           </div>
