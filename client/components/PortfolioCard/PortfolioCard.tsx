@@ -1,4 +1,6 @@
-import { FC, useState } from 'react';
+import { FC, useMemo, useState } from 'react';
+
+import { useToast } from '@/hooks/use-toast';
 
 interface LiveStream {
   id: string;
@@ -20,6 +22,8 @@ interface PortfolioCardProps {
   comingUpStreams?: ScheduledStream[];
   archivedStreams?: ScheduledStream[];
 }
+
+type TabId = 'live' | 'chats' | 'groups';
 
 const PortfolioCard: FC<PortfolioCardProps> = ({
   title = "Jane's Activity",
@@ -52,161 +56,199 @@ const PortfolioCard: FC<PortfolioCardProps> = ({
     },
   ],
 }) => {
-  const [activeTab, setActiveTab] = useState<'live' | 'chats' | 'groups'>('live');
+  const [activeTab, setActiveTab] = useState<TabId>('live');
+  const { toast } = useToast();
+
+  const tabs = useMemo(
+    () => [
+      { id: 'live' as const, label: 'Live Streams' },
+      { id: 'chats' as const, label: 'Chats' },
+      { id: 'groups' as const, label: 'Groups' },
+    ],
+    [],
+  );
+
+  const handleShowAll = () => {
+    toast({
+      title: 'Opening full activity feed',
+      description: 'We will redirect you once the hub is ready.',
+    });
+  };
+
+  const handleStreamClick = (streamTitle: string) => {
+    toast({
+      title: streamTitle,
+      description: 'Stream details will be available soon.',
+    });
+  };
+
+  const renderComingSoon = (headline: string, description: string, actionLabel: string) => (
+    <div className="flex flex-col items-center justify-center gap-3 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] p-6 text-center backdrop-blur-[50px]">
+      <h4 className="text-lg font-bold text-white">{headline}</h4>
+      <p className="text-sm text-[#B0B0B0]">{description}</p>
+      <button
+        type="button"
+        onClick={() =>
+          toast({
+            title: `${headline} reminders enabled`,
+            description: 'We will notify you as soon as it launches.',
+          })
+        }
+        className="rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-4 py-2 text-sm font-bold text-white transition hover:opacity-90"
+      >
+        {actionLabel}
+      </button>
+    </div>
+  );
 
   return (
     <div className="flex w-full flex-col items-center gap-3 self-stretch rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] p-4 backdrop-blur-[50px]">
       <div className="flex items-baseline self-stretch pb-2">
-        <div className="flex-1 text-2xl font-bold leading-normal text-white">
-          {title}
-        </div>
-        <div className="flex items-center">
-          <div className="text-right text-[15px] font-bold leading-normal text-[#A06AFF]">
-            Show all
-          </div>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex h-6 w-6 items-center justify-center">
-            <path d="M10.7402 15.53L14.2602 12L10.7402 8.46997" stroke="#A06AFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </div>
+        <div className="flex-1 text-2xl font-bold leading-normal text-white">{title}</div>
+        <button
+          type="button"
+          onClick={handleShowAll}
+          className="group flex items-center gap-1 rounded-full px-2 py-1 text-[15px] font-bold leading-normal text-[#A06AFF] transition hover:text-white"
+        >
+          Show all
+          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#A06AFF]/10 transition group-hover:bg-[#A06AFF]/30">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10.7402 15.53L14.2602 12L10.7402 8.46997" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </span>
+        </button>
       </div>
 
       <div className="flex items-center gap-3 self-stretch">
-        <button
-          onClick={() => setActiveTab('live')}
-          className={`flex h-10 flex-col items-center justify-center rounded-[32px] px-4 py-3 backdrop-blur-[58px] ${
-            activeTab === 'live'
-              ? 'bg-gradient-to-r from-[#A06AFF] to-[#482090]'
-              : 'border border-[#181B22] bg-[rgba(12,16,20,0.50)]'
-          }`}
-        >
-          <div className="text-[15px] font-bold leading-normal text-white">
-            Live Streams
-          </div>
-        </button>
-        <button
-          onClick={() => setActiveTab('chats')}
-          className={`flex h-10 items-center justify-center gap-1.5 rounded-[32px] px-4 py-3 backdrop-blur-[58px] ${
-            activeTab === 'chats'
-              ? 'bg-gradient-to-r from-[#A06AFF] to-[#482090]'
-              : 'border border-[#181B22] bg-[rgba(12,16,20,0.50)]'
-          }`}
-        >
-          <div className="flex items-center gap-1.5">
-            <div className="text-[15px] font-bold leading-normal text-white">
-              Chats
-            </div>
-          </div>
-        </button>
-        <button
-          onClick={() => setActiveTab('groups')}
-          className={`flex h-10 items-center justify-center gap-1.5 rounded-[32px] px-4 py-3 backdrop-blur-[58px] ${
-            activeTab === 'groups'
-              ? 'bg-gradient-to-r from-[#A06AFF] to-[#482090]'
-              : 'border border-[#181B22] bg-[rgba(12,16,20,0.50)]'
-          }`}
-        >
-          <div className="flex items-center gap-1.5">
-            <div className="text-[15px] font-bold leading-normal text-white">
-              Groups
-            </div>
-          </div>
-        </button>
+        {tabs.map((tab) => (
+          <button
+            key={tab.id}
+            type="button"
+            onClick={() => setActiveTab(tab.id)}
+            className={`flex h-10 items-center justify-center rounded-[32px] px-4 py-3 text-[15px] font-bold transition ${
+              activeTab === tab.id
+                ? 'bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white shadow-[0_8px_20px_-8px_rgba(160,106,255,0.7)]'
+                : 'border border-[#181B22] bg-[rgba(12,16,20,0.50)] text-white/80 hover:border-[#2F3240] hover:bg-[rgba(18,22,28,0.8)]'
+            }`}
+          >
+            {tab.label}
+          </button>
+        ))}
       </div>
 
-      <div className="flex flex-col items-start gap-4 self-stretch pt-3">
-        <div className="flex h-5 items-center gap-2 self-stretch">
-          <div className="flex flex-1 flex-col justify-center self-stretch text-[19px] font-bold leading-normal text-white">
-            Live Now
-          </div>
-        </div>
-        <div className="flex flex-col items-start gap-3 self-stretch">
-          {liveStreams.map((stream) => (
-            <div key={stream.id} className="flex flex-col items-start gap-2.5">
-              <div className="relative">
-                <img
-                  src={stream.thumbnail}
-                  alt=""
-                  className="h-auto w-full rounded-lg"
-                  style={{ aspectRatio: '372/209', maxWidth: '372px' }}
-                />
-                {stream.isLive && (
-                  <div className="absolute left-3 top-3 flex items-center justify-center gap-1 rounded bg-[#EF454A] px-2 py-0.5">
-                    <div className="text-xs font-bold uppercase leading-normal text-white">
-                      LIVE
-                    </div>
-                  </div>
-                )}
-                {stream.viewers && (
-                  <div className="absolute bottom-3 left-3 flex items-center justify-center gap-1 rounded bg-[#23252D] px-2 py-0.5">
-                    <div className="text-xs font-bold uppercase leading-normal text-white">
-                      {stream.viewers} viewers
-                    </div>
-                  </div>
-                )}
+      {activeTab === 'live' && (
+        <>
+          <div className="flex flex-col items-start gap-4 self-stretch pt-3">
+            <div className="flex h-5 items-center gap-2 self-stretch">
+              <div className="flex flex-1 flex-col justify-center self-stretch text-[19px] font-bold leading-normal text-white">
+                Live Now
               </div>
-              <div className="flex items-center gap-2 self-stretch">
-                <div className="flex-1 text-[19px] font-bold leading-normal text-white">
-                  {stream.title}
+            </div>
+            <div className="flex flex-col items-start gap-3 self-stretch">
+              {liveStreams.map((stream) => (
+                <button
+                  key={stream.id}
+                  type="button"
+                  onClick={() => handleStreamClick(stream.title)}
+                  className="flex flex-col items-start gap-2.5 rounded-3xl border border-transparent p-1 text-left transition hover:border-[#2F3240] hover:bg-[rgba(18,22,28,0.65)]"
+                >
+                  <div className="relative w-full max-w-[372px] overflow-hidden rounded-lg">
+                    <img
+                      src={stream.thumbnail}
+                      alt={stream.title}
+                      className="h-auto w-full rounded-lg transition-transform duration-300 hover:scale-[1.02]"
+                      style={{ aspectRatio: '372/209' }}
+                    />
+                    {stream.isLive && (
+                      <div className="absolute left-3 top-3 flex items-center justify-center gap-1 rounded bg-[#EF454A] px-2 py-0.5 text-xs font-bold uppercase text-white">
+                        LIVE
+                      </div>
+                    )}
+                    {stream.viewers && (
+                      <div className="absolute bottom-3 left-3 flex items-center justify-center gap-1 rounded bg-[#23252D] px-2 py-0.5 text-xs font-bold uppercase text-white">
+                        {stream.viewers} viewers
+                      </div>
+                    )}
+                  </div>
+                  <div className="flex items-center gap-2 self-stretch px-1">
+                    <div className="flex-1 text-[19px] font-bold leading-normal text-white">{stream.title}</div>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {comingUpStreams.length > 0 && (
+            <div className="flex flex-col items-start gap-4 self-stretch border-t border-[#181B22] pt-3">
+              <div className="flex h-5 items-center gap-2 self-stretch">
+                <div className="flex flex-1 flex-col justify-center self-stretch text-[19px] font-bold leading-normal text-white">
+                  Coming Up
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {comingUpStreams.length > 0 && (
-        <div className="flex flex-col items-start gap-4 self-stretch border-t border-[#181B22] pt-3">
-          <div className="flex h-5 items-center gap-2 self-stretch">
-            <div className="flex flex-1 flex-col justify-center self-stretch text-[19px] font-bold leading-normal text-white">
-              Coming Up
-            </div>
-          </div>
-          {comingUpStreams.map((stream) => (
-            <div key={stream.id} className="flex items-center gap-2 self-stretch">
-              <img
-                src={stream.thumbnail}
-                alt=""
-                className="h-11 w-[84px] rounded-lg"
-                style={{ aspectRatio: '21/11' }}
-              />
-              <div className="flex flex-1 flex-col items-start gap-0.5 self-stretch">
-                <div className="flex items-center self-stretch">
-                  <div className="flex flex-1 flex-col justify-center self-stretch text-[15px] font-bold leading-normal text-white">
+              {comingUpStreams.map((stream) => (
+                <button
+                  key={stream.id}
+                  type="button"
+                  onClick={() => handleStreamClick(stream.title)}
+                  className="flex items-center gap-2 self-stretch rounded-2xl border border-transparent px-1 py-1 transition hover:border-[#2F3240] hover:bg-[rgba(18,22,28,0.65)]"
+                >
+                  <img
+                    src={stream.thumbnail}
+                    alt={stream.title}
+                    className="h-11 w-[84px] rounded-lg"
+                    style={{ aspectRatio: '21/11' }}
+                  />
+                  <div className="flex flex-1 flex-col items-start gap-0.5 self-stretch text-left text-[15px] font-bold leading-normal text-white">
                     {stream.title}
                   </div>
+                </button>
+              ))}
+            </div>
+          )}
+
+          {archivedStreams.length > 0 && (
+            <div className="flex flex-col items-start gap-4 self-stretch border-t border-[#181B22] pt-3">
+              <div className="flex h-5 items-center gap-2 self-stretch">
+                <div className="flex flex-1 flex-col justify-center self-stretch text-[19px] font-bold leading-normal text-white">
+                  Archived
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-      )}
-
-      {archivedStreams.length > 0 && (
-        <div className="flex flex-col items-start gap-4 self-stretch border-t border-[#181B22] pt-3">
-          <div className="flex h-5 items-center gap-2 self-stretch">
-            <div className="flex flex-1 flex-col justify-center self-stretch text-[19px] font-bold leading-normal text-white">
-              Archived
-            </div>
-          </div>
-          {archivedStreams.map((stream) => (
-            <div key={stream.id} className="flex items-center gap-2 self-stretch">
-              <img
-                src={stream.thumbnail}
-                alt=""
-                className="h-11 w-[84px] rounded-lg"
-                style={{ aspectRatio: '21/11' }}
-              />
-              <div className="flex flex-1 flex-col items-start gap-0.5 self-stretch">
-                <div className="flex items-center self-stretch">
-                  <div className="flex flex-1 flex-col justify-center self-stretch text-[15px] font-bold leading-normal text-[#B0B0B0]">
+              {archivedStreams.map((stream) => (
+                <button
+                  key={stream.id}
+                  type="button"
+                  onClick={() => handleStreamClick(stream.title)}
+                  className="flex items-center gap-2 self-stretch rounded-2xl border border-transparent px-1 py-1 transition hover:border-[#2F3240] hover:bg-[rgba(18,22,28,0.65)]"
+                >
+                  <img
+                    src={stream.thumbnail}
+                    alt={stream.title}
+                    className="h-11 w-[84px] rounded-lg"
+                    style={{ aspectRatio: '21/11' }}
+                  />
+                  <div className="flex flex-1 flex-col items-start gap-0.5 self-stretch text-left text-[15px] font-bold leading-normal text-[#B0B0B0]">
                     {stream.title}
                   </div>
-                </div>
-              </div>
+                </button>
+              ))}
             </div>
-          ))}
-        </div>
+          )}
+        </>
       )}
+
+      {activeTab === 'chats' &&
+        renderComingSoon(
+          'Chat with Jane',
+          'Private chat sessions are launching soon. Follow Jane to be first in line.',
+          'Notify me',
+        )}
+
+      {activeTab === 'groups' &&
+        renderComingSoon(
+          'Community Groups',
+          'Exclusive market groups are being curated. We will invite you when they open.',
+          'Join waitlist',
+        )}
     </div>
   );
 };
