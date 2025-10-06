@@ -1,6 +1,7 @@
 import { FC, useState } from 'react';
 import UserHeader from '@/components/UserHeader/UserHeader';
 import NotificationsSettings from '@/components/NotificationsSettings/NotificationsSettings';
+import BillingSettings from '@/components/BillingSettings/BillingSettings';
 import { cn } from '@/lib/utils';
 
 type Tab = 'dashboard' | 'profile' | 'marketplace' | 'streaming' | 'social' | 'portfolios';
