@@ -43,7 +43,7 @@ export const navElements: NavElementProps[] = [
     title: 'Social Network',
     route: '/social',
     children: [
-      { icon: <HomeIcon className='h-5 w-5' />, title: 'Home', route: '/' },
+      { icon: <HomeIcon className='h-5 w-5' />, title: 'Home', route: '/social/home' },
       { icon: <BoxIcon className='h-5 w-5' />, title: 'Feed', route: '#' },
       { icon: <BoxIcon className='h-5 w-5' />, title: 'My page', route: '#' },
       { icon: <BoxIcon className='h-5 w-5' />, title: 'Chats & Groups', route: '#' },
