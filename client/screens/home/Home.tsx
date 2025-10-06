@@ -3,7 +3,6 @@ import ActivityCard from '@/components/ActivityCard/ActivityCard';
 import PortfolioCard from '@/components/PortfolioCard/PortfolioCard';
 import ProductsCard from '@/components/ProductsCard/ProductsCard';
 import SubscribeBlock from '@/components/SubscribeBlock/SubscribeBlock';
-import SuggestionCard from '@/components/SuggedtionCard/SuggestionCard';
 import UserHeader from '@/components/UserHeader/UserHeader';
 import UserTabs from '@/components/UserTabs';
 import CreatePostBox from '@/components/CreatePostBox/CreatePostBox';
@@ -45,7 +44,6 @@ const HomeScreen: FC<Props> = ({ isOwn = true }) => {
             <PortfolioCard />
             <ActivityCard />
             <ProductsCard />
-            <SuggestionCard />
           </div>
         </div>
       </div>
