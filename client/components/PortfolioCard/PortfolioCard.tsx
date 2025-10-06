@@ -111,8 +111,8 @@ const PortfolioCard: FC<PortfolioCardProps> = ({
           className="group flex items-center gap-1 rounded-full px-2 py-1 text-[15px] font-bold leading-normal text-[#A06AFF] transition hover:text-white"
         >
           Show all
-          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#A06AFF]/10 transition group-hover:bg-[#A06AFF]/30">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#A06AFF]/10 transition group-hover:bg-[#A06AFF]/30">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M10.7402 15.53L14.2602 12L10.7402 8.46997" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </span>
