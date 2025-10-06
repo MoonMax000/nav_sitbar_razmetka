@@ -30,7 +30,7 @@ const HomeScreen: FC<Props> = ({ isOwn = true }) => {
           <UserMarketsCard />
         </div>
         <div className="grid min-w-0 grid-cols-1 items-start gap-6 xl:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
-          <div className="flex min-w-0 flex-col gap-6">
+          <div className="flex min-w-0 flex-col gap-6 self-start">
             <SubscribeBlock isOwn={isOwn} />
             <CreatePostBox />
             <UserTabs isOwn={isOwn} />
@@ -40,7 +40,7 @@ const HomeScreen: FC<Props> = ({ isOwn = true }) => {
               onChange={handlePageChange}
             />
           </div>
-          <div className="flex min-w-0 flex-col gap-6">
+          <div className="flex min-w-0 flex-col gap-6 self-start">
             <PortfolioCard />
             <ActivityCard />
             <ProductsCard />
