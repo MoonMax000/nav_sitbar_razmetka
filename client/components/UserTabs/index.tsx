@@ -211,7 +211,7 @@ const UserTabs: FC<Props> = ({ isOwn = true, viewMode = 'normal' }) => {
         <div className="relative -mx-4 px-4">
           {activePosts.length > 0 ? (
             <div
-              className="flex gap-3 overflow-x-auto pb-4"
+              className="compact-posts-scroll flex gap-3 overflow-x-auto pb-4"
               style={{
                 scrollbarWidth: 'thin',
                 scrollbarColor: '#2F3240 transparent',
