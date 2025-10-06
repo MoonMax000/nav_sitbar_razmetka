@@ -19,7 +19,7 @@ interface Props {
   viewMode?: ViewMode;
 }
 
-const UserTabs: FC<Props> = ({ isOwn = true }) => {
+const UserTabs: FC<Props> = ({ isOwn = true, viewMode = 'normal' }) => {
   const [activeTab, setActiveTab] = useState<TabId>('ideas');
   const { toast } = useToast();
 
