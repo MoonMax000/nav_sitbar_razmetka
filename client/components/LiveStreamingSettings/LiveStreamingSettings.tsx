@@ -249,6 +249,21 @@ const streamsData = [
 const LiveStreamingSettings: FC = () => {
   const [activeTab, setActiveTab] = useState<StreamingTab>('profile');
   const [currentPage, setCurrentPage] = useState(1);
+  const [notificationSettings, setNotificationSettings] = useState({
+    streamGoingLive: true,
+    replayOfPastStreams: true,
+    mentionsInChat: true,
+    newFollower: true,
+    recommendedStreams: true,
+    subscriptions: true,
+  });
+
+  const toggleNotification = (key: keyof typeof notificationSettings) => {
+    setNotificationSettings((prev) => ({
+      ...prev,
+      [key]: !prev[key],
+    }));
+  };
 
   return (
     <div className="flex flex-col gap-6">
