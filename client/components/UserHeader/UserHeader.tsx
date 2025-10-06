@@ -23,7 +23,7 @@ const UserHeader: FC<Props> = ({ isOwn = true, className }) => {
       <div className="relative -mt-16 sm:-mt-20 px-4 sm:px-0">
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
           {/* Column 1: Avatar + Name + Username */}
-          <div className="flex flex-col sm:flex-row gap-4 sm:items-end">
+          <div className="flex flex-col sm:flex-row gap-4 sm:items-end sm:mr-12">
             {/* Avatar */}
             <div className="relative z-10">
               <img
@@ -34,7 +34,7 @@ const UserHeader: FC<Props> = ({ isOwn = true, className }) => {
             </div>
 
             {/* Name and Username */}
-            <div className="flex flex-col gap-2 pb-2 pr-6">
+            <div className="flex flex-col gap-2 pb-2">
               <div className="flex items-center gap-1">
                 <h1 className="text-2xl font-bold text-white leading-none">Jane Doe</h1>
                 <svg width="24" height="25" viewBox="0 0 24 25" fill="none">
