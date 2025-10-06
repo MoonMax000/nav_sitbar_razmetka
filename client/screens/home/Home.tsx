@@ -33,7 +33,7 @@ const HomeScreen: FC<Props> = ({ isOwn = true }) => {
           <UserTabs isOwn={isOwn} />
           <Pagination totalPages={4} currentPage={1} onChange={handlePageChange} />
         </div>
-        <div className="flex min-w-0 flex-col gap-6 xl:-mt-32">
+        <div className="flex min-w-0 flex-col gap-6">
           <UserMarketsCard />
           <PortfolioCard />
           <ActivityCard />
