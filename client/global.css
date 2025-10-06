@@ -119,6 +119,7 @@ textarea::-webkit-scrollbar-track {
 
 .scrollbar::-webkit-scrollbar {
   width: 6px;
+  height: 6px;
 }
 
 .scrollbar::-webkit-scrollbar-thumb {
@@ -131,6 +132,24 @@ textarea::-webkit-scrollbar-track {
 }
 
 .scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Horizontal scrollbar for compact posts */
+.compact-posts-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.compact-posts-scroll::-webkit-scrollbar-thumb {
+  background: #2F3240;
+  border-radius: 4px;
+}
+
+.compact-posts-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(160, 106, 255, 0.3);
+}
+
+.compact-posts-scroll::-webkit-scrollbar-track {
   background: transparent;
 }
 
