@@ -196,8 +196,11 @@ const CreatePostBox: FC = () => {
         </div>
 
         {/* Post button */}
-        <button className="flex h-[26px] w-[70px] items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#A06AFF] to-[#482090] px-2 py-1.5 hover:opacity-90 transition-opacity">
-          <span className="text-center text-xs font-bold leading-normal text-white">Post</span>
+        <button
+          type="button"
+          className="inline-flex h-10 min-w-[92px] items-center justify-center gap-2 rounded-full border border-transparent bg-gradient-to-r from-[#A06AFF] to-[#482090] px-4 text-sm font-semibold text-white transition-all duration-200 hover:shadow-[0_12px_30px_-18px_rgba(160,106,255,0.8)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF]/60 focus-visible:ring-offset-0"
+        >
+          Post
         </button>
       </div>
     </div>
