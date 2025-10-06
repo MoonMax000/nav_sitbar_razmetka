@@ -64,6 +64,89 @@ const streamingTabs = [
   },
 ];
 
+const donationsData = [
+  {
+    id: 1,
+    userName: 'Maxim Class',
+    userAvatar: 'https://api.builder.io/api/v1/image/assets/TEMP/andrew-milko-LspK43UdFo4-unsplash',
+    date: '06.06.25',
+    amount: '$1,200.00',
+    status: 'Completed',
+  },
+  {
+    id: 2,
+    userName: 'Maxim Class',
+    userAvatar: 'https://api.builder.io/api/v1/image/assets/TEMP/andrew-milko-LspK43UdFo4-unsplash',
+    date: '05.06.25',
+    amount: '$1,200.00',
+    status: 'Completed',
+  },
+  {
+    id: 3,
+    userName: 'Maxim Class',
+    userAvatar: 'https://api.builder.io/api/v1/image/assets/TEMP/andrew-milko-LspK43UdFo4-unsplash',
+    date: '04.06.25',
+    amount: '$1,200.00',
+    status: 'Completed',
+  },
+  {
+    id: 4,
+    userName: 'Maxim Class',
+    userAvatar: 'https://api.builder.io/api/v1/image/assets/TEMP/andrew-milko-LspK43UdFo4-unsplash',
+    date: '03.06.25',
+    amount: '$1,200.00',
+    status: 'Completed',
+  },
+  {
+    id: 5,
+    userName: 'Maxim Class',
+    userAvatar: 'https://api.builder.io/api/v1/image/assets/TEMP/andrew-milko-LspK43UdFo4-unsplash',
+    date: '02.06.25',
+    amount: '$1,200.00',
+    status: 'Completed',
+  },
+  {
+    id: 6,
+    userName: 'Maxim Class',
+    userAvatar: 'https://api.builder.io/api/v1/image/assets/TEMP/andrew-milko-LspK43UdFo4-unsplash',
+    date: '01.06.25',
+    amount: '$1,200.00',
+    status: 'Completed',
+  },
+  {
+    id: 7,
+    userName: 'Maxim Class',
+    userAvatar: 'https://api.builder.io/api/v1/image/assets/TEMP/andrew-milko-LspK43UdFo4-unsplash',
+    date: '31.05.25',
+    amount: '$1,200.00',
+    status: 'Completed',
+  },
+  {
+    id: 8,
+    userName: 'Maxim Class',
+    userAvatar: 'https://api.builder.io/api/v1/image/assets/TEMP/andrew-milko-LspK43UdFo4-unsplash',
+    date: '30.05.25',
+    amount: '$1,200.00',
+    status: 'Completed',
+  },
+  {
+    id: 9,
+    userName: 'Maxim Class',
+    userAvatar: 'https://api.builder.io/api/v1/image/assets/TEMP/andrew-milko-LspK43UdFo4-unsplash',
+    date: '29.05.25',
+    amount: '$1,200.00',
+    status: 'Completed',
+  },
+  {
+    id: 10,
+    userName: 'Maxim Class',
+    userAvatar: 'https://api.builder.io/api/v1/image/assets/TEMP/andrew-milko-LspK43UdFo4-unsplash',
+    date: '28.05.25',
+    amount: '$1,200.00',
+    status: 'Completed',
+  },
+];
+
 const streamsData = [
   {
     id: 1,
