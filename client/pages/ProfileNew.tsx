@@ -1,11 +1,10 @@
-import { FC, useState, useRef, useEffect } from "react";
+import { FC, useState } from "react";
 import UserHeader from "@/components/UserHeader/UserHeader";
 import NotificationsSettings from "@/components/NotificationsSettings/NotificationsSettings";
 import BillingSettings from "@/components/BillingSettings/BillingSettings";
 import ReferralsSettings from "@/components/ReferralsSettings/ReferralsSettings";
 import KycSettings from "@/components/KycSettings/KycSettings";
 import LiveStreamingSettings from "@/components/LiveStreamingSettings/LiveStreamingSettings";
-import SocialNetworkMenu from "@/components/SocialNetworkMenu/SocialNetworkMenu";
 import { cn } from "@/lib/utils";
 
 type Tab =
@@ -23,6 +22,13 @@ type ProfileSubTab =
   | "referrals"
   | "api"
   | "kyc";
+
+type SocialSubTab =
+  | "overview"
+  | "posts"
+  | "channels"
+  | "chats"
+  | "monetization";
 
 const tabs = [
   {
@@ -393,12 +399,69 @@ const profileSubTabs = [
   },
 ];
 
+const socialSubTabs = [
+  {
+    id: "overview" as SocialSubTab,
+    label: "Overview",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 21 20" fill="none">
+        <path d="M9.25 7.29167V5.625C9.25 4.25522 9.25 3.57032 8.87167 3.10934C8.80242 3.02496 8.72504 2.94757 8.64066 2.87832C8.17968 2.5 7.49478 2.5 6.125 2.5C4.75522 2.5 4.07032 2.5 3.60934 2.87832C3.52496 2.94757 3.44757 3.02496 3.37832 3.10934C3 3.57032 3 4.25522 3 5.625V7.29167C3 8.66142 3 9.34633 3.37832 9.80733C3.44757 9.89175 3.52496 9.96908 3.60934 10.0383C4.07032 10.4167 4.75522 10.4167 6.125 10.4167C7.49478 10.4167 8.17968 10.4167 8.64066 10.0383C8.72504 9.96908 8.80242 9.89175 8.87167 9.80733C9.25 9.34633 9.25 8.66142 9.25 7.29167Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+        <path d="M6.95833 12.917H5.29167C4.71018 12.917 4.41944 12.917 4.18286 12.9887C3.65019 13.1503 3.23335 13.5672 3.07177 14.0998C3 14.3364 3 14.6272 3 15.2087C3 15.7902 3 16.0809 3.07177 16.3175C3.23335 16.8502 3.65019 17.267 4.18286 17.4286C4.41944 17.5003 4.71018 17.5003 5.29167 17.5003H6.95833C7.53982 17.5003 7.83056 17.5003 8.06714 17.4286C8.59981 17.267 9.01667 16.8502 9.17825 16.3175C9.25 16.0809 9.25 15.7902 9.25 15.2087C9.25 14.6272 9.25 14.3364 9.17825 14.0998C9.01667 13.5672 8.59981 13.1503 8.06714 12.9887C7.83056 12.917 7.53982 12.917 6.95833 12.917Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+        <path d="M18 14.3747V12.708C18 11.3383 18 10.6533 17.6217 10.1923C17.5524 10.1079 17.4751 10.0306 17.3907 9.96134C16.9297 9.58301 16.2447 9.58301 14.875 9.58301C13.5052 9.58301 12.8203 9.58301 12.3593 9.96134C12.2749 10.0306 12.1976 10.1079 12.1283 10.1923C11.75 10.6533 11.75 11.3383 11.75 12.708V14.3747C11.75 15.7444 11.75 16.4293 12.1283 16.8903C12.1976 16.9748 12.2749 17.0521 12.3593 17.1213C12.8203 17.4997 13.5052 17.4997 14.875 17.4997C16.2447 17.4997 16.9297 17.4997 17.3907 17.1213C17.4751 17.0521 17.5524 16.9748 17.6217 16.8903C18 16.4293 18 15.7444 18 14.3747Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+        <path d="M15.7083 2.5H14.0417C13.4602 2.5 13.1694 2.5 12.9328 2.57177C12.4002 2.73335 11.9833 3.15019 11.8217 3.68286C11.75 3.91944 11.75 4.21018 11.75 4.79167C11.75 5.37315 11.75 5.66389 11.8217 5.90048C11.9833 6.43314 12.4002 6.84998 12.9328 7.01157C13.1694 7.08333 13.4602 7.08333 14.0417 7.08333H15.7083C16.2898 7.08333 16.5806 7.08333 16.8172 7.01157C17.3498 6.84998 17.7667 6.43314 17.9283 5.90048C18 5.66389 18 5.37315 18 4.79167C18 4.21018 18 3.91944 17.9283 3.68286C17.7667 3.15019 17.3498 2.73335 16.8172 2.57177C16.5806 2.5 16.2898 2.5 15.7083 2.5Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+      </svg>
+    ),
+  },
+  {
+    id: "posts" as SocialSubTab,
+    label: "My Posts",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 21 20" fill="none">
+        <path d="M16.9596 9.16699V8.33366C16.9596 5.19096 16.9596 3.61962 15.9833 2.6433C15.0069 1.66699 13.4356 1.66699 10.2929 1.66699H9.45969C6.31699 1.66699 4.74565 1.66699 3.76934 2.64329C2.79304 3.61959 2.79302 5.19093 2.79299 8.3336L2.79297 11.667C2.79294 14.8097 2.79293 16.381 3.7692 17.3573C4.74551 18.3336 6.31691 18.3337 9.4596 18.3337" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M6.54297 5.83301H13.2096M6.54297 9.99967H13.2096" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+        <path d="M11.543 17.356V18.3337H12.5208C12.862 18.3337 13.0326 18.3337 13.1859 18.2702C13.3393 18.2066 13.4599 18.086 13.7011 17.8448L17.7208 13.8248C17.9483 13.5973 18.0621 13.4836 18.1229 13.3609C18.2386 13.1274 18.2386 12.8533 18.1229 12.6198C18.0621 12.4971 17.9483 12.3833 17.7208 12.1558C17.4932 11.9283 17.3795 11.8146 17.2567 11.7537C17.0232 11.6381 16.7491 11.6381 16.5156 11.7537C16.3929 11.8146 16.2791 11.9283 16.0516 12.1558L12.0319 16.1758C11.7906 16.417 11.6701 16.5376 11.6066 16.6909C11.543 16.8443 11.543 17.0148 11.543 17.356Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+      </svg>
+    ),
+  },
+  {
+    id: "channels" as SocialSubTab,
+    label: "My Channels",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 21 20" fill="none">
+        <path d="M12.9386 3.67618L7.3946 6.33742C6.96793 6.54223 6.51203 6.59355 6.04729 6.48943C5.74314 6.4213 5.59105 6.38723 5.46858 6.37325C3.94786 6.19959 3 7.40318 3 8.78724V9.54674C3 10.9308 3.94786 12.1344 5.46858 11.9607C5.59105 11.9467 5.74315 11.9127 6.04729 11.8446C6.51203 11.7404 6.96793 11.7917 7.3946 11.9966L12.9386 14.6578C14.2112 15.2687 14.8475 15.5742 15.557 15.3361C16.2664 15.098 16.5099 14.5871 16.997 13.5653C18.3343 10.7597 18.3343 7.57437 16.997 4.76862C16.5099 3.74687 16.2664 3.236 15.557 2.99791C14.8475 2.75982 14.2112 3.06527 12.9386 3.67618Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M11.332 14.1663V14.583C11.332 15.6531 11.332 16.1881 11.1454 16.4902C10.8964 16.8929 10.4414 17.1205 9.96978 17.0779C9.61611 17.0461 9.18811 16.725 8.33203 16.083L7.33203 15.333C6.51747 14.7221 6.33203 14.3512 6.33203 13.333V12.083" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M6.75 11.667V6.66699" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    ),
+  },
+  {
+    id: "chats" as SocialSubTab,
+    label: "My Chats",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 21 20" fill="none">
+        <path d="M17.168 7.50033C16.5053 4.17912 13.4286 1.66699 9.73405 1.66699C5.55588 1.66699 2.16797 4.87967 2.16797 8.84199C2.16797 10.7458 2.94979 12.4757 4.22509 13.7593C4.50588 14.042 4.69334 14.4282 4.61769 14.8256C4.49282 15.4754 4.20985 16.0816 3.79551 16.5867C4.88566 16.7877 6.01919 16.6067 6.99131 16.0942C7.33496 15.9132 7.50678 15.8226 7.62803 15.8042C7.7129 15.7913 7.82346 15.8033 8.0013 15.8338" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M9.66797 13.5517C9.66797 15.9732 11.7203 17.9365 14.2513 17.9365C14.5489 17.9368 14.8456 17.9093 15.138 17.8545C15.3484 17.8149 15.4536 17.7952 15.5271 17.8064C15.6005 17.8176 15.7046 17.873 15.9128 17.9837C16.5016 18.2968 17.1883 18.4074 17.8487 18.2846C17.5977 17.9759 17.4263 17.6055 17.3506 17.2083C17.3048 16.9655 17.4184 16.7295 17.5885 16.5567C18.3611 15.7722 18.8346 14.7152 18.8346 13.5517C18.8346 11.1303 16.7823 9.16699 14.2513 9.16699C11.7203 9.16699 9.66797 11.1303 9.66797 13.5517Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+      </svg>
+    ),
+  },
+  {
+    id: "monetization" as SocialSubTab,
+    label: "Monetization",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 21 20" fill="none">
+        <path d="M3 3.33301V11.6663C3 14.0233 3 15.2018 3.73223 15.9341C4.46447 16.6663 5.64297 16.6663 8 16.6663H18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M5.5 11.6663L8.20833 8.95801C8.74504 8.42126 9.01342 8.15294 9.32725 8.06439C9.54925 8.00179 9.78408 8.00179 10.0061 8.06439C10.3199 8.15294 10.5883 8.42126 11.125 8.95801C11.6618 9.49476 11.9301 9.76309 12.2439 9.85159C12.4659 9.91426 12.7008 9.91426 12.9228 9.85159C13.2366 9.76309 13.5049 9.49476 14.0417 8.95801L17.1667 5.83301" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    ),
+  },
+];
+
 const ProfileNew: FC = () => {
   const [activeTab, setActiveTab] = useState<Tab>("dashboard");
   const [activeProfileSubTab, setActiveProfileSubTab] =
     useState<ProfileSubTab>("profile");
-  const [isSocialMenuOpen, setIsSocialMenuOpen] = useState(false);
-  const socialButtonRef = useRef<HTMLButtonElement>(null);
+  const [activeSocialSubTab, setActiveSocialSubTab] =
+    useState<SocialSubTab>("overview");
 
   return (
     <div className="flex flex-col gap-6">
@@ -409,38 +472,23 @@ const ProfileNew: FC = () => {
       <div className="flex flex-col items-center gap-4">
         <div className="inline-flex flex-wrap items-center justify-center gap-2 md:gap-3 p-1 rounded-[36px] border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px]">
           {tabs.map((tab) => (
-            <div key={tab.id} className={tab.id === 'social' ? 'relative' : ''}>
-              <button
-                ref={tab.id === 'social' ? socialButtonRef : null}
-                onClick={() => {
-                  if (tab.id === 'social') {
-                    setIsSocialMenuOpen(!isSocialMenuOpen);
-                  } else {
-                    setActiveTab(tab.id);
-                    setIsSocialMenuOpen(false);
-                  }
-                }}
-                className={cn(
-                  "flex items-center gap-2 px-3 md:px-4 py-2.5 md:py-3 rounded-[32px] text-xs md:text-sm font-bold transition-all whitespace-nowrap",
-                  activeTab === tab.id
-                    ? "bg-gradient-to-r from-primary to-[#482090] text-white backdrop-blur-[58.33px]"
-                    : "border border-[#181B22] bg-[rgba(12,16,20,0.5)] text-webGray hover:text-white backdrop-blur-[58.33px]",
-                )}
-              >
-                <span
-                  className={activeTab === tab.id ? "text-white" : "text-webGray"}
-                >
-                  {tab.icon}
-                </span>
-                {tab.label}
-              </button>
-              {tab.id === 'social' && (
-                <SocialNetworkMenu
-                  isOpen={isSocialMenuOpen}
-                  onClose={() => setIsSocialMenuOpen(false)}
-                />
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={cn(
+                "flex items-center gap-2 px-3 md:px-4 py-2.5 md:py-3 rounded-[32px] text-xs md:text-sm font-bold transition-all whitespace-nowrap",
+                activeTab === tab.id
+                  ? "bg-gradient-to-r from-primary to-[#482090] text-white backdrop-blur-[58.33px]"
+                  : "border border-[#181B22] bg-[rgba(12,16,20,0.5)] text-webGray hover:text-white backdrop-blur-[58.33px]",
               )}
-            </div>
+            >
+              <span
+                className={activeTab === tab.id ? "text-white" : "text-webGray"}
+              >
+                {tab.icon}
+              </span>
+              {tab.label}
+            </button>
           ))}
         </div>
 
@@ -461,6 +509,35 @@ const ProfileNew: FC = () => {
                 <span
                   className={
                     activeProfileSubTab === subTab.id
+                      ? "text-white"
+                      : "text-webGray"
+                  }
+                >
+                  {subTab.icon}
+                </span>
+                {subTab.label}
+              </button>
+            ))}
+          </div>
+        )}
+
+        {/* Social Network Sub-Navigation */}
+        {activeTab === "social" && (
+          <div className="inline-flex flex-wrap items-center justify-center gap-2 p-1 rounded-[36px] border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px]">
+            {socialSubTabs.map((subTab) => (
+              <button
+                key={subTab.id}
+                onClick={() => setActiveSocialSubTab(subTab.id)}
+                className={cn(
+                  "flex items-center gap-2 px-3 md:px-4 py-2 md:py-2.5 rounded-[32px] text-xs md:text-sm font-bold transition-all whitespace-nowrap",
+                  activeSocialSubTab === subTab.id
+                    ? "bg-gradient-to-r from-primary to-[#482090] text-white backdrop-blur-[58.33px]"
+                    : "border border-[#181B22] bg-[rgba(12,16,20,0.5)] text-webGray hover:text-white backdrop-blur-[58.33px]",
+                )}
+              >
+                <span
+                  className={
+                    activeSocialSubTab === subTab.id
                       ? "text-white"
                       : "text-webGray"
                   }
