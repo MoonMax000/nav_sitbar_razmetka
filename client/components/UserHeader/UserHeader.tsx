@@ -43,9 +43,10 @@ const UserHeader: FC<Props> = ({ isOwn = true, className }) => {
 
       {/* User info section */}
       <div className="px-4 sm:px-0 sm:ml-4">
-        <div className="flex flex-col sm:flex-row sm:items-end gap-4 sm:gap-6">
-          {/* Name and username */}
-          <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2">
+          {/* Name row with badges */}
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+            {/* Name and verification */}
             <div className="flex items-center gap-1">
               <h1 className="text-2xl font-bold text-white leading-none">Jane Doe</h1>
               <svg width="24" height="25" viewBox="0 0 24 25" fill="none">
@@ -59,11 +60,7 @@ const UserHeader: FC<Props> = ({ isOwn = true, className }) => {
                 </defs>
               </svg>
             </div>
-            <span className="text-[15px] font-normal text-white">@beautydoe</span>
-          </div>
 
-          {/* Badges */}
-          <div className="flex items-center gap-4 pb-[2px]">
             {/* Tier badge */}
             <div className="inline-flex items-center justify-center gap-1">
               <span className="text-xs font-bold uppercase text-white">Tier</span>
@@ -98,6 +95,9 @@ const UserHeader: FC<Props> = ({ isOwn = true, className }) => {
               </div>
             </div>
           </div>
+
+          {/* Username row */}
+          <span className="text-[15px] font-normal text-white">@beautydoe</span>
         </div>
       </div>
     </div>
