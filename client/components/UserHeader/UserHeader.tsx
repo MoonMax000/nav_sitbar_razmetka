@@ -32,7 +32,7 @@ const UserHeader: FC<Props> = ({ isOwn = true, className }) => {
         <div className="absolute left-4 top-4 flex items-start gap-4">
           {/* Profile picture */}
           <img
-            src="https://api.builder.io/api/v1/image/assets/TEMP/13711f466d1ece66a83ba5d58f56463bb7f6f8b1?width=320"
+            src="https://api.builder.io/api/v1/image/assets%2F7ee0e08331ad4de59dd7fa404556ca59%2F18a068f999d64b54b143e3afad1942e8?format=webp&width=320"
             alt="Profile"
             className="h-40 w-40 flex-shrink-0 rounded-2xl border-[3px] border-[#523A83] shadow-[0_6.711px_11.409px_-1.342px_rgba(0,0,0,0.28)]"
           />
