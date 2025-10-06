@@ -82,34 +82,50 @@ const CreatePostBox: FC = () => {
           {/* Sentiment buttons */}
           <div className="flex items-center justify-center gap-2">
             <button
+              type="button"
               onClick={() => setSentiment('bullish')}
-              className={`flex h-[26px] items-center gap-1 rounded-lg px-2 py-1.5 transition-all ${
+              aria-pressed={sentiment === 'bullish'}
+              className={`group inline-flex h-9 items-center gap-1 rounded-full border border-transparent px-3 py-1.5 text-xs font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF]/50 ${
                 sentiment === 'bullish'
-                  ? 'bg-gradient-to-r from-[#A06AFF] to-[#482090]'
-                  : 'bg-transparent'
+                  ? 'bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white shadow-[0_12px_30px_-18px_rgba(160,106,255,0.8)]'
+                  : 'bg-[#A06AFF]/10 text-[#E3D8FF] hover:border-[#A06AFF] hover:bg-[#A06AFF]/20 hover:text-white'
               }`}
             >
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M13.3333 8.66671V5.33337H10" stroke="#2EBD85" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M13.3337 5.33337L10.0003 8.66671C9.41193 9.25511 9.11779 9.54924 8.75673 9.58177C8.69699 9.58717 8.63699 9.58717 8.57726 9.58177C8.21619 9.54924 7.92206 9.25511 7.33366 8.66671C6.74526 8.07831 6.45109 7.78417 6.09004 7.75164C6.03035 7.74624 5.9703 7.74624 5.91061 7.75164C5.54956 7.78417 5.25537 8.07831 4.66699 8.66671L2.66699 10.6667" stroke="#2EBD85" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                className="transition-transform duration-200 group-hover:-translate-y-0.5"
+              >
+                <path d="M13.3333 8.66671V5.33337H10" stroke="#2EBD85" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M13.3337 5.33337L10.0003 8.66671C9.41193 9.25511 9.11779 9.54924 8.75673 9.58177C8.69699 9.58717 8.63699 9.58717 8.57726 9.58177C8.21619 9.54924 7.92206 9.25511 7.33366 8.66671C6.74526 8.07831 6.45109 7.78417 6.09004 7.75164C6.03035 7.74624 5.9703 7.74624 5.91061 7.75164C5.54956 7.78417 5.25537 8.07831 4.66699 8.66671L2.66699 10.6667" stroke="#2EBD85" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-              <span className="text-center text-xs font-bold leading-normal text-white">Bullish</span>
+              <span className="text-center text-xs font-semibold leading-normal">Bullish</span>
             </button>
-            
-            <div className="h-5 w-px bg-[#181B22]" />
-            
+
+            <div className="h-6 w-px bg-[#2F3240]" />
+
             <button
+              type="button"
               onClick={() => setSentiment('bearish')}
-              className={`flex h-[26px] items-center gap-1 rounded-lg px-2 py-1.5 transition-all ${
+              aria-pressed={sentiment === 'bearish'}
+              className={`group inline-flex h-9 items-center gap-1 rounded-full border border-transparent px-3 py-1.5 text-xs font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF]/50 ${
                 sentiment === 'bearish'
-                  ? 'bg-gradient-to-r from-[#A06AFF] to-[#482090]'
-                  : 'bg-transparent'
+                  ? 'bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white shadow-[0_12px_30px_-18px_rgba(160,106,255,0.8)]'
+                  : 'bg-[#A06AFF]/10 text-[#E3D8FF] hover:border-[#A06AFF] hover:bg-[#A06AFF]/20 hover:text-white'
               }`}
             >
-              <span className="text-center text-xs font-bold leading-normal text-white">Bearish</span>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M13.3333 7.33337V10.6667H10" stroke="#EF454A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M13.3337 10.6667L10.0003 7.33337C9.41193 6.74497 9.11779 6.45081 8.75673 6.41829C8.69699 6.41291 8.63699 6.41291 8.57726 6.41829C8.21619 6.45081 7.92206 6.74497 7.33366 7.33337C6.74526 7.92177 6.45109 8.21591 6.09004 8.24844C6.03035 8.25384 5.9703 8.25384 5.91061 8.24844C5.54956 8.21591 5.25537 7.92177 4.66699 7.33337L2.66699 5.33337" stroke="#EF454A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <span className="text-center text-xs font-semibold leading-normal">Bearish</span>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                className="transition-transform duration-200 group-hover:translate-y-0.5"
+              >
+                <path d="M13.3333 7.33337V10.6667H10" stroke="#EF454A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M13.3337 10.6667L10.0003 7.33337C9.41193 6.74497 9.11779 6.45081 8.75673 6.41829C8.69699 6.41291 8.63699 6.41291 8.57726 6.41829C8.21619 6.45081 7.92206 6.74497 7.33366 7.33337C6.74526 7.92177 6.45109 8.21591 6.09004 8.24844C6.03035 8.25384 5.9703 8.25384 5.91061 8.24844C5.54956 8.21591 5.25537 7.92177 4.66699 7.33337L2.66699 5.33337" stroke="#EF454A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
           </div>
