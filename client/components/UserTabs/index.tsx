@@ -207,13 +207,27 @@ const UserTabs: FC<Props> = ({ isOwn = true, viewMode = 'normal' }) => {
         ))}
       </div>
 
-      <div className="flex flex-col gap-6">
-        {activePosts.length > 0
-          ? activePosts.map((post, index) => (
-              <PostCard key={`${activeTab}-${index}-${post.title}`} {...post} />
-            ))
-          : renderEmptyState(activeTab)}
-      </div>
+      {viewMode === 'compact' ? (
+        <div className="relative -mx-4 px-4">
+          {activePosts.length > 0 ? (
+            <div className="flex gap-3 overflow-x-auto pb-4 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-[#2F3240] hover:scrollbar-thumb-[#A06AFF]/30">
+              {activePosts.map((post, index) => (
+                <CompactPostCard key={`${activeTab}-compact-${index}-${post.title}`} {...post} />
+              ))}
+            </div>
+          ) : (
+            renderEmptyState(activeTab)
+          )}
+        </div>
+      ) : (
+        <div className="flex flex-col gap-6">
+          {activePosts.length > 0
+            ? activePosts.map((post, index) => (
+                <PostCard key={`${activeTab}-${index}-${post.title}`} {...post} />
+              ))
+            : renderEmptyState(activeTab)}
+        </div>
+      )}
     </div>
   );
 };
