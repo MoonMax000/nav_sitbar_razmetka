@@ -210,7 +210,13 @@ const UserTabs: FC<Props> = ({ isOwn = true, viewMode = 'normal' }) => {
       {viewMode === 'compact' ? (
         <div className="relative -mx-4 px-4">
           {activePosts.length > 0 ? (
-            <div className="flex gap-3 overflow-x-auto pb-4 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-[#2F3240] hover:scrollbar-thumb-[#A06AFF]/30">
+            <div
+              className="flex gap-3 overflow-x-auto pb-4"
+              style={{
+                scrollbarWidth: 'thin',
+                scrollbarColor: '#2F3240 transparent',
+              }}
+            >
               {activePosts.map((post, index) => (
                 <CompactPostCard key={`${activeTab}-compact-${index}-${post.title}`} {...post} />
               ))}
