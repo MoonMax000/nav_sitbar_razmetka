@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 const UserInfoCards: FC = () => {
   return (
-    <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+    <div className="flex w-full flex-col gap-4 sm:flex-row sm:flex-wrap">
       <div className="flex items-center gap-2 rounded-2xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] px-4 py-[18px] shadow-[0_4px_8px_0_rgba(0,0,0,0.24)] backdrop-blur-[50px] sm:min-w-[240px]">
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
           <path d="M16.6666 18.3335V14.1668C16.6666 12.5955 16.6666 11.8098 16.1784 11.3217C15.6903 10.8335 14.9046 10.8335 13.3333 10.8335L9.99992 18.3335L6.66659 10.8335C5.09524 10.8335 4.30956 10.8335 3.82141 11.3217C3.33325 11.8098 3.33325 12.5955 3.33325 14.1668V18.3335" stroke="#B0B0B0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
