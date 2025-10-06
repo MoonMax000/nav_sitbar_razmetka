@@ -23,15 +23,15 @@ const HomeScreen: FC<Props> = ({ isOwn = true }) => {
   };
 
   return (
-    <div id="root-content" className="flex flex-col gap-6">
+    <div id="root-content" className="flex min-w-0 flex-col gap-6">
       <UserHeader isOwn={isOwn} />
-      <div className="flex flex-col gap-4">
-        <div className="grid grid-cols-1 gap-4 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
+      <div className="flex min-w-0 flex-col gap-4">
+        <div className="grid min-w-0 grid-cols-1 gap-4 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
           <UserInfoCards />
           <UserMarketsCard />
         </div>
-        <div className="grid grid-cols-1 gap-6 xl:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
-          <div className="flex flex-col gap-6">
+        <div className="grid min-w-0 grid-cols-1 gap-6 xl:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
+          <div className="flex min-w-0 flex-col gap-6">
             <SubscribeBlock isOwn={isOwn} />
             <CreatePostBox />
             <UserTabs isOwn={isOwn} />
@@ -41,7 +41,7 @@ const HomeScreen: FC<Props> = ({ isOwn = true }) => {
               onChange={handlePageChange}
             />
           </div>
-          <div className="flex flex-col gap-6">
+          <div className="flex min-w-0 flex-col gap-6">
             <PortfolioCard />
             <ActivityCard />
             <ProductsCard />
