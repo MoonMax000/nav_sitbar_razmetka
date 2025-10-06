@@ -42,9 +42,8 @@ const UserHeader: FC<Props> = ({ isOwn = true, className }) => {
       </div>
 
       {/* User info section */}
-      <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 px-4 sm:px-0">
-        {/* Left side - User details */}
-        <div className="flex flex-col gap-2 ml-0 sm:ml-44">
+      <div className="px-4 sm:px-0">
+        <div className="flex flex-col gap-3 ml-0 sm:ml-44">
           {/* Name and verification badge */}
           <div className="flex flex-col gap-0">
             <div className="flex items-center gap-1">
@@ -62,41 +61,40 @@ const UserHeader: FC<Props> = ({ isOwn = true, className }) => {
             </div>
             <span className="text-[15px] font-normal text-white">@beautydoe</span>
           </div>
-        </div>
 
-        {/* Right side - Badges */}
-        <div className="flex items-center gap-4 ml-0 sm:ml-0">
-          {/* Tier badge */}
-          <div className="inline-flex items-center justify-center gap-1">
-            <span className="text-xs font-bold uppercase text-white">Tier</span>
-            <div className="relative w-[18px] h-5">
-              <svg width="18" height="20" viewBox="0 0 18 20" fill="none">
-                <path d="M18 9.1833V6.28029C18 4.64029 18 3.82028 17.5959 3.28529C17.1918 2.75029 16.2781 2.49056 14.4507 1.9711C13.2022 1.6162 12.1016 1.18863 11.2223 0.79829C10.0234 0.2661 9.424 0 9 0C8.576 0 7.9766 0.2661 6.77771 0.79829C5.89839 1.18863 4.79784 1.61619 3.54933 1.9711C1.72193 2.49056 0.80822 2.75029 0.40411 3.28529C-5.96046e-08 3.82028 0 4.64029 0 6.28029V9.1833C0 14.8085 5.06277 18.1835 7.594 19.5194C8.2011 19.8398 8.5046 20 9 20C9.4954 20 9.7989 19.8398 10.406 19.5194C12.9372 18.1835 18 14.8085 18 9.1833Z" fill="url(#paint0_linear_6_1710)"/>
-                <defs>
-                  <linearGradient id="paint0_linear_6_1710" x1="18" y1="10" x2="0" y2="10" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#A06AFF"/>
-                    <stop offset="1" stopColor="#482090"/>
-                  </linearGradient>
-                </defs>
-              </svg>
-              <span className="absolute left-[5px] top-[2px] text-xs font-bold uppercase text-white">4</span>
+          <div className="flex items-center gap-4">
+            {/* Tier badge */}
+            <div className="inline-flex items-center justify-center gap-1">
+              <span className="text-xs font-bold uppercase text-white">Tier</span>
+              <div className="relative w-[18px] h-5">
+                <svg width="18" height="20" viewBox="0 0 18 20" fill="none">
+                  <path d="M18 9.1833V6.28029C18 4.64029 18 3.82028 17.5959 3.28529C17.1918 2.75029 16.2781 2.49056 14.4507 1.9711C13.2022 1.6162 12.1016 1.18863 11.2223 0.79829C10.0234 0.2661 9.424 0 9 0C8.576 0 7.9766 0.2661 6.77771 0.79829C5.89839 1.18863 4.79784 1.61619 3.54933 1.9711C1.72193 2.49056 0.80822 2.75029 0.40411 3.28529C-5.96046e-08 3.82028 0 4.64029 0 6.28029V9.1833C0 14.8085 5.06277 18.1835 7.594 19.5194C8.2011 19.8398 8.5046 20 9 20C9.4954 20 9.7989 19.8398 10.406 19.5194C12.9372 18.1835 18 14.8085 18 9.1833Z" fill="url(#paint0_linear_6_1710)"/>
+                  <defs>
+                    <linearGradient id="paint0_linear_6_1710" x1="18" y1="10" x2="0" y2="10" gradientUnits="userSpaceOnUse">
+                      <stop stopColor="#A06AFF"/>
+                      <stop offset="1" stopColor="#482090"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+                <span className="absolute left-[5px] top-[2px] text-xs font-bold uppercase text-white">4</span>
+              </div>
             </div>
-          </div>
 
-          {/* Analyst badge */}
-          <div className="inline-flex items-center justify-center gap-1">
-            <span className="text-xs font-bold uppercase text-white">Analyst</span>
-            <div className="relative w-[18px] h-5">
-              <svg width="18" height="20" viewBox="0 0 18 20" fill="none">
-                <path d="M18 9.1833V6.28029C18 4.64029 18 3.82028 17.5959 3.28529C17.1918 2.75029 16.2781 2.49056 14.4507 1.9711C13.2022 1.6162 12.1016 1.18863 11.2223 0.79829C10.0234 0.2661 9.424 0 9 0C8.576 0 7.9766 0.2661 6.77771 0.79829C5.89839 1.18863 4.79784 1.61619 3.54933 1.9711C1.72193 2.49056 0.80822 2.75029 0.40411 3.28529C-5.96046e-08 3.82028 0 4.64029 0 6.28029V9.1833C0 14.8085 5.06277 18.1835 7.594 19.5194C8.2011 19.8398 8.5046 20 9 20C9.4954 20 9.7989 19.8398 10.406 19.5194C12.9372 18.1835 18 14.8085 18 9.1833Z" fill="url(#paint0_linear_6_1730)"/>
-                <defs>
-                  <linearGradient id="paint0_linear_6_1730" x1="18" y1="10" x2="0" y2="10" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#A06AFF"/>
-                    <stop offset="1" stopColor="#482090"/>
-                  </linearGradient>
-                </defs>
-              </svg>
-              <span className="absolute left-[5px] top-[2px] text-xs font-bold uppercase text-white">4</span>
+            {/* Analyst badge */}
+            <div className="inline-flex items-center justify-center gap-1">
+              <span className="text-xs font-bold uppercase text-white">Analyst</span>
+              <div className="relative w-[18px] h-5">
+                <svg width="18" height="20" viewBox="0 0 18 20" fill="none">
+                  <path d="M18 9.1833V6.28029C18 4.64029 18 3.82028 17.5959 3.28529C17.1918 2.75029 16.2781 2.49056 14.4507 1.9711C13.2022 1.6162 12.1016 1.18863 11.2223 0.79829C10.0234 0.2661 9.424 0 9 0C8.576 0 7.9766 0.2661 6.77771 0.79829C5.89839 1.18863 4.79784 1.61619 3.54933 1.9711C1.72193 2.49056 0.80822 2.75029 0.40411 3.28529C-5.96046e-08 3.82028 0 4.64029 0 6.28029V9.1833C0 14.8085 5.06277 18.1835 7.594 19.5194C8.2011 19.8398 8.5046 20 9 20C9.4954 20 9.7989 19.8398 10.406 19.5194C12.9372 18.1835 18 14.8085 18 9.1833Z" fill="url(#paint0_linear_6_1730)"/>
+                  <defs>
+                    <linearGradient id="paint0_linear_6_1730" x1="18" y1="10" x2="0" y2="10" gradientUnits="userSpaceOnUse">
+                      <stop stopColor="#A06AFF"/>
+                      <stop offset="1" stopColor="#482090"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+                <span className="absolute left-[5px] top-[2px] text-xs font-bold uppercase text-white">4</span>
+              </div>
             </div>
           </div>
         </div>
