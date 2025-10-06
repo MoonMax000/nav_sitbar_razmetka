@@ -1042,7 +1042,11 @@ const ProfileNew: FC = () => {
           <NotificationsSettings />
         )}
 
-        {activeTab === 'profile' && activeProfileSubTab !== 'profile' && activeProfileSubTab !== 'security' && activeProfileSubTab !== 'notifications' && (
+        {activeTab === 'profile' && activeProfileSubTab === 'billing' && (
+          <BillingSettings />
+        )}
+
+        {activeTab === 'profile' && activeProfileSubTab !== 'profile' && activeProfileSubTab !== 'security' && activeProfileSubTab !== 'notifications' && activeProfileSubTab !== 'billing' && (
           <div className="container-card p-6">
             <h2 className="text-2xl font-bold text-white capitalize">{activeProfileSubTab}</h2>
             <p className="mt-2 text-sm text-webGray">Content for {activeProfileSubTab} tab will be here.</p>
