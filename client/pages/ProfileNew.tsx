@@ -1072,10 +1072,7 @@ const ProfileNew: FC = () => {
         )}
 
         {activeTab === 'streaming' && (
-          <div className="container-card p-6">
-            <h2 className="text-2xl font-bold text-white">Live Streaming</h2>
-            <p className="mt-2 text-sm text-webGray">Watch live trading sessions and market analysis.</p>
-          </div>
+          <LiveStreamingSettings />
         )}
 
         {activeTab === 'social' && (
