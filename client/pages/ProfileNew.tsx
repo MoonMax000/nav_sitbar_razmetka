@@ -30,6 +30,10 @@ type SocialSubTab =
   | "chats"
   | "monetization";
 
+type PortfolioSubTab =
+  | "my"
+  | "following";
+
 const tabs = [
   {
     id: "dashboard" as Tab,
@@ -456,12 +460,40 @@ const socialSubTabs = [
   },
 ];
 
+const portfolioSubTabs = [
+  {
+    id: "my" as PortfolioSubTab,
+    label: "My Portfolios",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 21 20" fill="none">
+        <path d="M2.16797 11.6661L2.16798 11.2494C2.16798 8.49945 2.16799 7.12455 3.02225 6.27028C3.87653 5.41602 5.25145 5.41602 8.00131 5.41602H13.0023C15.7518 5.41602 17.1264 5.41602 17.9807 6.27012C18.8349 7.12421 18.8352 8.49895 18.8356 11.2484L18.8357 11.6653C18.8362 14.4156 18.8364 15.7908 17.9821 16.6452C17.1278 17.4997 15.7526 17.4996 13.0023 17.4996L8.00118 17.4994C5.25136 17.4994 3.87646 17.4994 3.02221 16.6451C2.16796 15.7909 2.16797 14.4159 2.16797 11.6661Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M7.58203 5.41667C7.58203 4.24628 7.58203 3.66108 7.86291 3.24072C7.98451 3.05873 8.14076 2.90248 8.32275 2.78088C8.74312 2.5 9.32833 2.5 10.4987 2.5C11.6691 2.5 12.2542 2.5 12.6747 2.78088C12.8567 2.90248 13.0129 3.05873 13.1345 3.24072C13.4153 3.66108 13.4153 4.24628 13.4153 5.41667" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M5.5 8.75H15.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    ),
+  },
+  {
+    id: "following" as PortfolioSubTab,
+    label: "Following Portfolios",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 21 20" fill="none">
+        <path d="M2.16797 12.916L2.16798 11.2494C2.16798 8.49945 2.16799 7.12455 3.02225 6.27028C3.87653 5.41602 5.25145 5.41602 8.00131 5.41602H13.0023C15.7518 5.41602 17.1264 5.41602 17.9807 6.27012C18.8349 7.12421 18.8352 8.49895 18.8356 11.2484L18.8357 11.6653C18.8362 14.4156 18.8364 15.7908 17.9821 16.6452C17.1278 17.4997 15.7526 17.4996 13.0023 17.4996L9.2513 17.4993" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M7.58203 5.41667C7.58203 4.24628 7.58203 3.66108 7.86291 3.24072C7.98451 3.05873 8.14076 2.90248 8.32275 2.78088C8.74312 2.5 9.32833 2.5 10.4987 2.5C11.6691 2.5 12.2542 2.5 12.6747 2.78088C12.8567 2.90248 13.0129 3.05873 13.1345 3.24072C13.4153 3.66108 13.4153 4.24628 13.4153 5.41667" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M5.5 8.75H15.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M2.16797 16.2493C2.16797 16.2493 3.0013 16.2493 3.83464 17.916C3.83464 17.916 6.48169 13.7493 8.83464 12.916" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    ),
+  },
+];
+
 const ProfileNew: FC = () => {
   const [activeTab, setActiveTab] = useState<Tab>("dashboard");
   const [activeProfileSubTab, setActiveProfileSubTab] =
     useState<ProfileSubTab>("profile");
   const [activeSocialSubTab, setActiveSocialSubTab] =
     useState<SocialSubTab>("overview");
+  const [activePortfolioSubTab, setActivePortfolioSubTab] =
+    useState<PortfolioSubTab>("my");
 
   return (
     <div className="flex flex-col gap-6">
@@ -538,6 +570,35 @@ const ProfileNew: FC = () => {
                 <span
                   className={
                     activeSocialSubTab === subTab.id
+                      ? "text-white"
+                      : "text-webGray"
+                  }
+                >
+                  {subTab.icon}
+                </span>
+                {subTab.label}
+              </button>
+            ))}
+          </div>
+        )}
+
+        {/* Portfolios Sub-Navigation */}
+        {activeTab === "portfolios" && (
+          <div className="inline-flex flex-wrap items-center justify-center gap-2 p-1 rounded-[36px] border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px]">
+            {portfolioSubTabs.map((subTab) => (
+              <button
+                key={subTab.id}
+                onClick={() => setActivePortfolioSubTab(subTab.id)}
+                className={cn(
+                  "flex items-center gap-2 px-3 md:px-4 py-2 md:py-2.5 rounded-[32px] text-xs md:text-sm font-bold transition-all whitespace-nowrap",
+                  activePortfolioSubTab === subTab.id
+                    ? "bg-gradient-to-r from-primary to-[#482090] text-white backdrop-blur-[58.33px]"
+                    : "border border-[#181B22] bg-[rgba(12,16,20,0.5)] text-webGray hover:text-white backdrop-blur-[58.33px]",
+                )}
+              >
+                <span
+                  className={
+                    activePortfolioSubTab === subTab.id
                       ? "text-white"
                       : "text-webGray"
                   }
