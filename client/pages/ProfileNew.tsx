@@ -4,6 +4,7 @@ import NotificationsSettings from '@/components/NotificationsSettings/Notificati
 import BillingSettings from '@/components/BillingSettings/BillingSettings';
 import ReferralsSettings from '@/components/ReferralsSettings/ReferralsSettings';
 import KycSettings from '@/components/KycSettings/KycSettings';
+import LiveStreamingSettings from '@/components/LiveStreamingSettings/LiveStreamingSettings';
 import { cn } from '@/lib/utils';
 
 type Tab = 'dashboard' | 'profile' | 'marketplace' | 'streaming' | 'social' | 'portfolios';
