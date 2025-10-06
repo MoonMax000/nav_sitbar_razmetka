@@ -1,10 +1,11 @@
-import { FC, useState } from "react";
+import { FC, useState, useRef, useEffect } from "react";
 import UserHeader from "@/components/UserHeader/UserHeader";
 import NotificationsSettings from "@/components/NotificationsSettings/NotificationsSettings";
 import BillingSettings from "@/components/BillingSettings/BillingSettings";
 import ReferralsSettings from "@/components/ReferralsSettings/ReferralsSettings";
 import KycSettings from "@/components/KycSettings/KycSettings";
 import LiveStreamingSettings from "@/components/LiveStreamingSettings/LiveStreamingSettings";
+import SocialNetworkMenu from "@/components/SocialNetworkMenu/SocialNetworkMenu";
 import { cn } from "@/lib/utils";
 
 type Tab =
@@ -396,6 +397,8 @@ const ProfileNew: FC = () => {
   const [activeTab, setActiveTab] = useState<Tab>("dashboard");
   const [activeProfileSubTab, setActiveProfileSubTab] =
     useState<ProfileSubTab>("profile");
+  const [isSocialMenuOpen, setIsSocialMenuOpen] = useState(false);
+  const socialButtonRef = useRef<HTMLButtonElement>(null);
 
   return (
     <div className="flex flex-col gap-6">
@@ -406,23 +409,38 @@ const ProfileNew: FC = () => {
       <div className="flex flex-col items-center gap-4">
         <div className="inline-flex flex-wrap items-center justify-center gap-2 md:gap-3 p-1 rounded-[36px] border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px]">
           {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={cn(
-                "flex items-center gap-2 px-3 md:px-4 py-2.5 md:py-3 rounded-[32px] text-xs md:text-sm font-bold transition-all whitespace-nowrap",
-                activeTab === tab.id
-                  ? "bg-gradient-to-r from-primary to-[#482090] text-white backdrop-blur-[58.33px]"
-                  : "border border-[#181B22] bg-[rgba(12,16,20,0.5)] text-webGray hover:text-white backdrop-blur-[58.33px]",
-              )}
-            >
-              <span
-                className={activeTab === tab.id ? "text-white" : "text-webGray"}
+            <div key={tab.id} className={tab.id === 'social' ? 'relative' : ''}>
+              <button
+                ref={tab.id === 'social' ? socialButtonRef : null}
+                onClick={() => {
+                  if (tab.id === 'social') {
+                    setIsSocialMenuOpen(!isSocialMenuOpen);
+                  } else {
+                    setActiveTab(tab.id);
+                    setIsSocialMenuOpen(false);
+                  }
+                }}
+                className={cn(
+                  "flex items-center gap-2 px-3 md:px-4 py-2.5 md:py-3 rounded-[32px] text-xs md:text-sm font-bold transition-all whitespace-nowrap",
+                  activeTab === tab.id
+                    ? "bg-gradient-to-r from-primary to-[#482090] text-white backdrop-blur-[58.33px]"
+                    : "border border-[#181B22] bg-[rgba(12,16,20,0.5)] text-webGray hover:text-white backdrop-blur-[58.33px]",
+                )}
               >
-                {tab.icon}
-              </span>
-              {tab.label}
-            </button>
+                <span
+                  className={activeTab === tab.id ? "text-white" : "text-webGray"}
+                >
+                  {tab.icon}
+                </span>
+                {tab.label}
+              </button>
+              {tab.id === 'social' && (
+                <SocialNetworkMenu
+                  isOpen={isSocialMenuOpen}
+                  onClose={() => setIsSocialMenuOpen(false)}
+                />
+              )}
+            </div>
           ))}
         </div>
 
