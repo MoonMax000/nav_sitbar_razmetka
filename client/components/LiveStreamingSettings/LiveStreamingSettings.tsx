@@ -169,15 +169,10 @@ const LiveStreamingSettings: FC = () => {
 
   return (
     <div className="flex flex-col gap-6">
-      {/* Streaming Permission Card */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px]">
-        <div className="flex flex-col gap-1">
-          <h3 className="text-lg sm:text-2xl font-bold text-white">Streamer's Permission</h3>
-          <p className="text-sm sm:text-[15px] font-normal text-webGray">You haven't submitted a premission request yet.</p>
-        </div>
-        <button className="w-full sm:w-auto flex items-center justify-center gap-2 h-[46px] px-4 rounded-lg bg-gradient-to-r from-primary to-[#482090] backdrop-blur-[50px] text-white text-[15px] font-bold hover:opacity-90 transition-opacity">
-          Submit Request
-        </button>
+      {/* Profile Settings Card */}
+      <div className="flex flex-col gap-6 p-4 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px]">
+        <h2 className="text-2xl font-bold text-white">Profile Settings</h2>
+        <p className="text-sm text-webGray">Configure your streaming profile settings here.</p>
       </div>
 
       {/* Tabs */}
@@ -202,9 +197,14 @@ const LiveStreamingSettings: FC = () => {
       {/* Tab Content */}
       <div className="mt-4">
         {activeTab === 'profile' && (
-          <div className="flex flex-col gap-6 p-4 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px]">
-            <h2 className="text-2xl font-bold text-white">Profile Settings</h2>
-            <p className="text-sm text-webGray">Configure your streaming profile settings here.</p>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px]">
+            <div className="flex flex-col gap-1">
+              <h3 className="text-lg sm:text-2xl font-bold text-white">Streamer's Permission</h3>
+              <p className="text-sm sm:text-[15px] font-normal text-webGray">You haven't submitted a permission request yet.</p>
+            </div>
+            <button className="w-full sm:w-auto flex items-center justify-center gap-2 h-[46px] px-4 rounded-lg bg-gradient-to-r from-primary to-[#482090] backdrop-blur-[50px] text-white text-[15px] font-bold hover:opacity-90 transition-opacity">
+              Submit Request
+            </button>
           </div>
         )}
 
