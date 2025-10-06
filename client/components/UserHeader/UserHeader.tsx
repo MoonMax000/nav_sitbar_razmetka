@@ -34,7 +34,7 @@ const UserHeader: FC<Props> = ({ isOwn = true, className }) => {
             </div>
 
             {/* Name and Username */}
-            <div className="flex flex-col gap-2 pb-2">
+            <div className="flex flex-col gap-2 pb-2 pr-6">
               <div className="flex items-center gap-1">
                 <h1 className="text-2xl font-bold text-white leading-none">Jane Doe</h1>
                 <svg width="24" height="25" viewBox="0 0 24 25" fill="none">
