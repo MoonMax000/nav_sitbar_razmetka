@@ -1,4 +1,5 @@
 import { FC, useState } from 'react';
+import PostCard from '../PostCard/PostCard';
 
 interface Tab {
   id: string;
@@ -83,7 +84,7 @@ const UserTabs: FC<Props> = ({ isOwn = true }) => {
   ];
 
   return (
-    <div className="w-full">
+    <div className="flex w-full flex-col gap-6">
       <div className="flex flex-wrap items-center gap-1 sm:gap-1">
         {tabs.map((tab) => (
           <button
@@ -107,6 +108,20 @@ const UserTabs: FC<Props> = ({ isOwn = true }) => {
             </span>
           </button>
         ))}
+      </div>
+      
+      <div className="flex flex-col gap-6">
+        <PostCard />
+        <PostCard
+          author={{ name: 'Jane Doe', avatar: '/placeholder.svg' }}
+          category="Opinion"
+          timestamp="January 30, 3:45 PM"
+          title="The Future of Blockchain Technology in Finance"
+          content="Blockchain technology has revolutionized the financial sector, offering unprecedented transparency and security. As we move forward, the integration of blockchain in traditional banking systems could reshape how we think about money and transactions."
+          sentiment="bullish"
+          likes={2300}
+          comments={412}
+        />
       </div>
     </div>
   );
