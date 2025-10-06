@@ -405,8 +405,114 @@ const LiveStreamingSettings: FC = () => {
 
         {activeTab === 'donations' && (
           <div className="flex flex-col gap-6 p-4 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px]">
-            <h2 className="text-2xl font-bold text-white">Donations</h2>
-            <p className="text-sm text-webGray">Manage your stream donations and tips here.</p>
+            {/* Header */}
+            <div className="flex items-baseline justify-between pb-2">
+              <h2 className="flex-1 text-2xl font-bold text-white">My Donations</h2>
+              <a href="#" className="text-[15px] font-bold text-primary underline hover:no-underline">
+                View All
+              </a>
+            </div>
+
+            {/* Table Headers - Hidden on mobile */}
+            <div className="hidden sm:flex items-center justify-between">
+              <div className="flex items-start w-[196px]">
+                <span className="text-xs font-bold uppercase text-webGray">User</span>
+              </div>
+              <div className="flex items-center w-[196px]">
+                <span className="text-xs font-bold uppercase text-webGray">Date</span>
+              </div>
+              <div className="flex items-center w-[196px]">
+                <span className="text-xs font-bold uppercase text-webGray">Amount</span>
+              </div>
+              <div className="flex items-center justify-end w-20">
+                <span className="text-xs font-bold uppercase text-webGray">Status</span>
+              </div>
+            </div>
+
+            {/* Donations List */}
+            <div className="flex flex-col">
+              {donationsData.map((donation) => (
+                <div
+                  key={donation.id}
+                  className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0 pt-4 border-t border-[#181B22]"
+                >
+                  {/* User */}
+                  <div className="flex items-center gap-2 w-full sm:w-[196px]">
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-[#482090] flex-shrink-0" />
+                    <span className="text-[15px] font-bold text-white">{donation.userName}</span>
+                  </div>
+
+                  {/* Date - with label on mobile */}
+                  <div className="flex items-center gap-2 w-full sm:w-[196px]">
+                    <span className="text-xs font-bold uppercase text-webGray sm:hidden">Date:</span>
+                    <span className="text-[15px] font-normal text-white">{donation.date}</span>
+                  </div>
+
+                  {/* Amount - with label on mobile */}
+                  <div className="flex items-center gap-2 w-full sm:w-[196px]">
+                    <span className="text-xs font-bold uppercase text-webGray sm:hidden">Amount:</span>
+                    <span className="text-[15px] font-bold text-white">{donation.amount}</span>
+                  </div>
+
+                  {/* Status - with label on mobile */}
+                  <div className="flex items-center gap-2 w-full sm:w-20 sm:justify-end">
+                    <span className="text-xs font-bold uppercase text-webGray sm:hidden">Status:</span>
+                    <div className="flex items-center px-1 py-0.5 rounded bg-[#1C3430]">
+                      <span className="text-xs font-bold text-green">{donation.status}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Pagination */}
+            <div className="flex items-center justify-center gap-1 mt-4">
+              {/* First */}
+              <button className="flex items-center justify-center w-11 h-11 rounded-lg border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px] hover:bg-[rgba(12,16,20,0.7)] transition-all">
+                <svg width="21" height="20" viewBox="0 0 21 20" fill="none">
+                  <path d="M15.157 15L16.332 13.825L12.5154 10L16.332 6.175L15.157 5L10.157 10L15.157 15Z" fill="#B0B0B0"/>
+                  <path d="M9.66484 15L10.8398 13.825L7.02318 10L10.8398 6.175L9.66484 5L4.66484 10L9.66484 15Z" fill="#B0B0B0"/>
+                </svg>
+              </button>
+
+              {/* Prev */}
+              <button className="flex items-center justify-center w-11 h-11 rounded-lg border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px] hover:bg-[rgba(12,16,20,0.7)] transition-all">
+                <svg width="21" height="20" viewBox="0 0 21 20" fill="none">
+                  <path d="M13.075 15L14.25 13.825L10.4333 10L14.25 6.175L13.075 5L8.075 10L13.075 15Z" fill="#B0B0B0"/>
+                </svg>
+              </button>
+
+              {/* Page Numbers */}
+              {[1, 2, 3].map((page) => (
+                <button
+                  key={page}
+                  onClick={() => setCurrentPage(page)}
+                  className={cn(
+                    'flex items-center justify-center w-11 h-11 rounded text-[15px] font-bold transition-all',
+                    currentPage === page
+                      ? 'bg-gradient-to-r from-primary to-[#482090] text-white'
+                      : 'border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px] text-webGray hover:text-white'
+                  )}
+                >
+                  {page}
+                </button>
+              ))}
+
+              {/* Next */}
+              <button className="flex items-center justify-center w-11 h-11 rounded-lg border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px] hover:bg-[rgba(12,16,20,0.7)] transition-all">
+                <svg width="21" height="20" viewBox="0 0 21 20" fill="none">
+                  <path d="M9.175 5L8 6.175L11.8167 10L8 13.825L9.175 15L14.175 10L9.175 5Z" fill="#B0B0B0"/>
+                </svg>
+              </button>
+
+              {/* Last */}
+              <button className="flex items-center justify-center w-11 h-11 rounded-lg border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px] hover:bg-[rgba(12,16,20,0.7)] transition-all">
+                <svg width="21" height="20" viewBox="0 0 21 20" fill="none">
+                  <path d="M5.84297 5L4.66797 6.175L8.48464 10L4.66797 13.825L5.84297 15L10.843 10L5.84297 5Z" fill="#B0B0B0"/>
+                  <path d="M11.3352 5L10.1602 6.175L13.9768 10L10.1602 13.825L11.3352 15L16.3352 10L11.3352 5Z" fill="#B0B0B0"/>
+                </svg>
+              </button>
+            </div>
           </div>
         )}
 
