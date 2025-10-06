@@ -36,8 +36,8 @@ const HomeScreen: FC<Props> = ({ isOwn = true }) => {
         <div className="flex min-w-0 flex-col gap-6">
           <UserInfoCards />
           <SubscribeBlock isOwn={isOwn} />
-          <CreatePostBox />
-          <UserTabs isOwn={isOwn} />
+          <CreatePostBox onToggleView={toggleViewMode} viewMode={viewMode} />
+          <UserTabs isOwn={isOwn} viewMode={viewMode} />
           <Pagination totalPages={4} currentPage={1} onChange={handlePageChange} />
         </div>
         <div className="flex min-w-0 flex-col gap-6">
