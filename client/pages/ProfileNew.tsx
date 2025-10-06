@@ -3,6 +3,7 @@ import UserHeader from '@/components/UserHeader/UserHeader';
 import NotificationsSettings from '@/components/NotificationsSettings/NotificationsSettings';
 import BillingSettings from '@/components/BillingSettings/BillingSettings';
 import ReferralsSettings from '@/components/ReferralsSettings/ReferralsSettings';
+import KycSettings from '@/components/KycSettings/KycSettings';
 import { cn } from '@/lib/utils';
 
 type Tab = 'dashboard' | 'profile' | 'marketplace' | 'streaming' | 'social' | 'portfolios';
