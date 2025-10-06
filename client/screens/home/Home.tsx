@@ -11,15 +11,22 @@ import Pagination from '@/components/ui/Pagination/Pagination';
 import UserInfoCards from '@/components/UserInfoCards/UserInfoCards';
 import UserMarketsCard from '@/components/UserMarketsCard/UserMarketsCard';
 
+export type ViewMode = 'normal' | 'compact';
+
 interface Props {
   isOwn?: boolean;
 }
 
 const HomeScreen: FC<Props> = ({ isOwn = true }) => {
   const [, setCurrentPage] = useState(1);
+  const [viewMode, setViewMode] = useState<ViewMode>('normal');
 
   const handlePageChange = (val: number) => {
     setCurrentPage(val);
+  };
+
+  const toggleViewMode = () => {
+    setViewMode((prev) => (prev === 'normal' ? 'compact' : 'normal'));
   };
 
   return (
