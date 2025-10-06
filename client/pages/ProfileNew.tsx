@@ -34,6 +34,16 @@ type PortfolioSubTab =
   | "my"
   | "following";
 
+type MarketplaceSubTab =
+  | "overview"
+  | "products"
+  | "sales"
+  | "purchases"
+  | "coupons"
+  | "reviews"
+  | "payouts"
+  | "settings";
+
 const tabs = [
   {
     id: "dashboard" as Tab,
@@ -486,6 +496,114 @@ const portfolioSubTabs = [
   },
 ];
 
+const marketplaceSubTabs = [
+  {
+    id: "overview" as MarketplaceSubTab,
+    label: "Overview",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M8.75 7.29167V5.625C8.75 4.25522 8.75 3.57032 8.37167 3.10934C8.30242 3.02496 8.22504 2.94757 8.14066 2.87832C7.67968 2.5 6.99478 2.5 5.625 2.5C4.25522 2.5 3.57032 2.5 3.10934 2.87832C3.02496 2.94757 2.94757 3.02496 2.87832 3.10934C2.5 3.57032 2.5 4.25522 2.5 5.625V7.29167C2.5 8.66142 2.5 9.34633 2.87832 9.80733C2.94757 9.89175 3.02496 9.96908 3.10934 10.0383C3.57032 10.4167 4.25522 10.4167 5.625 10.4167C6.99478 10.4167 7.67968 10.4167 8.14066 10.0383C8.22504 9.96908 8.30242 9.89175 8.37167 9.80733C8.75 9.34633 8.75 8.66142 8.75 7.29167Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+        <path d="M6.45833 12.9165H4.79167C4.21018 12.9165 3.91944 12.9165 3.68286 12.9883C3.15019 13.1498 2.73335 13.5667 2.57177 14.0993C2.5 14.3359 2.5 14.6267 2.5 15.2082C2.5 15.7897 2.5 16.0804 2.57177 16.317C2.73335 16.8497 3.15019 17.2665 3.68286 17.4281C3.91944 17.4998 4.21018 17.4998 4.79167 17.4998H6.45833C7.03982 17.4998 7.33056 17.4998 7.56714 17.4281C8.09981 17.2665 8.51667 16.8497 8.67825 16.317C8.75 16.0804 8.75 15.7897 8.75 15.2082C8.75 14.6267 8.75 14.3359 8.67825 14.0993C8.51667 13.5667 8.09981 13.1498 7.56714 12.9883C7.33056 12.9165 7.03982 12.9165 6.45833 12.9165Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+        <path d="M17.5 14.3752V12.7085C17.5 11.3387 17.5 10.6538 17.1217 10.1928C17.0524 10.1084 16.9751 10.0311 16.8907 9.96183C16.4297 9.5835 15.7447 9.5835 14.375 9.5835C13.0052 9.5835 12.3203 9.5835 11.8593 9.96183C11.7749 10.0311 11.6976 10.1084 11.6283 10.1928C11.25 10.6538 11.25 11.3387 11.25 12.7085V14.3752C11.25 15.7449 11.25 16.4298 11.6283 16.8908C11.6976 16.9752 11.7749 17.0526 11.8593 17.1218C12.3203 17.5002 13.0052 17.5002 14.375 17.5002C15.7447 17.5002 16.4297 17.5002 16.8907 17.1218C16.9751 17.0526 17.0524 16.9752 17.1217 16.8908C17.5 16.4298 17.5 15.7449 17.5 14.3752Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+        <path d="M15.2083 2.5H13.5417C12.9602 2.5 12.6694 2.5 12.4328 2.57177C11.9002 2.73335 11.4833 3.15019 11.3217 3.68286C11.25 3.91944 11.25 4.21018 11.25 4.79167C11.25 5.37315 11.25 5.66389 11.3217 5.90048C11.4833 6.43314 11.9002 6.84998 12.4328 7.01157C12.6694 7.08333 12.9602 7.08333 13.5417 7.08333H15.2083C15.7898 7.08333 16.0806 7.08333 16.3172 7.01157C16.8498 6.84998 17.2667 6.43314 17.4283 5.90048C17.5 5.66389 17.5 5.37315 17.5 4.79167C17.5 4.21018 17.5 3.91944 17.4283 3.68286C17.2667 3.15019 16.8498 2.73335 16.3172 2.57177C16.0806 2.5 15.7898 2.5 15.2083 2.5Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+      </svg>
+    ),
+  },
+  {
+    id: "products" as MarketplaceSubTab,
+    label: "My Products",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M10 18.3335C9.31817 18.3335 8.66683 18.0583 7.36411 17.5081C4.12137 16.1382 2.5 15.4533 2.5 14.3012C2.5 13.9787 2.5 8.38725 2.5 5.8335M10 18.3335C10.6818 18.3335 11.3332 18.0583 12.6359 17.5081C15.8787 16.1382 17.5 15.4533 17.5 14.3012V5.8335M10 18.3335V9.4625" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M6.93827 8.07599L4.50393 6.89805C3.16797 6.25159 2.5 5.92836 2.5 5.4165C2.5 4.90465 3.16797 4.58142 4.50393 3.93496L6.93827 2.75702C8.44067 2.03001 9.19192 1.6665 10 1.6665C10.8081 1.6665 11.5593 2.03 13.0617 2.75702L15.4961 3.93496C16.832 4.58142 17.5 4.90465 17.5 5.4165C17.5 5.92836 16.832 6.25159 15.4961 6.89805L13.0617 8.07599C11.5593 8.803 10.8081 9.1665 10 9.1665C9.19192 9.1665 8.44067 8.803 6.93827 8.07599Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M5 10L6.66667 10.8333" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M14.1654 3.3335L5.83203 7.50016" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    ),
+  },
+  {
+    id: "sales" as MarketplaceSubTab,
+    label: "Sales",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M5 1.6665L2.5 4.99984V16.6665C2.5 17.1085 2.67559 17.5325 2.98816 17.845C3.30072 18.1576 3.72464 18.3332 4.16667 18.3332H15.8333C16.2754 18.3332 16.6993 18.1576 17.0118 17.845C17.3244 17.5325 17.5 17.1085 17.5 16.6665V4.99984L15 1.6665H5Z" stroke="currentColor" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M2.5 5H17.5" stroke="currentColor" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M13.3346 8.3335C13.3346 9.21755 12.9834 10.0654 12.3583 10.6905C11.7332 11.3156 10.8854 11.6668 10.0013 11.6668C9.11725 11.6668 8.2694 11.3156 7.64428 10.6905C7.01916 10.0654 6.66797 9.21755 6.66797 8.3335" stroke="currentColor" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    ),
+  },
+  {
+    id: "purchases" as MarketplaceSubTab,
+    label: "My Purchases",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <g clipPath="url(#clip0_purchases)">
+          <path d="M6.66797 13.3333L13.9347 12.7277C16.2085 12.5383 16.7189 12.0417 16.9709 9.77408L17.5013 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+          <path d="M5 5H18.3333" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+          <path d="M4.9987 18.3333C5.91917 18.3333 6.66536 17.5871 6.66536 16.6667C6.66536 15.7462 5.91917 15 4.9987 15C4.07822 15 3.33203 15.7462 3.33203 16.6667C3.33203 17.5871 4.07822 18.3333 4.9987 18.3333Z" stroke="currentColor" strokeWidth="1.5"/>
+          <path d="M14.1667 18.3333C15.0871 18.3333 15.8333 17.5871 15.8333 16.6667C15.8333 15.7462 15.0871 15 14.1667 15C13.2462 15 12.5 15.7462 12.5 16.6667C12.5 17.5871 13.2462 18.3333 14.1667 18.3333Z" stroke="currentColor" strokeWidth="1.5"/>
+          <path d="M6.66797 16.6665H12.5013" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+          <path d="M1.66797 1.6665H2.47297C3.2602 1.6665 3.94642 2.187 4.13735 2.92895L6.61673 12.5636C6.74203 13.0505 6.6348 13.5663 6.32484 13.9678L5.52808 14.9998" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+        </g>
+        <defs>
+          <clipPath id="clip0_purchases">
+            <rect width="20" height="20" fill="white"/>
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  },
+  {
+    id: "coupons" as MarketplaceSubTab,
+    label: "Coupons",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M16.6667 6.6665H3.33333C2.8731 6.6665 2.5 7.0396 2.5 7.49984V9.1665C2.5 9.62674 2.8731 9.99984 3.33333 9.99984H16.6667C17.1269 9.99984 17.5 9.62674 17.5 9.1665V7.49984C17.5 7.0396 17.1269 6.6665 16.6667 6.6665Z" stroke="currentColor" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M10 6.6665V17.4998" stroke="currentColor" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M15.8346 10V15.8333C15.8346 16.2754 15.659 16.6993 15.3465 17.0118C15.0339 17.3244 14.61 17.5 14.168 17.5H5.83464C5.39261 17.5 4.96868 17.3244 4.65612 17.0118C4.34356 16.6993 4.16797 16.2754 4.16797 15.8333V10" stroke="currentColor" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M6.2513 6.66654C5.69877 6.66654 5.16886 6.44705 4.77816 6.05635C4.38746 5.66565 4.16797 5.13574 4.16797 4.58321C4.16797 4.03068 4.38746 3.50077 4.77816 3.11007C5.16886 2.71937 5.69877 2.49988 6.2513 2.49988C7.05521 2.48587 7.84299 2.87593 8.51192 3.61918C9.18084 4.36243 9.69987 5.42438 10.0013 6.66654C10.3027 5.42438 10.8218 4.36243 11.4907 3.61918C12.1596 2.87593 12.9474 2.48587 13.7513 2.49988C14.3038 2.49988 14.8337 2.71937 15.2244 3.11007C15.6151 3.50077 15.8346 4.03068 15.8346 4.58321C15.8346 5.13574 15.6151 5.66565 15.2244 6.05635C14.8337 6.44705 14.3038 6.66654 13.7513 6.66654" stroke="currentColor" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    ),
+  },
+  {
+    id: "reviews" as MarketplaceSubTab,
+    label: "Reviews",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <g clipPath="url(#clip0_reviews)">
+          <path d="M11.441 2.86999L12.9075 5.82724C13.1075 6.23889 13.6407 6.63375 14.0907 6.70936L16.7487 7.15463C18.4486 7.44028 18.8486 8.68367 17.6236 9.91025L15.5572 11.9938C15.2072 12.3466 15.0156 13.0271 15.1239 13.5144L15.7156 16.0936C16.1821 18.1351 15.1072 18.9248 13.3158 17.8578L10.8244 16.3708C10.3745 16.102 9.63288 16.102 9.17455 16.3708L6.68319 17.8578C4.90005 18.9248 3.81684 18.1267 4.28346 16.0936L4.87506 13.5144C4.98338 13.0271 4.79173 12.3466 4.44177 11.9938L2.37533 9.91025C1.1588 8.68367 1.55043 7.44028 3.25023 7.15463L5.90828 6.70936C6.34989 6.63375 6.88317 6.23889 7.08314 5.82724L8.54963 2.86999C9.34955 1.26534 10.6494 1.26534 11.441 2.86999Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        </g>
+        <defs>
+          <clipPath id="clip0_reviews">
+            <rect width="20" height="20" fill="white"/>
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  },
+  {
+    id: "payouts" as MarketplaceSubTab,
+    label: "Payouts",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M12.0846 10.0008C12.0846 11.1514 11.1519 12.0842 10.0013 12.0842C8.8507 12.0842 7.91797 11.1514 7.91797 10.0008C7.91797 8.85025 8.8507 7.91748 10.0013 7.91748C11.1519 7.91748 12.0846 8.85025 12.0846 10.0008Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M13.3346 4.16748C15.4008 4.16748 16.8266 4.48765 17.6121 4.73108C18.0643 4.87124 18.3346 5.29989 18.3346 5.77336V13.9027C18.3346 14.832 17.3112 15.5312 16.3981 15.3587C15.6147 15.2108 14.5936 15.092 13.3346 15.092C9.37555 15.092 8.42597 16.5967 2.62197 15.3168C2.06184 15.1933 1.66797 14.6896 1.66797 14.116V5.76845C1.66797 4.95523 2.43529 4.3622 3.23295 4.52048C8.49855 5.56536 9.51872 4.16748 13.3346 4.16748Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M1.66797 7.50065C3.29408 7.50065 4.75533 6.17154 4.94214 4.79578M15.4184 4.58398C15.4184 6.28368 16.8892 7.89148 18.3346 7.89148M18.3346 12.5007C16.7521 12.5007 15.2181 13.5925 15.0863 15.0826M5.00171 15.4141C5.00171 13.5731 3.50933 12.0808 1.66838 12.0808" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    ),
+  },
+  {
+    id: "settings" as MarketplaceSubTab,
+    label: "Settings",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M12.9154 10.0002C12.9154 11.611 11.6095 12.9168 9.9987 12.9168C8.38786 12.9168 7.08203 11.611 7.08203 10.0002C7.08203 8.38933 8.38786 7.0835 9.9987 7.0835C11.6095 7.0835 12.9154 8.38933 12.9154 10.0002Z" stroke="currentColor" strokeWidth="1.5"/>
+        <path d="M17.5105 11.7469C17.9454 11.6296 18.1629 11.5709 18.2487 11.4588C18.3346 11.3467 18.3346 11.1663 18.3346 10.8055V9.1941C18.3346 8.83335 18.3346 8.65294 18.2487 8.54085C18.1628 8.42869 17.9454 8.37002 17.5105 8.25275C15.8851 7.81443 14.8679 6.1152 15.2874 4.5005C15.4027 4.05643 15.4604 3.8344 15.4053 3.70418C15.3502 3.57395 15.1922 3.48422 14.8761 3.30474L13.4388 2.48871C13.1286 2.3126 12.9736 2.22454 12.8344 2.24329C12.6951 2.26204 12.5381 2.41871 12.224 2.73205C11.008 3.94517 8.99597 3.94512 7.77992 2.73197C7.46583 2.41863 7.30879 2.26196 7.16958 2.2432C7.03038 2.22445 6.87528 2.31251 6.56508 2.48863L5.12784 3.30466C4.81174 3.48413 4.65369 3.57386 4.59862 3.70406C4.54354 3.83427 4.60119 4.05633 4.71651 4.50044C5.13578 6.11519 4.11774 7.81446 2.49215 8.25277C2.05724 8.37002 1.83978 8.42869 1.75387 8.54077C1.66797 8.65294 1.66797 8.83335 1.66797 9.1941V10.8055C1.66797 11.1663 1.66797 11.3467 1.75387 11.4588C1.83976 11.5709 2.05723 11.6296 2.49215 11.7469C4.11747 12.1852 5.1347 13.8844 4.71524 15.4991C4.59988 15.9432 4.54219 16.1652 4.59727 16.2954C4.65235 16.4257 4.8104 16.5154 5.12651 16.6949L6.56376 17.5109C6.87398 17.687 7.02909 17.7751 7.1683 17.7564C7.30752 17.7376 7.46454 17.5809 7.77856 17.2675C8.99522 16.0534 11.0086 16.0534 12.2254 17.2674C12.5394 17.5809 12.6964 17.7375 12.8356 17.7563C12.9748 17.775 13.13 17.6869 13.4401 17.5109L14.8774 16.6948C15.1936 16.5154 15.3516 16.4256 15.4066 16.2954C15.4617 16.1651 15.4041 15.9431 15.2886 15.499C14.869 13.8844 15.8854 12.1853 17.5105 11.7469Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+      </svg>
+    ),
+  },
+];
+
 const ProfileNew: FC = () => {
   const [activeTab, setActiveTab] = useState<Tab>("dashboard");
   const [activeProfileSubTab, setActiveProfileSubTab] =
@@ -494,6 +612,8 @@ const ProfileNew: FC = () => {
     useState<SocialSubTab>("overview");
   const [activePortfolioSubTab, setActivePortfolioSubTab] =
     useState<PortfolioSubTab>("my");
+  const [activeMarketplaceSubTab, setActiveMarketplaceSubTab] =
+    useState<MarketplaceSubTab>("products");
 
   return (
     <div className="flex flex-col gap-6">
@@ -599,6 +719,35 @@ const ProfileNew: FC = () => {
                 <span
                   className={
                     activePortfolioSubTab === subTab.id
+                      ? "text-white"
+                      : "text-webGray"
+                  }
+                >
+                  {subTab.icon}
+                </span>
+                {subTab.label}
+              </button>
+            ))}
+          </div>
+        )}
+
+        {/* Marketplace Sub-Navigation */}
+        {activeTab === "marketplace" && (
+          <div className="inline-flex flex-wrap items-center justify-center gap-2 p-1 rounded-[36px] border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px]">
+            {marketplaceSubTabs.map((subTab) => (
+              <button
+                key={subTab.id}
+                onClick={() => setActiveMarketplaceSubTab(subTab.id)}
+                className={cn(
+                  "flex items-center gap-2 px-3 md:px-4 py-2 md:py-2.5 rounded-[32px] text-xs md:text-sm font-bold transition-all whitespace-nowrap",
+                  activeMarketplaceSubTab === subTab.id
+                    ? "bg-gradient-to-r from-primary to-[#482090] text-white backdrop-blur-[58.33px]"
+                    : "border border-[#181B22] bg-[rgba(12,16,20,0.5)] text-webGray hover:text-white backdrop-blur-[58.33px]",
+                )}
+              >
+                <span
+                  className={
+                    activeMarketplaceSubTab === subTab.id
                       ? "text-white"
                       : "text-webGray"
                   }
