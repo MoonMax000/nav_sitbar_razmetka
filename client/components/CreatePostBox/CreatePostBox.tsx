@@ -1,7 +1,28 @@
-import { FC, useState } from 'react';
+import { FC, useState, useRef, useEffect } from 'react';
 
 const CreatePostBox: FC = () => {
   const [sentiment, setSentiment] = useState<'bullish' | 'bearish' | null>('bullish');
+  const [text, setText] = useState('');
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const maxLength = 500;
+
+  // Auto-resize textarea
+  useEffect(() => {
+    if (textareaRef.current) {
+      textareaRef.current.style.height = 'auto';
+      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+    }
+  }, [text]);
+
+  const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const value = e.target.value;
+    if (value.length <= maxLength) {
+      setText(value);
+    }
+  };
+
+  const remainingChars = maxLength - text.length;
+  const isNearLimit = remainingChars <= 50;
 
   return (
     <div className="flex flex-col items-end gap-4 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] p-4 backdrop-blur-[50px]">
@@ -12,12 +33,24 @@ const CreatePostBox: FC = () => {
           alt=""
           className="h-11 w-11 flex-shrink-0 rounded-full"
         />
-        <div className="flex flex-1 flex-col items-center rounded-2xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] px-4 py-3 shadow-[0_4px_8px_0_rgba(0,0,0,0.24)] backdrop-blur-[50px]">
-          <input
-            type="text"
+        <div className="relative flex flex-1 flex-col items-center rounded-2xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] px-4 py-3 shadow-[0_4px_8px_0_rgba(0,0,0,0.24)] backdrop-blur-[50px]">
+          <textarea
+            ref={textareaRef}
+            value={text}
+            onChange={handleTextChange}
             placeholder="How do you feel about markets today? Share your ideas here!"
-            className="w-full bg-transparent text-[15px] font-normal text-[#B0B0B0] placeholder:text-[#B0B0B0] outline-none"
+            className="w-full resize-none bg-transparent text-[15px] font-normal text-white placeholder:text-[#B0B0B0] outline-none overflow-hidden min-h-[24px]"
+            rows={1}
           />
+          {text.length > 0 && (
+            <div className="absolute bottom-2 right-3 flex items-center gap-1">
+              <span className={`text-xs font-medium transition-colors ${
+                isNearLimit ? 'text-[#EF454A]' : 'text-[#B0B0B0]'
+              }`}>
+                {remainingChars}
+              </span>
+            </div>
+          )}
         </div>
         <button className="flex-shrink-0 p-2.5">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
