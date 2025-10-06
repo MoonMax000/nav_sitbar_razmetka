@@ -20,7 +20,7 @@ const UserHeader: FC<Props> = ({ isOwn = true, className }) => {
       </div>
 
       {/* Content section below banner with 3 columns */}
-      <div className="relative -mt-16 sm:-mt-20 px-4 sm:px-0">
+      <div className="relative -mt-16 sm:-mt-20 px-4 sm:pl-8">
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
           {/* Column 1: Avatar + Name + Username */}
           <div className="flex flex-col sm:flex-row gap-4 sm:items-end sm:mr-12">
