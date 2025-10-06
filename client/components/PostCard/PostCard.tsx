@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-interface PostCardProps {
+export interface PostCardProps {
   author?: {
     name: string;
     avatar: string;
