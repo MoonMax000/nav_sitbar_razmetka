@@ -1,6 +1,12 @@
 import { FC, useState, useRef, useEffect } from 'react';
+import type { ViewMode } from '@/screens/home/Home';
 
-const CreatePostBox: FC = () => {
+interface CreatePostBoxProps {
+  onToggleView?: () => void;
+  viewMode?: ViewMode;
+}
+
+const CreatePostBox: FC<CreatePostBoxProps> = ({ onToggleView, viewMode = 'normal' }) => {
   const [sentiment, setSentiment] = useState<'bullish' | 'bearish' | null>('bullish');
   const [text, setText] = useState('');
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -54,8 +60,14 @@ const CreatePostBox: FC = () => {
         </div>
         <button
           type="button"
-          aria-label="Open filters"
-          className="group inline-flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border border-transparent bg-[#A06AFF]/10 text-[#E3D8FF] transition-all duration-200 hover:border-[#A06AFF] hover:bg-[#A06AFF]/20 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF]/50 focus-visible:ring-offset-0"
+          onClick={onToggleView}
+          aria-label={viewMode === 'normal' ? 'Switch to compact view' : 'Switch to normal view'}
+          aria-pressed={viewMode === 'compact'}
+          className={`group inline-flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF]/50 focus-visible:ring-offset-0 ${
+            viewMode === 'compact'
+              ? 'border-[#A06AFF] bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white shadow-[0_12px_30px_-18px_rgba(160,106,255,0.8)]'
+              : 'border-transparent bg-[#A06AFF]/10 text-[#E3D8FF] hover:border-[#A06AFF] hover:bg-[#A06AFF]/20 hover:text-white'
+          }`}
         >
           <svg
             width="24"
