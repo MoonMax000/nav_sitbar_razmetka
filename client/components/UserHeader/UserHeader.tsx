@@ -79,7 +79,7 @@ const UserHeader: FC<Props> = ({ isOwn = true, className }) => {
       </div>
 
       {/* User info section */}
-      <div className="px-4 sm:px-0 sm:ml-44 mt-4">
+      <div className="px-4 sm:px-0 sm:ml-4 mt-4">
         <div className="flex flex-col gap-2">
           {/* Name and verification */}
           <div className="flex items-center gap-1">
