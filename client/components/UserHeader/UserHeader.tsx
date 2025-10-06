@@ -36,7 +36,7 @@ const UserHeader: FC<Props> = ({ isOwn = true, className }) => {
           <img
             src="https://api.builder.io/api/v1/image/assets/TEMP/206adecf29ac0c9a506069fea2436d00fcbf9067?width=320"
             alt="Profile"
-            className="w-40 h-40 rounded-2xl border-2 border-[#181B22] shadow-[0_6.711px_11.409px_-1.342px_rgba(0,0,0,0.28)]"
+            className="w-40 h-40 rounded-2xl border-2 border-[#181B22] shadow-[0_6.711px_11.409px_-1.342px_rgba(0,0,0,0.28)] object-cover"
           />
         </div>
       </div>
