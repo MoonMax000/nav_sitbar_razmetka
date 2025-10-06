@@ -532,9 +532,138 @@ const LiveStreamingSettings: FC = () => {
         )}
 
         {activeTab === 'notifications' && (
-          <div className="flex flex-col gap-6 p-4 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px]">
-            <h2 className="text-2xl font-bold text-white">Notifications</h2>
-            <p className="text-sm text-webGray">Configure your streaming notification preferences.</p>
+          <div className="flex flex-col gap-6 sm:gap-8 p-4 sm:p-6 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px]">
+            {/* Stream Going Live */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+              <div className="flex flex-col gap-1 flex-1">
+                <h3 className="text-[15px] font-bold text-white">Stream Going Live</h3>
+                <p className="text-[15px] font-normal text-webGray">When a followed channel starts a live stream</p>
+              </div>
+              <button
+                onClick={() => toggleNotification('streamGoingLive')}
+                className={cn(
+                  'flex items-center justify-end w-[38px] h-5 p-0.5 rounded-full transition-all flex-shrink-0',
+                  notificationSettings.streamGoingLive
+                    ? 'bg-gradient-to-r from-primary to-[#482090]'
+                    : 'bg-[#2E2744]'
+                )}
+              >
+                <div className={cn(
+                  'w-4 h-4 rounded-full bg-white transition-all',
+                  !notificationSettings.streamGoingLive && 'translate-x-[-18px]'
+                )} />
+              </button>
+            </div>
+
+            {/* Replay of Past Streams */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+              <div className="flex flex-col gap-1 flex-1">
+                <h3 className="text-[15px] font-bold text-white">Replay of Past Streams (VODs)</h3>
+                <p className="text-[15px] font-normal text-webGray">When a followed channel starts a replay</p>
+              </div>
+              <button
+                onClick={() => toggleNotification('replayOfPastStreams')}
+                className={cn(
+                  'flex items-center justify-end w-[38px] h-5 p-0.5 rounded-full transition-all flex-shrink-0',
+                  notificationSettings.replayOfPastStreams
+                    ? 'bg-gradient-to-r from-primary to-[#482090]'
+                    : 'bg-[#2E2744]'
+                )}
+              >
+                <div className={cn(
+                  'w-4 h-4 rounded-full bg-white transition-all',
+                  !notificationSettings.replayOfPastStreams && 'translate-x-[-18px]'
+                )} />
+              </button>
+            </div>
+
+            {/* Mentions in Chat */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+              <div className="flex flex-col gap-1 flex-1">
+                <h3 className="text-[15px] font-bold text-white">Mentions in Chat</h3>
+                <p className="text-[15px] font-normal text-webGray">When someone mentions you in the chat</p>
+              </div>
+              <button
+                onClick={() => toggleNotification('mentionsInChat')}
+                className={cn(
+                  'flex items-center justify-end w-[38px] h-5 p-0.5 rounded-full transition-all flex-shrink-0',
+                  notificationSettings.mentionsInChat
+                    ? 'bg-gradient-to-r from-primary to-[#482090]'
+                    : 'bg-[#2E2744]'
+                )}
+              >
+                <div className={cn(
+                  'w-4 h-4 rounded-full bg-white transition-all',
+                  !notificationSettings.mentionsInChat && 'translate-x-[-18px]'
+                )} />
+              </button>
+            </div>
+
+            {/* New Follower */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+              <div className="flex flex-col gap-1 flex-1">
+                <h3 className="text-[15px] font-bold text-white">New Follower</h3>
+                <p className="text-[15px] font-normal text-webGray">When another user follows you</p>
+              </div>
+              <button
+                onClick={() => toggleNotification('newFollower')}
+                className={cn(
+                  'flex items-center justify-end w-[38px] h-5 p-0.5 rounded-full transition-all flex-shrink-0',
+                  notificationSettings.newFollower
+                    ? 'bg-gradient-to-r from-primary to-[#482090]'
+                    : 'bg-[#2E2744]'
+                )}
+              >
+                <div className={cn(
+                  'w-4 h-4 rounded-full bg-white transition-all',
+                  !notificationSettings.newFollower && 'translate-x-[-18px]'
+                )} />
+              </button>
+            </div>
+
+            {/* Recommended Streams */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+              <div className="flex flex-col gap-1 flex-1">
+                <h3 className="text-[15px] font-bold text-white">Recommended Streams</h3>
+                <p className="text-[15px] font-normal text-webGray">When streams that match your interests go live</p>
+              </div>
+              <button
+                onClick={() => toggleNotification('recommendedStreams')}
+                className={cn(
+                  'flex items-center justify-end w-[38px] h-5 p-0.5 rounded-full transition-all flex-shrink-0',
+                  notificationSettings.recommendedStreams
+                    ? 'bg-gradient-to-r from-primary to-[#482090]'
+                    : 'bg-[#2E2744]'
+                )}
+              >
+                <div className={cn(
+                  'w-4 h-4 rounded-full bg-white transition-all',
+                  !notificationSettings.recommendedStreams && 'translate-x-[-18px]'
+                )} />
+              </button>
+            </div>
+
+            {/* Subscriptions */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+              <div className="flex flex-col gap-1 flex-1">
+                <h3 className="text-[15px] font-bold text-white">Subscriptions</h3>
+                <p className="text-[15px] font-normal text-webGray">When there's news about channels you're subscribed to</p>
+              </div>
+              <button
+                onClick={() => toggleNotification('subscriptions')}
+                className={cn(
+                  'flex items-center justify-end w-[38px] h-5 p-0.5 rounded-full transition-all flex-shrink-0',
+                  notificationSettings.subscriptions
+                    ? 'bg-gradient-to-r from-primary to-[#482090]'
+                    : 'bg-[#2E2744]'
+                )}
+              >
+                <div className={cn(
+                  'w-4 h-4 rounded-full bg-white transition-all',
+                  !notificationSettings.subscriptions && 'translate-x-[-18px]'
+                )} />
+              </button>
+            </div>
           </div>
         )}
 
