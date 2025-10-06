@@ -42,8 +42,8 @@ const UserHeader: FC<Props> = ({ isOwn = true, className }) => {
       </div>
 
       {/* Badges row near banner */}
-      <div className="px-4 sm:px-0 -mt-6 sm:-mt-10">
-        <div className="flex flex-wrap items-center gap-3 sm:ml-44">
+      <div className="px-4 sm:px-0 -mt-8 sm:-mt-12">
+        <div className="flex flex-wrap items-center gap-3 sm:ml-48">
           <div className="inline-flex items-center justify-center gap-1">
             <span className="text-xs font-bold uppercase text-white">Tier</span>
             <div className="relative w-[18px] h-5">
