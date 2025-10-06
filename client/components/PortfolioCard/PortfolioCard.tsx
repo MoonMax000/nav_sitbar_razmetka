@@ -108,11 +108,18 @@ const PortfolioCard: FC<PortfolioCardProps> = ({
         <button
           type="button"
           onClick={handleShowAll}
-          className="group flex items-center gap-1 rounded-full px-2 py-1 text-[15px] font-bold leading-normal text-[#A06AFF] transition hover:text-white"
+          className="group inline-flex items-center gap-2 rounded-full border border-transparent bg-[#A06AFF]/10 px-3 py-1.5 text-[15px] font-semibold leading-normal text-[#E3D8FF] transition-all duration-200 hover:border-[#A06AFF] hover:bg-[#A06AFF]/20 hover:text-white hover:shadow-[0_12px_30px_-18px_rgba(160,106,255,0.8)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF]/50 focus-visible:ring-offset-0"
         >
           Show all
-          <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#A06AFF]/10 transition group-hover:bg-[#A06AFF]/30">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br from-[#A06AFF]/60 to-[#482090]/60 text-white transition-all duration-200 group-hover:from-[#A06AFF] group-hover:to-[#482090]">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="transition-transform duration-200 group-hover:translate-x-0.5"
+            >
               <path d="M10.7402 15.53L14.2602 12L10.7402 8.46997" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </span>
