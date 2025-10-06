@@ -668,9 +668,150 @@ const LiveStreamingSettings: FC = () => {
         )}
 
         {activeTab === 'subscriptions' && (
-          <div className="flex flex-col gap-6 p-4 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px]">
-            <h2 className="text-2xl font-bold text-white">Subscriptions</h2>
-            <p className="text-sm text-webGray">Manage your streaming subscriptions and subscribers.</p>
+          <div className="flex flex-col gap-6">
+            {/* Subscription Type Tabs */}
+            <div className="inline-flex flex-wrap items-center gap-3 p-1 rounded-[36px] border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px] w-full sm:w-auto">
+              <button className="flex items-center justify-center px-4 py-3 rounded-[32px] bg-gradient-to-r from-primary to-[#482090] backdrop-blur-[58.33px] text-white text-[15px] font-bold flex-1 sm:flex-initial">
+                My subscribers
+              </button>
+              <button className="flex items-center justify-center px-4 py-3 rounded-[32px] border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[58.33px] text-webGray text-[15px] font-bold hover:text-white transition-colors flex-1 sm:flex-initial">
+                Subscribed to
+              </button>
+            </div>
+
+            {/* Main Content Container */}
+            <div className="flex flex-col gap-6 p-4 sm:p-6 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px]">
+              {/* Search Bar */}
+              <div className="flex items-center gap-2 px-4 py-2.5 rounded-lg border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px]">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z" stroke="#B0B0B0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M22 22L20 20" stroke="#B0B0B0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                <input
+                  type="text"
+                  placeholder="Search"
+                  className="flex-1 bg-transparent text-[15px] font-normal text-white placeholder:text-webGray outline-none"
+                />
+              </div>
+
+              {/* Subscribers List */}
+              <div className="flex flex-col gap-4">
+                {[
+                  { name: 'AlexanderBrave', status: 'online', subscribers: '17', isSubscribed: true },
+                  { name: 'OlgaTender', status: 'online', subscribers: '5', isSubscribed: true },
+                  { name: 'VictorBold', status: 'online', subscribers: '1,022,000', isSubscribed: true },
+                  { name: 'MaximCreator', status: 'online', subscribers: '356', isSubscribed: true },
+                  { name: 'AlexanderBrave', status: 'online', subscribers: '223', isSubscribed: true },
+                  { name: 'MaximCreator', status: 'offline', subscribers: '1', isSubscribed: false },
+                  { name: 'MaximCreator', status: 'online', subscribers: '8', isSubscribed: true },
+                  { name: 'AlexanderBrave', status: 'online', subscribers: '4', isSubscribed: true },
+                  { name: 'AlexanderBrave', status: 'online', subscribers: '17', isSubscribed: true },
+                  { name: 'OlgaTender', status: 'online', subscribers: '5', isSubscribed: true },
+                  { name: 'VictorBold', status: 'online', subscribers: '1,022,000', isSubscribed: true },
+                  { name: 'MaximCreator', status: 'online', subscribers: '356', isSubscribed: true },
+                  { name: 'AlexanderBrave', status: 'online', subscribers: '223', isSubscribed: true },
+                  { name: 'MaximCreator', status: 'offline', subscribers: '1', isSubscribed: false },
+                  { name: 'MaximCreator', status: 'online', subscribers: '8', isSubscribed: true },
+                  { name: 'AlexanderBrave', status: 'online', subscribers: '4', isSubscribed: true },
+                ].map((subscriber, index) => (
+                  <div key={index}>
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                      {/* Left Side - User Info */}
+                      <div className="flex items-center gap-4 sm:gap-9 flex-wrap">
+                        {/* Avatar & Name */}
+                        <div className="flex items-center gap-3 min-w-[140px]">
+                          <div className="w-11 h-11 rounded-full bg-gradient-to-br from-primary to-[#482090] flex-shrink-0" />
+                          <span className="text-[15px] font-bold text-white">{subscriber.name}</span>
+                        </div>
+
+                        {/* Status */}
+                        <div className="flex items-center gap-1">
+                          <div className={cn(
+                            'w-2 h-2 rounded-full',
+                            subscriber.status === 'online' ? 'bg-green' : 'bg-webGray'
+                          )} />
+                          <span className={cn(
+                            'text-[15px] font-bold capitalize',
+                            subscriber.status === 'online' ? 'text-green' : 'text-webGray'
+                          )}>
+                            {subscriber.status}
+                          </span>
+                        </div>
+
+                        {/* Subscribers Count */}
+                        <div className="flex items-center gap-1">
+                          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M15.5147 16.6667H15.9232C16.8814 16.6667 17.6436 16.2302 18.3279 15.6197C20.0663 14.0689 15.9797 12.5001 14.5846 12.5001M12.918 4.22406C13.1072 4.18652 13.3037 4.16675 13.5053 4.16675C15.0219 4.16675 16.2513 5.28604 16.2513 6.66675C16.2513 8.04746 15.0219 9.16675 13.5053 9.16675C13.3037 9.16675 13.1072 9.147 12.918 9.10941" stroke="#B0B0B0" strokeWidth="1.5" strokeLinecap="round"/>
+                            <path d="M3.73443 13.426C2.75195 13.9525 0.175949 15.0276 1.7449 16.3728C2.51133 17.03 3.36493 17.5 4.4381 17.5H10.5619C11.6351 17.5 12.4887 17.03 13.2551 16.3728C14.8241 15.0276 12.2481 13.9525 11.2656 13.426C8.96167 12.1913 6.03833 12.1913 3.73443 13.426Z" stroke="#B0B0B0" strokeWidth="1.5"/>
+                            <path d="M10.8346 6.25008C10.8346 8.09103 9.34222 9.58341 7.5013 9.58341C5.66035 9.58341 4.16797 8.09103 4.16797 6.25008C4.16797 4.40913 5.66035 2.91675 7.5013 2.91675C9.34222 2.91675 10.8346 4.40913 10.8346 6.25008Z" stroke="#B0B0B0" strokeWidth="1.5"/>
+                          </svg>
+                          <span className="text-[15px] font-bold text-primary">{subscriber.subscribers}</span>
+                        </div>
+                      </div>
+
+                      {/* Right Side - Action Button */}
+                      <button className={cn(
+                        'w-full sm:w-[180px] px-4 py-2.5 rounded-lg text-[14px] font-bold transition-all',
+                        subscriber.isSubscribed
+                          ? 'border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px] text-white hover:bg-[rgba(12,16,20,0.7)]'
+                          : 'border border-[#3A2127] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px] text-[#EF454A] hover:bg-[#3A2127]'
+                      )}>
+                        {subscriber.isSubscribed ? 'Subscribe' : 'Unfollow'}
+                      </button>
+                    </div>
+                    {index < 15 && <div className="h-px bg-[#181B22] mt-4" />}
+                  </div>
+                ))}
+              </div>
+
+              {/* Pagination */}
+              <div className="flex flex-wrap items-center justify-center gap-1 mt-4">
+                {/* First */}
+                <button className="flex items-center justify-center w-11 h-11 rounded-lg border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px] hover:bg-[rgba(12,16,20,0.7)] transition-all">
+                  <svg width="21" height="20" viewBox="0 0 21 20" fill="none">
+                    <path d="M15.157 15L16.332 13.825L12.5154 10L16.332 6.175L15.157 5L10.157 10L15.157 15Z" fill="#B0B0B0"/>
+                    <path d="M9.66484 15L10.8398 13.825L7.02318 10L10.8398 6.175L9.66484 5L4.66484 10L9.66484 15Z" fill="#B0B0B0"/>
+                  </svg>
+                </button>
+
+                {/* Prev */}
+                <button className="flex items-center justify-center w-11 h-11 rounded-lg border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px] hover:bg-[rgba(12,16,20,0.7)] transition-all">
+                  <svg width="21" height="20" viewBox="0 0 21 20" fill="none">
+                    <path d="M13.075 15L14.25 13.825L10.4333 10L14.25 6.175L13.075 5L8.075 10L13.075 15Z" fill="#B0B0B0"/>
+                  </svg>
+                </button>
+
+                {/* Page Numbers */}
+                {[1, 2, 3, 4].map((page) => (
+                  <button
+                    key={page}
+                    className={cn(
+                      'flex items-center justify-center w-11 h-11 rounded text-[15px] font-bold transition-all',
+                      page === 1
+                        ? 'bg-gradient-to-r from-primary to-[#482090] text-white'
+                        : 'border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px] text-webGray hover:text-white'
+                    )}
+                  >
+                    {page}
+                  </button>
+                ))}
+
+                {/* Next */}
+                <button className="flex items-center justify-center w-11 h-11 rounded-lg border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px] hover:bg-[rgba(12,16,20,0.7)] transition-all">
+                  <svg width="21" height="20" viewBox="0 0 21 20" fill="none">
+                    <path d="M9.175 5L8 6.175L11.8167 10L8 13.825L9.175 15L14.175 10L9.175 5Z" fill="#B0B0B0"/>
+                  </svg>
+                </button>
+
+                {/* Last */}
+                <button className="flex items-center justify-center w-11 h-11 rounded-lg border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px] hover:bg-[rgba(12,16,20,0.7)] transition-all">
+                  <svg width="21" height="20" viewBox="0 0 21 20" fill="none">
+                    <path d="M5.84297 5L4.66797 6.175L8.48464 10L4.66797 13.825L5.84297 15L10.843 10L5.84297 5Z" fill="#B0B0B0"/>
+                    <path d="M11.3352 5L10.1602 6.175L13.9768 10L10.1602 13.825L11.3352 15L16.3352 10L11.3352 5Z" fill="#B0B0B0"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
           </div>
         )}
       </div>
