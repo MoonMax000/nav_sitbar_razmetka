@@ -1,8 +1,10 @@
 import { FC, useMemo, useState } from 'react';
 
 import { useToast } from '@/hooks/use-toast';
+import type { ViewMode } from '@/screens/home/Home';
 
 import PostCard, { PostCardProps } from '../PostCard/PostCard';
+import CompactPostCard from '../PostCard/CompactPostCard';
 
 interface Tab {
   id: TabId;
@@ -14,6 +16,7 @@ type TabId = 'ideas' | 'opinions' | 'analytics' | 'softwares' | 'videos' | 'like
 
 interface Props {
   isOwn?: boolean;
+  viewMode?: ViewMode;
 }
 
 const UserTabs: FC<Props> = ({ isOwn = true }) => {
