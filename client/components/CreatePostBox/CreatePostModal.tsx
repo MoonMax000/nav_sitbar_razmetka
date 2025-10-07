@@ -72,7 +72,7 @@ const emojiGroups: { name: string; emoji: string[] }[] = [
       "🥴",
       "😵",
       "🥳",
-      "😎",
+      "���",
       "🤓",
       "🧐",
       "😕",
@@ -276,7 +276,7 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
         </div>
 
         {/* Body */}
-        <div className="px-5 pb-4">
+        <div className="max-h-[calc(100vh-220px)] overflow-y-auto px-5 pb-5">
           <div className="flex items-start gap-4">
             <img
               src="https://api.builder.io/api/v1/image/assets/TEMP/928e0a03eef447eade18cba6b182af59d4bd42b9?width=88"
@@ -289,7 +289,7 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
                 ref={textareaRef}
                 value={text}
                 onChange={handleTextChange}
-                placeholder="Что происходит?"
+                placeholder="��то происходит?"
                 className="w-full resize-none bg-transparent text-lg text-[#E7E9EA] placeholder:text-[#71767B] outline-none"
                 autoFocus
               />
