@@ -11,6 +11,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  isolation: isolate;
 }
 
 .logo-shimmer::after {
@@ -22,6 +23,7 @@
   transform: translateX(-150%) rotate(14deg);
   animation: logo-shimmer-move 5.5s cubic-bezier(0.65, 0, 0.35, 1) infinite;
   pointer-events: none;
+  z-index: 2;
 }
 
 .logo-breathe {
