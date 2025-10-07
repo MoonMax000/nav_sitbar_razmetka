@@ -229,7 +229,7 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
         </div>
 
         {/* Footer */}
-        <div className="border-t border-[#181B22] px-4 py-3 rounded-b-2xl bg-[rgba(12,16,20,0.9)]">
+        <div className="border-t border-[#181B22] px-4 py-3 rounded-b-2xl bg-[rgba(12,16,20,0.95)]">
           <div className="flex items-center justify-between">
             {/* Media actions */}
             <div className="flex items-center gap-1">
