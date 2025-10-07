@@ -1,4 +1,5 @@
 import { FC, useState, useRef, useEffect } from "react";
+import { createPortal } from "react-dom";
 
 interface CreatePostModalProps {
   isOpen: boolean;
@@ -9,9 +10,15 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
   const [sentiment, setSentiment] = useState<"bullish" | "bearish" | null>("bullish");
   const [text, setText] = useState("");
   const [images, setImages] = useState<string[]>([]);
+  const [mounted, setMounted] = useState(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const maxLength = 500;
+
+  useEffect(() => {
+    setMounted(true);
+    return () => setMounted(false);
+  }, []);
 
   useEffect(() => {
     if (textareaRef.current) {
@@ -80,11 +87,11 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
   const isNearLimit = remainingChars <= 50;
   const canPost = text.trim().length > 0 || images.length > 0;
 
-  if (!isOpen) return null;
+  if (!mounted || !isOpen) return null;
 
-  return (
+  return createPortal(
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm px-4"
+      className="fixed inset-0 z-[2000] flex items-center justify-center bg-black/70 backdrop-blur-sm px-4"
       onClick={handleClose}
     >
       <div
@@ -376,7 +383,8 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 };
 
