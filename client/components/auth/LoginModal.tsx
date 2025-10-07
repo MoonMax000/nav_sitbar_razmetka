@@ -228,7 +228,7 @@ const LoginModal: FC<LoginModalProps> = ({ isOpen, onClose }) => {
             </button>
 
             {/* Create Account Link */}
-            <p className="text-center text-[15px] mt-2 animate-in fade-in duration-500 delay-[900ms]">
+            <p className="text-center text-[15px] mt-2">
               <span className="text-webGray">New here? </span>
               <button className="text-primary underline hover:no-underline hover:text-purple-400 transition-colors duration-300">
                 Create an account
@@ -239,31 +239,50 @@ const LoginModal: FC<LoginModalProps> = ({ isOpen, onClose }) => {
 
         {/* Right Panel - Branding (hidden on mobile) */}
         <div className="hidden md:flex w-[393px] flex-col items-center justify-center gap-12 p-8 rounded-r-[25px] bg-[rgba(11,14,17,0.72)] backdrop-blur-[50px] relative overflow-hidden">
-          {/* Subtle animated gradient */}
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-purple-600/10 opacity-50" />
+          {/* Desktop Logo with SpaceX-style glow */}
+          <div className="relative z-10">
+            <div className="relative">
+              {/* Glow effect layers */}
+              <div className="absolute inset-0 blur-2xl opacity-60 animate-logo-pulse">
+                <svg width="112" height="128" viewBox="0 0 113 128" fill="none">
+                  <g clipPath="url(#clip0_logo_glow)">
+                    <path fillRule="evenodd" clipRule="evenodd" d="M0.748047 63.9619L0.753226 64.3533C13.1061 61.8201 25.5249 59.1745 37.9666 56.5237L37.9895 119.407L79.8468 128C79.8468 114.191 79.7174 75.2902 79.8542 61.485L50.5652 55.4724L46.667 54.6726C68.5682 50.0183 90.5085 45.4255 112.252 41.4711L112.245 0C75.4715 7.54699 37.6389 16.4678 0.748047 22.8836L0.748047 63.9619Z" fill="url(#paint0_glow)"/>
+                  </g>
+                  <defs>
+                    <linearGradient id="paint0_glow" x1="27.8276" y1="137.6" x2="75.9893" y2="8.13923" gradientUnits="userSpaceOnUse">
+                      <stop stopColor="#A06AFF"/>
+                      <stop offset="1" stopColor="#A06AFF"/>
+                    </linearGradient>
+                    <clipPath id="clip0_logo_glow">
+                      <rect width="111.504" height="128" fill="white" transform="translate(0.748047)"/>
+                    </clipPath>
+                  </defs>
+                </svg>
+              </div>
 
-          <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl animate-pulse delay-1000" />
-          <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-600/10 rounded-full blur-3xl animate-pulse delay-500" />
-          <svg width="112" height="128" viewBox="0 0 113 128" fill="none" className="relative z-10 animate-in fade-in zoom-in-95 duration-700 delay-300">
-            <g clipPath="url(#clip0_logo)">
-              <path fillRule="evenodd" clipRule="evenodd" d="M0.748047 63.9619L0.753226 64.3533C13.1061 61.8201 25.5249 59.1745 37.9666 56.5237L37.9895 119.407L79.8468 128C79.8468 114.191 79.7174 75.2902 79.8542 61.485L50.5652 55.4724L46.667 54.6726C68.5682 50.0183 90.5085 45.4255 112.252 41.4711L112.245 0C75.4715 7.54699 37.6389 16.4678 0.748047 22.8836L0.748047 63.9619Z" fill="url(#paint0_linear_logo)"/>
-            </g>
-            <defs>
-              <linearGradient id="paint0_linear_logo" x1="27.8276" y1="137.6" x2="75.9893" y2="8.13923" gradientUnits="userSpaceOnUse">
-                <stop stopColor="#181A20"/>
-                <stop offset="1" stopColor="#A06AFF"/>
-              </linearGradient>
-              <clipPath id="clip0_logo">
-                <rect width="111.504" height="128" fill="white" transform="translate(0.748047)"/>
-              </clipPath>
-            </defs>
-          </svg>
+              {/* Main logo */}
+              <svg width="112" height="128" viewBox="0 0 113 128" fill="none" className="relative z-10">
+                <g clipPath="url(#clip0_logo)">
+                  <path fillRule="evenodd" clipRule="evenodd" d="M0.748047 63.9619L0.753226 64.3533C13.1061 61.8201 25.5249 59.1745 37.9666 56.5237L37.9895 119.407L79.8468 128C79.8468 114.191 79.7174 75.2902 79.8542 61.485L50.5652 55.4724L46.667 54.6726C68.5682 50.0183 90.5085 45.4255 112.252 41.4711L112.245 0C75.4715 7.54699 37.6389 16.4678 0.748047 22.8836L0.748047 63.9619Z" fill="url(#paint0_linear_logo)"/>
+                </g>
+                <defs>
+                  <linearGradient id="paint0_linear_logo" x1="27.8276" y1="137.6" x2="75.9893" y2="8.13923" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#181A20"/>
+                    <stop offset="1" stopColor="#A06AFF"/>
+                  </linearGradient>
+                  <clipPath id="clip0_logo">
+                    <rect width="111.504" height="128" fill="white" transform="translate(0.748047)"/>
+                  </clipPath>
+                </defs>
+              </svg>
+            </div>
+          </div>
 
           <div className="flex flex-col items-center gap-4 text-center relative z-10">
-            <h3 className="text-2xl font-bold text-white max-w-[318px] animate-in fade-in slide-in-from-bottom duration-700 delay-500">
+            <h3 className="text-2xl font-bold text-white max-w-[318px]">
               Join One and Only Ecosystem for Trading
             </h3>
-            <p className="text-[15px] text-webGray animate-in fade-in slide-in-from-bottom duration-700 delay-700">
+            <p className="text-[15px] text-webGray">
               We shape the next generation of successful trading for everyone. We invite you to be a part of this journey with us. Let's empower everyone to succeed one lesson, one trade, one success story of their life.
             </p>
           </div>
