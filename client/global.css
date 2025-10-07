@@ -39,12 +39,18 @@
 }
 
 .logo-effect-outline .logo-shape {
-  stroke: rgba(160, 106, 255, 0.55);
-  stroke-width: 2.1px;
+  stroke: rgba(160, 106, 255, 0.7);
+  stroke-width: 2.45px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
   stroke-dasharray: 520;
   stroke-dashoffset: 520;
+  mix-blend-mode: screen;
   animation: logo-outline-trace 5.5s ease-in-out infinite;
-  filter: drop-shadow(0 0 14px rgba(160, 106, 255, 0.35));
+  filter:
+    drop-shadow(0 0 6px rgba(160, 106, 255, 0.55))
+    drop-shadow(0 0 16px rgba(106, 165, 255, 0.35))
+    drop-shadow(0 0 28px rgba(160, 106, 255, 0.24));
 }
 
 @keyframes logo-outline-pulse {
