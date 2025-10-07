@@ -28,7 +28,7 @@ const LoginModal: FC<LoginModalProps> = ({ isOpen, onClose }) => {
 
           {/* Mobile logo preview */}
           <div className="md:hidden mb-6 relative z-10">
-            <div className={cn('logo-anim-unit', currentLogoEffect)}>
+            <div className="logo-anim-unit logo-effect-outline">
               <svg width="80" height="92" viewBox="0 0 113 128" fill="none" className="logo-svg">
                 <g clipPath="url(#clip0_logo_mobile)">
                   <path
