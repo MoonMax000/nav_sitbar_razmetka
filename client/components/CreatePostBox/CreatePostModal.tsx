@@ -207,6 +207,19 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
     setImages((previous) => previous.filter((_, idx) => idx !== index));
   };
 
+  const [emojiQuery, setEmojiQuery] = useState("");
+
+  const filteredEmojiGroups = useMemo(() => {
+    if (!emojiQuery.trim()) return emojiGroups;
+    const query = emojiQuery.toLowerCase();
+    return emojiGroups
+      .map((group) => ({
+        ...group,
+        emoji: group.emoji.filter((item) => item.toLowerCase().includes(query)),
+      }))
+      .filter((group) => group.emoji.length > 0);
+  }, [emojiQuery]);
+
   const handleEmojiSelect = (emoji: string) => {
     setText((previous) => {
       if (previous.length + emoji.length > maxLength) {
