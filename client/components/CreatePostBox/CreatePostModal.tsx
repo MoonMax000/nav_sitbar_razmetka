@@ -72,7 +72,7 @@ const emojiGroups: { name: string; emoji: string[] }[] = [
       "🥴",
       "😵",
       "🥳",
-      "���",
+      "😎",
       "🤓",
       "🧐",
       "😕",
@@ -289,7 +289,7 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
                 ref={textareaRef}
                 value={text}
                 onChange={handleTextChange}
-                placeholder="��то происходит?"
+                placeholder="Что происходит?"
                 className="w-full resize-none bg-transparent text-lg text-[#E7E9EA] placeholder:text-[#71767B] outline-none"
                 autoFocus
               />
@@ -370,7 +370,7 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
           {isReplyMenuOpen && (
             <div
               ref={replyMenuRef}
-              className="absolute left-1/2 top-[55%] z-[2050] w-72 -translate-x-1/2 rounded-2xl border border-white/10 bg-[#0B0F12]/95 p-3 shadow-2xl backdrop-blur"
+              className="absolute left-0 top-full z-[2100] mt-3 w-72 rounded-2xl border border-white/15 bg-[#0B0F12]/95 p-3 shadow-2xl backdrop-blur"
             >
               <h3 className="mb-2 text-sm font-bold text-white">Who can reply?</h3>
               <p className="mb-3 text-xs text-[#8B98A5]">
