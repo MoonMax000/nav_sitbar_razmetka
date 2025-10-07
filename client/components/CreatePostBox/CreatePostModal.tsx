@@ -1,3 +1,4 @@
+import type { ChangeEvent } from "react";
 import { FC, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
@@ -177,14 +178,14 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
     };
   }, [isOpen]);
 
-  const handleTextChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleTextChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
     const value = event.target.value;
     if (value.length <= maxLength) {
       setText(value);
     }
   };
 
-  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageUpload = (event: ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
     if (!files) return;
 
