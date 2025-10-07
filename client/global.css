@@ -27,15 +27,12 @@
 
 .logo-anim-unit .logo-shape {
   stroke: none;
-  transition:
-    filter 0.6s ease,
-    opacity 0.6s ease,
-    stroke-width 0.6s ease;
-  filter: drop-shadow(0 6px 18px rgba(11, 14, 17, 0.7));
+  transition: stroke-width 0.6s ease;
+  filter: none;
 }
 
 .logo-effect-outline .logo-svg {
-  animation: logo-outline-pulse 5.5s ease-in-out infinite;
+  animation: none;
 }
 
 .logo-effect-outline .logo-shape {
@@ -46,11 +43,8 @@
   stroke-dasharray: 520;
   stroke-dashoffset: 520;
   mix-blend-mode: screen;
-  animation: logo-outline-trace 5.5s ease-in-out infinite;
-  filter:
-    drop-shadow(0 0 6px rgba(160, 106, 255, 0.55))
-    drop-shadow(0 0 16px rgba(106, 165, 255, 0.35))
-    drop-shadow(0 0 28px rgba(160, 106, 255, 0.24));
+  animation: logo-outline-trace 5.5s linear infinite;
+  filter: none;
 }
 
 @keyframes logo-outline-pulse {
@@ -65,18 +59,9 @@
 @keyframes logo-outline-trace {
   0% {
     stroke-dashoffset: 520;
-    opacity: 0.1;
-  }
-  25% {
-    opacity: 0.85;
-  }
-  55% {
-    stroke-dashoffset: 0;
-    opacity: 0.45;
   }
   100% {
     stroke-dashoffset: -520;
-    opacity: 0;
   }
 }
 
