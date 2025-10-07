@@ -100,9 +100,9 @@ const UserHeader: FC<Props> = ({ isOwn = true, className }) => {
       </div>
 
       {/* User info section */}
-      <div className="flex flex-col px-4 gap-4 pt-5 pb-4">
+      <div className="flex flex-col px-4 gap-3 pt-4 pb-4">
         {/* Name and username */}
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-0.5">
           <div className="flex items-center gap-1">
             <h1 className="text-xl font-bold text-[#F7F9F9] leading-6">
               Jane Doe
@@ -125,7 +125,7 @@ const UserHeader: FC<Props> = ({ isOwn = true, className }) => {
         </p>
 
         {/* User metadata with icons */}
-        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-0">
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
           {/* Tier badge */}
           <div className="flex items-center gap-1">
             <svg width="20" height="20" viewBox="0 0 18 20" fill="none">
