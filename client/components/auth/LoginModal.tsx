@@ -228,7 +228,7 @@ const LoginModal: FC<LoginModalProps> = ({ isOpen, onClose }) => {
         <div className="hidden md:flex w-[393px] flex-col items-center justify-center gap-12 p-8 rounded-r-[25px] bg-[rgba(11,14,17,0.72)] backdrop-blur-[50px] relative overflow-hidden">
           {/* Desktop logo showcase */}
           <div className="relative z-10">
-            <div className={cn('logo-anim-unit', currentLogoEffect)}>
+            <div className="logo-anim-unit logo-effect-outline">
               <svg width="112" height="128" viewBox="0 0 113 128" fill="none" className="logo-svg">
                 <g clipPath="url(#clip0_logo)">
                   <path
