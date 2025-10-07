@@ -83,12 +83,12 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div 
-      className="fixed inset-0 z-50 flex items-start justify-center bg-black/60 backdrop-blur-sm pt-16 md:pt-20"
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm px-4"
       onClick={handleClose}
     >
-      <div 
-        className="relative w-full max-w-[600px] mx-4 rounded-2xl border border-[#181B22] bg-[rgba(12,16,20,0.95)] backdrop-blur-[100px] shadow-2xl animate-in fade-in slide-in-from-top-4 duration-300"
+      <div
+        className="relative w-full max-w-[600px] rounded-2xl border border-[#181B22] bg-[rgba(12,16,20,0.96)] backdrop-blur-[100px] shadow-2xl animate-in fade-in zoom-in-95 duration-200"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -112,7 +112,7 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
         </div>
 
         {/* Content */}
-        <div className="max-h-[calc(100vh-200px)] overflow-y-auto px-4 py-4">
+        <div className="max-h-[calc(100vh-160px)] overflow-y-auto px-4 py-4">
           {/* User info */}
           <div className="flex items-start gap-3 mb-4">
             <img
@@ -222,7 +222,7 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
         </div>
 
         {/* Footer */}
-        <div className="border-t border-[#181B22] px-4 py-3">
+        <div className="border-t border-[#181B22] px-4 py-3 rounded-b-2xl bg-[rgba(12,16,20,0.9)]">
           <div className="flex items-center justify-between">
             {/* Media actions */}
             <div className="flex items-center gap-1">
