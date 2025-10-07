@@ -1,4 +1,4 @@
-import { FC, useState, useRef, useEffect } from "react";
+import { FC, useState } from "react";
 import type { ViewMode } from "@/screens/home/Home";
 import CreatePostModal from "./CreatePostModal";
 
