@@ -543,7 +543,7 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
               {isEmojiPickerOpen && (
                 <div
                   ref={emojiMenuRef}
-                  className="absolute bottom-[120px] left-12 z-[2050] h-72 w-80 rounded-3xl border border-white/10 bg-[#0B0F12]/95 p-4 shadow-2xl backdrop-blur"
+                  className="absolute bottom-[160px] left-12 z-[2100] h-80 w-80 rounded-3xl border border-white/15 bg-[#0B0F12]/95 p-4 shadow-2xl backdrop-blur"
                 >
                   <div className="mb-3 flex items-center justify-between">
                     <h3 className="text-sm font-semibold text-white">Emoji</h3>
