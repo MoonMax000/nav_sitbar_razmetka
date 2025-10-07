@@ -22,28 +22,13 @@ const CreatePostBox: FC<CreatePostBoxProps> = ({
           alt=""
           className="h-11 w-11 flex-shrink-0 rounded-full"
         />
-        <div className="relative flex flex-1 flex-col items-center rounded-2xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] px-4 py-3 shadow-[0_4px_8px_0_rgba(0,0,0,0.24)] backdrop-blur-[50px]">
-          <textarea
-            ref={textareaRef}
-            value={text}
-            onChange={handleTextChange}
-            onClick={() => setIsModalOpen(true)}
-            placeholder="How do you feel about markets today? Share your ideas here!"
-            className="w-full resize-none bg-transparent text-[15px] font-normal text-white placeholder:text-[#B0B0B0] outline-none overflow-hidden min-h-[24px] cursor-pointer"
-            rows={1}
-            readOnly
-          />
-          {text.length > 0 && (
-            <div className="absolute bottom-2 right-3 flex items-center gap-1">
-              <span
-                className={`text-xs font-medium transition-colors ${
-                  isNearLimit ? "text-[#EF454A]" : "text-[#B0B0B0]"
-                }`}
-              >
-                {remainingChars}
-              </span>
-            </div>
-          )}
+        <div
+          onClick={() => setIsModalOpen(true)}
+          className="relative flex flex-1 flex-col items-center rounded-2xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] px-4 py-3 shadow-[0_4px_8px_0_rgba(0,0,0,0.24)] backdrop-blur-[50px] cursor-pointer hover:bg-[rgba(12,16,20,0.7)] transition-colors"
+        >
+          <div className="w-full text-[15px] font-normal text-[#B0B0B0]">
+            How do you feel about markets today? Share your ideas here!
+          </div>
         </div>
         <button
           type="button"
