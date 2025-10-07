@@ -245,7 +245,7 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
   return createPortal(
     <div className="fixed inset-0 z-[2000] flex items-center justify-center bg-black/70 backdrop-blur-sm px-4" onClick={handleClose}>
       <div
-        className="relative w-full max-w-[680px] overflow-hidden rounded-3xl border border-white/5 bg-[#050708]/95 shadow-[0_40px_100px_-30px_rgba(0,0,0,0.85)]"
+        className="relative w-full max-w-[720px] max-h-[calc(100vh-120px)] overflow-hidden rounded-3xl border border-white/5 bg-[#050708]/95 shadow-[0_40px_100px_-30px_rgba(0,0,0,0.85)]"
         onClick={(event) => event.stopPropagation()}
       >
         {/* Header */}
