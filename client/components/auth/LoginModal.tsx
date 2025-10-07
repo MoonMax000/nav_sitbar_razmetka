@@ -26,29 +26,10 @@ const LoginModal: FC<LoginModalProps> = ({ isOpen, onClose }) => {
           {/* Gradient border effect */}
           <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-purple-600/20 opacity-50 pointer-events-none" />
 
-          {/* Mobile Logo with SpaceX-style glow */}
+          {/* Mobile logo with dynamic sweep */}
           <div className="md:hidden mb-6 relative z-10">
-            <div className="relative">
-              {/* Glow effect layers */}
-              <div className="absolute inset-0 blur-xl opacity-60 animate-logo-pulse">
-                <svg width="80" height="92" viewBox="0 0 113 128" fill="none">
-                  <g clipPath="url(#clip0_logo_mobile_glow)">
-                    <path fillRule="evenodd" clipRule="evenodd" d="M0.748047 63.9619L0.753226 64.3533C13.1061 61.8201 25.5249 59.1745 37.9666 56.5237L37.9895 119.407L79.8468 128C79.8468 114.191 79.7174 75.2902 79.8542 61.485L50.5652 55.4724L46.667 54.6726C68.5682 50.0183 90.5085 45.4255 112.252 41.4711L112.245 0C75.4715 7.54699 37.6389 16.4678 0.748047 22.8836L0.748047 63.9619Z" fill="url(#paint0_glow_mobile)"/>
-                  </g>
-                  <defs>
-                    <linearGradient id="paint0_glow_mobile" x1="27.8276" y1="137.6" x2="75.9893" y2="8.13923" gradientUnits="userSpaceOnUse">
-                      <stop stopColor="#A06AFF"/>
-                      <stop offset="1" stopColor="#A06AFF"/>
-                    </linearGradient>
-                    <clipPath id="clip0_logo_mobile_glow">
-                      <rect width="111.504" height="128" fill="white" transform="translate(0.748047)"/>
-                    </clipPath>
-                  </defs>
-                </svg>
-              </div>
-
-              {/* Main logo */}
-              <svg width="80" height="92" viewBox="0 0 113 128" fill="none" className="relative z-10">
+            <div className="logo-shimmer">
+              <svg width="80" height="92" viewBox="0 0 113 128" fill="none" className="logo-breathe">
                 <g clipPath="url(#clip0_logo_mobile)">
                   <path fillRule="evenodd" clipRule="evenodd" d="M0.748047 63.9619L0.753226 64.3533C13.1061 61.8201 25.5249 59.1745 37.9666 56.5237L37.9895 119.407L79.8468 128C79.8468 114.191 79.7174 75.2902 79.8542 61.485L50.5652 55.4724L46.667 54.6726C68.5682 50.0183 90.5085 45.4255 112.252 41.4711L112.245 0C75.4715 7.54699 37.6389 16.4678 0.748047 22.8836L0.748047 63.9619Z" fill="url(#paint0_linear_logo_mobile)"/>
                 </g>
