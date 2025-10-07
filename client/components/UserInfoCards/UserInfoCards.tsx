@@ -3,10 +3,7 @@ import { FC } from "react";
 const UserInfoCards: FC = () => {
   return (
     <div className="flex w-full flex-col gap-3">
-      {/* Compact stats row on mobile, cards on desktop */}
-      <div className="flex flex-col gap-2 md:gap-3">
-        {/* Individual Investor badge - full width on mobile */}
-        <div className="flex items-center gap-2 rounded-xl border border-[#2F3336] bg-[#16181C] px-3 py-2.5 md:px-4 md:py-3">
+      <div className="flex items-center gap-2 rounded-xl border border-[#2F3336] bg-[#16181C] px-3 py-2.5 md:px-4 md:py-3">
           <svg width="18" height="18" viewBox="0 0 20 20" fill="none" className="flex-shrink-0">
             <path
               d="M16.6663 18.3335V14.1668C16.6663 12.5955 16.6663 11.8098 16.1782 11.3217C15.69 10.8335 14.9043 10.8335 13.333 10.8335L9.99967 18.3335L6.66634 10.8335C5.09499 10.8335 4.30932 10.8335 3.82117 11.3217C3.33301 11.8098 3.33301 12.5955 3.33301 14.1668V18.3335"
@@ -33,8 +30,6 @@ const UserInfoCards: FC = () => {
           <span className="text-sm font-medium text-[#F7F9F9] md:text-[15px]">
             Individual Investor
           </span>
-        </div>
-
       </div>
 
       {/* Bio section - more compact */}
