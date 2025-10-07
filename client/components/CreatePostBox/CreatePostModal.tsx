@@ -558,35 +558,42 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
                   ref={emojiMenuRef}
                   className="absolute bottom-[160px] left-12 z-[2100] h-80 w-80 rounded-3xl border border-white/15 bg-[#0B0F12]/95 p-4 shadow-2xl backdrop-blur"
                 >
-                  <div className="mb-3 flex items-center justify-between">
+                  <div className="mb-3 flex items-center justify-between gap-2">
                     <h3 className="text-sm font-semibold text-white">Emoji</h3>
                     <input
                       type="text"
                       placeholder="Search emojis"
-                      className="h-9 w-40 rounded-full border border-white/10 bg-white/5 px-3 text-xs text-[#E7E9EA] placeholder:text-[#768089] focus:outline-none"
-                      readOnly
+                      value={emojiQuery}
+                      onChange={(event) => setEmojiQuery(event.target.value)}
+                      className="h-9 flex-1 rounded-full border border-white/10 bg-white/5 px-3 text-xs text-[#E7E9EA] placeholder:text-[#768089] focus:border-[#1D9BF0] focus:outline-none"
                     />
                   </div>
                   <div className="space-y-3 overflow-y-auto pr-1 text-lg">
-                    {emojiGroups.map((group) => (
-                      <div key={group.name} className="space-y-2">
-                        <div className="text-xs font-semibold uppercase tracking-wide text-[#768089]">
-                          {group.name}
+                    {filteredEmojiGroups.length > 0 ? (
+                      filteredEmojiGroups.map((group) => (
+                        <div key={group.name} className="space-y-2">
+                          <div className="text-xs font-semibold uppercase tracking-wide text-[#768089]">
+                            {group.name}
+                          </div>
+                          <div className="grid grid-cols-8 gap-2 text-center">
+                            {group.emoji.map((item) => (
+                              <button
+                                key={item}
+                                className="flex h-8 w-8 items-center justify-center rounded-full text-xl hover:bg-white/10"
+                                onClick={() => handleEmojiSelect(item)}
+                                type="button"
+                              >
+                                {item}
+                              </button>
+                            ))}
+                          </div>
                         </div>
-                        <div className="grid grid-cols-8 gap-2 text-center">
-                          {group.emoji.map((item) => (
-                            <button
-                              key={item}
-                              className="flex h-8 w-8 items-center justify-center rounded-full text-xl hover:bg-white/10"
-                              onClick={() => handleEmojiSelect(item)}
-                              type="button"
-                            >
-                              {item}
-                            </button>
-                          ))}
-                        </div>
+                      ))
+                    ) : (
+                      <div className="py-8 text-center text-sm text-[#768089]">
+                        No emoji results
                       </div>
-                    ))}
+                    )}
                   </div>
                 </div>
               )}
