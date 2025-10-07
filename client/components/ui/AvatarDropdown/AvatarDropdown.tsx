@@ -1,6 +1,7 @@
 import { FC, useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import LoginModal from "@/components/auth/LoginModal";
 
 interface MenuItem {
   id: string;
@@ -12,9 +13,26 @@ interface MenuItem {
 
 export const AvatarDropdown: FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const menuItems: MenuItem[] = [
+    {
+      id: "login",
+      label: "Login",
+      onClick: () => setIsLoginModalOpen(true),
+      icon: (
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path
+            d="M6.25 6.25L2.5 10M2.5 10L6.25 13.75M2.5 10H12.5M12.5 17.5H14.1667C15.5474 17.5 16.25 16.7974 16.25 15.4167V4.58333C16.25 3.20262 15.5474 2.5 14.1667 2.5H12.5"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      ),
+    },
     {
       id: "profile",
       label: "Profile",
@@ -162,6 +180,11 @@ export const AvatarDropdown: FC = () => {
           })}
         </div>
       )}
+
+      <LoginModal
+        isOpen={isLoginModalOpen}
+        onClose={() => setIsLoginModalOpen(false)}
+      />
     </div>
   );
 };
