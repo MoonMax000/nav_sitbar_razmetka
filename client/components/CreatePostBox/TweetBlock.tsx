@@ -2,10 +2,17 @@ import { FC, useRef, useEffect, ChangeEvent } from "react";
 import { MediaItem, CHAR_LIMIT } from "./types";
 import { MediaGrid } from "./MediaGrid";
 
+interface CodeBlock {
+  id: string;
+  code: string;
+  language: string;
+}
+
 interface TweetBlockProps {
   id: string;
   text: string;
   media: MediaItem[];
+  codeBlocks?: CodeBlock[];
   isFirst: boolean;
   isLast: boolean;
   canDelete: boolean;
@@ -16,12 +23,15 @@ interface TweetBlockProps {
   onMediaReorder: (fromIndex: number, toIndex: number) => void;
   onDelete: () => void;
   onEmojiClick: () => void;
+  onCodeBlockClick: () => void;
+  onCodeBlockRemove?: (codeBlockId: string) => void;
 }
 
 export const TweetBlock: FC<TweetBlockProps> = ({
   id,
   text,
   media,
+  codeBlocks = [],
   isFirst,
   isLast,
   canDelete,
@@ -32,6 +42,8 @@ export const TweetBlock: FC<TweetBlockProps> = ({
   onMediaReorder,
   onDelete,
   onEmojiClick,
+  onCodeBlockClick,
+  onCodeBlockRemove,
 }) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -77,7 +89,7 @@ export const TweetBlock: FC<TweetBlockProps> = ({
           value={text}
           onChange={handleTextChange}
           placeholder={isFirst ? "What is happening?" : "Add another post"}
-          className="w-full resize-none bg-transparent text-lg text-[#E7E9EA] placeholder:text-[#71767B] outline-none"
+          className="w-full resize-none bg-transparent text-lg text-[#E7E9EA] placeholder:text-[#808283] outline-none"
           rows={1}
         />
 
@@ -88,6 +100,43 @@ export const TweetBlock: FC<TweetBlockProps> = ({
             onEdit={onMediaEdit}
             onReorder={onMediaReorder}
           />
+        )}
+
+        {codeBlocks.length > 0 && (
+          <div className="mt-3 space-y-3">
+            {codeBlocks.map((block) => (
+              <div
+                key={block.id}
+                className="group relative overflow-hidden rounded-2xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px]"
+              >
+                <div className="flex items-center justify-between border-b border-[#181B22] px-4 py-2">
+                  <span className="text-xs font-semibold uppercase tracking-wide text-[#A06AFF]">
+                    {block.language}
+                  </span>
+                  {onCodeBlockRemove && (
+                    <button
+                      onClick={() => onCodeBlockRemove(block.id)}
+                      className="flex h-6 w-6 items-center justify-center rounded-full text-[#808283] opacity-0 transition-all hover:bg-white/10 hover:text-[#EF454A] group-hover:opacity-100"
+                      title="Remove code block"
+                    >
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                        <path
+                          d="M18 6L6 18M6 6L18 18"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </button>
+                  )}
+                </div>
+                <pre className="overflow-x-auto p-4 text-sm scrollbar">
+                  <code className="font-mono text-[#E7E9EA]">{block.code}</code>
+                </pre>
+              </div>
+            ))}
+          </div>
         )}
 
         <div className="mt-3 flex items-center gap-2">
@@ -103,7 +152,7 @@ export const TweetBlock: FC<TweetBlockProps> = ({
           <button
             type="button"
             onClick={() => fileInputRef.current?.click()}
-            className="flex h-9 w-9 items-center justify-center rounded-full text-[#1D9BF0] transition-colors hover:bg-[#1D9BF0]/10"
+            className="flex h-9 w-9 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#A06AFF]/10"
             title="Add media"
           >
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -130,7 +179,7 @@ export const TweetBlock: FC<TweetBlockProps> = ({
           <button
             type="button"
             onClick={onEmojiClick}
-            className="flex h-9 w-9 items-center justify-center rounded-full text-[#1D9BF0] transition-colors hover:bg-[#1D9BF0]/10"
+            className="flex h-9 w-9 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#A06AFF]/10"
             title="Add emoji"
           >
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -150,6 +199,23 @@ export const TweetBlock: FC<TweetBlockProps> = ({
               />
               <path
                 d="M6.67447 7.5H6.66699M13.3337 7.5H13.3262"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+
+          <button
+            type="button"
+            onClick={onCodeBlockClick}
+            className="flex h-9 w-9 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#A06AFF]/10"
+            title="Add code block"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M8 7L3 12L8 17M16 7L21 12L16 17M14 3L10 21"
                 stroke="currentColor"
                 strokeWidth="2"
                 strokeLinecap="round"

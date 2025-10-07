@@ -67,13 +67,13 @@ export const EmojiPicker: FC<EmojiPickerProps> = ({ onSelect }) => {
 
   return (
     <div className="flex h-full flex-col">
-      <div className="mb-3 flex items-center gap-2 border-b border-white/5 pb-3">
+      <div className="mb-3 flex items-center gap-2 border-b border-[#181B22] pb-3">
         <input
           type="text"
           placeholder="Search emojis"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className="h-9 flex-1 rounded-full border border-white/10 bg-white/5 px-3 text-xs text-[#E7E9EA] placeholder:text-[#768089] focus:border-[#1D9BF0] focus:outline-none"
+          className="h-9 flex-1 rounded-full border border-[#181B22] bg-[rgba(12,16,20,0.5)] px-3 text-xs text-[#E7E9EA] placeholder:text-[#808283] backdrop-blur-[50px] focus:border-[#A06AFF] focus:outline-none"
           autoFocus
         />
       </div>
