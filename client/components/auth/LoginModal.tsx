@@ -6,26 +6,8 @@ interface LoginModalProps {
   onClose: () => void;
 }
 
-const LOGO_EFFECT_SEQUENCE = [
-  'logo-effect-outline',
-  'logo-effect-orbit',
-  'logo-effect-gradient',
-  'logo-effect-spark',
-] as const;
-
 const LoginModal: FC<LoginModalProps> = ({ isOpen, onClose }) => {
   const [authMethod, setAuthMethod] = useState<'email' | 'phone'>('email');
-  const [effectIndex, setEffectIndex] = useState(0);
-
-  useEffect(() => {
-    const cycle = window.setInterval(() => {
-      setEffectIndex((prev) => (prev + 1) % LOGO_EFFECT_SEQUENCE.length);
-    }, 6000);
-
-    return () => window.clearInterval(cycle);
-  }, []);
-
-  const currentLogoEffect = LOGO_EFFECT_SEQUENCE[effectIndex];
 
   if (!isOpen) return null;
 
