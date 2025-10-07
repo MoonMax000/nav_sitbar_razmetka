@@ -173,24 +173,6 @@ const LoginModal: FC<LoginModalProps> = ({ isOpen, onClose }) => {
                 </svg>
               </button>
 
-              <button className="flex items-center justify-center w-11 h-11 rounded-full border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px] hover:bg-[rgba(12,16,20,0.7)] hover:border-[#2AABEE] hover:shadow-lg hover:shadow-[#2AABEE]/30 hover:scale-110 active:scale-95 transition-all duration-300">
-                <svg width="24" height="24" viewBox="0 0 25 24" fill="none">
-                  <g clipPath="url(#clip0_telegram)">
-                    <path d="M12.5 24C19.1274 24 24.5 18.6274 24.5 12C24.5 5.37258 19.1274 0 12.5 0C5.87258 0 0.5 5.37258 0.5 12C0.5 18.6274 5.87258 24 12.5 24Z" fill="url(#paint0_linear_telegram)"/>
-                    <path fillRule="evenodd" clipRule="evenodd" d="M5.93177 11.8734C9.43001 10.3493 11.7627 9.34452 12.9299 8.85905C16.2624 7.47294 16.9549 7.23216 17.4062 7.22421C17.5055 7.22246 17.7275 7.24706 17.8712 7.36372C17.9926 7.46223 18.026 7.5953 18.042 7.6887C18.058 7.78209 18.0779 7.99485 18.0621 8.1611C17.8815 10.0586 17.1001 14.6633 16.7026 16.7885C16.5343 17.6877 16.2031 17.9892 15.8825 18.0188C15.1856 18.0829 14.6564 17.5582 13.9815 17.1158C12.9253 16.4235 12.3287 15.9925 11.3035 15.3169C10.1187 14.5362 10.8868 14.107 11.562 13.4058C11.7387 13.2222 14.8091 10.4295 14.8685 10.1761C14.8759 10.1444 14.8828 10.0263 14.8126 9.96397C14.7425 9.9016 14.6389 9.92293 14.5642 9.93989C14.4583 9.96393 12.771 11.0791 9.50252 13.2855C9.02361 13.6143 8.58982 13.7745 8.20117 13.7662C7.7727 13.7569 6.94851 13.5239 6.33582 13.3247C5.58431 13.0804 4.98704 12.9513 5.03905 12.5364C5.06614 12.3203 5.36371 12.0993 5.93177 11.8734Z" fill="white"/>
-                  </g>
-                  <defs>
-                    <linearGradient id="paint0_linear_telegram" x1="12.5" y1="0" x2="12.5" y2="23.822" gradientUnits="userSpaceOnUse">
-                      <stop stopColor="#2AABEE"/>
-                      <stop offset="1" stopColor="#229ED9"/>
-                    </linearGradient>
-                    <clipPath id="clip0_telegram">
-                      <rect width="24" height="24" fill="white" transform="translate(0.5)"/>
-                    </clipPath>
-                  </defs>
-                </svg>
-              </button>
-
               <button className="flex items-center justify-center w-11 h-11 rounded-full border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px] hover:bg-[rgba(12,16,20,0.7)] hover:border-white hover:shadow-lg hover:shadow-white/30 hover:scale-110 active:scale-95 transition-all duration-300">
                 <svg width="24" height="24" viewBox="0 0 25 24" fill="none">
                   <path d="M18.8263 1.90381H22.1998L14.8297 10.3273L23.5 21.7898H16.7112L11.394 14.8378L5.30995 21.7898H1.93443L9.81743 12.7799L1.5 1.90381H8.46111L13.2674 8.25814L18.8263 1.90381ZM17.6423 19.7706H19.5116L7.44539 3.81694H5.43946L17.6423 19.7706Z" fill="white"/>
