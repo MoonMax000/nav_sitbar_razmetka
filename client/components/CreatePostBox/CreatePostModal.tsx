@@ -4,6 +4,7 @@ import { TweetBlock } from "./TweetBlock";
 import { MediaEditor } from "./MediaEditor";
 import { EmojiPicker } from "./EmojiPicker";
 import { DraftsList } from "./DraftsList";
+import { CodeBlockModal } from "./CodeBlockModal";
 import {
   MediaItem,
   TweetBlockPayload,
@@ -19,10 +20,17 @@ interface CreatePostModalProps {
   onClose: () => void;
 }
 
+interface CodeBlock {
+  id: string;
+  code: string;
+  language: string;
+}
+
 interface BlockState {
   id: string;
   text: string;
   media: MediaItem[];
+  codeBlocks: CodeBlock[];
 }
 
 const replyOptions: { id: ReplyPolicy; label: string; description: string }[] = [
@@ -33,10 +41,11 @@ const replyOptions: { id: ReplyPolicy; label: string; description: string }[] = 
 ];
 
 const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
-  const [blocks, setBlocks] = useState<BlockState[]>([{ id: "1", text: "", media: [] }]);
+  const [blocks, setBlocks] = useState<BlockState[]>([{ id: "1", text: "", media: [], codeBlocks: [] }]);
   const [replySetting, setReplySetting] = useState<ReplyPolicy>("everyone");
   const [isReplyMenuOpen, setIsReplyMenuOpen] = useState(false);
   const [isEmojiPickerOpen, setIsEmojiPickerOpen] = useState(false);
+  const [isCodeBlockOpen, setIsCodeBlockOpen] = useState(false);
   const [activeBlockId, setActiveBlockId] = useState<string | null>(null);
   const [editingMedia, setEditingMedia] = useState<MediaItem | null>(null);
   const [isDraftsOpen, setIsDraftsOpen] = useState(false);
@@ -66,11 +75,12 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
   useEffect(() => {
     if (!isOpen) {
       setTimeout(() => {
-        setBlocks([{ id: "1", text: "", media: [] }]);
+        setBlocks([{ id: "1", text: "", media: [], codeBlocks: [] }]);
         setReplySetting("everyone");
         setSentiment("bullish");
         setIsEmojiPickerOpen(false);
         setIsReplyMenuOpen(false);
+        setIsCodeBlockOpen(false);
       }, 200);
     }
   }, [isOpen]);
@@ -112,7 +122,7 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
     if (!isOpen) return;
 
     const autoSave = setInterval(() => {
-      const hasContent = blocks.some((b) => b.text.trim() || b.media.length > 0);
+      const hasContent = blocks.some((b) => b.text.trim() || b.media.length > 0 || b.codeBlocks.length > 0);
       if (hasContent) {
         saveDraft();
       }
@@ -139,7 +149,7 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
   const isOverLimit = remainingChars < 0;
 
   const canPost = useMemo(() => {
-    const hasContent = blocks.some((b) => b.text.trim() || b.media.length > 0);
+    const hasContent = blocks.some((b) => b.text.trim() || b.media.length > 0 || b.codeBlocks.length > 0);
     const noOverflow = blocks.every((b) => b.text.length <= CHAR_LIMIT);
     return hasContent && noOverflow && !isPosting;
   }, [blocks, isPosting]);
@@ -221,6 +231,38 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
     );
   }, []);
 
+  const handleCodeBlockInsert = useCallback((code: string, language: string) => {
+    if (!activeBlockId) return;
+
+    const codeBlock: CodeBlock = {
+      id: `code-${Date.now()}`,
+      code,
+      language,
+    };
+
+    setBlocks((prev) =>
+      prev.map((b) => {
+        if (b.id === activeBlockId) {
+          return { ...b, codeBlocks: [...b.codeBlocks, codeBlock] };
+        }
+        return b;
+      })
+    );
+
+    setIsCodeBlockOpen(false);
+  }, [activeBlockId]);
+
+  const handleCodeBlockRemove = useCallback((blockId: string, codeBlockId: string) => {
+    setBlocks((prev) =>
+      prev.map((b) => {
+        if (b.id === blockId) {
+          return { ...b, codeBlocks: b.codeBlocks.filter((cb) => cb.id !== codeBlockId) };
+        }
+        return b;
+      })
+    );
+  }, []);
+
   const handleBlockDelete = useCallback((blockId: string) => {
     setBlocks((prev) => prev.filter((b) => b.id !== blockId));
   }, []);
@@ -228,7 +270,7 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
   const handleAddBlock = useCallback(() => {
     if (blocks.length >= MAX_THREAD_BLOCKS) return;
     const newId = `${Date.now()}`;
-    setBlocks((prev) => [...prev, { id: newId, text: "", media: [] }]);
+    setBlocks((prev) => [...prev, { id: newId, text: "", media: [], codeBlocks: [] }]);
   }, [blocks.length]);
 
   const handleEmojiSelect = useCallback(
@@ -252,6 +294,11 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
   const handleEmojiClick = useCallback((blockId: string) => {
     setActiveBlockId(blockId);
     setIsEmojiPickerOpen((prev) => !prev);
+  }, []);
+
+  const handleCodeBlockClick = useCallback((blockId: string) => {
+    setActiveBlockId(blockId);
+    setIsCodeBlockOpen(true);
   }, []);
 
   const saveDraft = useCallback(() => {
@@ -279,6 +326,7 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
         id: b.id,
         text: b.text,
         media: [],
+        codeBlocks: [],
       }))
     );
     setReplySetting(draft.replyPolicy);
@@ -294,6 +342,7 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
         blocks: blocks.map((b) => ({
           text: b.text,
           mediaIds: b.media.map((m) => m.id),
+          codeBlocks: b.codeBlocks,
         })),
         replyPolicy: replySetting,
         sentiment,
@@ -312,7 +361,7 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
   }, [blocks, replySetting, sentiment, canPost]);
 
   const handleClose = useCallback(() => {
-    const hasContent = blocks.some((b) => b.text.trim() || b.media.length > 0);
+    const hasContent = blocks.some((b) => b.text.trim() || b.media.length > 0 || b.codeBlocks.length > 0);
     
     if (hasContent) {
       const shouldSave = confirm("Save this as a draft?");
@@ -335,14 +384,14 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
 
   return createPortal(
     <div
-      className="fixed inset-0 z-[2000] flex items-center justify-center bg-black/70 backdrop-blur-sm px-4"
+      className="fixed inset-0 z-[2000] flex items-center justify-center bg-black/80 backdrop-blur-sm px-4"
       onClick={handleClose}
     >
       <div
-        className="relative w-full max-w-[720px] max-h-[calc(100vh-120px)] overflow-hidden rounded-3xl border border-white/5 bg-[#050708]/95 shadow-[0_40px_100px_-30px_rgba(0,0,0,0.85)]"
+        className="relative w-full max-w-[720px] max-h-[calc(100vh-120px)] overflow-hidden rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.95)] shadow-[0_40px_100px_-30px_rgba(0,0,0,0.85)] backdrop-blur-[100px]"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between px-5 py-4 border-b border-white/5">
+        <div className="flex items-center justify-between border-b border-[#181B22] px-5 py-4">
           <button
             onClick={handleClose}
             className="flex h-9 w-9 items-center justify-center rounded-full text-[#E7E9EA] transition-colors hover:bg-white/10"
@@ -359,24 +408,25 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
             </svg>
           </button>
 
-          <span className="text-sm font-semibold uppercase tracking-[0.18em] text-[#8B98A5]">Draft</span>
+          <span className="text-sm font-semibold uppercase tracking-[0.18em] text-[#808283]">Draft</span>
 
           <button
             onClick={() => setIsDraftsOpen(true)}
-            className="text-sm font-semibold text-[#1D9BF0] hover:underline"
+            className="text-sm font-semibold text-[#A06AFF] transition-colors hover:text-[#E3D8FF]"
             disabled={isPosting}
           >
             Drafts
           </button>
         </div>
 
-        <div className="max-h-[calc(100vh-340px)] overflow-y-auto px-5 py-5 space-y-6">
+        <div className="max-h-[calc(100vh-340px)] overflow-y-auto px-5 py-5 space-y-6 scrollbar">
           {blocks.map((block, index) => (
             <TweetBlock
               key={block.id}
               id={block.id}
               text={block.text}
               media={block.media}
+              codeBlocks={block.codeBlocks}
               isFirst={index === 0}
               isLast={index === blocks.length - 1}
               canDelete={blocks.length > 1}
@@ -387,16 +437,18 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
               onMediaReorder={(from, to) => handleMediaReorder(block.id, from, to)}
               onDelete={() => handleBlockDelete(block.id)}
               onEmojiClick={() => handleEmojiClick(block.id)}
+              onCodeBlockClick={() => handleCodeBlockClick(block.id)}
+              onCodeBlockRemove={(codeBlockId) => handleCodeBlockRemove(block.id, codeBlockId)}
             />
           ))}
 
           {blocks.length < MAX_THREAD_BLOCKS && (
             <button
               onClick={handleAddBlock}
-              className="flex items-center gap-3 text-[#1D9BF0] transition-colors hover:text-[#1A8CD8]"
+              className="flex items-center gap-3 text-[#A06AFF] transition-colors hover:text-[#E3D8FF]"
               disabled={isPosting}
             >
-              <div className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-dashed border-[#1D9BF0]">
+              <div className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-dashed border-[#A06AFF]">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                   <path
                     d="M12 5V19M5 12H19"
@@ -412,10 +464,10 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
           )}
         </div>
 
-        <div className="relative border-t border-white/5 px-5 py-3">
+        <div className="relative border-t border-[#181B22] px-5 py-3">
           <button
             onClick={() => setIsReplyMenuOpen((prev) => !prev)}
-            className="inline-flex items-center gap-2 rounded-full bg-[#1D9BF0]/10 px-3 py-1.5 text-sm font-semibold text-[#1D9BF0] transition-colors hover:bg-[#1D9BF0]/20"
+            className="inline-flex items-center gap-2 rounded-full bg-[#A06AFF]/10 px-3 py-1.5 text-sm font-semibold text-[#A06AFF] transition-colors hover:bg-[#A06AFF]/20"
             disabled={isPosting}
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
@@ -439,10 +491,10 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
           {isReplyMenuOpen && (
             <div
               ref={replyMenuRef}
-              className="absolute left-5 bottom-full z-[2100] mb-3 w-72 rounded-2xl border border-white/15 bg-[#0B0F12]/95 p-3 shadow-2xl backdrop-blur"
+              className="absolute left-5 bottom-full z-[2100] mb-3 w-72 rounded-2xl border border-[#181B22] bg-[rgba(12,16,20,0.95)] p-3 shadow-2xl backdrop-blur-[100px]"
             >
               <h3 className="mb-2 text-sm font-bold text-white">Who can reply?</h3>
-              <p className="mb-3 text-xs text-[#8B98A5]">
+              <p className="mb-3 text-xs text-[#808283]">
                 Choose who can reply to this post.
               </p>
               <div className="space-y-2">
@@ -455,12 +507,12 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
                     }}
                     className={`w-full rounded-xl border px-3 py-2 text-left transition-colors ${
                       opt.id === replySetting
-                        ? "border-[#1D9BF0] bg-[#1D9BF0]/10 text-white"
+                        ? "border-[#A06AFF] bg-[#A06AFF]/10 text-white"
                         : "border-transparent bg-white/5 text-[#E7E9EA] hover:bg-white/10"
                     }`}
                   >
                     <div className="text-sm font-semibold">{opt.label}</div>
-                    <div className="text-xs text-[#8B98A5]">{opt.description}</div>
+                    <div className="text-xs text-[#808283]">{opt.description}</div>
                   </button>
                 ))}
               </div>
@@ -468,7 +520,7 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
           )}
         </div>
 
-        <div className="flex items-center justify-between border-t border-white/5 px-5 py-4">
+        <div className="flex items-center justify-between border-t border-[#181B22] px-5 py-4">
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-2">
               <svg className="h-8 w-8 -rotate-90" viewBox="0 0 32 32">
@@ -478,7 +530,7 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
                   cy="16"
                   r="14"
                   fill="none"
-                  stroke={isOverLimit ? "#EF454A" : isNearLimit ? "#FFD400" : "#1D9BF0"}
+                  stroke={isOverLimit ? "#EF454A" : isNearLimit ? "#FFD400" : "#A06AFF"}
                   strokeWidth="4"
                   strokeDasharray={gradientStroke}
                   strokeLinecap="round"
@@ -523,8 +575,8 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
               disabled={!canPost}
               className={`inline-flex h-10 min-w-[100px] items-center justify-center rounded-full px-6 text-sm font-semibold transition-all ${
                 canPost
-                  ? "bg-[#1D9BF0] text-white hover:bg-[#1A8CD8]"
-                  : "cursor-not-allowed bg-[#1D9BF0]/40 text-white/60"
+                  ? "bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white hover:shadow-[0_12px_30px_-18px_rgba(160,106,255,0.8)]"
+                  : "cursor-not-allowed bg-[#A06AFF]/20 text-white/40"
               }`}
             >
               {isPosting ? "Posting..." : isThread ? "Post all" : "Post"}
@@ -535,7 +587,7 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
         {isEmojiPickerOpen && (
           <div
             ref={emojiMenuRef}
-            className="absolute bottom-24 left-12 z-[2100] h-96 w-96 rounded-3xl border border-white/15 bg-[#0B0F12]/95 p-4 shadow-2xl backdrop-blur"
+            className="absolute bottom-24 left-12 z-[2100] h-96 w-96 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.95)] p-4 shadow-2xl backdrop-blur-[100px]"
           >
             <EmojiPicker onSelect={handleEmojiSelect} />
           </div>
@@ -543,6 +595,12 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
       </div>
 
       <MediaEditor media={editingMedia} onSave={handleMediaSave} onClose={() => setEditingMedia(null)} />
+
+      <CodeBlockModal
+        isOpen={isCodeBlockOpen}
+        onClose={() => setIsCodeBlockOpen(false)}
+        onInsert={handleCodeBlockInsert}
+      />
 
       <DraftsList
         isOpen={isDraftsOpen}

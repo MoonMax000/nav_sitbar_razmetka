@@ -38,10 +38,10 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-2xl overflow-hidden rounded-3xl border border-white/10 bg-[#050708]/95 shadow-2xl"
+        className="relative w-full max-w-2xl overflow-hidden rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.95)] shadow-2xl backdrop-blur-[100px]"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between border-b border-white/5 px-5 py-4">
+        <div className="flex items-center justify-between border-b border-[#181B22] px-5 py-4">
           <h2 className="text-lg font-bold text-white">Edit media</h2>
           <button
             onClick={onClose}
@@ -60,7 +60,7 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
         </div>
 
         <div className="p-5">
-          <div className="mb-5 overflow-hidden rounded-2xl border border-white/10">
+          <div className="mb-5 overflow-hidden rounded-2xl border border-[#181B22]">
             {media.type === "video" ? (
               <video src={media.url} className="w-full" controls />
             ) : (
@@ -77,27 +77,27 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
                 value={alt}
                 onChange={(e) => setAlt(e.target.value)}
                 placeholder="Add a description for accessibility"
-                className="w-full resize-none rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-[#E7E9EA] placeholder:text-[#71767B] outline-none focus:border-[#1D9BF0]"
+                className="w-full resize-none rounded-xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] px-4 py-3 text-sm text-[#E7E9EA] placeholder:text-[#808283] outline-none backdrop-blur-[50px] focus:border-[#A06AFF] scrollbar"
                 rows={3}
                 maxLength={1000}
               />
-              <span className="mt-1 block text-xs text-[#8B98A5]">
+              <span className="mt-1 block text-xs text-[#808283]">
                 {alt.length} / 1000
               </span>
             </label>
           </div>
         </div>
 
-        <div className="flex items-center justify-end gap-3 border-t border-white/5 px-5 py-4">
+        <div className="flex items-center justify-end gap-3 border-t border-[#181B22] px-5 py-4">
           <button
             onClick={onClose}
-            className="rounded-full border border-white/10 px-5 py-2 text-sm font-semibold text-[#E7E9EA] transition-colors hover:bg-white/5"
+            className="rounded-full border border-[#181B22] px-5 py-2 text-sm font-semibold text-[#E7E9EA] transition-colors hover:bg-white/5"
           >
             Cancel
           </button>
           <button
             onClick={handleSave}
-            className="rounded-full bg-[#1D9BF0] px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#1A8CD8]"
+            className="rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-5 py-2 text-sm font-semibold text-white transition-all hover:shadow-[0_12px_30px_-18px_rgba(160,106,255,0.8)]"
           >
             Save
           </button>

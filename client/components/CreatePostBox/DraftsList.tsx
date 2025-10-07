@@ -38,14 +38,14 @@ export const DraftsList: FC<DraftsListProps> = ({ isOpen, onClose, onOpen, onDel
 
   return createPortal(
     <div
-      className="fixed inset-0 z-[2100] flex items-center justify-center bg-black/70 backdrop-blur-sm px-4"
+      className="fixed inset-0 z-[2100] flex items-center justify-center bg-black/80 backdrop-blur-sm px-4"
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-xl overflow-hidden rounded-3xl border border-white/5 bg-[#050708]/95 shadow-2xl"
+        className="relative w-full max-w-xl overflow-hidden rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.95)] shadow-2xl backdrop-blur-[100px]"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between border-b border-white/5 px-5 py-4">
+        <div className="flex items-center justify-between border-b border-[#181B22] px-5 py-4">
           <h2 className="text-lg font-bold text-white">Drafts</h2>
           <button
             onClick={onClose}
@@ -63,10 +63,10 @@ export const DraftsList: FC<DraftsListProps> = ({ isOpen, onClose, onOpen, onDel
           </button>
         </div>
 
-        <div className="max-h-[60vh] overflow-y-auto p-5">
+        <div className="max-h-[60vh] overflow-y-auto p-5 scrollbar">
           {drafts.length === 0 ? (
             <div className="py-12 text-center">
-              <p className="text-[#8B98A5]">No drafts saved</p>
+              <p className="text-[#808283]">No drafts saved</p>
             </div>
           ) : (
             <div className="space-y-3">
@@ -78,17 +78,17 @@ export const DraftsList: FC<DraftsListProps> = ({ isOpen, onClose, onOpen, onDel
                 return (
                   <div
                     key={draft.id}
-                    className="rounded-2xl border border-white/10 bg-white/5 p-4 transition-colors hover:bg-white/10"
+                    className="rounded-2xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] p-4 backdrop-blur-[50px] transition-colors hover:bg-[rgba(12,16,20,0.7)]"
                   >
                     <div className="mb-2 flex items-start justify-between gap-3">
                       <p className="flex-1 text-sm text-[#E7E9EA] line-clamp-2">{preview}</p>
                       {isThread && (
-                        <span className="rounded-full bg-[#1D9BF0]/20 px-2 py-0.5 text-xs font-semibold text-[#1D9BF0]">
+                        <span className="rounded-full bg-[#A06AFF]/20 px-2 py-0.5 text-xs font-semibold text-[#A06AFF]">
                           Thread ({draft.blocks.length})
                         </span>
                       )}
                     </div>
-                    <div className="mb-3 text-xs text-[#8B98A5]">
+                    <div className="mb-3 text-xs text-[#808283]">
                       {new Date(draft.updatedAt).toLocaleString()}
                     </div>
                     <div className="flex items-center gap-2">
@@ -97,13 +97,13 @@ export const DraftsList: FC<DraftsListProps> = ({ isOpen, onClose, onOpen, onDel
                           onOpen(draft);
                           onClose();
                         }}
-                        className="rounded-full bg-[#1D9BF0] px-4 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-[#1A8CD8]"
+                        className="rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-4 py-1.5 text-xs font-semibold text-white transition-all hover:shadow-[0_12px_30px_-18px_rgba(160,106,255,0.8)]"
                       >
                         Open
                       </button>
                       <button
                         onClick={() => handleDelete(draft.id)}
-                        className="rounded-full border border-white/10 px-4 py-1.5 text-xs font-semibold text-[#EF454A] transition-colors hover:bg-[#EF454A]/10"
+                        className="rounded-full border border-[#181B22] px-4 py-1.5 text-xs font-semibold text-[#EF454A] transition-colors hover:bg-[#EF454A]/10"
                       >
                         Delete
                       </button>
