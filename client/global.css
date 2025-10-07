@@ -27,6 +27,8 @@
 }
 
 .logo-breathe {
+  position: relative;
+  z-index: 1;
   animation: logo-breathe 6.5s ease-in-out infinite;
   transform-origin: center;
   will-change: transform;
