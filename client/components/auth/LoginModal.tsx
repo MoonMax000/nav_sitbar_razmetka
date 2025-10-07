@@ -12,51 +12,66 @@ const LoginModal: FC<LoginModalProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 animate-in fade-in duration-300">
-      {/* Backdrop with gradient animation */}
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      {/* Backdrop */}
       <div
         className="absolute inset-0 bg-black/70 backdrop-blur-md"
         onClick={onClose}
       />
 
-      {/* Animated gradient orbs for visual interest */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 -left-32 w-64 h-64 bg-primary/20 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 -right-32 w-64 h-64 bg-purple-600/20 rounded-full blur-3xl animate-pulse delay-700" />
-      </div>
-
       {/* Modal Content */}
-      <div className="relative z-10 flex flex-col md:flex-row max-w-4xl w-full rounded-[25px] overflow-hidden shadow-2xl shadow-primary/10 animate-in zoom-in-95 duration-300">
+      <div className="relative z-10 flex flex-col md:flex-row max-w-4xl w-full rounded-[25px] overflow-hidden shadow-2xl shadow-primary/10">
         {/* Left Panel - Auth Form */}
         <div className="w-full md:w-[393px] flex flex-col items-center justify-center p-6 md:p-8 md:rounded-l-[25px] bg-[rgba(12,16,20,0.8)] backdrop-blur-[50px] border border-[#181B22] relative">
           {/* Gradient border effect */}
           <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-purple-600/20 opacity-50 pointer-events-none" />
 
-          {/* Mobile Logo */}
+          {/* Mobile Logo with SpaceX-style glow */}
           <div className="md:hidden mb-6 relative z-10">
-            <svg width="80" height="92" viewBox="0 0 113 128" fill="none" className="animate-in fade-in slide-in-from-top duration-500">
-              <g clipPath="url(#clip0_logo_mobile)">
-                <path fillRule="evenodd" clipRule="evenodd" d="M0.748047 63.9619L0.753226 64.3533C13.1061 61.8201 25.5249 59.1745 37.9666 56.5237L37.9895 119.407L79.8468 128C79.8468 114.191 79.7174 75.2902 79.8542 61.485L50.5652 55.4724L46.667 54.6726C68.5682 50.0183 90.5085 45.4255 112.252 41.4711L112.245 0C75.4715 7.54699 37.6389 16.4678 0.748047 22.8836L0.748047 63.9619Z" fill="url(#paint0_linear_logo_mobile)"/>
-              </g>
-              <defs>
-                <linearGradient id="paint0_linear_logo_mobile" x1="27.8276" y1="137.6" x2="75.9893" y2="8.13923" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="#181A20"/>
-                  <stop offset="1" stopColor="#A06AFF"/>
-                </linearGradient>
-                <clipPath id="clip0_logo_mobile">
-                  <rect width="111.504" height="128" fill="white" transform="translate(0.748047)"/>
-                </clipPath>
-              </defs>
-            </svg>
+            <div className="relative">
+              {/* Glow effect layers */}
+              <div className="absolute inset-0 blur-xl opacity-60 animate-logo-pulse">
+                <svg width="80" height="92" viewBox="0 0 113 128" fill="none">
+                  <g clipPath="url(#clip0_logo_mobile_glow)">
+                    <path fillRule="evenodd" clipRule="evenodd" d="M0.748047 63.9619L0.753226 64.3533C13.1061 61.8201 25.5249 59.1745 37.9666 56.5237L37.9895 119.407L79.8468 128C79.8468 114.191 79.7174 75.2902 79.8542 61.485L50.5652 55.4724L46.667 54.6726C68.5682 50.0183 90.5085 45.4255 112.252 41.4711L112.245 0C75.4715 7.54699 37.6389 16.4678 0.748047 22.8836L0.748047 63.9619Z" fill="url(#paint0_glow_mobile)"/>
+                  </g>
+                  <defs>
+                    <linearGradient id="paint0_glow_mobile" x1="27.8276" y1="137.6" x2="75.9893" y2="8.13923" gradientUnits="userSpaceOnUse">
+                      <stop stopColor="#A06AFF"/>
+                      <stop offset="1" stopColor="#A06AFF"/>
+                    </linearGradient>
+                    <clipPath id="clip0_logo_mobile_glow">
+                      <rect width="111.504" height="128" fill="white" transform="translate(0.748047)"/>
+                    </clipPath>
+                  </defs>
+                </svg>
+              </div>
+
+              {/* Main logo */}
+              <svg width="80" height="92" viewBox="0 0 113 128" fill="none" className="relative z-10">
+                <g clipPath="url(#clip0_logo_mobile)">
+                  <path fillRule="evenodd" clipRule="evenodd" d="M0.748047 63.9619L0.753226 64.3533C13.1061 61.8201 25.5249 59.1745 37.9666 56.5237L37.9895 119.407L79.8468 128C79.8468 114.191 79.7174 75.2902 79.8542 61.485L50.5652 55.4724L46.667 54.6726C68.5682 50.0183 90.5085 45.4255 112.252 41.4711L112.245 0C75.4715 7.54699 37.6389 16.4678 0.748047 22.8836L0.748047 63.9619Z" fill="url(#paint0_linear_logo_mobile)"/>
+                </g>
+                <defs>
+                  <linearGradient id="paint0_linear_logo_mobile" x1="27.8276" y1="137.6" x2="75.9893" y2="8.13923" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#181A20"/>
+                    <stop offset="1" stopColor="#A06AFF"/>
+                  </linearGradient>
+                  <clipPath id="clip0_logo_mobile">
+                    <rect width="111.504" height="128" fill="white" transform="translate(0.748047)"/>
+                  </clipPath>
+                </defs>
+              </svg>
+            </div>
           </div>
           <div className="w-full max-w-[341px] flex flex-col gap-4 relative z-10">
             {/* Title */}
-            <h2 className="text-2xl font-bold text-white text-center mb-2 animate-in fade-in slide-in-from-top duration-500 delay-100">
+            <h2 className="text-2xl font-bold text-white text-center mb-2">
               Sign In
             </h2>
 
             {/* Auth Method Toggle & QR Button */}
-            <div className="flex items-center justify-between gap-4 animate-in fade-in slide-in-from-top duration-500 delay-200">
+            <div className="flex items-center justify-between gap-4">
               <div className="inline-flex items-center gap-3 p-1 rounded-[36px] border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px] shadow-lg shadow-black/20">
                 <button
                   onClick={() => setAuthMethod('phone')}
@@ -95,7 +110,7 @@ const LoginModal: FC<LoginModalProps> = ({ isOpen, onClose }) => {
             </div>
 
             {/* Input Fields */}
-            <div className="flex flex-col gap-6 animate-in fade-in slide-in-from-bottom duration-500 delay-300">
+            <div className="flex flex-col gap-6">
               {/* Email/Phone Input */}
               <div className="flex items-center gap-2 h-11 px-3 rounded-lg border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px] focus-within:border-primary focus-within:shadow-lg focus-within:shadow-primary/20 transition-all duration-300 hover:border-primary/50">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="transition-colors duration-300 group-focus-within:text-primary">
@@ -141,7 +156,7 @@ const LoginModal: FC<LoginModalProps> = ({ isOpen, onClose }) => {
             </div>
 
             {/* Social Login Buttons */}
-            <div className="flex items-center justify-center gap-6 mt-2 animate-in fade-in slide-in-from-bottom duration-500 delay-500">
+            <div className="flex items-center justify-center gap-6 mt-2">
               <button className="flex items-center justify-center w-11 h-11 rounded-full border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px] hover:bg-[rgba(12,16,20,0.7)] hover:border-primary hover:shadow-lg hover:shadow-primary/30 hover:scale-110 active:scale-95 transition-all duration-300">
                 <svg width="24" height="24" viewBox="0 0 25 24" fill="none">
                   <g clipPath="url(#clip0_google)">
@@ -197,14 +212,14 @@ const LoginModal: FC<LoginModalProps> = ({ isOpen, onClose }) => {
             </div>
 
             {/* Divider */}
-            <div className="flex items-center gap-2 my-2 animate-in fade-in duration-500 delay-700">
+            <div className="flex items-center gap-2 my-2">
               <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#482090] to-primary" />
               <span className="text-[15px] font-bold text-webGray">or</span>
               <div className="h-px flex-1 bg-gradient-to-r from-primary via-[#482090] to-transparent" />
             </div>
 
             {/* Email Button */}
-            <button className="flex items-center justify-center gap-2 h-11 rounded-lg border border-[#181B22] bg-[rgba(11,14,17,0.5)] backdrop-blur-[50px] hover:bg-[rgba(11,14,17,0.7)] hover:border-primary hover:shadow-lg hover:shadow-primary/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 animate-in fade-in slide-in-from-bottom duration-500 delay-[800ms]">
+            <button className="flex items-center justify-center gap-2 h-11 rounded-lg border border-[#181B22] bg-[rgba(11,14,17,0.5)] backdrop-blur-[50px] hover:bg-[rgba(11,14,17,0.7)] hover:border-primary hover:shadow-lg hover:shadow-primary/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                 <path d="M1.66675 5L7.4276 8.26414C9.55141 9.4675 10.4487 9.4675 12.5726 8.26414L18.3334 5" stroke="#B0B0B0" strokeWidth="1.5" strokeLinejoin="round"/>
                 <path d="M1.67989 11.2297C1.73436 13.7844 1.76161 15.0617 2.70421 16.0079C3.64681 16.9541 4.95869 16.987 7.58244 17.0529C9.1995 17.0936 10.8007 17.0936 12.4177 17.0529C15.0415 16.987 16.3533 16.9541 17.296 16.0079C18.2386 15.0617 18.2658 13.7844 18.3202 11.2297C18.3378 10.4083 18.3378 9.59183 18.3202 8.77042C18.2658 6.2158 18.2386 4.93849 17.296 3.9923C16.3533 3.04611 15.0415 3.01315 12.4177 2.94722C10.8007 2.90659 9.1995 2.90659 7.58243 2.94722C4.95869 3.01313 3.64681 3.04609 2.70421 3.99229C1.7616 4.93848 1.73436 6.21579 1.67988 8.77042C1.66236 9.59183 1.66237 10.4083 1.67989 11.2297Z" stroke="#B0B0B0" strokeWidth="1.5" strokeLinejoin="round"/>

@@ -4,6 +4,22 @@
 @tailwind components;
 @tailwind utilities;
 
+/* SpaceX-style logo glow animation */
+@keyframes logo-pulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+.animate-logo-pulse {
+  animation: logo-pulse 3s ease-in-out infinite;
+}
+
 :root {
   --background: #000000;
   --foreground: #ffffff;
