@@ -11,31 +11,7 @@ const CreatePostBox: FC<CreatePostBoxProps> = ({
   onToggleView,
   viewMode = "normal",
 }) => {
-  const [sentiment, setSentiment] = useState<"bullish" | "bearish" | null>(
-    "bullish",
-  );
-  const [text, setText] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
-  const maxLength = 500;
-
-  // Auto-resize textarea
-  useEffect(() => {
-    if (textareaRef.current) {
-      textareaRef.current.style.height = "auto";
-      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
-    }
-  }, [text]);
-
-  const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const value = e.target.value;
-    if (value.length <= maxLength) {
-      setText(value);
-    }
-  };
-
-  const remainingChars = maxLength - text.length;
-  const isNearLimit = remainingChars <= 50;
 
   return (
     <div className="flex flex-col items-end gap-4 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] p-4 backdrop-blur-[50px]">
