@@ -204,30 +204,30 @@ const UserHeader: FC<Props> = ({ isOwn = true, className }) => {
       </div>
 
       {/* Tabs section */}
-      <div className="flex items-baseline px-5 pt-7 flex-wrap">
-        <div className="flex flex-col items-center gap-3 px-7 flex-1">
+      <div className="flex items-baseline flex-wrap border-b border-[#2F3336]">
+        <div className="flex flex-col items-center gap-3 px-4 flex-1">
           <span className="text-[#F7F9F9] text-center font-bold text-[15px] leading-5">
             Posts
           </span>
           <div className="h-1 self-stretch rounded-full bg-[#1D9BF0]" />
         </div>
-        <div className="flex flex-col items-center gap-3 px-7 flex-1">
+        <div className="flex flex-col items-center gap-3 px-4 flex-1">
           <span className="text-[#8B98A5] text-center font-bold text-[15px] leading-5">
             Replies
           </span>
-          <div className="h-1 self-stretch rounded-full bg-black" />
+          <div className="h-1 self-stretch rounded-full bg-transparent" />
         </div>
-        <div className="flex flex-col items-center gap-3 px-7 flex-1">
+        <div className="flex flex-col items-center gap-3 px-4 flex-1">
           <span className="text-[#8B98A5] text-center font-bold text-[15px] leading-5">
             Highlights
           </span>
-          <div className="h-1 self-stretch rounded-full bg-black" />
+          <div className="h-1 self-stretch rounded-full bg-transparent" />
         </div>
-        <div className="flex flex-col items-center gap-3 px-7 flex-1">
+        <div className="flex flex-col items-center gap-3 px-4 flex-1">
           <span className="text-[#8B98A5] text-center font-bold text-[15px] leading-5">
             Media
           </span>
-          <div className="h-1 self-stretch rounded-full bg-black" />
+          <div className="h-1 self-stretch rounded-full bg-transparent" />
         </div>
       </div>
     </div>
