@@ -6,6 +6,13 @@ interface LoginModalProps {
   onClose: () => void;
 }
 
+const LOGO_EFFECT_SEQUENCE = [
+  'logo-effect-outline',
+  'logo-effect-orbit',
+  'logo-effect-gradient',
+  'logo-effect-spark',
+] as const;
+
 const LoginModal: FC<LoginModalProps> = ({ isOpen, onClose }) => {
   const [authMethod, setAuthMethod] = useState<'email' | 'phone'>('email');
 
