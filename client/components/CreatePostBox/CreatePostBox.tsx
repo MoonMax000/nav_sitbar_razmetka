@@ -1,5 +1,6 @@
 import { FC, useState, useRef, useEffect } from "react";
 import type { ViewMode } from "@/screens/home/Home";
+import CreatePostModal from "./CreatePostModal";
 
 interface CreatePostBoxProps {
   onToggleView?: () => void;
@@ -14,6 +15,7 @@ const CreatePostBox: FC<CreatePostBoxProps> = ({
     "bullish",
   );
   const [text, setText] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const maxLength = 500;
 
@@ -49,9 +51,11 @@ const CreatePostBox: FC<CreatePostBoxProps> = ({
             ref={textareaRef}
             value={text}
             onChange={handleTextChange}
+            onClick={() => setIsModalOpen(true)}
             placeholder="How do you feel about markets today? Share your ideas here!"
-            className="w-full resize-none bg-transparent text-[15px] font-normal text-white placeholder:text-[#B0B0B0] outline-none overflow-hidden min-h-[24px]"
+            className="w-full resize-none bg-transparent text-[15px] font-normal text-white placeholder:text-[#B0B0B0] outline-none overflow-hidden min-h-[24px] cursor-pointer"
             rows={1}
+            readOnly
           />
           {text.length > 0 && (
             <div className="absolute bottom-2 right-3 flex items-center gap-1">
@@ -329,11 +333,17 @@ const CreatePostBox: FC<CreatePostBoxProps> = ({
         {/* Post button */}
         <button
           type="button"
+          onClick={() => setIsModalOpen(true)}
           className="inline-flex h-10 min-w-[92px] items-center justify-center gap-2 rounded-full border border-transparent bg-gradient-to-r from-[#A06AFF] to-[#482090] px-4 text-sm font-semibold text-white transition-all duration-200 hover:shadow-[0_12px_30px_-18px_rgba(160,106,255,0.8)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF]/60 focus-visible:ring-offset-0"
         >
           Post
         </button>
       </div>
+
+      <CreatePostModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </div>
   );
 };
