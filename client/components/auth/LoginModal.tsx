@@ -220,29 +220,10 @@ const LoginModal: FC<LoginModalProps> = ({ isOpen, onClose }) => {
 
         {/* Right Panel - Branding (hidden on mobile) */}
         <div className="hidden md:flex w-[393px] flex-col items-center justify-center gap-12 p-8 rounded-r-[25px] bg-[rgba(11,14,17,0.72)] backdrop-blur-[50px] relative overflow-hidden">
-          {/* Desktop Logo with SpaceX-style glow */}
+          {/* Desktop logo with dynamic sweep */}
           <div className="relative z-10">
-            <div className="relative">
-              {/* Glow effect layers */}
-              <div className="absolute inset-0 blur-2xl opacity-60 animate-logo-pulse">
-                <svg width="112" height="128" viewBox="0 0 113 128" fill="none">
-                  <g clipPath="url(#clip0_logo_glow)">
-                    <path fillRule="evenodd" clipRule="evenodd" d="M0.748047 63.9619L0.753226 64.3533C13.1061 61.8201 25.5249 59.1745 37.9666 56.5237L37.9895 119.407L79.8468 128C79.8468 114.191 79.7174 75.2902 79.8542 61.485L50.5652 55.4724L46.667 54.6726C68.5682 50.0183 90.5085 45.4255 112.252 41.4711L112.245 0C75.4715 7.54699 37.6389 16.4678 0.748047 22.8836L0.748047 63.9619Z" fill="url(#paint0_glow)"/>
-                  </g>
-                  <defs>
-                    <linearGradient id="paint0_glow" x1="27.8276" y1="137.6" x2="75.9893" y2="8.13923" gradientUnits="userSpaceOnUse">
-                      <stop stopColor="#A06AFF"/>
-                      <stop offset="1" stopColor="#A06AFF"/>
-                    </linearGradient>
-                    <clipPath id="clip0_logo_glow">
-                      <rect width="111.504" height="128" fill="white" transform="translate(0.748047)"/>
-                    </clipPath>
-                  </defs>
-                </svg>
-              </div>
-
-              {/* Main logo */}
-              <svg width="112" height="128" viewBox="0 0 113 128" fill="none" className="relative z-10">
+            <div className="logo-shimmer">
+              <svg width="112" height="128" viewBox="0 0 113 128" fill="none" className="logo-breathe">
                 <g clipPath="url(#clip0_logo)">
                   <path fillRule="evenodd" clipRule="evenodd" d="M0.748047 63.9619L0.753226 64.3533C13.1061 61.8201 25.5249 59.1745 37.9666 56.5237L37.9895 119.407L79.8468 128C79.8468 114.191 79.7174 75.2902 79.8542 61.485L50.5652 55.4724L46.667 54.6726C68.5682 50.0183 90.5085 45.4255 112.252 41.4711L112.245 0C75.4715 7.54699 37.6389 16.4678 0.748047 22.8836L0.748047 63.9619Z" fill="url(#paint0_linear_logo)"/>
                 </g>
