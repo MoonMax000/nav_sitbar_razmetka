@@ -417,6 +417,64 @@ textarea::-webkit-scrollbar-track {
       0 0 20px rgba(160, 106, 255, 0.5),
       0 0 40px rgba(160, 106, 255, 0.3);
   }
+
+  .nav-glow-icon {
+    @apply relative inline-flex items-center justify-center;
+    isolation: isolate;
+    color: inherit;
+  }
+
+  .nav-glow-icon::after {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    border-radius: 9999px;
+    background: radial-gradient(circle, rgba(160, 106, 255, 0.55) 0%, rgba(160, 106, 255, 0.35) 45%, transparent 90%);
+    opacity: 0.35;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    filter: blur(0.5px);
+  }
+
+  .nav-glow-icon__orbit {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    transform-origin: center;
+    animation: nav-glow-rotate 4s linear infinite;
+    filter: drop-shadow(0 0 4px rgba(160, 106, 255, 0.35));
+  }
+
+  .nav-glow-icon__path {
+    fill: none;
+    stroke: rgba(160, 106, 255, 0.7);
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-dasharray: 14 46;
+  }
+
+  .group:hover .nav-glow-icon::after,
+  .group[data-active='true'] .nav-glow-icon::after {
+    opacity: 0.72;
+    transform: scale(1.03);
+  }
+
+  .group:hover .nav-glow-icon__orbit,
+  .group[data-active='true'] .nav-glow-icon__orbit {
+    filter: drop-shadow(0 0 8px rgba(160, 106, 255, 0.6));
+  }
+
+  .group:hover .nav-glow-icon__path,
+  .group[data-active='true'] .nav-glow-icon__path {
+    stroke: rgba(160, 106, 255, 0.95);
+  }
+}
+
+@keyframes nav-glow-rotate {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Animated gradient utility used by AnimatedLogo */
