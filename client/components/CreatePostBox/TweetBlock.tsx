@@ -25,6 +25,7 @@ interface TweetBlockProps {
   onEmojiClick: () => void;
   onCodeBlockClick: () => void;
   onCodeBlockRemove?: (codeBlockId: string) => void;
+  readOnly?: boolean;
 }
 
 export const TweetBlock: FC<TweetBlockProps> = ({
@@ -44,6 +45,7 @@ export const TweetBlock: FC<TweetBlockProps> = ({
   onEmojiClick,
   onCodeBlockClick,
   onCodeBlockRemove,
+  readOnly = false,
 }) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -56,6 +58,7 @@ export const TweetBlock: FC<TweetBlockProps> = ({
   }, [text]);
 
   const handleTextChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    if (readOnly) return;
     const value = event.target.value;
     if (value.length <= CHAR_LIMIT) {
       onChange(value);
@@ -63,9 +66,45 @@ export const TweetBlock: FC<TweetBlockProps> = ({
   };
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+    if (readOnly) return;
     if (event.target.files) {
       onMediaAdd(event.target.files);
     }
+  };
+
+  const handleEmojiClick = () => {
+    if (readOnly) return;
+    onEmojiClick();
+  };
+
+  const handleCodeBlockClick = () => {
+    if (readOnly) return;
+    onCodeBlockClick();
+  };
+
+  const handleDelete = () => {
+    if (readOnly) return;
+    onDelete();
+  };
+
+  const handleMediaEdit = (item: MediaItem) => {
+    if (readOnly) return;
+    onMediaEdit(item);
+  };
+
+  const handleMediaRemove = (mediaId: string) => {
+    if (readOnly) return;
+    onMediaRemove(mediaId);
+  };
+
+  const handleMediaReorder = (fromIndex: number, toIndex: number) => {
+    if (readOnly) return;
+    onMediaReorder(fromIndex, toIndex);
+  };
+
+  const handleCodeBlockRemove = (codeBlockId: string) => {
+    if (readOnly) return;
+    onCodeBlockRemove?.(codeBlockId);
   };
 
   return (
@@ -89,16 +128,20 @@ export const TweetBlock: FC<TweetBlockProps> = ({
           value={text}
           onChange={handleTextChange}
           placeholder={isFirst ? "What is happening?" : "Add another post"}
-          className="w-full resize-none bg-transparent text-lg text-[#E7E9EA] placeholder:text-[#808283] outline-none"
+          className={`w-full resize-none bg-transparent text-lg text-[#E7E9EA] placeholder:text-[#808283] outline-none ${
+            readOnly ? "cursor-default" : ""
+          }`}
           rows={1}
+          readOnly={readOnly}
         />
 
         {media.length > 0 && (
           <MediaGrid
             media={media}
-            onRemove={onMediaRemove}
-            onEdit={onMediaEdit}
-            onReorder={onMediaReorder}
+            onRemove={handleMediaRemove}
+            onEdit={handleMediaEdit}
+            onReorder={handleMediaReorder}
+            readOnly={readOnly}
           />
         )}
 
@@ -124,9 +167,9 @@ export const TweetBlock: FC<TweetBlockProps> = ({
                       {block.language}
                     </span>
                   </div>
-                  {onCodeBlockRemove && (
+                  {!readOnly && onCodeBlockRemove && (
                     <button
-                      onClick={() => onCodeBlockRemove(block.id)}
+                      onClick={() => handleCodeBlockRemove(block.id)}
                       className="flex h-6 w-6 items-center justify-center rounded-md text-[#808283] opacity-0 transition-all hover:bg-[#EF454A]/10 hover:text-[#EF454A] group-hover:opacity-100"
                       title="Remove code block"
                     >
@@ -158,12 +201,16 @@ export const TweetBlock: FC<TweetBlockProps> = ({
             multiple
             onChange={handleFileChange}
             className="hidden"
+            disabled={readOnly}
           />
 
           <button
             type="button"
             onClick={() => fileInputRef.current?.click()}
-            className="flex h-9 w-9 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#A06AFF]/10"
+            disabled={readOnly}
+            className={`flex h-9 w-9 items-center justify-center rounded-full text-[#A06AFF] transition-colors ${
+              readOnly ? "opacity-50 cursor-default" : "hover:bg-[#A06AFF]/10"
+            }`}
             title="Add media"
           >
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -189,8 +236,11 @@ export const TweetBlock: FC<TweetBlockProps> = ({
 
           <button
             type="button"
-            onClick={onEmojiClick}
-            className="flex h-9 w-9 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#A06AFF]/10"
+            onClick={handleEmojiClick}
+            disabled={readOnly}
+            className={`flex h-9 w-9 items-center justify-center rounded-full text-[#A06AFF] transition-colors ${
+              readOnly ? "opacity-50 cursor-default" : "hover:bg-[#A06AFF]/10"
+            }`}
             title="Add emoji"
           >
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -220,8 +270,11 @@ export const TweetBlock: FC<TweetBlockProps> = ({
 
           <button
             type="button"
-            onClick={onCodeBlockClick}
-            className="flex h-9 w-9 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#A06AFF]/10"
+            onClick={handleCodeBlockClick}
+            disabled={readOnly}
+            className={`flex h-9 w-9 items-center justify-center rounded-full text-[#A06AFF] transition-colors ${
+              readOnly ? "opacity-50 cursor-default" : "hover:bg-[#A06AFF]/10"
+            }`}
             title="Add code block"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
@@ -238,8 +291,11 @@ export const TweetBlock: FC<TweetBlockProps> = ({
           {canDelete && (
             <button
               type="button"
-              onClick={onDelete}
-              className="ml-auto flex h-9 w-9 items-center justify-center rounded-full text-[#EF454A] transition-colors hover:bg-[#EF454A]/10"
+              onClick={handleDelete}
+              disabled={readOnly}
+              className={`ml-auto flex h-9 w-9 items-center justify-center rounded-full text-[#EF454A] transition-colors ${
+                readOnly ? "opacity-50 cursor-default" : "hover:bg-[#EF454A]/10"
+              }`}
               title="Remove post"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
