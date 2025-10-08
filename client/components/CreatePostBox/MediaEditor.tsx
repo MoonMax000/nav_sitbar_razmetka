@@ -713,7 +713,10 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
                   {ASPECT_RATIOS.map((preset) => (
                     <button
                       key={preset.id}
-                      onClick={() => handleAspectRatioChange(preset.id)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleAspectRatioChange(preset.id);
+                      }}
                       className={classNames(
                         "rounded-full border px-3 py-1 text-xs font-semibold transition-all",
                         transform.aspectRatio === preset.id
@@ -737,14 +740,21 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
                     max={maxScale}
                     step={Math.max((maxScale - minScale) / 200, 0.01)}
                     value={transform.scale}
-                    onChange={(event) => applyZoom(parseFloat(event.target.value))}
+                    onChange={(event) => {
+                      event.stopPropagation();
+                      applyZoom(parseFloat(event.target.value));
+                    }}
+                    onClick={(e) => e.stopPropagation()}
                     className="h-1 w-full cursor-pointer accent-[#A06AFF]"
                   />
                 </div>
 
                 <div className="flex flex-wrap gap-2">
                   <button
-                    onClick={() => handleFitModeChange("fit")}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleFitModeChange("fit");
+                    }}
                     className={classNames(
                       "rounded-full border px-3 py-1 text-xs font-semibold transition-all",
                       transform.fitMode === "fit"
@@ -755,7 +765,10 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
                     Fit
                   </button>
                   <button
-                    onClick={() => handleFitModeChange("fill")}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleFitModeChange("fill");
+                    }}
                     className={classNames(
                       "rounded-full border px-3 py-1 text-xs font-semibold transition-all",
                       transform.fitMode === "fill"
@@ -766,37 +779,55 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
                     Fill
                   </button>
                   <button
-                    onClick={() => handleRotate("ccw")}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleRotate("ccw");
+                    }}
                     className="rounded-full border border-transparent bg-white/5 px-3 py-1 text-xs font-semibold text-[#E7E9EA] transition-all hover:bg-white/10"
                   >
                     Rotate 90°
                   </button>
                   <button
-                    onClick={() => handleRotate("cw")}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleRotate("cw");
+                    }}
                     className="rounded-full border border-transparent bg-white/5 px-3 py-1 text-xs font-semibold text-[#E7E9EA] transition-all hover:bg-white/10"
                   >
                     Rotate -90°
                   </button>
                   <button
-                    onClick={() => toggleFlip("flipH")}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      toggleFlip("flipH");
+                    }}
                     className="rounded-full border border-transparent bg-white/5 px-3 py-1 text-xs font-semibold text-[#E7E9EA] transition-all hover:bg-white/10"
                   >
                     Flip H
                   </button>
                   <button
-                    onClick={() => toggleFlip("flipV")}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      toggleFlip("flipV");
+                    }}
                     className="rounded-full border border-transparent bg-white/5 px-3 py-1 text-xs font-semibold text-[#E7E9EA] transition-all hover:bg-white/10"
                   >
                     Flip V
                   </button>
                   <button
-                    onClick={cycleGrid}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      cycleGrid();
+                    }}
                     className="rounded-full border border-transparent bg-white/5 px-3 py-1 text-xs font-semibold text-[#E7E9EA] transition-all hover:bg-white/10"
                   >
                     Grid {currentGrid === "off" ? "Off" : currentGrid}
                   </button>
                   <button
-                    onClick={resetTransform}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      resetTransform();
+                    }}
                     className="rounded-full border border-transparent bg-white/5 px-3 py-1 text-xs font-semibold text-[#EF454A] transition-all hover:bg-[#EF454A]/10"
                   >
                     Reset
