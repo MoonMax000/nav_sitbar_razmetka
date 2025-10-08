@@ -238,7 +238,7 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
         return isTransformEqual(clamped, prev) ? prev : clamped;
       });
     }
-  }, [media, imageSize, frameSize, minScale, maxScale, angleRadians]);
+  }, [media, imageSize, frameSize.width, frameSize.height, minScale, maxScale, angleRadians]);
 
   const handlePointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
     if (event.button !== 0) return;
