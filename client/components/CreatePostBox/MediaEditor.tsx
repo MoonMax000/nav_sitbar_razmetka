@@ -218,6 +218,28 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
     });
   };
 
+  useEffect(() => {
+    if (!media || !imageSize || !frameSize.width || !frameSize.height) return;
+
+    if (!initializedRef.current) {
+      const base = clampTransform(
+        media.transform ? { ...media.transform } : { ...createDefaultTransform(), scale: minScale },
+      );
+      setTransform(base);
+      initialStateRef.current = {
+        transform: base,
+        alt: media.alt ?? "",
+        warnings: media.sensitiveTags ?? [],
+      };
+      initializedRef.current = true;
+    } else {
+      setTransform((prev) => {
+        const clamped = clampTransform(prev);
+        return isTransformEqual(clamped, prev) ? prev : clamped;
+      });
+    }
+  }, [media, imageSize, frameSize, minScale, maxScale, angleRadians]);
+
   const handlePointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
     if (event.button !== 0) return;
     if (!containerRef.current) return;
