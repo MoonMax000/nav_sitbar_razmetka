@@ -7,6 +7,12 @@ export type TweetBlockPayload = {
     urls: { start: number; end: number; expandedUrl: string }[];
   };
   mediaIds?: string[];
+  media?: {
+    id: string;
+    transform?: CropTransform;
+    alt?: string;
+    sensitiveTags?: string[];
+  }[];
   poll?: { options: string[]; durationHours: number };
 };
 
