@@ -40,7 +40,8 @@ const App = () => (
                   <Routes>
                     <Route path="/" element={<Dashboard />} />
                     <Route path="/dashboard" element={<Dashboard />} />
-                    <Route path="/social/home" element={<Index />} />
+                    <Route path="/social/home" element={<SocialFeed />} />
+                    <Route path="/social/feed" element={<SocialFeed />} />
                     <Route path="/pricing" element={<Pricing />} />
                     <Route path="/profile" element={<ProfileNew />} />
                     <Route path="/profile-old" element={<Profile />} />
