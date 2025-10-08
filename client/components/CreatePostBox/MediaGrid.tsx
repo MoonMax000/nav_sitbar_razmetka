@@ -8,7 +8,7 @@ interface MediaGridProps {
   onReorder: (fromIndex: number, toIndex: number) => void;
 }
 
-export const MediaGrid: FC<MediaGridProps> = ({ media, onRemove, onEdit }) => {
+export const MediaGrid: FC<MediaGridProps> = ({ media, onRemove, onEdit, onReorder }) => {
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
 
   const gridClass = media.length === 1 ? "grid-cols-1" : "grid-cols-2";
@@ -20,10 +20,11 @@ export const MediaGrid: FC<MediaGridProps> = ({ media, onRemove, onEdit }) => {
           key={item.id}
           draggable
           onDragStart={() => setDraggedIndex(index)}
-          onDragOver={(e) => e.preventDefault()}
+          onDragEnd={() => setDraggedIndex(null)}
+          onDragOver={(event) => event.preventDefault()}
           onDrop={() => {
             if (draggedIndex !== null && draggedIndex !== index) {
-              onRemove(item.id);
+              onReorder(draggedIndex, index);
             }
             setDraggedIndex(null);
           }}
@@ -36,6 +37,13 @@ export const MediaGrid: FC<MediaGridProps> = ({ media, onRemove, onEdit }) => {
           )}
 
           <div className="absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/30" />
+
+          {item.sensitiveTags && item.sensitiveTags.length > 0 && (
+            <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-2 bg-black/60 text-center text-xs font-semibold uppercase tracking-wide text-[#E7E9EA] backdrop-blur-[6px]">
+              <span>Sensitive content</span>
+              <span className="text-[10px] text-[#A06AFF]">{item.sensitiveTags.join(" • ")}</span>
+            </div>
+          )}
 
           <div className="absolute top-3 right-3 flex gap-2 opacity-0 transition-opacity group-hover:opacity-100">
             <button
@@ -78,13 +86,18 @@ export const MediaGrid: FC<MediaGridProps> = ({ media, onRemove, onEdit }) => {
             </button>
           </div>
 
-          {item.alt && (
-            <div className="absolute bottom-3 left-3">
+          <div className="absolute bottom-3 left-3 flex flex-wrap items-center gap-2">
+            {item.alt && (
               <span className="rounded-full bg-black/70 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
                 ALT
               </span>
-            </div>
-          )}
+            )}
+            {item.sensitiveTags && item.sensitiveTags.length > 0 && (
+              <span className="rounded-full bg-[#A06AFF]/20 px-3 py-1 text-xs font-semibold text-[#A06AFF]">
+                Warning
+              </span>
+            )}
+          </div>
         </div>
       ))}
     </div>
