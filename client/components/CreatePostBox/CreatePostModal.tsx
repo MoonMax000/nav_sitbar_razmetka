@@ -337,6 +337,15 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
   }, [blocks, replySetting]);
 
   const handleOpenDraft = useCallback((draft: ComposerDraft) => {
+    const hasMedia = draft.blocks.some((b) => b.mediaIds && b.mediaIds.length > 0);
+
+    if (hasMedia) {
+      const confirmed = window.confirm(
+        "This draft contains media that cannot be restored. The text and code blocks will be restored, but you'll need to re-add any media. Continue?"
+      );
+      if (!confirmed) return;
+    }
+
     setBlocks(
       draft.blocks.map((b) => ({
         id: b.id,
@@ -385,9 +394,11 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
 
   const handleClose = useCallback(() => {
     const hasContent = blocks.some((b) => b.text.trim() || b.media.length > 0 || b.codeBlocks.length > 0);
-    
+
     if (hasContent) {
-      const shouldSave = confirm("Save this as a draft?");
+      const shouldSave = window.confirm(
+        "You have unsaved changes. Would you like to save this as a draft?\n\nNote: Media files will not be saved in drafts."
+      );
       if (shouldSave) {
         saveDraft();
       }
