@@ -107,16 +107,27 @@ export const TweetBlock: FC<TweetBlockProps> = ({
             {codeBlocks.map((block) => (
               <div
                 key={block.id}
-                className="group relative overflow-hidden rounded-2xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px]"
+                className="group relative overflow-hidden rounded-2xl border border-[#2F3336] bg-[#0A0E14] shadow-lg"
               >
-                <div className="flex items-center justify-between border-b border-[#181B22] px-4 py-2">
-                  <span className="text-xs font-semibold uppercase tracking-wide text-[#A06AFF]">
-                    {block.language}
-                  </span>
+                <div className="flex items-center justify-between border-b border-[#2F3336] bg-[#0D1117] px-4 py-2.5">
+                  <div className="flex items-center gap-2">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-[#6AA5FF]">
+                      <path
+                        d="M8 7L3 12L8 17M16 7L21 12L16 17M14 3L10 21"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                    <span className="text-xs font-semibold uppercase tracking-wider text-[#6AA5FF]">
+                      {block.language}
+                    </span>
+                  </div>
                   {onCodeBlockRemove && (
                     <button
                       onClick={() => onCodeBlockRemove(block.id)}
-                      className="flex h-6 w-6 items-center justify-center rounded-full text-[#808283] opacity-0 transition-all hover:bg-white/10 hover:text-[#EF454A] group-hover:opacity-100"
+                      className="flex h-6 w-6 items-center justify-center rounded-md text-[#808283] opacity-0 transition-all hover:bg-[#EF454A]/10 hover:text-[#EF454A] group-hover:opacity-100"
                       title="Remove code block"
                     >
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
@@ -131,8 +142,8 @@ export const TweetBlock: FC<TweetBlockProps> = ({
                     </button>
                   )}
                 </div>
-                <pre className="overflow-x-auto p-4 text-sm scrollbar">
-                  <code className="font-mono text-[#E7E9EA]">{block.code}</code>
+                <pre className="overflow-x-auto bg-[#0A0E14] p-5 text-sm leading-relaxed scrollbar">
+                  <code className="font-mono text-[#C5D4DD]" style={{ fontFamily: "'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace" }}>{block.code}</code>
                 </pre>
               </div>
             ))}
