@@ -845,7 +845,11 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
                     max={10}
                     step={0.5}
                     value={transform.straighten}
-                    onChange={(event) => handleStraightenChange(parseFloat(event.target.value))}
+                    onChange={(event) => {
+                      event.stopPropagation();
+                      handleStraightenChange(parseFloat(event.target.value));
+                    }}
+                    onClick={(e) => e.stopPropagation()}
                     className="h-1 w-full cursor-pointer accent-[#A06AFF]"
                   />
                 </div>
@@ -863,7 +867,10 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
               <button
                 type="button"
                 className="text-xs font-semibold text-[#A06AFF] underline-offset-4 hover:underline"
-                onClick={() => setShowAltHelp((prev) => !prev)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setShowAltHelp((prev) => !prev);
+                }}
               >
                 What is alt text?
               </button>
@@ -878,7 +885,11 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
             <textarea
               id="alt-editor"
               value={altText}
-              onChange={(event) => setAltText(event.target.value.slice(0, ALT_LIMIT))}
+              onChange={(event) => {
+                event.stopPropagation();
+                setAltText(event.target.value.slice(0, ALT_LIMIT));
+              }}
+              onClick={(e) => e.stopPropagation()}
               placeholder="Add a description for accessibility"
               className="h-40 w-full resize-none rounded-2xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] p-4 text-sm text-[#E7E9EA] placeholder:text-[#808283] outline-none backdrop-blur-[50px] focus:border-[#A06AFF] scrollbar"
             />
@@ -908,6 +919,7 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
                       className="mt-1 h-4 w-4 rounded border-[#181B22] bg-[#0C1014] text-[#A06AFF] focus:ring-[#A06AFF]"
                       checked={checked}
                       onChange={(event) => {
+                        event.stopPropagation();
                         setWarnings((prev) => {
                           if (event.target.checked) {
                             return [...prev, option.id];
@@ -915,6 +927,7 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
                           return prev.filter((item) => item !== option.id);
                         });
                       }}
+                      onClick={(e) => e.stopPropagation()}
                     />
                     <div className="space-y-1">
                       <div className="text-sm font-semibold text-white">{option.label}</div>
