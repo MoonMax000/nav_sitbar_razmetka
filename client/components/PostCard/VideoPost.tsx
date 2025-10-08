@@ -67,7 +67,7 @@ const VideoPost: FC<VideoPostProps> = ({
     <div
       onClick={onOpen}
       className={cn(
-        "flex w-full flex-col items-center gap-6 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] p-4 backdrop-blur-[50px]",
+        "mx-auto flex w-full max-w-[680px] flex-col items-center gap-6 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] p-4 backdrop-blur-[50px]",
         onOpen && "cursor-pointer transition-colors duration-200 hover:border-[#A06AFF]/50",
         className,
       )}
@@ -185,8 +185,8 @@ const VideoPost: FC<VideoPostProps> = ({
           )}
         </div>
 
-        <div className="relative flex h-[300px] w-full items-center justify-center overflow-hidden rounded-lg md:h-[400px] lg:h-[585px]">
-          <img src={videoUrl} alt="" className="h-full w-full object-cover" />
+        <div className="relative w-full overflow-hidden rounded-2xl border border-[#181B22]">
+          <img src={videoUrl} alt="" className="aspect-[1043/585] w-full object-cover" />
           <div className="absolute inset-0 flex items-center justify-center">
             <span className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white shadow-[0_12px_24px_0_rgba(0,0,0,0.48)]">
               <svg width="24" height="24" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
