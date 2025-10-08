@@ -11,6 +11,7 @@ import {
   FolderLibary as PortfolioIcon,
   CreditCard as BoxIcon,
 } from "./icons";
+import DashboardNavIcon from "./DashboardNavIcon";
 
 export interface NavElementProps {
   icon: ReactNode;
@@ -20,6 +21,7 @@ export interface NavElementProps {
 }
 
 export const navElements: NavElementProps[] = [
+  { icon: <DashboardNavIcon />, title: "Dashboard", route: "/dashboard" },
   { icon: <HomeIcon className="h-5 w-5" />, title: "Home", route: "/" },
   {
     icon: <StockMarket className="h-5 w-5" />,
