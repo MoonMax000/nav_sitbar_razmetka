@@ -804,7 +804,7 @@ const ComposerShowcase: FC = () => {
             </p>
           </header>
 
-          <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
+          <div className="grid grid-cols-1 gap-6">
             <ShowcaseCard
               title="Empty state"
               description="Пустое окно по умолчанию."
@@ -926,7 +926,7 @@ const ComposerShowcase: FC = () => {
             </ShowcaseCard>
             <ShowcaseCard
               title="Code block modal"
-              description="Форма добавления блока с кодом."
+              description="Форма до��авления блока с кодом."
             >
               <CodeBlockModalPreview />
             </ShowcaseCard>
