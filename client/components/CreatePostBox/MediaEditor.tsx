@@ -704,7 +704,7 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-4" onClick={(e) => e.stopPropagation()}>
                   <div className="flex gap-2">
                     {ASPECT_RATIOS.map((preset) => (
                       <button
