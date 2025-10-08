@@ -361,10 +361,10 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
   };
 
   const handleFitModeChange = (mode: CropTransform["fitMode"]) => {
-    updateTransform(() => ({
-      ...transform,
+    updateTransform((prev) => ({
+      ...prev,
       fitMode: mode,
-      scale: mode === "fit" ? minScale : Math.min(Math.max(transform.scale * 1.2, minScale * 1.2), maxScale),
+      scale: mode === "fit" ? minScale : Math.min(Math.max(prev.scale * 1.2, minScale * 1.2), maxScale),
       translateX: 0,
       translateY: 0,
     }));
