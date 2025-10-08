@@ -647,6 +647,7 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
                   onPointerMove={handlePointerMove}
                   onPointerUp={handlePointerUp}
                   onPointerLeave={handlePointerLeave}
+                  onPointerCancel={handlePointerUp}
                   onDoubleClick={handleDoubleClick}
                   onWheel={handleWheel}
                 >
