@@ -44,6 +44,7 @@ const App = () => (
                     <Route path="/social/home" element={<SocialFeed />} />
                     <Route path="/social/feed" element={<SocialFeed />} />
                     <Route path="/social/create" element={<Index />} />
+                    <Route path="/social/post/:postId" element={<SocialPostDetail />} />
                     <Route path="/pricing" element={<Pricing />} />
                     <Route path="/profile" element={<ProfileNew />} />
                     <Route path="/profile-old" element={<Profile />} />
