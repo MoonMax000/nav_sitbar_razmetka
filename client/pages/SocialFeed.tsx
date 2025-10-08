@@ -3,6 +3,12 @@ import { useNavigate } from "react-router-dom";
 
 import PostCard from "@/components/PostCard/PostCard";
 import VideoPost from "@/components/PostCard/VideoPost";
+import {
+  FilterType,
+  SocialPost,
+  TabType,
+  socialPosts,
+} from "@/data/socialPosts";
 
 type TabType = "popular" | "editors" | "foryou" | "following";
 type FilterType = "all" | "video";
