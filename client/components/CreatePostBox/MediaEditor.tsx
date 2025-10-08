@@ -83,6 +83,7 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
   const [showAltHelp, setShowAltHelp] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
   const dragStartRef = useRef<{ x: number; y: number; tx: number; ty: number } | null>(null);
   const lastTransformRef = useRef<CropTransform | null>(null);
   const initialStateRef = useRef<{ transform: CropTransform; alt: string; warnings: string[] } | null>(null);
