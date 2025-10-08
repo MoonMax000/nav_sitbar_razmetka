@@ -1,4 +1,5 @@
 import { FC, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import PostCard from "@/components/PostCard/PostCard";
 
 type TabType = "popular" | "editors" | "foryou" | "following";
