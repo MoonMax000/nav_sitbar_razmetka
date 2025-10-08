@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 
 import PostCard from "@/components/PostCard/PostCard";
 import VideoPost from "@/components/PostCard/VideoPost";
+import SuggestedProfilesWidget, { SuggestedProfile } from "@/components/SocialFeedWidgets/SuggestedProfilesWidget";
+import TrendingTopicsWidget, { TrendingTopic } from "@/components/SocialFeedWidgets/TrendingTopicsWidget";
 import {
   FilterType,
   SocialPost,
