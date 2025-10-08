@@ -690,7 +690,7 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
                   }}
                   onDoubleClick={(e) => {
                     e.stopPropagation();
-                    handleDoubleClick(e);
+                    handleDoubleClick();
                   }}
                   onWheel={(e) => {
                     e.stopPropagation();
