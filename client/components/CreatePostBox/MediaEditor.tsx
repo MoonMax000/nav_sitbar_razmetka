@@ -703,149 +703,54 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
                   </div>
                 </div>
 
-                <div className="flex flex-wrap items-center gap-2">
-                  {ASPECT_RATIOS.map((preset) => (
-                    <button
-                      key={preset.id}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleAspectRatioChange(preset.id);
+                <div className="flex items-center gap-4">
+                  <div className="flex gap-2">
+                    {ASPECT_RATIOS.map((preset) => (
+                      <button
+                        key={preset.id}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleAspectRatioChange(preset.id);
+                        }}
+                        className={classNames(
+                          "flex h-10 items-center justify-center rounded-lg border px-4 text-sm font-semibold transition-all",
+                          transform.aspectRatio === preset.id
+                            ? "border-[#1D9BF0] bg-[#1D9BF0]/10 text-[#1D9BF0]"
+                            : "border-[#2F3336] bg-transparent text-[#E7E9EA] hover:bg-white/5",
+                        )}
+                      >
+                        {preset.label}
+                      </button>
+                    ))}
+                  </div>
+
+                  <div className="h-6 w-px bg-[#2F3336]" />
+
+                  <div className="flex flex-1 items-center gap-3">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-[#E7E9EA]">
+                      <circle cx="11" cy="11" r="8" stroke="currentColor" strokeWidth="2" />
+                      <path d="M21 21l-4.35-4.35" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                      <path d="M11 8v6M8 11h6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                    </svg>
+                    <input
+                      type="range"
+                      min={minScale}
+                      max={maxScale}
+                      step={Math.max((maxScale - minScale) / 200, 0.01)}
+                      value={transform.scale}
+                      onChange={(event) => {
+                        event.stopPropagation();
+                        applyZoom(parseFloat(event.target.value));
                       }}
-                      className={classNames(
-                        "rounded-full border px-3 py-1 text-xs font-semibold transition-all",
-                        transform.aspectRatio === preset.id
-                          ? "border-[#A06AFF] bg-[#A06AFF]/10 text-[#A06AFF]"
-                          : "border-transparent bg-white/5 text-[#E7E9EA] hover:bg-white/10",
-                      )}
-                    >
-                      {preset.label}
-                    </button>
-                  ))}
-                </div>
-
-                <div className="flex flex-col gap-3">
-                  <label className="flex items-center justify-between text-xs font-semibold text-[#E7E9EA]">
-                    Zoom
-                    <span className="text-[#808283]">{Math.round((transform.scale / minScale) * 100)}%</span>
-                  </label>
-                  <input
-                    type="range"
-                    min={minScale}
-                    max={maxScale}
-                    step={Math.max((maxScale - minScale) / 200, 0.01)}
-                    value={transform.scale}
-                    onChange={(event) => {
-                      event.stopPropagation();
-                      applyZoom(parseFloat(event.target.value));
-                    }}
-                    onClick={(e) => e.stopPropagation()}
-                    className="h-1 w-full cursor-pointer accent-[#A06AFF]"
-                  />
-                </div>
-
-                <div className="flex flex-wrap gap-2">
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleFitModeChange("fit");
-                    }}
-                    className={classNames(
-                      "rounded-full border px-3 py-1 text-xs font-semibold transition-all",
-                      transform.fitMode === "fit"
-                        ? "border-[#A06AFF] bg-[#A06AFF]/10 text-[#A06AFF]"
-                        : "border-transparent bg-white/5 text-[#E7E9EA] hover:bg-white/10",
-                    )}
-                  >
-                    Fit
-                  </button>
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleFitModeChange("fill");
-                    }}
-                    className={classNames(
-                      "rounded-full border px-3 py-1 text-xs font-semibold transition-all",
-                      transform.fitMode === "fill"
-                        ? "border-[#A06AFF] bg-[#A06AFF]/10 text-[#A06AFF]"
-                        : "border-transparent bg-white/5 text-[#E7E9EA] hover:bg-white/10",
-                    )}
-                  >
-                    Fill
-                  </button>
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleRotate("ccw");
-                    }}
-                    className="rounded-full border border-transparent bg-white/5 px-3 py-1 text-xs font-semibold text-[#E7E9EA] transition-all hover:bg-white/10"
-                  >
-                    Rotate 90°
-                  </button>
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleRotate("cw");
-                    }}
-                    className="rounded-full border border-transparent bg-white/5 px-3 py-1 text-xs font-semibold text-[#E7E9EA] transition-all hover:bg-white/10"
-                  >
-                    Rotate -90°
-                  </button>
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      toggleFlip("flipH");
-                    }}
-                    className="rounded-full border border-transparent bg-white/5 px-3 py-1 text-xs font-semibold text-[#E7E9EA] transition-all hover:bg-white/10"
-                  >
-                    Flip H
-                  </button>
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      toggleFlip("flipV");
-                    }}
-                    className="rounded-full border border-transparent bg-white/5 px-3 py-1 text-xs font-semibold text-[#E7E9EA] transition-all hover:bg-white/10"
-                  >
-                    Flip V
-                  </button>
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      cycleGrid();
-                    }}
-                    className="rounded-full border border-transparent bg-white/5 px-3 py-1 text-xs font-semibold text-[#E7E9EA] transition-all hover:bg-white/10"
-                  >
-                    Grid {currentGrid === "off" ? "Off" : currentGrid}
-                  </button>
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      resetTransform();
-                    }}
-                    className="rounded-full border border-transparent bg-white/5 px-3 py-1 text-xs font-semibold text-[#EF454A] transition-all hover:bg-[#EF454A]/10"
-                  >
-                    Reset
-                  </button>
-                </div>
-
-                <div className="flex flex-col gap-2">
-                  <label className="flex items-center justify-between text-xs font-semibold text-[#E7E9EA]">
-                    Straighten
-                    <span className="text-[#808283]">{transform.straighten.toFixed(1)}°</span>
-                  </label>
-                  <input
-                    type="range"
-                    min={-10}
-                    max={10}
-                    step={0.5}
-                    value={transform.straighten}
-                    onChange={(event) => {
-                      event.stopPropagation();
-                      handleStraightenChange(parseFloat(event.target.value));
-                    }}
-                    onClick={(e) => e.stopPropagation()}
-                    className="h-1 w-full cursor-pointer accent-[#A06AFF]"
-                  />
+                      onClick={(e) => e.stopPropagation()}
+                      className="h-1 flex-1 cursor-pointer accent-[#1D9BF0]"
+                    />
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-[#E7E9EA]">
+                      <circle cx="11" cy="11" r="8" stroke="currentColor" strokeWidth="2" />
+                      <path d="M21 21l-4.35-4.35" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                      <path d="M8 11h6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                    </svg>
+                  </div>
                 </div>
               </>
             )}
