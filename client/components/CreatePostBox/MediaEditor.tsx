@@ -686,7 +686,7 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
                   }}
                   onPointerCancel={(e) => {
                     e.stopPropagation();
-                    handlePointerUp(e);
+                    handlePointerUp();
                   }}
                   onDoubleClick={(e) => {
                     e.stopPropagation();
