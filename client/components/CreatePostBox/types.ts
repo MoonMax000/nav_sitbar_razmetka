@@ -20,11 +20,36 @@ export type ComposerDraft = {
   updatedAt: string;
 };
 
+export type CropTransform = {
+  scale: number;
+  translateX: number;
+  translateY: number;
+  angle: number;
+  aspectRatio:
+    | "original"
+    | "free"
+    | "1:1"
+    | "4:5"
+    | "3:2"
+    | "2:3"
+    | "4:3"
+    | "3:4"
+    | "16:9"
+    | "9:16";
+  fitMode: "fit" | "fill";
+  flipH: boolean;
+  flipV: boolean;
+  straighten: number;
+  grid: "thirds" | "golden" | "center" | "off";
+};
+
 export type MediaItem = {
   id: string;
   url: string;
   type: "image" | "video" | "gif";
   alt?: string;
+  transform?: CropTransform;
+  sensitiveTags?: string[];
   file?: File;
 };
 
