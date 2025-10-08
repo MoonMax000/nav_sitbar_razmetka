@@ -16,6 +16,7 @@ import Profile from "./pages/Profile";
 import ProfileNew from "./pages/ProfileNew";
 import Billing from "./pages/Billing";
 import NotFound from "./pages/NotFound";
+import ComposerShowcase from "./pages/ComposerShowcase";
 import { ClientLayout } from "./components/ClientLayout/ClientLayout";
 
 const queryClient = new QueryClient({
