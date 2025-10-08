@@ -668,7 +668,7 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
                 <div
                   ref={containerRef}
                   className={classNames(
-                    "relative w-full overflow-hidden rounded-3xl border border-[#181B22] bg-[#050708]/80",
+                    "relative w-full overflow-hidden rounded-2xl border-2 border-[#1D9BF0] bg-black",
                     isDragging ? "cursor-grabbing" : "cursor-grab",
                   )}
                   style={{ height: 420 }}
@@ -680,41 +680,31 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
                   onDoubleClick={handleDoubleClick}
                   onWheel={handleWheel}
                 >
-                  <div
-                    className="absolute inset-0 m-auto flex items-center justify-center"
-                    style={{ width: frameSize.width || "100%", height: frameSize.height || "100%" }}
-                  >
-                    <div className="relative h-full w-full overflow-hidden rounded-3xl">
-                      <div className="absolute inset-0 bg-black/40" aria-hidden />
-                      <div className="absolute inset-0">
-                        <div
-                          className="absolute left-1/2 top-1/2"
-                          style={{
-                            width: frameSize.width,
-                            height: frameSize.height,
-                            transform: "translate(-50%, -50%)",
-                            boxShadow: "0 0 0 20000px rgba(0,0,0,0.55)",
-                          }}
-                        >
-                          <div className="h-full w-full overflow-hidden">
-                            <img
-                              src={media.url}
-                              alt=""
-                              draggable={false}
-                              className={classNames(
-                                "pointer-events-none h-full w-full select-none",
-                                transform.flipH ? "-scale-x-100" : "",
-                                transform.flipV ? "-scale-y-100" : "",
-                              )}
-                              style={{
-                                transform: `translate(${transform.translateX}px, ${transform.translateY}px) scale(${transform.scale}) rotate(${transform.angle + transform.straighten}deg)`,
-                                transformOrigin: "center",
-                              }}
-                            />
-                          </div>
-                          {renderGridOverlay()}
-                        </div>
-                      </div>
+                  <div className="relative h-full w-full flex items-center justify-center">
+                    <div
+                      className="relative overflow-hidden"
+                      style={{
+                        width: frameSize.width || "100%",
+                        height: frameSize.height || "100%",
+                      }}
+                    >
+                      <img
+                        src={media.url}
+                        alt=""
+                        draggable={false}
+                        className={classNames(
+                          "pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none object-cover",
+                          transform.flipH ? "-scale-x-100" : "",
+                          transform.flipV ? "-scale-y-100" : "",
+                        )}
+                        style={{
+                          width: imageSize ? imageSize.width : "auto",
+                          height: imageSize ? imageSize.height : "auto",
+                          transform: `translate(-50%, -50%) translate(${transform.translateX}px, ${transform.translateY}px) scale(${transform.scale}) rotate(${transform.angle + transform.straighten}deg)`,
+                          transformOrigin: "center",
+                        }}
+                      />
+                      {renderGridOverlay()}
                     </div>
                   </div>
                 </div>
