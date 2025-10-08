@@ -13,6 +13,7 @@ import {
   CHAR_LIMIT,
   MAX_PHOTOS,
   MAX_THREAD_BLOCKS,
+  createDefaultTransform,
 } from "./types";
 
 interface CreatePostModalProps {
@@ -168,7 +169,15 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
       const id = `${Date.now()}-${Math.random()}`;
       const url = URL.createObjectURL(file);
 
-      newMedia.push({ id, url, type, file });
+      newMedia.push({
+        id,
+        url,
+        type,
+        file,
+        transform: createDefaultTransform(),
+        alt: undefined,
+        sensitiveTags: [],
+      });
     });
 
     setBlocks((prev) =>
@@ -342,6 +351,12 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
         blocks: blocks.map((b) => ({
           text: b.text,
           mediaIds: b.media.map((m) => m.id),
+          media: b.media.map((m) => ({
+            id: m.id,
+            transform: m.transform,
+            alt: m.alt,
+            sensitiveTags: m.sensitiveTags,
+          })),
           codeBlocks: b.codeBlocks,
         })),
         replyPolicy: replySetting,
@@ -594,7 +609,14 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
         )}
       </div>
 
-      <MediaEditor media={editingMedia} onSave={handleMediaSave} onClose={() => setEditingMedia(null)} />
+      <MediaEditor
+        media={editingMedia}
+        onSave={handleMediaSave}
+        onClose={() => {
+          setEditingMedia(null);
+          setActiveBlockId(null);
+        }}
+      />
 
       <CodeBlockModal
         isOpen={isCodeBlockOpen}
