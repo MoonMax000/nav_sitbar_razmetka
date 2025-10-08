@@ -28,9 +28,21 @@ const PostCard: FC<PostCardProps> = ({
   sentiment = "bullish",
   likes = 1500,
   comments = 563,
+  onOpen,
 }) => {
+  const handleLearnMoreClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
+  };
+
   return (
-    <div className="inline-flex w-full flex-col items-center gap-6 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] p-4 backdrop-blur-[50px]">
+    <div
+      onClick={onOpen}
+      className={cn(
+        "inline-flex w-full flex-col items-center gap-6 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] p-4 backdrop-blur-[50px]",
+        onOpen && "cursor-pointer transition-colors duration-200 hover:border-[#A06AFF]/50",
+      )}
+    >
       <div className="flex w-full flex-col items-start gap-6">
         <div className="flex w-full items-start justify-between">
           <div className="flex flex-1 items-center gap-2">
