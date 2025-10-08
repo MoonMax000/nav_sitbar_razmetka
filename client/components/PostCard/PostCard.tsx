@@ -144,6 +144,7 @@ const PostCard: FC<PostCardProps> = ({
           </div>
           <a
             href="#"
+            onClick={handleLearnMoreClick}
             className="group inline-flex items-center gap-2 rounded-full border border-transparent bg-[#A06AFF]/10 px-3 py-1.5 text-[15px] font-semibold leading-normal text-[#E3D8FF] transition-all duration-200 hover:border-[#A06AFF] hover:bg-[#A06AFF]/20 hover:text-white hover:shadow-[0_12px_30px_-18px_rgba(160,106,255,0.8)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
           >
             Learn more
