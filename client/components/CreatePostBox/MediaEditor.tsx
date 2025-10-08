@@ -86,6 +86,7 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
   const dragStartRef = useRef<{ x: number; y: number; tx: number; ty: number } | null>(null);
   const lastTransformRef = useRef<CropTransform | null>(null);
   const initialStateRef = useRef<{ transform: CropTransform; alt: string; warnings: string[] } | null>(null);
+  const initializedRef = useRef(false);
 
   const angleRadians = useMemo(() => ((transform.angle + transform.straighten) * Math.PI) / 180, [transform.angle, transform.straighten]);
   const currentGrid = transform.grid;
