@@ -39,7 +39,7 @@ const PostCard: FC<PostCardProps> = ({
     <div
       onClick={onOpen}
       className={cn(
-        "inline-flex w-full flex-col items-center gap-6 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] p-4 backdrop-blur-[50px]",
+        "inline-flex w-full max-w-[680px] flex-col items-center gap-6 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] p-4 backdrop-blur-[50px]",
         onOpen && "cursor-pointer transition-colors duration-200 hover:border-[#A06AFF]/50",
       )}
     >
@@ -168,12 +168,13 @@ const PostCard: FC<PostCardProps> = ({
             </span>
           </a>
         </div>
-        <img
-          src={image}
-          alt=""
-          className="h-auto w-full rounded-lg object-cover"
-          style={{ aspectRatio: "599/336" }}
-        />
+        <div className="w-full overflow-hidden rounded-2xl border border-[#181B22]">
+          <img
+            src={image}
+            alt=""
+            className="aspect-[599/336] w-full object-cover"
+          />
+        </div>
         <div className="flex w-full items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="flex items-center gap-1 rounded bg-[#1C3430] px-1 py-0.5">
