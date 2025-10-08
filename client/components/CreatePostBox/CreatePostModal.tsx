@@ -317,6 +317,13 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
         id: b.id,
         text: b.text,
         mediaIds: b.media.map((m) => m.id),
+        media: b.media.map((m) => ({
+          id: m.id,
+          transform: m.transform,
+          alt: m.alt,
+          sensitiveTags: m.sensitiveTags,
+        })),
+        codeBlocks: b.codeBlocks,
       })),
       replyPolicy: replySetting,
       createdAt: new Date().toISOString(),
@@ -335,10 +342,11 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
         id: b.id,
         text: b.text,
         media: [],
-        codeBlocks: [],
+        codeBlocks: b.codeBlocks || [],
       }))
     );
     setReplySetting(draft.replyPolicy);
+    setIsDraftsOpen(false);
   }, []);
 
   const handlePost = useCallback(async () => {
