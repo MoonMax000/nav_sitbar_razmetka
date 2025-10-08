@@ -13,6 +13,7 @@ export type TweetBlockPayload = {
     alt?: string;
     sensitiveTags?: string[];
   }[];
+  codeBlocks?: { id: string; code: string; language: string }[];
   poll?: { options: string[]; durationHours: number };
 };
 
