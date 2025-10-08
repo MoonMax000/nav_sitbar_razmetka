@@ -268,10 +268,15 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
 
   const handlePointerUp = (event?: ReactPointerEvent<HTMLDivElement>) => {
     setIsDragging(false);
-    if (event && containerRef.current) {
+    if (event && containerRef.current && containerRef.current.hasPointerCapture(event.pointerId)) {
       containerRef.current.releasePointerCapture(event.pointerId);
     }
     dragStartRef.current = null;
+  };
+
+  const handlePointerLeave = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (!isDragging) return;
+    handlePointerUp(event);
   };
 
   const applyZoom = (nextScale: number, focalPoint?: { x: number; y: number }) => {
@@ -640,7 +645,7 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
                   onPointerDown={handlePointerDown}
                   onPointerMove={handlePointerMove}
                   onPointerUp={handlePointerUp}
-                  onPointerLeave={(event) => handlePointerUp(event as unknown as ReactPointerEvent<HTMLDivElement>)}
+                  onPointerLeave={handlePointerLeave}
                   onDoubleClick={handleDoubleClick}
                   onWheel={handleWheel}
                 >
