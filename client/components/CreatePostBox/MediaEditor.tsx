@@ -98,6 +98,12 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
   }, []);
 
   useEffect(() => {
+    if (media && modalRef.current) {
+      modalRef.current.focus();
+    }
+  }, [media]);
+
+  useEffect(() => {
     if (!media) return;
 
     initializedRef.current = false;
