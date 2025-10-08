@@ -304,6 +304,7 @@ const VideoPost: FC<VideoPostProps> = ({
 };
 
 const SocialFeed: FC = () => {
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<TabType>("popular");
   const [filter, setFilter] = useState<FilterType>("all");
 
