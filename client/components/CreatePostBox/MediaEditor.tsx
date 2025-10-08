@@ -521,7 +521,7 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
   if (!mounted || !media) return null;
 
   const isImage = media.type === "image";
-  const altChars = altText.trim().length;
+  const altChars = altText.length;
 
   return createPortal(
     <div
