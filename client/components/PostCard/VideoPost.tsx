@@ -50,16 +50,16 @@ const VideoPost: FC<VideoPostProps> = ({
     ? formattedContent
     : `${formattedContent.slice(0, 240)}${formattedContent.length > 240 ? "…" : ""}`;
 
-  const handleToggle = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleToggle = (event: MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
     setExpanded((prev) => !prev);
   };
 
-  const handleFollowClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleFollowClick = (event: MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
   };
 
-  const handleMenuClick = (event: React.MouseEvent<HTMLDivElement>) => {
+  const handleMenuClick = (event: MouseEvent<HTMLDivElement>) => {
     event.stopPropagation();
   };
 
