@@ -39,7 +39,7 @@ const PostCard: FC<PostCardProps> = ({
     <div
       onClick={onOpen}
       className={cn(
-        "inline-flex w-full max-w-[680px] flex-col items-center gap-6 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] p-4 backdrop-blur-[50px]",
+        "mx-auto inline-flex w-full max-w-[680px] flex-col items-center gap-6 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] p-4 backdrop-blur-[50px]",
         onOpen && "cursor-pointer transition-colors duration-200 hover:border-[#A06AFF]/50",
       )}
     >
