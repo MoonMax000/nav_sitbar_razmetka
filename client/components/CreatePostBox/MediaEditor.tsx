@@ -667,13 +667,35 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
                     isDragging ? "cursor-grabbing" : "cursor-grab",
                   )}
                   style={{ height: 420 }}
-                  onPointerDown={handlePointerDown}
-                  onPointerMove={handlePointerMove}
-                  onPointerUp={handlePointerUp}
-                  onPointerLeave={handlePointerLeave}
-                  onPointerCancel={handlePointerUp}
-                  onDoubleClick={handleDoubleClick}
-                  onWheel={handleWheel}
+                  onClick={(e) => e.stopPropagation()}
+                  onPointerDown={(e) => {
+                    e.stopPropagation();
+                    handlePointerDown(e);
+                  }}
+                  onPointerMove={(e) => {
+                    e.stopPropagation();
+                    handlePointerMove(e);
+                  }}
+                  onPointerUp={(e) => {
+                    e.stopPropagation();
+                    handlePointerUp(e);
+                  }}
+                  onPointerLeave={(e) => {
+                    e.stopPropagation();
+                    handlePointerLeave(e);
+                  }}
+                  onPointerCancel={(e) => {
+                    e.stopPropagation();
+                    handlePointerUp(e);
+                  }}
+                  onDoubleClick={(e) => {
+                    e.stopPropagation();
+                    handleDoubleClick(e);
+                  }}
+                  onWheel={(e) => {
+                    e.stopPropagation();
+                    handleWheel(e);
+                  }}
                 >
                   <div className="relative h-full w-full flex items-center justify-center">
                     <div
