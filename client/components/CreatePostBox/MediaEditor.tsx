@@ -99,16 +99,11 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
   useEffect(() => {
     if (!media) return;
 
+    initializedRef.current = false;
     setAltText(media.alt ?? "");
     setWarnings(media.sensitiveTags ?? []);
     setTransform(media.transform ? { ...media.transform } : createDefaultTransform());
     setActiveTab(media.type === "image" ? "crop" : "alt");
-
-    initialStateRef.current = {
-      transform: media.transform ? { ...media.transform } : createDefaultTransform(),
-      alt: media.alt ?? "",
-      warnings: media.sensitiveTags ?? [],
-    };
 
     const image = new Image();
     image.src = media.url;
