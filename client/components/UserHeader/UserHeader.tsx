@@ -61,11 +61,11 @@ const UserHeader: FC<Props> = ({ isOwn = true, className }) => {
       {/* Avatar and action buttons container */}
       <div className="relative px-4">
         {/* Avatar positioned to overlap banner */}
-        <div className="absolute -top-16 left-4 w-[132px] h-[132px] rounded-full border-4 border-black">
+        <div className="absolute -top-16 left-4 w-[132px] h-[132px] rounded-full border-4 border-black overflow-hidden">
           <img
             src="https://api.builder.io/api/v1/image/assets/TEMP/8dcd522167ed749bb95dadfd1a39f43e695d33a0?width=320"
             alt="Profile"
-            className="w-full h-full rounded-full object-cover"
+            className="h-full w-full rounded-full object-cover object-center scale-[1.08]"
           />
         </div>
 
