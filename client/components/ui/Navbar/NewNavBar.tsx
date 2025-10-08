@@ -27,13 +27,14 @@ const NewNavBar: FC<Props> = ({ variant = 'primal' }) => {
             aria-controls={`${el.title}-submenu`}
           >
             <div
-              className={cn('flex items-center gap-2 pl-2 hover:text-white hover:border-l-[2px] hover:border-purple overflow-hidden', {
+              className={cn('group flex items-center gap-2 pl-2 hover:text-white hover:border-l-[2px] hover:border-purple overflow-hidden', {
                 'text-white border-l-[2px] border-purple': isOpen,
                 'text-[#B0B0B0]': !isOpen,
                 'ml-[5px]': isCollapsed,
               })}
+              data-active={isOpen ? 'true' : undefined}
             >
-              <div className='size-5 flex-shrink-0'>{el.icon}</div>
+              <div className='flex h-5 w-5 flex-shrink-0 items-center justify-center'>{el.icon}</div>
               <span
                 className={cn('text-[15px] font-semibold whitespace-nowrap transition-all duration-300', {
                   'opacity-0 w-0': isCollapsed,
@@ -50,8 +51,11 @@ const NewNavBar: FC<Props> = ({ variant = 'primal' }) => {
               {el.children.map((child) => (
                 <NavLink key={child.title} to={child.route ?? '#'} className={cn('px-3')}>
                   {({ isActive }) => (
-                    <div className={cn('flex items-center gap-2 pl-2 py-2 hover:custom-bg-blur hover:text-white hover:border-l-[2px] hover:border-purple overflow-hidden', isActive ? 'text-white' : 'text-[#B0B0B0]')}>
-                      <div className='size-5 flex-shrink-0'>{child.icon}</div>
+                    <div
+                      className={cn('group flex items-center gap-2 pl-2 py-2 hover:custom-bg-blur hover:text-white hover:border-l-[2px] hover:border-purple overflow-hidden', isActive ? 'text-white' : 'text-[#B0B0B0]')}
+                      data-active={isActive ? 'true' : undefined}
+                    >
+                      <div className='flex h-5 w-5 flex-shrink-0 items-center justify-center'>{child.icon}</div>
                       <span
                         className={cn('text-[15px] font-semibold whitespace-nowrap transition-all duration-300', {
                           'opacity-0 w-0': isCollapsed,
@@ -74,8 +78,11 @@ const NewNavBar: FC<Props> = ({ variant = 'primal' }) => {
       return (
         <NavLink key={el.title} to={el.route} className={cn('px-3 py-[14px]', { 'ml-[5px]': isCollapsed })}>
           {({ isActive }) => (
-            <div className={cn('flex items-center gap-2 pl-2 transition hover:text-white hover:border-l-[2px] hover:border-purple overflow-hidden', isActive ? 'text-white' : 'text-[#B0B0B0]')}>
-              <div className='size-5 flex-shrink-0'>{el.icon}</div>
+            <div
+              className={cn('group flex items-center gap-2 pl-2 transition hover:text-white hover:border-l-[2px] hover:border-purple overflow-hidden', isActive ? 'text-white' : 'text-[#B0B0B0]')}
+              data-active={isActive ? 'true' : undefined}
+            >
+              <div className='flex h-5 w-5 flex-shrink-0 items-center justify-center'>{el.icon}</div>
               <span
                 className={cn('text-[15px] font-semibold whitespace-nowrap transition-all duration-300', {
                   'opacity-0 w-0': isCollapsed,
@@ -92,8 +99,8 @@ const NewNavBar: FC<Props> = ({ variant = 'primal' }) => {
 
     return (
       <div key={el.title} className={cn('px-3 py-[14px]', { 'ml-[5px]': isCollapsed })}>
-        <div className='flex items-center gap-2 pl-2 text-[#B0B0B0] hover:text-white hover:border-l-[2px] hover:border-purple overflow-hidden'>
-          <div className='size-5 flex-shrink-0'>{el.icon}</div>
+        <div className='group flex items-center gap-2 pl-2 text-[#B0B0B0] hover:text-white hover:border-l-[2px] hover:border-purple overflow-hidden'>
+          <div className='flex h-5 w-5 flex-shrink-0 items-center justify-center'>{el.icon}</div>
           <span
             className={cn('text-[15px] font-semibold whitespace-nowrap transition-all duration-300', {
               'opacity-0 w-0': isCollapsed,
