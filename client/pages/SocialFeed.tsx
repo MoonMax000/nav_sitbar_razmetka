@@ -339,7 +339,7 @@ const SocialFeed: FC = () => {
               strokeLinejoin="round"
             />
           </svg>
-          Back to profile
+          Back to creator
         </button>
       </div>
       {/* Tabs */}
