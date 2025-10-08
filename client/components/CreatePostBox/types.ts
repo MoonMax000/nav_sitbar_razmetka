@@ -58,3 +58,16 @@ export const MAX_PHOTOS = 4;
 export const MAX_VIDEO = 1;
 export const MAX_GIF = 1;
 export const MAX_THREAD_BLOCKS = 25;
+
+export const createDefaultTransform = (): CropTransform => ({
+  scale: 1,
+  translateX: 0,
+  translateY: 0,
+  angle: 0,
+  straighten: 0,
+  aspectRatio: "original",
+  fitMode: "fit",
+  flipH: false,
+  flipV: false,
+  grid: "thirds",
+});
