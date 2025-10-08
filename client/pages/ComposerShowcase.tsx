@@ -93,13 +93,37 @@ const ComposerShowcase: FC = () => {
   return (
     <div className="min-h-screen bg-black py-12 px-6">
       <div className="mx-auto max-w-7xl">
-        <div className="mb-12 text-center">
-          <h1 className="text-4xl font-bold text-white mb-4">
-            Post Composer <span className="text-gradient-purple">Showcase</span>
-          </h1>
-          <p className="text-[#808283] text-lg">
-            Все состояния окна создания поста для тестирования и настройки
-          </p>
+        <div className="mb-12">
+          <div className="text-center mb-8">
+            <h1 className="text-4xl font-bold text-white mb-4">
+              Post Composer <span className="text-gradient-purple">Showcase</span>
+            </h1>
+            <p className="text-[#808283] text-lg">
+              Все состояния окна создания поста для ��естирования и настройки
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-[#A06AFF]/30 bg-gradient-to-br from-[#A06AFF]/10 to-transparent p-6 backdrop-blur-[50px]">
+            <div className="flex items-start gap-4">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#A06AFF]/20">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-[#A06AFF]">
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" />
+                  <path d="M12 16v-4M12 8h.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                </svg>
+              </div>
+              <div className="flex-1">
+                <h3 className="text-lg font-semibold text-white mb-2">
+                  Как использовать эту страницу
+                </h3>
+                <ul className="space-y-2 text-sm text-[#E7E9EA]">
+                  <li>• Нажмите на любую карточку для открытия нужного состояния</li>
+                  <li>• Тестируйте функционал и дизайн в реальном времени</li>
+                  <li>• Используйте горячие клавиши для быстрой навигации</li>
+                  <li>• Страница доступна по адресу: <code className="px-2 py-1 bg-[#2F3336] rounded text-[#A06AFF]">/composer-showcase</code></li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
