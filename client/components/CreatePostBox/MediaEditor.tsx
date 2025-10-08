@@ -4,7 +4,7 @@ import {
   useEffect,
   useMemo,
   useRef,
-  MouseEvent as ReactMouseEvent,
+  PointerEvent as ReactPointerEvent,
   WheelEvent,
   KeyboardEvent as ReactKeyboardEvent,
 } from "react";
@@ -237,7 +237,7 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
     });
   };
 
-  const handlePointerDown = (event: ReactMouseEvent<HTMLDivElement>) => {
+  const handlePointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
     if (event.button !== 0) return;
     if (!containerRef.current) return;
 
@@ -252,7 +252,7 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
     containerRef.current.setPointerCapture(event.nativeEvent.pointerId);
   };
 
-  const handlePointerMove = (event: ReactMouseEvent<HTMLDivElement>) => {
+  const handlePointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
     if (!isDragging || !dragStartRef.current) return;
 
     const { x, y, tx, ty } = dragStartRef.current;
@@ -266,8 +266,11 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
     }));
   };
 
-  const handlePointerUp = () => {
+  const handlePointerUp = (event?: ReactPointerEvent<HTMLDivElement>) => {
     setIsDragging(false);
+    if (event && containerRef.current) {
+      containerRef.current.releasePointerCapture(event.pointerId);
+    }
     dragStartRef.current = null;
   };
 
@@ -637,7 +640,7 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
                   onPointerDown={handlePointerDown}
                   onPointerMove={handlePointerMove}
                   onPointerUp={handlePointerUp}
-                  onPointerLeave={handlePointerUp}
+                  onPointerLeave={(event) => handlePointerUp(event as unknown as ReactPointerEvent<HTMLDivElement>)}
                   onDoubleClick={handleDoubleClick}
                   onWheel={handleWheel}
                 >
