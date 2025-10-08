@@ -743,8 +743,11 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
                       value={transform.scale}
                       onChange={(event) => {
                         event.stopPropagation();
+                        event.preventDefault();
                         applyZoom(parseFloat(event.target.value));
                       }}
+                      onMouseDown={(e) => e.stopPropagation()}
+                      onPointerDown={(e) => e.stopPropagation()}
                       onClick={(e) => e.stopPropagation()}
                       className="h-1 flex-1 cursor-pointer accent-[#1D9BF0]"
                     />
