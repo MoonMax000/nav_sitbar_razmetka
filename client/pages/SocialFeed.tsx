@@ -1,4 +1,6 @@
 import { FC, useMemo, useState } from "react";
+import type { FC } from "react";
+import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import PostCard from "@/components/PostCard/PostCard";
