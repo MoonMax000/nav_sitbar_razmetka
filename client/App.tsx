@@ -42,6 +42,7 @@ const App = () => (
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/social/home" element={<SocialFeed />} />
                     <Route path="/social/feed" element={<SocialFeed />} />
+                    <Route path="/social/create" element={<Index />} />
                     <Route path="/pricing" element={<Pricing />} />
                     <Route path="/profile" element={<ProfileNew />} />
                     <Route path="/profile-old" element={<Profile />} />
