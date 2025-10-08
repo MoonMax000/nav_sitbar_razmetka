@@ -915,7 +915,7 @@ const ComposerShowcase: FC = () => {
             </p>
           </header>
 
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <div className="grid grid-cols-1 gap-6">
             <ShowcaseCard
               title="Emoji picker"
               description="Категории эмодзи с поиском."
@@ -926,7 +926,7 @@ const ComposerShowcase: FC = () => {
             </ShowcaseCard>
             <ShowcaseCard
               title="Code block modal"
-              description="Форма до��авления блока с кодом."
+              description="Фор��а добавления блока с кодом."
             >
               <CodeBlockModalPreview />
             </ShowcaseCard>
