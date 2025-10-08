@@ -540,7 +540,9 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
       }}
     >
       <div
-        className="relative w-full max-w-[920px] overflow-hidden rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.95)] shadow-[0_40px_120px_-40px_rgba(0,0,0,0.85)] backdrop-blur-[100px]"
+        ref={modalRef}
+        tabIndex={-1}
+        className="relative w-full max-w-[920px] overflow-hidden rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.95)] shadow-[0_40px_120px_-40px_rgba(0,0,0,0.85)] backdrop-blur-[100px] outline-none"
         onKeyDown={handleKeyDown}
       >
         <div className="flex items-center justify-between border-b border-[#181B22] px-6 py-4">
