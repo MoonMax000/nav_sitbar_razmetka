@@ -708,9 +708,11 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
                   <div className="flex gap-2">
                     {ASPECT_RATIOS.map((preset) => (
                       <button
+                        type="button"
                         key={preset.id}
                         onClick={(e) => {
                           e.stopPropagation();
+                          e.preventDefault();
                           handleAspectRatioChange(preset.id);
                         }}
                         className={classNames(
