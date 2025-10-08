@@ -12,6 +12,7 @@ export const MediaGrid: FC<MediaGridProps> = ({ media, onRemove, onEdit, onReord
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
 
   const gridClass = media.length === 1 ? "grid-cols-1" : "grid-cols-2";
+  const heightClass = media.length === 1 ? "max-h-[400px]" : "max-h-[280px]";
 
   return (
     <div className={`mt-3 grid gap-3 ${gridClass}`}>
@@ -28,7 +29,7 @@ export const MediaGrid: FC<MediaGridProps> = ({ media, onRemove, onEdit, onReord
             }
             setDraggedIndex(null);
           }}
-          className={`group relative overflow-hidden rounded-2xl border backdrop-blur-[50px] cursor-move transition-all ${
+          className={`group relative overflow-hidden rounded-2xl border backdrop-blur-[50px] cursor-move transition-all ${heightClass} ${
             draggedIndex === index
               ? "opacity-50 scale-95 border-[#A06AFF]"
               : draggedIndex !== null
@@ -37,9 +38,9 @@ export const MediaGrid: FC<MediaGridProps> = ({ media, onRemove, onEdit, onReord
           }`}
         >
           {item.type === "video" ? (
-            <video src={item.url} className="h-full w-full object-cover" />
+            <video src={item.url} className="h-full w-full object-cover" style={{ aspectRatio: media.length === 1 ? 'auto' : '16/9' }} />
           ) : (
-            <img src={item.url} alt={item.alt || `Media ${index + 1}`} className="h-full w-full object-cover" />
+            <img src={item.url} alt={item.alt || `Media ${index + 1}`} className="h-full w-full object-cover" style={{ aspectRatio: media.length === 1 ? 'auto' : '16/9' }} />
           )}
 
           <div className="absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/30" />
