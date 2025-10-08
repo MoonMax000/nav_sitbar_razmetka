@@ -241,6 +241,7 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
     if (event.button !== 0) return;
     if (!containerRef.current) return;
 
+    event.preventDefault();
     setIsDragging(true);
     dragStartRef.current = {
       x: event.clientX,
@@ -249,7 +250,7 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
       ty: transform.translateY,
     };
 
-    containerRef.current.setPointerCapture(event.nativeEvent.pointerId);
+    containerRef.current.setPointerCapture(event.pointerId);
   };
 
   const handlePointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
