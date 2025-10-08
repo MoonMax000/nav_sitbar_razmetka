@@ -175,21 +175,6 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
   const maxScale = minScale * MAX_SCALE_MULTIPLIER;
 
   useEffect(() => {
-    if (!imageSize || !frameSize.width || !frameSize.height || !initialStateRef.current) return;
-
-    if (!media?.transform) {
-      setTransform((prev) => ({ ...prev, scale: minScale, translateX: 0, translateY: 0 }));
-      initialStateRef.current = {
-        transform: { ...createDefaultTransform(), scale: minScale },
-        alt: media?.alt ?? "",
-        warnings: media?.sensitiveTags ?? [],
-      };
-    } else if (media.transform.scale < minScale) {
-      setTransform((prev) => ({ ...prev, scale: minScale }));
-    }
-  }, [media, minScale, frameSize, imageSize]);
-
-  useEffect(() => {
     if (!media) return;
 
     const initial = initialStateRef.current;
