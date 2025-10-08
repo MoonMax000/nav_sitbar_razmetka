@@ -28,7 +28,13 @@ export const MediaGrid: FC<MediaGridProps> = ({ media, onRemove, onEdit, onReord
             }
             setDraggedIndex(null);
           }}
-          className="group relative overflow-hidden rounded-2xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] backdrop-blur-[50px] cursor-move"
+          className={`group relative overflow-hidden rounded-2xl border backdrop-blur-[50px] cursor-move transition-all ${
+            draggedIndex === index
+              ? "opacity-50 scale-95 border-[#A06AFF]"
+              : draggedIndex !== null
+              ? "border-[#A06AFF]/50 bg-[rgba(12,16,20,0.5)]"
+              : "border-[#181B22] bg-[rgba(12,16,20,0.5)]"
+          }`}
         >
           {item.type === "video" ? (
             <video src={item.url} className="h-full w-full object-cover" />
