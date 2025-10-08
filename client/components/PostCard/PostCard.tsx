@@ -1,4 +1,6 @@
-import { FC } from "react";
+import { FC, MouseEvent } from "react";
+
+import { cn } from "@/lib/utils";
 
 export interface PostCardProps {
   author?: {
@@ -13,6 +15,7 @@ export interface PostCardProps {
   sentiment?: "bullish" | "bearish";
   likes?: number;
   comments?: number;
+  onOpen?: () => void;
 }
 
 const PostCard: FC<PostCardProps> = ({
