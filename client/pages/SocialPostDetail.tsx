@@ -46,7 +46,7 @@ const SocialPostDetail: FC = () => {
   const hashtags = post.hashtags ?? [];
 
   const renderArticle = () => (
-    <div className="flex w-full flex-col gap-6 rounded-3xl border border-[#181B22] bg-black/70 p-6 text-white shadow-[0_20px_60px_-40px_rgba(0,0,0,0.9)]">
+    <div className="mx-auto flex w-full max-w-[680px] flex-col gap-6 rounded-3xl border border-[#181B22] bg-black/70 p-6 text-white shadow-[0_20px_60px_-40px_rgba(0,0,0,0.9)]">
       <div className="flex items-start justify-between gap-4">
         <div className="flex items-start gap-3">
           <div className="h-12 w-12 flex-shrink-0 overflow-hidden rounded-full">
