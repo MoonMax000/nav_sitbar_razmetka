@@ -65,6 +65,11 @@ export const navElements: NavElementProps[] = [
         title: "Chats & Groups",
         route: "#",
       },
+      {
+        icon: <BoxIcon className="h-5 w-5" />,
+        title: "🎨 Composer Showcase",
+        route: "/composer-showcase",
+      },
     ],
   },
   {
