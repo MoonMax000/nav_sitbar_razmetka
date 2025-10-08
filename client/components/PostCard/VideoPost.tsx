@@ -1,4 +1,4 @@
-import { FC, useMemo, useState } from "react";
+import { FC, MouseEvent, useMemo, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
