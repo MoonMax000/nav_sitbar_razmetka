@@ -264,7 +264,36 @@ const SocialFeed: FC = () => {
             })}
           </div>
         </section>
-        <aside className="hidden lg:flex lg:flex-col lg:gap-6" />
+        <aside className="hidden w-full max-w-[320px] flex-col gap-5 lg:flex">
+          <div className="sticky top-28 flex flex-col gap-5">
+            <div className="relative">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#6C7080]"
+                aria-hidden
+              >
+                <path
+                  d="M16.6663 16.6663L14.1663 14.1663M14.9997 9.16634C14.9997 12.1089 12.6083 14.4997 9.66634 14.4997C6.72374 14.4997 4.33301 12.1089 4.33301 9.16634C4.33301 6.22374 6.72374 3.83301 9.66634 3.83301C12.6089 3.83301 14.9997 6.22374 14.9997 9.16634Z"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              <input
+                type="search"
+                placeholder="Search"
+                className="w-full rounded-full border border-[#181B22] bg-[rgba(12,16,20,0.8)] py-3 pl-11 pr-4 text-sm font-medium text-white placeholder:text-[#6C7080] shadow-[0_14px_30px_rgba(10,12,16,0.35)] transition focus:border-[#A06AFF] focus:outline-none focus:ring-2 focus:ring-[#A06AFF]/40"
+              />
+            </div>
+            <SuggestedProfilesWidget profiles={SUGGESTED_PROFILES} />
+            <TrendingTopicsWidget topics={TRENDING_TOPICS} />
+          </div>
+        </aside>
       </div>
     </div>
   );
