@@ -357,6 +357,8 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
     updateTransform((prev) => ({
       ...prev,
       aspectRatio: ratio,
+      translateX: 0,
+      translateY: 0,
     }));
   };
 
