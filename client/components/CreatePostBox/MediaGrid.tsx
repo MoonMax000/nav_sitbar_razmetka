@@ -6,33 +6,37 @@ interface MediaGridProps {
   onRemove: (mediaId: string) => void;
   onEdit: (media: MediaItem) => void;
   onReorder: (fromIndex: number, toIndex: number) => void;
+  readOnly?: boolean;
 }
 
-export const MediaGrid: FC<MediaGridProps> = ({ media, onRemove, onEdit, onReorder }) => {
+export const MediaGrid: FC<MediaGridProps> = ({ media, onRemove, onEdit, onReorder, readOnly = false }) => {
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
 
   const gridClass = media.length === 1 ? "grid-cols-1" : "grid-cols-2";
   const heightClass = media.length === 1 ? "max-h-[400px]" : "max-h-[280px]";
+  const isInteractive = !readOnly;
 
   return (
     <div className={`mt-3 grid gap-3 ${gridClass}`}>
       {media.map((item, index) => (
         <div
           key={item.id}
-          draggable
-          onDragStart={() => setDraggedIndex(index)}
-          onDragEnd={() => setDraggedIndex(null)}
-          onDragOver={(event) => event.preventDefault()}
-          onDrop={() => {
+          draggable={isInteractive}
+          onDragStart={isInteractive ? () => setDraggedIndex(index) : undefined}
+          onDragEnd={isInteractive ? () => setDraggedIndex(null) : undefined}
+          onDragOver={isInteractive ? (event) => event.preventDefault() : undefined}
+          onDrop={isInteractive ? () => {
             if (draggedIndex !== null && draggedIndex !== index) {
               onReorder(draggedIndex, index);
             }
             setDraggedIndex(null);
-          }}
-          className={`group relative overflow-hidden rounded-2xl border backdrop-blur-[50px] cursor-move transition-all ${heightClass} ${
-            draggedIndex === index
+          } : undefined}
+          className={`group relative overflow-hidden rounded-2xl border backdrop-blur-[50px] transition-all ${heightClass} ${
+            isInteractive ? "cursor-move" : "cursor-default"
+          } ${
+            isInteractive && draggedIndex === index
               ? "opacity-50 scale-95 border-[#A06AFF]"
-              : draggedIndex !== null
+              : isInteractive && draggedIndex !== null
               ? "border-[#A06AFF]/50 bg-[rgba(12,16,20,0.5)]"
               : "border-[#181B22] bg-[rgba(12,16,20,0.5)]"
           }`}
@@ -52,10 +56,14 @@ export const MediaGrid: FC<MediaGridProps> = ({ media, onRemove, onEdit, onReord
             </div>
           )}
 
-          <div className="absolute top-3 right-3 flex gap-2 opacity-0 transition-opacity group-hover:opacity-100">
+          <div className={`absolute top-3 right-3 flex gap-2 transition-opacity ${isInteractive ? "opacity-0 group-hover:opacity-100" : "opacity-100"}`}>
             <button
-              onClick={() => onEdit(item)}
-              className="flex h-9 w-9 items-center justify-center rounded-full bg-black/70 text-white backdrop-blur-sm hover:bg-black/90"
+              type="button"
+              onClick={isInteractive ? () => onEdit(item) : undefined}
+              disabled={!isInteractive}
+              className={`flex h-9 w-9 items-center justify-center rounded-full bg-black/70 text-white backdrop-blur-sm ${
+                isInteractive ? "hover:bg-black/90" : "opacity-60 cursor-default"
+              }`}
               title="Edit"
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
@@ -77,8 +85,12 @@ export const MediaGrid: FC<MediaGridProps> = ({ media, onRemove, onEdit, onReord
             </button>
 
             <button
-              onClick={() => onRemove(item.id)}
-              className="flex h-9 w-9 items-center justify-center rounded-full bg-black/70 text-white backdrop-blur-sm hover:bg-black/90"
+              type="button"
+              onClick={isInteractive ? () => onRemove(item.id) : undefined}
+              disabled={!isInteractive}
+              className={`flex h-9 w-9 items-center justify-center rounded-full bg-black/70 text-white backdrop-blur-sm ${
+                isInteractive ? "hover:bg-black/90" : "opacity-60 cursor-default"
+              }`}
               title="Remove"
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
