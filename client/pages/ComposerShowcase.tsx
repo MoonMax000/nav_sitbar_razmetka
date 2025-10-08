@@ -674,7 +674,7 @@ const ComposerShowcase: FC = () => {
               />
             </ShowcaseCard>
 
-            <ShowcaseCard title="Gallery" description="Не��колько изображений и ALT подписи.">
+            <ShowcaseCard title="Gallery" description="Несколько изображений и ALT подписи.">
               <StaticComposerWindow
                 blocks={[
                   {
@@ -709,7 +709,7 @@ const ComposerShowcase: FC = () => {
             </p>
           </header>
 
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6">
             <ShowcaseCard title="Crop" description="Вкладка обрезки с активными пресетами.">
               <MediaEditorPreview variant="crop" />
             </ShowcaseCard>
