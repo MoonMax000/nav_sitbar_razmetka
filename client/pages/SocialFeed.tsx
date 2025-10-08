@@ -320,7 +320,7 @@ const SocialFeed: FC = () => {
       <div className="flex w-full items-center justify-between gap-3">
         <button
           type="button"
-          onClick={() => navigate("/profile")}
+          onClick={() => navigate("/social/create")}
           className="flex items-center gap-2 rounded-full border border-[#181B22] bg-[rgba(12,16,20,0.50)] px-4 py-2 text-sm font-semibold text-[#B0B0B0] transition-colors duration-200 hover:border-[#A06AFF] hover:text-white"
         >
           <svg
