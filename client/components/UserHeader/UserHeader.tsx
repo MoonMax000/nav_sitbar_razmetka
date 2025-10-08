@@ -168,7 +168,7 @@ const UserHeader: FC<Props> = ({ isOwn = true, className }) => {
             </svg>
             <a
               href="https://beautydoe.com"
-              className="text-[15px] font-normal text-[#1D9BF0] leading-5 hover:underline"
+              className="text-[15px] font-normal text-[#A06AFF] leading-5 hover:underline"
             >
               beautydoe.com
             </a>
