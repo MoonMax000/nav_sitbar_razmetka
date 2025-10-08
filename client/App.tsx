@@ -18,6 +18,7 @@ import Billing from "./pages/Billing";
 import NotFound from "./pages/NotFound";
 import ComposerShowcase from "./pages/ComposerShowcase";
 import SocialFeed from "./pages/SocialFeed";
+import SocialPostDetail from "./pages/SocialPostDetail";
 import { ClientLayout } from "./components/ClientLayout/ClientLayout";
 
 const queryClient = new QueryClient({
