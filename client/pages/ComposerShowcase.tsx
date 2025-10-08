@@ -8,12 +8,29 @@ import {
   createDefaultTransform,
 } from "../components/CreatePostBox/types";
 
-const replyOptions: { id: ReplyPolicy; label: string; description: string }[] = [
-  { id: "everyone", label: "Everyone", description: "Anyone mentioned can always reply." },
-  { id: "following", label: "Accounts you follow", description: "Only people you follow can reply." },
-  { id: "verified", label: "Verified accounts", description: "Only verified users can reply." },
-  { id: "mentioned", label: "Only accounts you mention", description: "Only people you mention can reply." },
-];
+const replyOptions: { id: ReplyPolicy; label: string; description: string }[] =
+  [
+    {
+      id: "everyone",
+      label: "Everyone",
+      description: "Anyone mentioned can always reply.",
+    },
+    {
+      id: "following",
+      label: "Accounts you follow",
+      description: "Only people you follow can reply.",
+    },
+    {
+      id: "verified",
+      label: "Verified accounts",
+      description: "Only verified users can reply.",
+    },
+    {
+      id: "mentioned",
+      label: "Only accounts you mention",
+      description: "Only people you mention can reply.",
+    },
+  ];
 
 type StaticCodeBlock = {
   id: string;
@@ -147,7 +164,11 @@ const draftsPreview: StaticDraft[] = [
   },
 ];
 
-const ShowcaseCard: FC<ShowcaseCardProps> = ({ title, description, children }) => (
+const ShowcaseCard: FC<ShowcaseCardProps> = ({
+  title,
+  description,
+  children,
+}) => (
   <div className="rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.45)] p-6 backdrop-blur-[60px]">
     <div className="mb-5">
       <h3 className="text-lg font-semibold text-white">{title}</h3>
@@ -177,7 +198,8 @@ const StaticComposerWindow: FC<StaticComposerWindowProps> = ({
   const isOverLimit = remainingChars < 0;
   const circumference = 88;
   const gradientStroke = `${charRatio * circumference} ${circumference}`;
-  const selectedReply = replyOptions.find((opt) => opt.id === replyPolicy) ?? replyOptions[0];
+  const selectedReply =
+    replyOptions.find((opt) => opt.id === replyPolicy) ?? replyOptions[0];
   const isThread = blocks.length > 1;
 
   return (
@@ -263,8 +285,18 @@ const StaticComposerWindow: FC<StaticComposerWindowProps> = ({
           className="inline-flex items-center gap-2 rounded-full bg-[#A06AFF]/10 px-3 py-1.5 text-sm font-semibold text-[#A06AFF]"
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-            <path d="M21 11.5C21 7.08172 17.4183 3.5 13 3.5C8.58172 3.5 5 7.08172 5 11.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-            <path d="M18 8.5C18 5.73858 15.7614 3.5 13 3.5C10.2386 3.5 8 5.73858 8 8.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+            <path
+              d="M21 11.5C21 7.08172 17.4183 3.5 13 3.5C8.58172 3.5 5 7.08172 5 11.5"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+            />
+            <path
+              d="M18 8.5C18 5.73858 15.7614 3.5 13 3.5C10.2386 3.5 8 5.73858 8 8.5"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+            />
             <path d="M12 13L9 16H11V20H13V16H15L12 13Z" fill="currentColor" />
           </svg>
           {selectedReply.label}
@@ -275,20 +307,31 @@ const StaticComposerWindow: FC<StaticComposerWindowProps> = ({
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2">
             <svg className="h-8 w-8 -rotate-90" viewBox="0 0 32 32">
-              <circle cx="16" cy="16" r="14" fill="none" stroke="#2F3336" strokeWidth="4" />
               <circle
                 cx="16"
                 cy="16"
                 r="14"
                 fill="none"
-                stroke={isOverLimit ? "#EF454A" : isNearLimit ? "#FFD400" : "#A06AFF"}
+                stroke="#2F3336"
+                strokeWidth="4"
+              />
+              <circle
+                cx="16"
+                cy="16"
+                r="14"
+                fill="none"
+                stroke={
+                  isOverLimit ? "#EF454A" : isNearLimit ? "#FFD400" : "#A06AFF"
+                }
                 strokeWidth="4"
                 strokeDasharray={gradientStroke}
                 strokeLinecap="round"
               />
             </svg>
             {(isNearLimit || isOverLimit) && (
-              <span className={`text-sm font-semibold ${isOverLimit ? "text-[#EF454A]" : "text-[#FFD400]"}`}>
+              <span
+                className={`text-sm font-semibold ${isOverLimit ? "text-[#EF454A]" : "text-[#FFD400]"}`}
+              >
                 {remainingChars}
               </span>
             )}
@@ -299,7 +342,9 @@ const StaticComposerWindow: FC<StaticComposerWindowProps> = ({
           <button
             type="button"
             className={`rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-wide transition-colors ${
-              sentiment === "bullish" ? "bg-[#2EBD85] text-black" : "bg-white/5 text-[#2EBD85]"
+              sentiment === "bullish"
+                ? "bg-[#2EBD85] text-black"
+                : "bg-white/5 text-[#2EBD85]"
             }`}
           >
             Bullish
@@ -307,7 +352,9 @@ const StaticComposerWindow: FC<StaticComposerWindowProps> = ({
           <button
             type="button"
             className={`rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-wide transition-colors ${
-              sentiment === "bearish" ? "bg-[#EF454A] text-white" : "bg-white/5 text-[#EF454A]"
+              sentiment === "bearish"
+                ? "bg-[#EF454A] text-white"
+                : "bg-white/5 text-[#EF454A]"
             }`}
           >
             Bearish
@@ -315,7 +362,11 @@ const StaticComposerWindow: FC<StaticComposerWindowProps> = ({
           <button
             type="button"
             className={`inline-flex h-10 min-w-[100px] items-center justify-center rounded-full px-6 text-sm font-semibold transition-all ${
-              totalChars > 0 || blocks.some((block) => block.media.length > 0 || (block.codeBlocks?.length ?? 0) > 0)
+              totalChars > 0 ||
+              blocks.some(
+                (block) =>
+                  block.media.length > 0 || (block.codeBlocks?.length ?? 0) > 0,
+              )
                 ? "bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white"
                 : "bg-[#A06AFF]/20 text-white/40"
             }`}
@@ -347,11 +398,19 @@ const MediaEditorPreview: FC<MediaEditorPreviewProps> = ({ variant }) => {
           className="flex items-center gap-2 rounded-full px-3 py-1 text-sm font-semibold text-[#E7E9EA] opacity-60"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-            <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            <path
+              d="M15 18L9 12L15 6"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
           Back
         </button>
-        <span className="text-sm font-semibold text-[#808283]">Media editor</span>
+        <span className="text-sm font-semibold text-[#808283]">
+          Media editor
+        </span>
         <button
           type="button"
           className="rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-5 py-2 text-sm font-semibold text-white"
@@ -364,19 +423,33 @@ const MediaEditorPreview: FC<MediaEditorPreviewProps> = ({ variant }) => {
         <button
           type="button"
           className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
-            isCrop ? "bg-[#1D9BF0]/20 text-[#1D9BF0]" : "text-[#E7E9EA] hover:bg-white/10"
+            isCrop
+              ? "bg-[#1D9BF0]/20 text-[#1D9BF0]"
+              : "text-[#E7E9EA] hover:bg-white/10"
           }`}
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-            <path d="M6 3V17C6 18.1046 6.89543 19 8 19H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-            <path d="M3 6H17C18.1046 6 19 6.89543 19 8V21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+            <path
+              d="M6 3V17C6 18.1046 6.89543 19 8 19H21"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
+            <path
+              d="M3 6H17C18.1046 6 19 6.89543 19 8V21"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
           </svg>
           Crop
         </button>
         <button
           type="button"
           className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
-            isAlt ? "bg-[#A06AFF]/20 text-[#A06AFF]" : "text-[#E7E9EA] hover:bg-white/10"
+            isAlt
+              ? "bg-[#A06AFF]/20 text-[#A06AFF]"
+              : "text-[#E7E9EA] hover:bg-white/10"
           }`}
         >
           ALT
@@ -384,7 +457,9 @@ const MediaEditorPreview: FC<MediaEditorPreviewProps> = ({ variant }) => {
         <button
           type="button"
           className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
-            isWarning ? "bg-[#F97316]/20 text-[#F97316]" : "text-[#E7E9EA] hover:bg-white/10"
+            isWarning
+              ? "bg-[#F97316]/20 text-[#F97316]"
+              : "text-[#E7E9EA] hover:bg-white/10"
           }`}
         >
           Content warning
@@ -394,9 +469,7 @@ const MediaEditorPreview: FC<MediaEditorPreviewProps> = ({ variant }) => {
       <div className="space-y-6 p-6">
         {isCrop && (
           <>
-            <div
-              className="relative flex h-[420px] w-full items-center justify-center overflow-hidden rounded-2xl border-2 border-[#1D9BF0] bg-black"
-            >
+            <div className="relative flex h-[420px] w-full items-center justify-center overflow-hidden rounded-2xl border-2 border-[#1D9BF0] bg-black">
               <img
                 src={sampleMediaPortrait.url}
                 alt="Crop preview"
@@ -404,10 +477,7 @@ const MediaEditorPreview: FC<MediaEditorPreviewProps> = ({ variant }) => {
               />
               <div className="absolute inset-0 grid grid-cols-3 grid-rows-3 opacity-40">
                 {Array.from({ length: 9 }).map((_, idx) => (
-                  <div
-                    key={idx}
-                    className="border border-white/10"
-                  />
+                  <div key={idx} className="border border-white/10" />
                 ))}
               </div>
             </div>
@@ -426,9 +496,26 @@ const MediaEditorPreview: FC<MediaEditorPreviewProps> = ({ variant }) => {
               </div>
               <div className="h-6 w-px bg-[#2F3336]" />
               <div className="flex flex-1 items-center gap-3">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-[#E7E9EA]">
-                  <path d="M12 5V4M5 12H4M12 20V19M20 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                  <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="2" />
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  className="text-[#E7E9EA]"
+                >
+                  <path
+                    d="M12 5V4M5 12H4M12 20V19M20 12H19"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="4"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
                 </svg>
                 <input
                   type="range"
@@ -438,18 +525,39 @@ const MediaEditorPreview: FC<MediaEditorPreviewProps> = ({ variant }) => {
                   readOnly
                   className="h-1 flex-1 cursor-default accent-[#1D9BF0]"
                 />
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-[#E7E9EA]">
-                  <path d="M12 5V4M5 12H4M12 20V19M20 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  className="text-[#E7E9EA]"
+                >
+                  <path
+                    d="M12 5V4M5 12H4M12 20V19M20 12H19"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
                 </svg>
               </div>
             </div>
 
             <div className="flex items-center gap-3 text-sm text-[#E7E9EA]">
-              <span className="rounded-full border border-[#2F3336] px-3 py-1">Fit</span>
-              <span className="rounded-full border border-[#2F3336] px-3 py-1 text-[#808283]">Fill</span>
-              <span className="rounded-full border border-[#2F3336] px-3 py-1 text-[#808283]">Rotate 90°</span>
-              <span className="rounded-full border border-[#2F3336] px-3 py-1 text-[#808283]">Flip H</span>
-              <span className="rounded-full border border-[#2F3336] px-3 py-1 text-[#808283]">Grid • Thirds</span>
+              <span className="rounded-full border border-[#2F3336] px-3 py-1">
+                Fit
+              </span>
+              <span className="rounded-full border border-[#2F3336] px-3 py-1 text-[#808283]">
+                Fill
+              </span>
+              <span className="rounded-full border border-[#2F3336] px-3 py-1 text-[#808283]">
+                Rotate 90°
+              </span>
+              <span className="rounded-full border border-[#2F3336] px-3 py-1 text-[#808283]">
+                Flip H
+              </span>
+              <span className="rounded-full border border-[#2F3336] px-3 py-1 text-[#808283]">
+                Grid • Thirds
+              </span>
             </div>
           </>
         )}
@@ -457,7 +565,8 @@ const MediaEditorPreview: FC<MediaEditorPreviewProps> = ({ variant }) => {
         {isAlt && (
           <div className="space-y-4">
             <div className="rounded-2xl border border-[#181B22] bg-[#0C1014] p-4 text-sm text-[#B0B0B0]">
-              Adding a clear image description improves accessibility for people using screen readers.
+              Adding a clear image description improves accessibility for people
+              using screen readers.
             </div>
             <textarea
               className="h-48 w-full resize-none rounded-2xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] p-4 text-sm text-[#E7E9EA] outline-none"
@@ -511,7 +620,13 @@ const CodeBlockModalPreview: FC = () => (
       <div className="flex items-center gap-3">
         <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-r from-[#A06AFF] to-[#482090]">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-            <path d="M8 7L3 12L8 17M16 7L21 12L16 17M14 3L10 21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            <path
+              d="M8 7L3 12L8 17M16 7L21 12L16 17M14 3L10 21"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
         </div>
         <h2 className="text-lg font-bold text-white">Insert Code Block</h2>
@@ -521,14 +636,22 @@ const CodeBlockModalPreview: FC = () => (
         className="flex h-9 w-9 items-center justify-center rounded-full text-[#E7E9EA] transition-colors hover:bg-white/10"
       >
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          <path
+            d="M18 6L6 18M6 6L18 18"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
         </svg>
       </button>
     </div>
 
     <div className="space-y-4 p-6">
       <div>
-        <label className="mb-2 block text-sm font-semibold text-[#E7E9EA]">Language</label>
+        <label className="mb-2 block text-sm font-semibold text-[#E7E9EA]">
+          Language
+        </label>
         <div className="relative">
           <select
             className="w-full appearance-none rounded-2xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] px-4 py-3 pr-10 text-sm text-white outline-none"
@@ -541,13 +664,21 @@ const CodeBlockModalPreview: FC = () => (
           </select>
           <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <path d="M6 9L12 15L18 9" stroke="#A06AFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              <path
+                d="M6 9L12 15L18 9"
+                stroke="#A06AFF"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
           </div>
         </div>
       </div>
       <div>
-        <label className="mb-2 block text-sm font-semibold text-[#E7E9EA]">Code</label>
+        <label className="mb-2 block text-sm font-semibold text-[#E7E9EA]">
+          Code
+        </label>
         <textarea
           className="h-64 w-full resize-none rounded-2xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] p-4 font-mono text-sm text-[#E7E9EA] outline-none"
           defaultValue={codeSample.code}
@@ -582,7 +713,13 @@ const DraftsListPreview: FC = () => (
         className="flex h-9 w-9 items-center justify-center rounded-full text-[#E7E9EA] transition-colors hover:bg-white/10"
       >
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          <path
+            d="M18 6L6 18M6 6L18 18"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
         </svg>
       </button>
     </div>
@@ -594,7 +731,9 @@ const DraftsListPreview: FC = () => (
           className="rounded-2xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] p-4 backdrop-blur-[60px]"
         >
           <div className="mb-2 flex items-start justify-between gap-3">
-            <p className="flex-1 text-sm text-[#E7E9EA] line-clamp-2">{draft.text}</p>
+            <p className="flex-1 text-sm text-[#E7E9EA] line-clamp-2">
+              {draft.text}
+            </p>
             {draft.blocksCount > 1 && (
               <span className="rounded-full bg-[#A06AFF]/20 px-2 py-0.5 text-xs font-semibold text-[#A06AFF]">
                 Thread ({draft.blocksCount})
@@ -631,26 +770,45 @@ const ComposerShowcase: FC = () => {
             Post Composer <span className="text-gradient-purple">Showcase</span>
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-[#808283]">
-            На этой странице уже раскрыты все окна конструктора постов. Используйте режим Design и инструмент
-            "Select elements", чтобы настраивать внешний вид и состояния без дополнительных кликов.
+            На этой странице уже раскрыты все окна конструктора постов.
+            Используйте режим Design и инструмент "Select elements", чтобы
+            настраивать внешний вид и состояния без дополнительных кликов.
           </p>
           <ul className="mt-6 space-y-2 text-sm text-[#E7E9EA]">
-            <li>• Компоненты ниже рендерятся как отдельные состояния — можно редактировать любые элементы.</li>
-            <li>• Страница доступна по адресу <code className="rounded bg-[#2F3336] px-2 py-1 text-[#A06AFF]">/composer-showcase</code>.</li>
-            <li>• Карточки сгруппированы по типу окна: основной композер, редактор медиа и вспомогательные модалки.</li>
+            <li>
+              • Компоненты ниже рендерятся как отдельные состояния — можно
+              редактировать любые элементы.
+            </li>
+            <li>
+              • Страница доступна по адресу{" "}
+              <code className="rounded bg-[#2F3336] px-2 py-1 text-[#A06AFF]">
+                /composer-showcase
+              </code>
+              .
+            </li>
+            <li>
+              • Карточки сгруппированы по типу окна: основной композер, редактор
+              медиа и вспомогательные модалки.
+            </li>
           </ul>
         </div>
 
         <section className="space-y-6">
           <header>
-            <h2 className="text-2xl font-semibold text-white">Основное окно композера</h2>
+            <h2 className="text-2xl font-semibold text-white">
+              Основное окно композера
+            </h2>
             <p className="text-sm text-[#808283]">
-              Вариации с текстом, медиа, код-блоками и тредами, доступные для точечной стилизации.
+              Вариации с текстом, медиа, код-блоками и тредами, доступные для
+              точечной стилизации.
             </p>
           </header>
 
           <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
-            <ShowcaseCard title="Empty state" description="Пустое окно по умолчанию.">
+            <ShowcaseCard
+              title="Empty state"
+              description="Пустое окно по умолчанию."
+            >
               <StaticComposerWindow
                 blocks={[{ id: "empty", text: "", media: [], codeBlocks: [] }]}
                 replyPolicy="everyone"
@@ -659,7 +817,10 @@ const ComposerShowcase: FC = () => {
               />
             </ShowcaseCard>
 
-            <ShowcaseCard title="Text + media" description="Пост с текстом и одним вложением.">
+            <ShowcaseCard
+              title="Text + media"
+              description="Пост с текстом и одним вложением."
+            >
               <StaticComposerWindow
                 blocks={[
                   {
@@ -674,13 +835,21 @@ const ComposerShowcase: FC = () => {
               />
             </ShowcaseCard>
 
-            <ShowcaseCard title="Gallery" description="Несколько изображений и ALT подписи.">
+            <ShowcaseCard
+              title="Gallery"
+              description="Несколько изображений и ALT подписи."
+            >
               <StaticComposerWindow
                 blocks={[
                   {
                     id: "gallery",
                     text: "Four charts I monitor before the U.S. open. Which one do you watch?",
-                    media: [sampleMediaPrimary, sampleMediaCharts, sampleMediaPortrait, sampleMediaWarning],
+                    media: [
+                      sampleMediaPrimary,
+                      sampleMediaCharts,
+                      sampleMediaPortrait,
+                      sampleMediaWarning,
+                    ],
                     codeBlocks: [],
                   },
                 ]}
@@ -690,7 +859,10 @@ const ComposerShowcase: FC = () => {
               />
             </ShowcaseCard>
 
-            <ShowcaseCard title="Thread + code" description="Тред из нескольких блоков и вставкой кода.">
+            <ShowcaseCard
+              title="Thread + code"
+              description="Тред из нескольких блоков и вставкой кода."
+            >
               <StaticComposerWindow
                 blocks={threadBlocks}
                 replyPolicy="verified"
@@ -703,20 +875,31 @@ const ComposerShowcase: FC = () => {
 
         <section className="space-y-6">
           <header>
-            <h2 className="text-2xl font-semibold text-white">Редактор медиа</h2>
+            <h2 className="text-2xl font-semibold text-white">
+              Редактор медиа
+            </h2>
             <p className="text-sm text-[#808283]">
               Статичные экземпляры вкладок Crop, ALT и Content warning.
             </p>
           </header>
 
           <div className="grid grid-cols-1 gap-6">
-            <ShowcaseCard title="Crop" description="Вкладка обрезки с активными пресетами.">
+            <ShowcaseCard
+              title="Crop"
+              description="Вкладка обрезки с активными пресетами."
+            >
               <MediaEditorPreview variant="crop" />
             </ShowcaseCard>
-            <ShowcaseCard title="ALT" description="Редактирование ALT-текста для доступности.">
+            <ShowcaseCard
+              title="ALT"
+              description="Редактирование ALT-текста для доступности."
+            >
               <MediaEditorPreview variant="alt" />
             </ShowcaseCard>
-            <ShowcaseCard title="Content warning" description="Список предупреждений по контенту.">
+            <ShowcaseCard
+              title="Content warning"
+              description="Список предупреждений по контенту."
+            >
               <MediaEditorPreview variant="warning" />
             </ShowcaseCard>
           </div>
@@ -724,20 +907,33 @@ const ComposerShowcase: FC = () => {
 
         <section className="space-y-6">
           <header>
-            <h2 className="text-2xl font-semibold text-white">Вспомогательные окна</h2>
-            <p className="text-sm text-[#808283]">Окна выбора эмодзи, вставки кода и управления черновиками.</p>
+            <h2 className="text-2xl font-semibold text-white">
+              Вспомогательные окна
+            </h2>
+            <p className="text-sm text-[#808283]">
+              Окна выбора эмодзи, вставки кода и управления черновиками.
+            </p>
           </header>
 
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-            <ShowcaseCard title="Emoji picker" description="Категории эмодзи с поиском.">
+            <ShowcaseCard
+              title="Emoji picker"
+              description="Категории эмодзи с поиском."
+            >
               <div className="mx-auto h-96 w-96 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.95)] p-4 backdrop-blur-[100px]">
                 <EmojiPicker onSelect={noop} />
               </div>
             </ShowcaseCard>
-            <ShowcaseCard title="Code block modal" description="Форма добавления блока с кодом.">
+            <ShowcaseCard
+              title="Code block modal"
+              description="Форма добавления блока с кодом."
+            >
               <CodeBlockModalPreview />
             </ShowcaseCard>
-            <ShowcaseCard title="Drafts list" description="Список сохранённых черновиков.">
+            <ShowcaseCard
+              title="Drafts list"
+              description="Список сохранённых черновиков."
+            >
               <DraftsListPreview />
             </ShowcaseCard>
           </div>

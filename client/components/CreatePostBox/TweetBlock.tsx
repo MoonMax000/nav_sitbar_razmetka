@@ -154,7 +154,13 @@ export const TweetBlock: FC<TweetBlockProps> = ({
               >
                 <div className="flex items-center justify-between border-b border-[#2F3336] bg-[#0D1117] px-4 py-2.5">
                   <div className="flex items-center gap-2">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-[#6AA5FF]">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      className="text-[#6AA5FF]"
+                    >
                       <path
                         d="M8 7L3 12L8 17M16 7L21 12L16 17M14 3L10 21"
                         stroke="currentColor"
@@ -173,7 +179,12 @@ export const TweetBlock: FC<TweetBlockProps> = ({
                       className="flex h-6 w-6 items-center justify-center rounded-md text-[#808283] opacity-0 transition-all hover:bg-[#EF454A]/10 hover:text-[#EF454A] group-hover:opacity-100"
                       title="Remove code block"
                     >
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
                         <path
                           d="M18 6L6 18M6 6L18 18"
                           stroke="currentColor"
@@ -186,7 +197,15 @@ export const TweetBlock: FC<TweetBlockProps> = ({
                   )}
                 </div>
                 <pre className="overflow-x-auto bg-[#0A0E14] p-5 text-sm leading-relaxed scrollbar">
-                  <code className="font-mono text-[#C5D4DD]" style={{ fontFamily: "'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace" }}>{block.code}</code>
+                  <code
+                    className="font-mono text-[#C5D4DD]"
+                    style={{
+                      fontFamily:
+                        "'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace",
+                    }}
+                  >
+                    {block.code}
+                  </code>
                 </pre>
               </div>
             ))}

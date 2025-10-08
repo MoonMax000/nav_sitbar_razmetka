@@ -9,7 +9,13 @@ interface MediaGridProps {
   readOnly?: boolean;
 }
 
-export const MediaGrid: FC<MediaGridProps> = ({ media, onRemove, onEdit, onReorder, readOnly = false }) => {
+export const MediaGrid: FC<MediaGridProps> = ({
+  media,
+  onRemove,
+  onEdit,
+  onReorder,
+  readOnly = false,
+}) => {
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
 
   const gridClass = media.length === 1 ? "grid-cols-1" : "grid-cols-2";
@@ -24,27 +30,42 @@ export const MediaGrid: FC<MediaGridProps> = ({ media, onRemove, onEdit, onReord
           draggable={isInteractive}
           onDragStart={isInteractive ? () => setDraggedIndex(index) : undefined}
           onDragEnd={isInteractive ? () => setDraggedIndex(null) : undefined}
-          onDragOver={isInteractive ? (event) => event.preventDefault() : undefined}
-          onDrop={isInteractive ? () => {
-            if (draggedIndex !== null && draggedIndex !== index) {
-              onReorder(draggedIndex, index);
-            }
-            setDraggedIndex(null);
-          } : undefined}
+          onDragOver={
+            isInteractive ? (event) => event.preventDefault() : undefined
+          }
+          onDrop={
+            isInteractive
+              ? () => {
+                  if (draggedIndex !== null && draggedIndex !== index) {
+                    onReorder(draggedIndex, index);
+                  }
+                  setDraggedIndex(null);
+                }
+              : undefined
+          }
           className={`group relative overflow-hidden rounded-2xl border backdrop-blur-[50px] transition-all ${heightClass} ${
             isInteractive ? "cursor-move" : "cursor-default"
           } ${
             isInteractive && draggedIndex === index
               ? "opacity-50 scale-95 border-[#A06AFF]"
               : isInteractive && draggedIndex !== null
-              ? "border-[#A06AFF]/50 bg-[rgba(12,16,20,0.5)]"
-              : "border-[#181B22] bg-[rgba(12,16,20,0.5)]"
+                ? "border-[#A06AFF]/50 bg-[rgba(12,16,20,0.5)]"
+                : "border-[#181B22] bg-[rgba(12,16,20,0.5)]"
           }`}
         >
           {item.type === "video" ? (
-            <video src={item.url} className="h-full w-full object-cover" style={{ aspectRatio: media.length === 1 ? 'auto' : '16/9' }} />
+            <video
+              src={item.url}
+              className="h-full w-full object-cover"
+              style={{ aspectRatio: media.length === 1 ? "auto" : "16/9" }}
+            />
           ) : (
-            <img src={item.url} alt={item.alt || `Media ${index + 1}`} className="h-full w-full object-cover" style={{ aspectRatio: media.length === 1 ? 'auto' : '16/9' }} />
+            <img
+              src={item.url}
+              alt={item.alt || `Media ${index + 1}`}
+              className="h-full w-full object-cover"
+              style={{ aspectRatio: media.length === 1 ? "auto" : "16/9" }}
+            />
           )}
 
           <div className="absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/30" />
@@ -52,17 +73,23 @@ export const MediaGrid: FC<MediaGridProps> = ({ media, onRemove, onEdit, onReord
           {item.sensitiveTags && item.sensitiveTags.length > 0 && (
             <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-2 bg-black/60 text-center text-xs font-semibold uppercase tracking-wide text-[#E7E9EA] backdrop-blur-[6px]">
               <span>Sensitive content</span>
-              <span className="text-[10px] text-[#A06AFF]">{item.sensitiveTags.join(" • ")}</span>
+              <span className="text-[10px] text-[#A06AFF]">
+                {item.sensitiveTags.join(" • ")}
+              </span>
             </div>
           )}
 
-          <div className={`absolute top-3 right-3 flex gap-2 transition-opacity ${isInteractive ? "opacity-0 group-hover:opacity-100" : "opacity-100"}`}>
+          <div
+            className={`absolute top-3 right-3 flex gap-2 transition-opacity ${isInteractive ? "opacity-0 group-hover:opacity-100" : "opacity-100"}`}
+          >
             <button
               type="button"
               onClick={isInteractive ? () => onEdit(item) : undefined}
               disabled={!isInteractive}
               className={`flex h-9 w-9 items-center justify-center rounded-full bg-black/70 text-white backdrop-blur-sm ${
-                isInteractive ? "hover:bg-black/90" : "opacity-60 cursor-default"
+                isInteractive
+                  ? "hover:bg-black/90"
+                  : "opacity-60 cursor-default"
               }`}
               title="Edit"
             >
@@ -89,7 +116,9 @@ export const MediaGrid: FC<MediaGridProps> = ({ media, onRemove, onEdit, onReord
               onClick={isInteractive ? () => onRemove(item.id) : undefined}
               disabled={!isInteractive}
               className={`flex h-9 w-9 items-center justify-center rounded-full bg-black/70 text-white backdrop-blur-sm ${
-                isInteractive ? "hover:bg-black/90" : "opacity-60 cursor-default"
+                isInteractive
+                  ? "hover:bg-black/90"
+                  : "opacity-60 cursor-default"
               }`}
               title="Remove"
             >

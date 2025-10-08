@@ -208,7 +208,6 @@ const UserHeader: FC<Props> = ({ isOwn = true, className }) => {
           </div>
         </div>
       </div>
-
     </div>
   );
 };
