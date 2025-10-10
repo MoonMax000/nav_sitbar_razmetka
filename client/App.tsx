@@ -18,6 +18,9 @@ import Billing from "./pages/Billing";
 import NotFound from "./pages/NotFound";
 import ComposerShowcase from "./pages/ComposerShowcase";
 import SocialFeed from "./pages/SocialFeed";
+import SocialExplore from "./pages/SocialExplore";
+import SocialMessages from "./pages/SocialMessages";
+import SocialNotifications from "./pages/SocialNotifications";
 import SocialPostDetail from "./pages/SocialPostDetail";
 import { ClientLayout } from "./components/ClientLayout/ClientLayout";
 
@@ -43,6 +46,9 @@ const App = () => (
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/social/home" element={<SocialFeed />} />
                     <Route path="/social/feed" element={<SocialFeed />} />
+                    <Route path="/social/explore" element={<SocialExplore />} />
+                    <Route path="/social/notifications" element={<SocialNotifications />} />
+                    <Route path="/social/messages" element={<SocialMessages />} />
                     <Route path="/social/create" element={<Index />} />
                     <Route path="/social/post/:postId" element={<SocialPostDetail />} />
                     <Route path="/pricing" element={<Pricing />} />
