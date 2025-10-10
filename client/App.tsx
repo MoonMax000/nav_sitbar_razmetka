@@ -51,6 +51,7 @@ const App = () => (
                     <Route path="/social/notifications" element={<SocialNotifications />} />
                     <Route path="/social/messages" element={<SocialMessages />} />
                     <Route path="/social/compose" element={<SocialCompose />} />
+                    <Route path="/social/create" element={<SocialCompose />} />
                     <Route path="/social/post/:postId" element={<SocialPostDetail />} />
                     <Route path="/pricing" element={<Pricing />} />
                     <Route path="/profile" element={<ProfileNew />} />
