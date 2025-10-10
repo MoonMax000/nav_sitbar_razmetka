@@ -1,10 +1,11 @@
 import type { FC } from "react";
+import { useMemo, useState } from "react";
 
 import SuggestedProfilesWidget, {
-  SuggestedProfile,
+  type SuggestedProfile,
 } from "@/components/SocialFeedWidgets/SuggestedProfilesWidget";
 import TrendingTopicsWidget, {
-  TrendingTopic,
+  type TrendingTopic,
 } from "@/components/SocialFeedWidgets/TrendingTopicsWidget";
 
 interface ExploreCollection {
@@ -12,6 +13,7 @@ interface ExploreCollection {
   title: string;
   description: string;
   accent: string;
+  topics: string[];
 }
 
 interface ExploreStory {
@@ -21,6 +23,7 @@ interface ExploreStory {
   summary: string;
   author: string;
   readTime: string;
+  tags: string[];
 }
 
 const categories = [
@@ -32,7 +35,9 @@ const categories = [
   "NFT",
   "Фьючерсы",
   "Мировые новости",
-];
+] as const;
+
+type ExploreCategory = (typeof categories)[number];
 
 const exploreCollections: ExploreCollection[] = [
   {
@@ -40,24 +45,28 @@ const exploreCollections: ExploreCollection[] = [
     title: "Макростратегии 2025",
     description: "14 подборок аналитики по макроэкономике и валютам",
     accent: "from-[#A06AFF] to-[#482090]",
+    topics: ["Рынки", "Мировые новости", "Фьючерсы"],
   },
   {
     id: "ai-alpha",
     title: "AI Alpha Insider",
     description: "Лучшие трейды на пересечении технологий и рынков",
     accent: "from-[#4FC3F7] to-[#8057FF]",
+    topics: ["AI", "Рынки"],
   },
   {
     id: "pro-traders",
     title: "Профессиональные трейдеры",
     description: "Сигналы, живые сессии и менторские комнаты",
     accent: "from-[#2EBD85] to-[#0F6D40]",
+    topics: ["Рынки", "Фьючерсы"],
   },
   {
     id: "weekends",
     title: "Выходные с трейдерами",
     description: "Топовые разборы графиков и математики опционов",
     accent: "from-[#FF8A65] to-[#C96BFF]",
+    topics: ["Криптовалюты", "NFT", "Фьючерсы"],
   },
 ];
 
@@ -67,18 +76,20 @@ const featuredStories: ExploreStory[] = [
     category: "Trending",
     title: "Фонды страхуют риск через опционы на золото — что это значит",
     summary:
-      "Опционы на золото снова в фокусе: фонды страхуют портфели от волатильности д��ходностей. Разбираем уровни, сценарии и влияние на валюты.",
+      "Опционы на золото снова в фокусе: фонды страхуют портфели от волатильности доходностей. Разбираем ключевые уровни, сценарии и влияние на валюты.",
     author: "@macroclub",
     readTime: "6 мин",
+    tags: ["Рынки", "Мировые новости", "Фьючерсы"],
   },
   {
     id: "ai-trading",
     category: "AI",
     title: "Как применить GPT-индикаторы в дейтрейдинге без переобучения",
     summary:
-      "Команда AI Alpha делится готовым пайплайном: от чистки данных до стратегии выхода. Плюс — cheat sheet с командами.",
+      "Команда AI Alpha делится готовым пайплайном: от чистки данных до стратегии выхода. Плюс — список проверенных подсказок.",
     author: "@quantum",
     readTime: "8 мин",
+    tags: ["AI", "Рынки"],
   },
   {
     id: "crypto-infra",
@@ -88,6 +99,17 @@ const featuredStories: ExploreStory[] = [
       "Проекты, решающие задачи L2 и дата-доставки, держатся лучше рынка. Три идеи с низкой корреляцией к BTC.",
     author: "@chainpulse",
     readTime: "5 мин",
+    tags: ["Криптовалюты", "NFT"],
+  },
+  {
+    id: "ipo-radar",
+    category: "Рынки",
+    title: "IPO-радар: какие компании выходят в ближайшие месяцы",
+    summary:
+      "Топ-7 флагманских размещений с оценкой мультипликаторов, спроса и ближайших локапов.",
+    author: "@dealflow",
+    readTime: "7 мин",
+    tags: ["IPO", "Рынки"],
   },
 ];
 
@@ -117,13 +139,13 @@ const recommendedProfiles: SuggestedProfile[] = [
 const exploreTopics: TrendingTopic[] = [
   {
     id: "eth-staking",
-    category: "В тренде",
+    category: "Криптовалюты",
     headline: "ETH staking",
     meta: "212K постов",
   },
   {
     id: "ai-traders",
-    category: "Сейчас обсуждают",
+    category: "AI",
     headline: "AI traders",
     meta: "176K постов",
   },
@@ -135,19 +157,52 @@ const exploreTopics: TrendingTopic[] = [
   },
   {
     id: "oil-range",
-    category: "Энергорынок",
+    category: "Фьючерсы",
     headline: "Brent 95$",
     meta: "28K постов",
   },
   {
-    id: "gamestop",
-    category: "Мем-акции",
-    headline: "$GME",
-    meta: "19K постов",
+    id: "ipo-watch",
+    category: "IPO",
+    headline: "Stripe S-1",
+    meta: "64K постов",
   },
 ];
 
+const DEFAULT_CATEGORY = categories[0];
+
 const SocialExplore: FC = () => {
+  const [activeCategory, setActiveCategory] = useState<ExploreCategory>(DEFAULT_CATEGORY);
+
+  const filteredCollections = useMemo(() => {
+    if (activeCategory === DEFAULT_CATEGORY) {
+      return exploreCollections;
+    }
+
+    const matching = exploreCollections.filter((collection) =>
+      collection.topics.includes(activeCategory),
+    );
+
+    return matching.length > 0 ? matching : exploreCollections;
+  }, [activeCategory]);
+
+  const filteredStories = useMemo(() => {
+    if (activeCategory === DEFAULT_CATEGORY) {
+      return featuredStories;
+    }
+
+    return featuredStories.filter((story) => story.tags.includes(activeCategory));
+  }, [activeCategory]);
+
+  const highlightedTopics = useMemo(() => {
+    if (activeCategory === DEFAULT_CATEGORY) {
+      return exploreTopics;
+    }
+
+    const matching = exploreTopics.filter((topic) => topic.category === activeCategory);
+    return matching.length > 0 ? matching : exploreTopics;
+  }, [activeCategory]);
+
   return (
     <div className="flex w-full justify-center pb-12">
       <div className="grid w-full max-w-[1180px] grid-cols-1 items-start gap-8 lg:grid-cols-[minmax(0,720px)_minmax(0,320px)]">
@@ -170,72 +225,24 @@ const SocialExplore: FC = () => {
             </svg>
           </div>
 
-          <div className="flex flex-wrap gap-3 rounded-[36px] border border-[#181B22] bg-[rgba(12,16,20,0.5)] p-3">
-            {categories.map((category) => (
-              <button
-                key={category}
-                type="button"
-                className="rounded-full border border-transparent bg-[rgba(160,106,255,0.1)] px-4 py-2 text-sm font-semibold text-[#E3D8FF] transition hover:border-[#A06AFF] hover:bg-[#A06AFF]/20 hover:text-white"
-              >
-                {category}
-              </button>
-            ))}
-          </div>
+          <CategoryFilters
+            categories={categories}
+            activeCategory={activeCategory}
+            onSelect={setActiveCategory}
+          />
 
-          <div className="overflow-hidden rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.6)]">
-            <div className="relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-r from-[#482090]/90 via-[#0F172A]/70 to-transparent" />
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets%2F7ee0e08331ad4de59dd7fa404556ca59%2Fd0b32e8bde594d2bbb1c4b0c038e29ee?format=webp&width=1200"
-                alt="Macro board"
-                className="h-64 w-full object-cover"
-              />
-              <div className="relative flex flex-col gap-3 px-6 pb-6 pt-8 text-white sm:max-w-[420px]">
-                <span className="inline-flex w-max items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em]">
-                  Spotlight
-                </span>
-                <h2 className="text-2xl font-bold leading-tight">
-                  "Три сигнала, что риск-сентимент меняется и как успеть"
-                </h2>
-                <p className="text-sm text-white/80">
-                  Дайджест ключевых индикаторов, тепловые карты волатильности и разбор сделок институционалов за последние 48 часов.
-                </p>
-                <div className="mt-2 flex items-center gap-3 text-xs text-white/70">
-                  <span>Собрано Tyrian Research</span>
-                  <span className="h-1 w-1 rounded-full bg-white/30" />
-                  <span>Обновлено 15 минут назад</span>
-                </div>
-              </div>
-            </div>
-          </div>
+          <SpotlightCard />
 
           <div className="grid gap-4 md:grid-cols-2">
-            {exploreCollections.map((collection) => (
-              <article
-                key={collection.id}
-                className="flex h-full flex-col justify-between rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.6)] p-5 shadow-[0_14px_30px_rgba(10,12,16,0.35)]"
-              >
-                <div className="flex flex-col gap-3">
-                  <span className={`inline-flex w-max items-center gap-2 rounded-full bg-gradient-to-r ${collection.accent} px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-white/90`}>
-                    Плейлист
-                  </span>
-                  <h3 className="text-lg font-bold text-white">{collection.title}</h3>
-                  <p className="text-sm text-[#B0B0B0]">{collection.description}</p>
-                </div>
-                <button
-                  type="button"
-                  className="mt-6 inline-flex w-max items-center gap-2 rounded-full border border-transparent bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:border-white/30 hover:bg-white/20"
-                >
-                  Открыть подборку
-                </button>
-              </article>
+            {filteredCollections.map((collection) => (
+              <CollectionCard key={collection.id} collection={collection} />
             ))}
           </div>
 
           <div className="rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.6)] p-5">
             <h3 className="text-lg font-semibold text-white">Что в фокусе</h3>
             <div className="mt-4 flex flex-col divide-y divide-white/5">
-              {exploreTopics.map((topic, index) => (
+              {highlightedTopics.map((topic, index) => (
                 <button
                   key={topic.id}
                   type="button"
@@ -255,35 +262,20 @@ const SocialExplore: FC = () => {
             </div>
           </div>
 
-          <div className="flex flex-col gap-4">
-            {featuredStories.map((story) => (
-              <article
-                key={story.id}
-                className="rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.6)] p-6 transition hover:border-[#A06AFF]/50"
-              >
-                <div className="flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-[#6C7080]">
-                  <span>{story.category}</span>
-                  <span className="h-[2px] w-8 rounded-full bg-[#6C7080]/50" />
-                  <span>{story.readTime}</span>
-                </div>
-                <h3 className="mt-3 text-xl font-bold text-white">{story.title}</h3>
-                <p className="mt-2 text-sm text-[#B0B0B0]">{story.summary}</p>
-                <div className="mt-4 flex items-center gap-2 text-xs text-[#6C7080]">
-                  <img
-                    src="https://i.pravatar.cc/64?img=52"
-                    alt={story.author}
-                    className="h-6 w-6 rounded-full"
-                  />
-                  <span>{story.author}</span>
-                </div>
-              </article>
-            ))}
-          </div>
+          {filteredStories.length > 0 ? (
+            <div className="flex flex-col gap-4">
+              {filteredStories.map((story) => (
+                <StoryCard key={story.id} story={story} />
+              ))}
+            </div>
+          ) : (
+            <EmptyExploreState activeCategory={activeCategory} />
+          )}
         </section>
 
         <aside className="hidden w-full max-w-[320px] flex-col gap-5 lg:flex">
           <SuggestedProfilesWidget profiles={recommendedProfiles} title="Кого читать" />
-          <TrendingTopicsWidget topics={exploreTopics} title="Актуальные темы" />
+          <TrendingTopicsWidget topics={highlightedTopics} title="Актуальные темы" />
           <div className="rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.6)] p-5">
             <h3 className="text-lg font-semibold text-white">Профессиональные списки</h3>
             <p className="mt-2 text-sm text-[#B0B0B0]">
@@ -301,5 +293,152 @@ const SocialExplore: FC = () => {
     </div>
   );
 };
+
+interface CategoryFiltersProps {
+  categories: readonly ExploreCategory[];
+  activeCategory: ExploreCategory;
+  onSelect: (category: ExploreCategory) => void;
+}
+
+const CategoryFilters: FC<CategoryFiltersProps> = ({ categories, activeCategory, onSelect }) => (
+  <div className="flex flex-wrap gap-3 rounded-[36px] border border-[#181B22] bg-[rgba(12,16,20,0.5)] p-3">
+    {categories.map((category) => {
+      const isActive = category === activeCategory;
+
+      return (
+        <button
+          key={category}
+          type="button"
+          onClick={() => onSelect(category)}
+          aria-pressed={isActive}
+          className={`rounded-full border px-4 py-2 text-sm font-semibold transition ${
+            isActive
+              ? "border-transparent bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white"
+              : "border-transparent bg-[rgba(160,106,255,0.1)] text-[#E3D8FF] hover:border-[#A06AFF] hover:bg-[#A06AFF]/20 hover:text-white"
+          }`}
+        >
+          {category}
+        </button>
+      );
+    })}
+  </div>
+);
+
+const SpotlightCard: FC = () => (
+  <div className="overflow-hidden rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.6)]">
+    <div className="relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-r from-[#482090]/90 via-[#0F172A]/70 to-transparent" />
+      <img
+        src="https://cdn.builder.io/api/v1/image/assets%2F7ee0e08331ad4de59dd7fa404556ca59%2Fd0b32e8bde594d2bbb1c4b0c038e29ee?format=webp&width=1200"
+        alt="Macro board"
+        className="h-64 w-full object-cover"
+      />
+      <div className="relative flex flex-col gap-3 px-6 pb-6 pt-8 text-white sm:max-w-[420px]">
+        <span className="inline-flex w-max items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em]">
+          Spotlight
+        </span>
+        <h2 className="text-2xl font-bold leading-tight">
+          "Три сигнала, что риск-сентимент меняется и как успеть"
+        </h2>
+        <p className="text-sm text-white/80">
+          Дайджест ключевых индикаторов, тепловые карты волатильности и разбор сделок институционалов за последние 48 часов.
+        </p>
+        <div className="mt-2 flex items-center gap-3 text-xs text-white/70">
+          <span>Собрано Tyrian Research</span>
+          <span className="h-1 w-1 rounded-full bg-white/30" />
+          <span>Обновлено 15 минут назад</span>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+interface CollectionCardProps {
+  collection: ExploreCollection;
+}
+
+const CollectionCard: FC<CollectionCardProps> = ({ collection }) => (
+  <article className="flex h-full flex-col justify-between rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.6)] p-5 shadow-[0_14px_30px_rgba(10,12,16,0.35)]">
+    <div className="flex flex-col gap-3">
+      <span
+        className={`inline-flex w-max items-center gap-2 rounded-full bg-gradient-to-r ${collection.accent} px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-white/90`}
+      >
+        Плейлист
+      </span>
+      <h3 className="text-lg font-bold text-white">{collection.title}</h3>
+      <p className="text-sm text-[#B0B0B0]">{collection.description}</p>
+      <div className="flex flex-wrap gap-2 text-xs text-white/50">
+        {collection.topics.map((topic) => (
+          <span key={topic} className="rounded-full border border-white/10 px-2 py-0.5">
+            #{topic}
+          </span>
+        ))}
+      </div>
+    </div>
+    <button
+      type="button"
+      className="mt-6 inline-flex w-max items-center gap-2 rounded-full border border-transparent bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:border-white/30 hover:bg-white/20"
+    >
+      Открыть подборку
+    </button>
+  </article>
+);
+
+interface StoryCardProps {
+  story: ExploreStory;
+}
+
+const StoryCard: FC<StoryCardProps> = ({ story }) => (
+  <article className="rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.6)] p-6 transition hover:border-[#A06AFF]/50">
+    <div className="flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-[#6C7080]">
+      <span>{story.category}</span>
+      <span className="h-[2px] w-8 rounded-full bg-[#6C7080]/50" />
+      <span>{story.readTime}</span>
+    </div>
+    <h3 className="mt-3 text-xl font-bold text-white">{story.title}</h3>
+    <p className="mt-2 text-sm text-[#B0B0B0]">{story.summary}</p>
+    <div className="mt-4 flex flex-wrap items-center gap-3 text-xs text-[#6C7080]">
+      <div className="flex items-center gap-2">
+        <img
+          src="https://i.pravatar.cc/64?img=52"
+          alt={story.author}
+          className="h-6 w-6 rounded-full"
+        />
+        <span>{story.author}</span>
+      </div>
+      <div className="flex flex-wrap gap-2">
+        {story.tags.map((tag) => (
+          <span key={tag} className="rounded-full border border-white/10 px-2 py-0.5 text-white/60">
+            #{tag}
+          </span>
+        ))}
+      </div>
+    </div>
+  </article>
+);
+
+interface EmptyExploreStateProps {
+  activeCategory: ExploreCategory;
+}
+
+const EmptyExploreState: FC<EmptyExploreStateProps> = ({ activeCategory }) => (
+  <div className="flex flex-col items-center gap-4 rounded-3xl border border-dashed border-[#181B22] bg-[rgba(12,16,20,0.4)] p-10 text-center">
+    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#A06AFF]/20 text-[#A06AFF]">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M12 6V18M6 12H18"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </div>
+    <h3 className="text-lg font-semibold text-white">Пока нет подборок в категории «{activeCategory}»</h3>
+    <p className="max-w-[360px] text-sm text-[#B0B0B0]">
+      Мы уже собираем свежие материалы. Загляните позже или выберите другую тему, чтобы вдохновиться идеями.
+    </p>
+  </div>
+);
 
 export default SocialExplore;
