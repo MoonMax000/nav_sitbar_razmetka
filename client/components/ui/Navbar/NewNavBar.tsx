@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import type { FC } from 'react';
 import { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { LayoutVariant } from '../AppBackground/AppBackground';
 import { cn } from '@/lib/utils';
 import { navElements, NavElementProps } from './constants';
