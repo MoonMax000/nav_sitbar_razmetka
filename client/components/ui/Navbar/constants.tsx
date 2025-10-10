@@ -72,7 +72,7 @@ export const navElements: NavElementProps[] = [
         route: "#",
       },
       {
-        icon: <QuillPen className="h-5 w-5" />,
+        icon: <ComposeIcon className="h-5 w-5" />,
         title: "Create Post",
         route: "/social/compose",
       },
