@@ -22,6 +22,7 @@ import SocialExplore from "./pages/SocialExplore";
 import SocialMessages from "./pages/SocialMessages";
 import SocialNotifications from "./pages/SocialNotifications";
 import SocialPostDetail from "./pages/SocialPostDetail";
+import SocialCompose from "./pages/SocialCompose";
 import { ClientLayout } from "./components/ClientLayout/ClientLayout";
 
 const queryClient = new QueryClient({
