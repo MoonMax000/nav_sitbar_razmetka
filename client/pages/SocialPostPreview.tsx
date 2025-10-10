@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { type FC, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import PostDetailView from "@/components/PostCard/PostDetailView";
