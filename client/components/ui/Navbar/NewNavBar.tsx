@@ -1,6 +1,5 @@
 import { FC, useState } from 'react';
-import type { FC } from 'react';
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { LayoutVariant } from '../AppBackground/AppBackground';
 import { cn } from '@/lib/utils';
