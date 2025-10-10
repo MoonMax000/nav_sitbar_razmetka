@@ -10,6 +10,9 @@ import {
   Calendar as CalendarIcon,
   FolderLibary as PortfolioIcon,
   CreditCard as BoxIcon,
+  Compass as ExploreIcon,
+  MessageSpark as MessageIcon,
+  NotificationBell as NotificationIcon,
 } from "./icons";
 import DashboardNavIcon from "./DashboardNavIcon";
 
@@ -71,6 +74,21 @@ export const navElements: NavElementProps[] = [
         icon: <BoxIcon className="h-5 w-5" />,
         title: "🎨 Composer Showcase",
         route: "/composer-showcase",
+      },
+      {
+        icon: <ExploreIcon className="h-5 w-5" />,
+        title: "Explore",
+        route: "/social/explore",
+      },
+      {
+        icon: <NotificationIcon className="h-5 w-5" />,
+        title: "Notifications",
+        route: "/social/notifications",
+      },
+      {
+        icon: <MessageIcon className="h-5 w-5" />,
+        title: "Messages",
+        route: "/social/messages",
       },
     ],
   },
