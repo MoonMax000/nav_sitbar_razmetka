@@ -1,8 +1,10 @@
 import type { FC } from "react";
 import { useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import CreatePostModal from "@/components/CreatePostBox/CreatePostModal";
 import { toast } from "@/hooks/use-toast";
+import type { SocialPost } from "@/data/socialPosts";
 
 interface ComposerBlock {
   id: string;
@@ -52,6 +54,7 @@ const trendingTags = [
 ];
 
 const SocialCompose: FC = () => {
+  const navigate = useNavigate();
   const [blocks, setBlocks] = useState<ComposerBlock[]>([{ id: "block-1", text: "" }]);
   const [audience, setAudience] = useState<string>("everyone");
   const [isAdvancedComposerOpen, setIsAdvancedComposerOpen] = useState(false);
@@ -99,17 +102,50 @@ const SocialCompose: FC = () => {
   const handlePost = () => {
     if (!canPost) return;
 
-    const payload = blocks.map((block, index) => ({
-      order: index + 1,
-      content: block.text.trim(),
-    }));
+    const trimmedBlocks = blocks.map((block) => block.text.trim()).filter((content) => content.length > 0);
+    const primaryBlock = trimmedBlocks[0] ?? "";
+    const [headlineCandidate, ...restHeadline] = primaryBlock.split("\n");
+    const headline = headlineCandidate.trim();
+
+    const bodySections = primaryBlock.length > 0 ? [primaryBlock, ...trimmedBlocks.slice(1)] : trimmedBlocks.slice(1);
+    const body = bodySections.join("\n\n").trim();
+    const previewSource = [headline, ...restHeadline, ...trimmedBlocks.slice(1)].filter((section) => section.length > 0).join(" ");
+    const preview = previewSource.length > 220 ? `${previewSource.slice(0, 217)}…` : previewSource;
+
+    const now = new Date();
+    const formattedTimestamp = new Intl.DateTimeFormat("ru-RU", {
+      dateStyle: "long",
+      timeStyle: "short",
+    }).format(now);
+
+    const newPost: SocialPost = {
+      id: `draft-${now.getTime()}`,
+      type: "article",
+      author: {
+        name: "Tyrian Creator",
+        avatar: "/placeholder.svg",
+        handle: "@tyrian_creator",
+        verified: true,
+      },
+      timestamp: formattedTimestamp,
+      title: headline || "Новая публикация",
+      category: audience === "everyone" ? "Публично" : audience === "followers" ? "Подписчики" : "Верифицированные",
+      preview: preview || undefined,
+      body: body.length > 0 ? body : undefined,
+      sentiment: "bullish",
+      likes: 0,
+      comments: 0,
+      views: 0,
+      hashtags: [],
+    };
 
     toast({
-      title: "Пост отправлен",
-      description: "Мы сохранили черновик и подготовили его к публикации.",
+      title: "Пост опубликован",
+      description: "Мы подготовили предварительный просмотр. Теперь можно подключать бэкенд.",
     });
 
-    console.info("Composer payload", { audience, payload });
+    console.info("Composer payload", { audience, blocks: trimmedBlocks, post: newPost });
+    navigate("/social/post/preview", { state: { post: newPost } });
     handleReset();
   };
 
