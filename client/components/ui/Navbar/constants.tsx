@@ -71,6 +71,11 @@ export const navElements: NavElementProps[] = [
         route: "#",
       },
       {
+        icon: <QuillPen className="h-5 w-5" />,
+        title: "Create Post",
+        route: "/social/compose",
+      },
+      {
         icon: <BoxIcon className="h-5 w-5" />,
         title: "🎨 Composer Showcase",
         route: "/composer-showcase",
