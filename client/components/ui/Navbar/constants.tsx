@@ -13,6 +13,7 @@ import {
   Compass as ExploreIcon,
   MessageSpark as MessageIcon,
   NotificationBell as NotificationIcon,
+  QuillPen as ComposeIcon,
 } from "./icons";
 import DashboardNavIcon from "./DashboardNavIcon";
 
