@@ -22,6 +22,7 @@ import SocialExplore from "./pages/SocialExplore";
 import SocialMessages from "./pages/SocialMessages";
 import SocialNotifications from "./pages/SocialNotifications";
 import SocialPostDetail from "./pages/SocialPostDetail";
+import SocialPostPreview from "./pages/SocialPostPreview";
 import SocialCompose from "./pages/SocialCompose";
 import { ClientLayout } from "./components/ClientLayout/ClientLayout";
 
@@ -52,6 +53,7 @@ const App = () => (
                     <Route path="/social/messages" element={<SocialMessages />} />
                     <Route path="/social/compose" element={<SocialCompose />} />
                     <Route path="/social/create" element={<SocialCompose />} />
+                    <Route path="/social/post/preview" element={<SocialPostPreview />} />
                     <Route path="/social/post/:postId" element={<SocialPostDetail />} />
                     <Route path="/pricing" element={<Pricing />} />
                     <Route path="/profile" element={<ProfileNew />} />
