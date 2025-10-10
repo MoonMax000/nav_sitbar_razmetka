@@ -88,6 +88,21 @@ export const CreditCard: FC<IconProps> = ({ className }) => (
   </svg>
 );
 
+export const Compass: FC<IconProps> = ({ className }) => (
+  <svg className={className} viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="10" cy="10" r="6.5" />
+    <path d="M8.25 11.75L9.31658 9.31658L11.75 8.25L10.6834 10.6834L8.25 11.75Z" />
+  </svg>
+);
+
+export const MessageSpark: FC<IconProps> = ({ className }) => (
+  <svg className={className} viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M3.33301 15.4167L4.42847 13.6316C4.75562 13.0996 4.91919 12.8337 5.14774 12.6403C5.37628 12.447 5.65996 12.3476 6.22732 12.1488C7.87352 11.5718 9.22088 10.2244 9.79791 8.57817C9.99672 8.01081 10.0961 7.72713 10.2895 7.49858C10.483 7.27004 10.7489 7.10646 11.2809 6.77931L13.066 5.68385" />
+    <path d="M14.1667 2.5L13.7917 3.95833M14.1667 2.5L15.625 2.875M14.1667 2.5L14.5417 1.04167M14.1667 2.5L12.7083 2.125" />
+    <path d="M8.95801 2.5H6.45801C4.20987 2.5 3.08579 2.5 2.4594 3.12639C1.83301 3.75278 1.83301 4.87686 1.83301 7.125V11.2917C1.83301 13.5398 1.83301 14.6639 2.4594 15.2903C3.08579 15.9167 4.20987 15.9167 6.45801 15.9167H8.74967C9.3508 15.9167 9.65136 15.9167 9.93373 15.9963C10.2161 16.0758 10.4669 16.2298 10.9686 16.5377L14.583 18.75V14.5833C14.583 14.2882 14.583 14.1407 14.5877 14.0072" />
+  </svg>
+);
+
 export const Settings: FC<IconProps> = ({ className }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
