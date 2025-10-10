@@ -1,9 +1,12 @@
 import { FC, useState } from 'react';
+import type { FC } from 'react';
+import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { LayoutVariant } from '../AppBackground/AppBackground';
 import { cn } from '@/lib/utils';
 import { navElements, NavElementProps } from './constants';
-import { ChevronDown, DoubleArrow } from './icons';
+import { ChevronDown, DoubleArrow, QuillPen } from './icons';
+import CreatePostModal from '@/components/CreatePostBox/CreatePostModal';
 
 interface Props {
   variant?: LayoutVariant;
@@ -12,6 +15,7 @@ interface Props {
 const NewNavBar: FC<Props> = ({ variant = 'primal' }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [openGroup, setOpenGroup] = useState<string | null>(null);
+  const [isPostComposerOpen, setIsPostComposerOpen] = useState(false);
 
   const toggleGroup = (title: string) => setOpenGroup(openGroup === title ? null : title);
 
