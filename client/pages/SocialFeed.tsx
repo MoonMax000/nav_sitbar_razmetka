@@ -3,8 +3,12 @@ import { useNavigate } from "react-router-dom";
 
 import PostCard from "@/components/PostCard/PostCard";
 import VideoPost from "@/components/PostCard/VideoPost";
-import SuggestedProfilesWidget, { SuggestedProfile } from "@/components/SocialFeedWidgets/SuggestedProfilesWidget";
-import TrendingTopicsWidget, { TrendingTopic } from "@/components/SocialFeedWidgets/TrendingTopicsWidget";
+import SuggestedProfilesWidget, {
+  SuggestedProfile,
+} from "@/components/SocialFeedWidgets/SuggestedProfilesWidget";
+import TrendingTopicsWidget, {
+  TrendingTopic,
+} from "@/components/SocialFeedWidgets/TrendingTopicsWidget";
 import {
   FilterType,
   SocialPost,
@@ -112,7 +116,13 @@ const SocialFeed: FC = () => {
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
               >
-                <path d="M11.6667 5L6.66675 10L11.6667 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                <path
+                  d="M11.6667 5L6.66675 10L11.6667 15"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
               </svg>
               Back to creator
             </button>
@@ -129,7 +139,9 @@ const SocialFeed: FC = () => {
                     : "border border-[#181B22] bg-[rgba(12,16,20,0.50)] text-[#B0B0B0] backdrop-blur-[58px]"
                 }`}
               >
-                <span className="text-[15px] font-bold leading-normal">{tab.label}</span>
+                <span className="text-[15px] font-bold leading-normal">
+                  {tab.label}
+                </span>
               </button>
             ))}
           </div>
@@ -142,7 +154,9 @@ const SocialFeed: FC = () => {
                   filter === "all" ? "ring-2 ring-[#A06AFF]" : ""
                 }`}
               >
-                <span className="text-[15px] font-bold leading-normal text-[#B0B0B0]">All Posts</span>
+                <span className="text-[15px] font-bold leading-normal text-[#B0B0B0]">
+                  All Posts
+                </span>
                 <svg
                   width="24"
                   height="24"
@@ -151,7 +165,13 @@ const SocialFeed: FC = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   className="rotate-90"
                 >
-                  <path d="M6 9L12 15L18 9" stroke="#B0B0B0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  <path
+                    d="M6 9L12 15L18 9"
+                    stroke="#B0B0B0"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
                 </svg>
               </button>
               <button
@@ -160,7 +180,13 @@ const SocialFeed: FC = () => {
                   filter === "video" ? "ring-2 ring-[#A06AFF]" : ""
                 }`}
               >
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path
                     d="M1.66626 9.16707C1.66626 6.41722 1.66626 5.04228 2.52053 4.18802C3.3748 3.33374 4.74973 3.33374 7.49959 3.33374H8.33293C11.0828 3.33374 12.4577 3.33374 13.312 4.18802C14.1663 5.04228 14.1663 6.41722 14.1663 9.16707V10.8337C14.1663 13.5836 14.1663 14.9585 13.312 15.8128C12.4577 16.6671 11.0828 16.6671 8.33293 16.6671H7.49959C4.74973 16.6671 3.3748 16.6671 2.52053 15.8128C1.66626 14.9585 1.66626 13.5836 1.66626 10.8337V9.16707Z"
                     stroke="#B0B0B0"
@@ -178,13 +204,21 @@ const SocialFeed: FC = () => {
                     strokeWidth="1.5"
                   />
                 </svg>
-                <span className="text-[15px] font-bold leading-normal text-[#B0B0B0]">Videos Only</span>
+                <span className="text-[15px] font-bold leading-normal text-[#B0B0B0]">
+                  Videos Only
+                </span>
               </button>
             </div>
 
             <div className="flex items-center gap-1 rounded-lg border border-[#181B22] bg-[rgba(12,16,20,0.50)] p-1 backdrop-blur-[50px]">
               <button className="flex h-[26px] w-[26px] items-center justify-center rounded">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <g clipPath="url(#clip0_time)">
                     <path
                       d="M3.36536 5.73776L1.69193 5.63588C2.89145 2.46989 6.33537 0.666652 9.69311 1.5632C13.2694 2.51812 15.3936 6.17409 14.4377 9.72904C13.4818 13.284 9.80777 15.3918 6.23151 14.4369C3.57617 13.7278 1.72132 11.5298 1.33337 8.98964"
@@ -209,7 +243,13 @@ const SocialFeed: FC = () => {
                 </svg>
               </button>
               <button className="flex h-[26px] w-[26px] items-center justify-center rounded bg-gradient-to-r from-[#A06AFF] to-[#482090]">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path
                     d="M9.23744 14.6667C17.3856 12.6667 12.8226 4.66671 7.28184 1.33337C6.63024 3.66671 5.65229 4.33337 3.69669 6.66671C1.10752 9.75597 2.39304 13.3334 5.97817 14.6667C5.43497 14 4.0331 12.6006 5.00004 10.6667C5.33338 10 6.00004 9.33337 5.66671 8.00004C6.31856 8.33337 7.66671 8.66671 8.00004 10.3334C8.54324 9.66671 9.10697 8.26671 8.58557 6.66671C12.6667 9.66671 11 12.6667 9.23744 14.6667Z"
                     stroke="white"
@@ -247,7 +287,10 @@ const SocialFeed: FC = () => {
               return (
                 <PostCard
                   key={post.id}
-                  author={{ name: post.author.name, avatar: post.author.avatar }}
+                  author={{
+                    name: post.author.name,
+                    avatar: post.author.avatar,
+                  }}
                   category={post.category}
                   timestamp={post.timestamp}
                   title={post.title}
