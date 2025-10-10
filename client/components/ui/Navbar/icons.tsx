@@ -111,6 +111,14 @@ export const MessageSpark: FC<IconProps> = ({ className }) => (
   </svg>
 );
 
+export const QuillPen: FC<IconProps> = ({ className }) => (
+  <svg className={className} viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M4.16602 15.8333L5.38218 11.7498C5.51286 11.315 5.57821 11.0976 5.70761 10.9059C5.83697 10.7143 6.01911 10.5522 6.3834 10.228L13.8834 3.72802C15.1501 2.46131 17.166 2.46131 18.4327 3.72802C19.6994 4.99472 19.6994 7.01064 18.4327 8.27735L10.9327 15.7773C10.6085 16.1016 10.4464 16.2837 10.2547 16.4131C10.063 16.5425 9.84562 16.6078 9.41082 16.7385L5.32735 17.9547C4.95866 18.0656 4.77431 18.121 4.63813 18.0849C4.36487 18.0122 4.13715 17.7844 4.06447 17.5111C4.02839 17.375 4.08378 17.1906 4.19465 16.8219L4.16602 15.8333Z" />
+    <path d="M12.5 6.66602L15.8333 9.99935" />
+    <path d="M4.16602 15.8333L7.08268 12.9167" />
+  </svg>
+);
+
 export const Settings: FC<IconProps> = ({ className }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
