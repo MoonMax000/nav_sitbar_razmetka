@@ -20,6 +20,7 @@ const TweetComposer: FC = () => {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const mediaRef = useRef<ComposerMedia[]>([]);
 
   useEffect(() => {
     const textarea = textareaRef.current;
@@ -30,10 +31,14 @@ const TweetComposer: FC = () => {
   }, [text]);
 
   useEffect(() => {
-    return () => {
-      media.forEach((item) => URL.revokeObjectURL(item.url));
-    };
+    mediaRef.current = media;
   }, [media]);
+
+  useEffect(() => {
+    return () => {
+      mediaRef.current.forEach((item) => URL.revokeObjectURL(item.url));
+    };
+  }, []);
 
   const charactersLeft = MAX_LENGTH - text.length;
   const isOverLimit = charactersLeft < 0;
