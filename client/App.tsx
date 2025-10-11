@@ -26,6 +26,7 @@ import SocialPostPreview from "./pages/SocialPostPreview";
 import SocialCompose from "./pages/SocialCompose";
 import SocialProfileClassic from "./pages/SocialProfileClassic";
 import SocialTweetComposer from "./pages/SocialTweetComposer";
+import PortfolioPage from "./pages/Portfolios";
 import { ClientLayout } from "./components/ClientLayout/ClientLayout";
 
 const queryClient = new QueryClient({
@@ -62,6 +63,8 @@ const App = () => (
                     <Route path="/pricing" element={<Pricing />} />
                     <Route path="/profile" element={<ProfileNew />} />
                     <Route path="/profile-old" element={<Profile />} />
+                    <Route path="/portfolio" element={<PortfolioPage />} />
+                    <Route path="/portfolios" element={<PortfolioPage />} />
                     <Route path="/billing" element={<Billing />} />
                     <Route path="/composer-showcase" element={<ComposerShowcase />} />
                     {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
