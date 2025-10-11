@@ -1,7 +1,5 @@
 import { type ChangeEvent, type FC, useEffect, useMemo, useRef, useState } from "react";
 
-import { type ChangeEvent, type FC, useEffect, useMemo, useRef, useState } from "react";
-
 import { CalendarClock, Image as ImageIcon, MapPin, Smile } from "lucide-react";
 
 import { toast } from "@/hooks/use-toast";
@@ -151,7 +149,7 @@ const TweetComposer: FC = () => {
           ) : null}
 
           <div className="flex flex-wrap items-center gap-3 text-xs text-[#8B98A5]">
-            <span>Символов осталось: {Math.max(charactersLeft, 0)}</span>
+            <span>��имволов осталось: {Math.max(charactersLeft, 0)}</span>
             {isOverLimit ? <span className="text-[#EF454A]">Превышен лимит на {Math.abs(charactersLeft)} символов</span> : null}
           </div>
 
