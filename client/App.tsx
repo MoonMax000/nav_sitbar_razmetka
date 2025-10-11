@@ -24,6 +24,8 @@ import SocialNotifications from "./pages/SocialNotifications";
 import SocialPostDetail from "./pages/SocialPostDetail";
 import SocialPostPreview from "./pages/SocialPostPreview";
 import SocialCompose from "./pages/SocialCompose";
+import SocialProfileClassic from "./pages/SocialProfileClassic";
+import SocialTweetComposer from "./pages/SocialTweetComposer";
 import { ClientLayout } from "./components/ClientLayout/ClientLayout";
 
 const queryClient = new QueryClient({
@@ -52,7 +54,9 @@ const App = () => (
                     <Route path="/social/notifications" element={<SocialNotifications />} />
                     <Route path="/social/messages" element={<SocialMessages />} />
                     <Route path="/social/compose" element={<SocialCompose />} />
+                    <Route path="/social/compose-classic" element={<SocialTweetComposer />} />
                     <Route path="/social/create" element={<SocialCompose />} />
+                    <Route path="/social/profile-classic" element={<SocialProfileClassic />} />
                     <Route path="/social/post/preview" element={<SocialPostPreview />} />
                     <Route path="/social/post/:postId" element={<SocialPostDetail />} />
                     <Route path="/pricing" element={<Pricing />} />
