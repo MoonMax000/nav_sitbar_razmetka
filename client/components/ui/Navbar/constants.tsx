@@ -64,8 +64,16 @@ export const navElements: NavElementProps[] = [
         title: "Home",
         route: "/social/home",
       },
-      { icon: <BoxIcon className="h-5 w-5" />, title: "Feed", route: "#" },
-      { icon: <BoxIcon className="h-5 w-5" />, title: "My page", route: "#" },
+      {
+        icon: <BoxIcon className="h-5 w-5" />,
+        title: "Classic Profile",
+        route: "/social/profile-classic",
+      },
+      {
+        icon: <BoxIcon className="h-5 w-5" />,
+        title: "My page",
+        route: "/profile",
+      },
       {
         icon: <BoxIcon className="h-5 w-5" />,
         title: "Chats & Groups",
@@ -75,6 +83,11 @@ export const navElements: NavElementProps[] = [
         icon: <ComposeIcon className="h-5 w-5" />,
         title: "Create Post",
         route: "/social/compose",
+      },
+      {
+        icon: <ComposeIcon className="h-5 w-5" />,
+        title: "Tweet Composer",
+        route: "/social/compose-classic",
       },
       {
         icon: <BoxIcon className="h-5 w-5" />,
