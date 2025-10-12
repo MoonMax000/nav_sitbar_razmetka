@@ -263,15 +263,39 @@ const VideoPost: FC<VideoPostProps> = ({
               <div className="text-xs font-bold leading-normal text-[#B0B0B0]">{comments}</div>
             </div>
           </div>
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M3.33301 14.9843V8.08993C3.33301 5.06213 3.33301 3.54823 4.30932 2.60761C5.28563 1.66699 6.85697 1.66699 9.99967 1.66699C13.1423 1.66699 14.7138 1.66699 15.69 2.60761C16.6663 3.54823 16.6663 5.06213 16.6663 8.08993V14.9843C16.6663 16.9059 16.6663 17.8667 16.0223 18.2106C14.7751 18.8765 12.4357 16.6547 11.3247 15.9857C10.6803 15.5977 10.3582 15.4037 9.99967 15.4037C9.64117 15.4037 9.31901 15.5977 8.67467 15.9857C7.56367 16.6547 5.22423 18.8765 3.97705 18.2106C3.33301 17.8667 3.33301 16.9059 3.33301 14.9843Z"
-              stroke="#B0B0B0"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+          <div className="flex items-center gap-2">
+            <div className="flex h-[26px] w-[26px] items-center justify-center rounded-lg">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="text-[#B0B0B0]"
+              >
+                <path
+                  d="M3.33301 14.9843V8.08993C3.33301 5.06213 3.33301 3.54823 4.30932 2.60761C5.28563 1.66699 6.85697 1.66699 9.99967 1.66699C13.1423 1.66699 14.7138 1.66699 15.69 2.60761C16.6663 3.54823 16.6663 5.06213 16.6663 8.08993V14.9843C16.6663 16.9059 16.6663 17.8667 16.0223 18.2106C14.7751 18.8765 12.4357 16.6547 11.3247 15.9857C10.6803 15.5977 10.3582 15.4037 9.99967 15.4037C9.64117 15.4037 9.31901 15.5977 8.67467 15.9857C7.56367 16.6547 5.22423 18.8765 3.97705 18.2106C3.33301 17.8667 3.33301 16.9059 3.33301 14.9843Z"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </div>
+
+            <button
+              type="button"
+              onClick={(e) => { e.stopPropagation(); console.log('share'); }}
+              aria-label="Share"
+              className="flex h-[26px] w-[26px] items-center justify-center rounded-lg text-[#B0B0B0] hover:bg-[#482090]/10 hover:text-white transition"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-current">
+                <path d="M4 12v7a1 1 0 001 1h14a1 1 0 001-1v-7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M12 3v13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M8 7l4-4 4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
 
