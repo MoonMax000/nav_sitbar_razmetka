@@ -68,7 +68,7 @@ export const MediaGrid: FC<MediaGridProps> = ({
             />
           )}
 
-          <div className="absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/30" />
+          <div className="absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/30 pointer-events-none" />
 
           {item.sensitiveTags && item.sensitiveTags.length > 0 && (
             <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-2 bg-black/60 text-center text-xs font-semibold uppercase tracking-wide text-[#E7E9EA] backdrop-blur-[6px]">
