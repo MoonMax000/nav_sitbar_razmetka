@@ -518,27 +518,7 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
             />
           ))}
 
-          {blocks.length < MAX_THREAD_BLOCKS && (
-            <button
-              onClick={handleAddBlock}
-              className="flex items-center gap-3 text-[#A06AFF] transition-colors hover:text-[#E3D8FF]"
-              disabled={isPosting}
-            >
-              <div className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-dashed border-[#A06AFF]">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M12 5V19M5 12H19"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-              <span className="text-sm font-semibold">Add another post</span>
-            </button>
-          )}
-        </div>
+       </div>
 
         <div className="relative border-t border-[#181B22] px-5 py-3">
           <button
