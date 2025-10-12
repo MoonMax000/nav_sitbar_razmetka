@@ -164,13 +164,21 @@ const TweetComposer: FC = () => {
               >
                 <ImageIcon className="h-5 w-5" />
               </button>
-              <button
-                type="button"
-                onClick={() => window.dispatchEvent(new CustomEvent('open-composer'))}
-                className="flex h-10 w-10 items-center justify-center rounded-full text-[#A06AFF] transition hover:bg-white/5 hover:text-white"
-              >
-                <Smile className="h-5 w-5" />
-              </button>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <button
+                    type="button"
+                    className="flex h-10 w-10 items-center justify-center rounded-full text-[#A06AFF] transition hover:bg-white/5 hover:text-white"
+                  >
+                    <Smile className="h-5 w-5" />
+                  </button>
+                </PopoverTrigger>
+                <PopoverContent sideOffset={8} className="w-80 p-0">
+                  <div className="h-80 p-3">
+                    <EmojiPicker onSelect={(emoji) => setText((prev) => prev + emoji)} />
+                  </div>
+                </PopoverContent>
+              </Popover>
               <button
                 type="button"
                 className="hidden h-10 w-10 items-center justify-center rounded-full text-[#A06AFF] transition hover:bg-white/5 hover:text-white sm:flex"
