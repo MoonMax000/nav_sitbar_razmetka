@@ -796,6 +796,13 @@ const ComposerShowcase: FC = () => {
 
   const [topMenuActive, setTopMenuActive] = useState<"foryou" | "following">("foryou");
 
+  // Open composer modal when other parts of the app dispatch the 'open-composer' event
+  useEffect(() => {
+    const handler = () => setIsModalOpen(true);
+    window.addEventListener('open-composer', handler as EventListener);
+    return () => window.removeEventListener('open-composer', handler as EventListener);
+  }, []);
+
   // Shared composer state between page empty state and modal
   const [sharedBlocks, setSharedBlocks] = useState<StaticBlock[]>([
     { id: "empty", text: "", media: [], codeBlocks: [] },
@@ -945,7 +952,7 @@ const ComposerShowcase: FC = () => {
         <section className="space-y-6">
           <header>
             <h2 className="text-2xl font-semibold text-white">
-              Редактор ��едиа
+              Редактор медиа
             </h2>
             <p className="text-sm text-[#808283]">
               Статичные экземпляры вкладок Crop, ALT и Content warning.
