@@ -1,6 +1,7 @@
 import { FC, ReactNode, useState } from "react";
 import { TweetBlock } from "../components/CreatePostBox/TweetBlock";
 import { EmojiPicker } from "../components/CreatePostBox/EmojiPicker";
+import CreatePostVariants from "../components/CreatePostBox/CreatePostVariants";
 import {
   CHAR_LIMIT,
   MediaItem,
@@ -137,7 +138,7 @@ const threadBlocks: StaticBlock[] = [
   },
   {
     id: "thread-3",
-    text: "Bonus snippet: here's the helper I use to mark retests automatically 👇",
+    text: "Bonus snippet: here's the helper I use to mark retests automatically ��",
     media: [],
     codeBlocks: [codeSample],
   },
@@ -829,7 +830,7 @@ const ComposerShowcase: FC = () => {
           <p className="mt-4 max-w-2xl text-lg text-[#808283]">
             На этой странице уже раскрыты все ок��а конструктора постов.
             Исполь��уйте режим Design и инструмент "Select elements", чтобы
-            настраивать внешний вид и состояния без дополнительных кликов.
+            настраивать внешн��й вид и состояния без дополнительных кликов.
           </p>
           <ul className="mt-6 space-y-2 text-sm text-[#E7E9EA]">
             <li>
@@ -854,10 +855,10 @@ const ComposerShowcase: FC = () => {
           <div className="flex items-center justify-between">
             <header>
               <h2 className="text-2xl font-semibold text-white">
-                Основное окно к��мпозера
+                Основное окно композера
               </h2>
               <p className="text-sm text-[#808283]">
-                Вариации с текстом, медиа, код-блоками и тредами, доступные для
+                Вариации с т��кстом, медиа, код-блоками и тредами, доступные для
                 точечной стилизации.
               </p>
             </header>
