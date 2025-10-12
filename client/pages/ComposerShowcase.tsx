@@ -793,21 +793,33 @@ const ComposerShowcase: FC = () => {
             </li>
             <li>
               • Карточки сгруппированы по типу окна: основной композер, редактор
-              медиа и вспомогательные модалки.
+              медиа и вспомогательные модал��и.
             </li>
           </ul>
         </div>
 
         <section className="space-y-6">
-          <header>
-            <h2 className="text-2xl font-semibold text-white">
-              Основное окно ком��озера
-            </h2>
-            <p className="text-sm text-[#808283]">
-              Вариации с текстом, медиа, код-блоками и тредами, доступные ��ля
-              точечной стилизации.
-            </p>
-          </header>
+          <div className="flex items-center justify-between">
+            <header>
+              <h2 className="text-2xl font-semibold text-white">
+                Основное окно композера
+              </h2>
+              <p className="text-sm text-[#808283]">
+                Вариации с текстом, медиа, код-блоками и тредами, доступные для
+                точечной стилизации.
+              </p>
+            </header>
+
+            <div>
+              <button
+                type="button"
+                onClick={() => setIsModalOpen((s) => !s)}
+                className="inline-flex items-center gap-2 rounded-full border border-[#181B22] bg-[rgba(12,16,20,0.6)] px-3 py-2 text-sm font-semibold text-white hover:bg-[rgba(160,106,255,0.12)] transition"
+              >
+                {isModalOpen ? "Close Composer" : "Open Composer"}
+              </button>
+            </div>
+          </div>
 
           <div className="grid grid-cols-1 gap-6">
             <ShowcaseCard
