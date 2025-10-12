@@ -120,7 +120,7 @@ const VideoPost: FC<VideoPostProps> = ({
             <button
               onClick={handleFollowClick}
               className={cn(
-                "flex h-[26px] items-center justify-center gap-2.5 rounded-lg px-2.5",
+                "flex h-[26px] items-center justify-center gap-2.5 rounded-full px-3",
                 isFollowing
                   ? "border border-[#181B22] bg-[rgba(12,16,20,0.50)] backdrop-blur-[50px] text-[#B0B0B0]"
                   : "bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white",
