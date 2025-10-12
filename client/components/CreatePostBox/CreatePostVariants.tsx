@@ -133,7 +133,7 @@ const useComposerState = (variantLabel: string) => {
         toast({
           title: "Ограничение",
           description:
-            "Выбрано слишком много файлов. Добавлено максимум 4 изображ��ния.",
+            "Выбрано слишком много файлов. Добавлено мак��имум 4 изображ��ния.",
         });
       }
 
@@ -232,7 +232,7 @@ const IconActionButton: FC<{
     disabled={disabled}
     aria-label={label}
     className={cn(
-      "flex h-9 w-9 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#482090]/10 disabled:opacity-50",
+      "flex h-10 w-10 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#482090]/10 disabled:opacity-50",
       className,
     )}
   >
@@ -248,7 +248,7 @@ const EmojiPickerButton: FC<{ onSelect: (emoji: string) => void }> = ({
       <button
         type="button"
         aria-label="Добавить эмодзи"
-        className="flex h-9 w-9 items-center justify-center rounded-full text-[#9AA0A8] transition-colors hover:bg-[#482090]/10"
+        className="flex h-10 w-10 items-center justify-center rounded-full text-[#9AA0A8] transition-colors hover:bg-[#482090]/10"
       >
         <Smile className="h-5 w-5" />
       </button>
@@ -263,7 +263,7 @@ const EmojiPickerButton: FC<{ onSelect: (emoji: string) => void }> = ({
           key={emoji}
           type="button"
           onClick={() => onSelect(emoji)}
-          className="flex h-9 w-9 items-center justify-center rounded-full text-lg transition-colors hover:bg-[#482090]/10"
+          className="flex h-10 w-10 items-center justify-center rounded-full text-lg transition-colors hover:bg-[#482090]/10"
         >
           {emoji}
         </button>
