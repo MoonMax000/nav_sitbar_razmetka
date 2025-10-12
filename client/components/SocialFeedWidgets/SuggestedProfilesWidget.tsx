@@ -69,7 +69,7 @@ const SuggestedProfilesWidget: FC<SuggestedProfilesWidgetProps> = ({
             </div>
             <button
               type="button"
-              className="rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white shadow-[0_8px_24px_rgba(160,106,255,0.4)] transition-transform duration-200 hover:scale-[1.02] active:scale-[0.97]"
+              className="flex h-[26px] items-center justify-center gap-2 rounded-full px-3 text-xs font-semibold text-white bg-gradient-to-r from-[#A06AFF] to-[#482090] shadow-[0_8px_24px_rgba(160,106,255,0.25)] transition-transform duration-200 hover:scale-[1.02] active:scale-[0.97]"
             >
               Follow
             </button>
