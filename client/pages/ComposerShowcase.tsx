@@ -772,7 +772,7 @@ const DraftsListPreview: FC = () => (
 );
 
 const ComposerShowcase: FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-black py-12 px-6">
