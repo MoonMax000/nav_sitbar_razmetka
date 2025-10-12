@@ -608,14 +608,14 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
               <div className="flex flex-wrap items-center gap-2 text-[#A06AFF]">
                 <button
                   type="button"
-                  className="flex h-10 w-10 items-center justify-center rounded-full text-inherit transition-colors hover:bg-[#482090]/10"
+                  className="flex h-10 w-10 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#482090]/10"
                   title="Видео или GIF"
                 >
                   <Video className="h-5 w-5" />
                 </button>
                 <button
                   type="button"
-                  className="flex h-10 w-10 items-center justify-center rounded-full text-inherit transition-colors hover:bg-[#482090]/10"
+                  className="flex h-10 w-10 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#482090]/10"
                   title="Опрос"
                 >
                   <BarChart3 className="h-5 w-5" />
@@ -648,14 +648,14 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
                 </button>
                 <button
                   type="button"
-                  className="flex h-10 w-10 items-center justify-center rounded-full text-inherit transition-colors hover:bg-[#482090]/10"
+                  className="flex h-10 w-10 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#482090]/10"
                   title="Запланировать"
                 >
                   <CalendarClock className="h-5 w-5" />
                 </button>
                 <button
                   type="button"
-                  className="flex h-10 w-10 items-center justify-center rounded-full text-inherit transition-colors hover:bg-[#482090]/10"
+                  className="flex h-10 w-10 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#482090]/10"
                   title="Локация"
                 >
                   <MapPin className="h-5 w-5" />
