@@ -598,39 +598,56 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
 
         <div className="flex items-center justify-between border-t border-[#181B22] px-5 py-4">
           <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2">
-              <svg className="h-8 w-8 -rotate-90" viewBox="0 0 32 32">
-                <circle cx="16" cy="16" r="14" fill="none" stroke="#2F3336" strokeWidth="4" />
-                <circle
-                  cx="16"
-                  cy="16"
-                  r="14"
-                  fill="none"
-                  stroke={isOverLimit ? "#EF454A" : isNearLimit ? "#FFD400" : "#A06AFF"}
-                  strokeWidth="4"
-                  strokeDasharray={gradientStroke}
-                  strokeLinecap="round"
-                  className="transition-all"
-                />
-              </svg>
-              {(isNearLimit || isOverLimit) && (
-                <span className={`text-sm font-semibold ${isOverLimit ? "text-[#EF454A]" : "text-[#FFD400]"}`}>
-                  {remainingChars}
-                </span>
-              )}
-            </div>
+          <div className="flex items-center gap-2">
+            <svg className="h-8 w-8 -rotate-90" viewBox="0 0 32 32">
+              <circle cx="16" cy="16" r="14" fill="none" stroke="#2F3336" strokeWidth="4" />
+              <circle
+                cx="16"
+                cy="16"
+                r="14"
+                fill="none"
+                stroke={isOverLimit ? "#EF454A" : isNearLimit ? "#FFD400" : "#A06AFF"}
+                strokeWidth="4"
+                strokeDasharray={gradientStroke}
+                strokeLinecap="round"
+                className="transition-all"
+              />
+            </svg>
+            {(isNearLimit || isOverLimit) && (
+              <span className={`text-sm font-semibold ${isOverLimit ? "text-[#EF454A]" : "text-[#FFD400]"}`}>
+                {remainingChars}
+              </span>
+            )}
           </div>
 
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => setSentiment("bullish")}
-              className={`rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-wide transition-colors ${
-                sentiment === "bullish"
-                  ? "bg-[#2EBD85] text-black"
-                  : "bg-white/5 text-[#2EBD85] hover:bg-white/10"
-              }`}
-              disabled={isPosting}
-            >
+          {hasTypedText && (
+            <>
+              <div className="h-6 w-px bg-white/10" />
+              <button
+                type="button"
+                onClick={handleAddBlock}
+                aria-label="Add another post"
+                className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 text-[#1D9BF0] transition-colors hover:bg-white/20"
+                disabled={blocks.length >= MAX_THREAD_BLOCKS}
+              >
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden>
+                  <path d="M12 5v14M5 12h14" stroke="#1D9BF0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+            </>
+          )}
+        </div>
+
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => setSentiment("bullish")}
+            className={`rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-wide transition-colors ${
+              sentiment === "bullish"
+                ? "bg-[#2EBD85] text-black"
+                : "bg-white/5 text-[#2EBD85] hover:bg-white/10"
+            }`}
+            disabled={isPosting}
+          >
               Bullish
             </button>
 
