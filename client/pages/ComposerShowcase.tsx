@@ -388,7 +388,7 @@ const StaticComposerWindow: FC<StaticComposerWindowProps> = ({
           </button>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           <div className="flex h-8 w-8 items-center justify-center">
             <svg className="-rotate-90" width="32" height="32" viewBox="0 0 32 32">
               <circle
@@ -426,6 +426,7 @@ const StaticComposerWindow: FC<StaticComposerWindowProps> = ({
                   <path d="M12 5v14M5 12h14" stroke="#1D9BF0" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </button>
+              <div className="h-8 w-px bg-white/15" />
             </>
           )}
 
