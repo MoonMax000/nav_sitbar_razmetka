@@ -1,6 +1,8 @@
 import { type ChangeEvent, type FC, useEffect, useMemo, useRef, useState } from "react";
 
 import { CalendarClock, Image as ImageIcon, MapPin, Smile } from "lucide-react";
+import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
+import { EmojiPicker } from "@/components/CreatePostBox/EmojiPicker";
 
 import { toast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
