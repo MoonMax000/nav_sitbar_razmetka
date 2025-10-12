@@ -623,7 +623,7 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
                 <button
                   type="button"
                   onClick={openToolbarFilePicker}
-                  className="flex h-10 w-10 items-center justify-center rounded-full text-inherit transition-colors hover:bg-[#482090]/10 disabled:text-white/30"
+                  className="flex h-10 w-10 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#482090]/10 disabled:text-white/30 disabled:hover:bg-transparent"
                   title="Добавить медиа"
                   disabled={blocks.length === 0}
                 >
@@ -640,7 +640,7 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
                 <button
                   type="button"
                   onClick={handleToolbarEmojiToggle}
-                  className="flex h-10 w-10 items-center justify-center rounded-full text-inherit transition-colors hover:bg-[#482090]/10 disabled:text-white/30"
+                  className="flex h-10 w-10 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#482090]/10 disabled:text-white/30 disabled:hover:bg-transparent"
                   title="Добавить эмодзи"
                   disabled={blocks.length === 0}
                 >
