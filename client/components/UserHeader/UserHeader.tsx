@@ -17,12 +17,13 @@ const UserHeader: FC<Props> = ({ isOwn = true, className }) => {
     "group relative flex items-center justify-center overflow-hidden rounded-full border border-black/30 bg-[rgba(25,25,25,0.65)] px-6 py-2.5 text-[15px] font-semibold text-[#F7F9F9] shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_12px_32px_rgba(0,0,0,0.45)] backdrop-blur-xl transition-all duration-200 hover:-translate-y-0.5 hover:border-[#A06AFF]/40 hover:bg-[rgba(32,32,32,0.75)] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_18px_36px_rgba(0,0,0,0.5)] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-black before:absolute before:inset-x-4 before:-top-1 before:h-1 before:rounded-full before:bg-white/50 before:opacity-0 before:transition-opacity before:duration-200 group-hover:before:opacity-100";
 
   return (
-    <div className={cn("flex flex-col w-full", className)}>
+    <div className={cn("flex w-full flex-col gap-4", className)}>
       {/* Header bar with back button */}
       <div className="flex items-center gap-9 px-4 py-1">
         <button
+          type="button"
           onClick={() => navigate(-1)}
-          className="flex items-center justify-center w-5 h-5 text-[#F7F9F9] hover:bg-white/10 rounded-full transition-colors"
+          className="flex h-5 w-5 items-center justify-center rounded-full text-[#F7F9F9] transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-black"
         >
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
             <path
@@ -31,47 +32,122 @@ const UserHeader: FC<Props> = ({ isOwn = true, className }) => {
             />
           </svg>
         </button>
-        <div className="flex flex-col flex-1 gap-0.5">
+        <div className="flex flex-1 flex-col gap-0.5">
           <div className="flex items-center gap-1">
-            <h2 className="text-xl font-bold text-[#F7F9F9] leading-6">
-              Jane Doe
-            </h2>
+            <h2 className="text-xl font-bold leading-6 text-[#F7F9F9]">Jane Doe</h2>
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
               <path
-                d="M18.9999 10.5C18.9837 9.9156 18.8054 9.34658 18.4843 8.85717C18.1641 8.36867 17.7135 7.97786 17.1834 7.72999C17.3852 7.18087 17.4277 6.58653 17.3101 6.01389C17.1916 5.44035 16.9147 4.91204 16.5122 4.48776C16.087 4.0852 15.5596 3.80928 14.986 3.68987C14.4134 3.57226 13.8191 3.61478 13.2699 3.81652C13.023 3.28549 12.6331 2.83408 12.1437 2.51384C11.6543 2.19359 11.0852 2.01447 10.4999 2C9.91554 2.01538 9.34833 2.19269 8.85983 2.51384C8.37132 2.83498 7.98323 3.2864 7.73807 3.81652C7.18805 3.61478 6.59189 3.57046 6.01745 3.68987C5.443 3.80747 4.91379 4.08429 4.4886 4.48776C4.08604 4.91294 3.81103 5.44216 3.69433 6.01479C3.57673 6.58743 3.62196 7.18178 3.8246 7.72999C3.29357 7.97786 2.84125 8.36776 2.5192 8.85627C2.19715 9.34477 2.01713 9.9147 1.99994 10.5C2.01803 11.0853 2.19715 11.6543 2.5192 12.1437C2.84125 12.6322 3.29357 13.023 3.8246 13.27C3.62196 13.8182 3.57673 14.4126 3.69433 14.9852C3.81193 15.5587 4.08604 16.0871 4.4877 16.5122C4.91288 16.913 5.44119 17.188 6.01383 17.3065C6.58646 17.4259 7.18081 17.3825 7.72993 17.1835C7.9778 17.7136 8.3677 18.1641 8.85711 18.4853C9.34562 18.8055 9.91554 18.9837 10.4999 19C11.0852 18.9855 11.6543 18.8073 12.1437 18.4871C12.6331 18.1668 13.023 17.7145 13.2699 17.1844C13.8164 17.4006 14.4152 17.4522 14.9915 17.3327C15.5668 17.2133 16.0951 16.9284 16.5113 16.5122C16.9274 16.0961 17.2133 15.5678 17.3327 14.9915C17.4521 14.4153 17.4005 13.8164 17.1834 13.27C17.7135 13.0221 18.1641 12.6322 18.4852 12.1428C18.8054 11.6543 18.9837 11.0844 18.9999 10.5ZM9.28953 13.9829L6.18752 10.8818L7.35722 9.70392L9.23163 11.5783L13.2121 7.24149L14.4306 8.36867L9.28953 13.9829Z"
+                d="M18.9999 10.5C18.9837 9.9156 18.8054 9.34658 18.4843 8.85717C18.1641 8.36867 17.7135 7.97786 17.1834 7.72999C17.3852 7.18087 17.4277 6.58653 17.3101 6.01389C17.1916 5.44035 16.9147 4.91204 16.5122 4.48776C16.087 4.0852 15.5596 3.80928 14.986 3.68987C14.4134 3.57226 13.8191 3.61478 13.2699 3.81652C13.023 3.28549 12.6331 2.83408 12.1437 2.51384C11.6543 2.19359 11.0852 2.01447 10.4999 2C9.91554 2.01538 9.34833 2.19269 8.85983 2.51384C8.37132 2.83498 7.98323 3.2864 7.73807 3.81652C7.18805 3.61478 6.59189 3.57046 6.01745 3.68987C5.443 3.80747 4.91379 4.08429 4.4886 4.48776C4.08604 4.91294 3.81103 5.44216 3.69433 6.01479C3.57673 6.58743 3.62196 7.18178 3.8246 7.72999C3.29357 7.97786 2.84125 8.36776 2.5192 8.85627C2.19715 9.34477 2.01713 9.9147 1.99994 10.5C2.01803 11.0853 2.19715 11.6543 2.5192 12.1437C2.84125 12.6322 3.29357 13.023 3.8246 13.27C3.62196 13.8182 3.57673 14.4126 3.69433 14.9852C3.81193 15.5587 4.08604 16.0871 4.4877 16.5122C4.91288 16.913 5.44119 17.188 6.01383 17.3065C6.58646 17.4259 7.18081 17.3825 7.72993 17.1835C7.9778 17.7136 8.3677 18.1641 8.85711 18.4853C9.34562 18.8055 9.91554 18.9837 10.4999 19C11.0852 18.9855 11.6543 18.8073 12.1437 18.4871C12.6331 18.1668 13.023 17.7145 13.2699 17.1844C13.8164 17.4006 14.4152 17.4522 14.9915 17.3327C15.5668 17.2133 16.0951 16.9284 16.5113 16.5122C16.9274 16.0961 17.2133 15.5678 17.3327 14.9915C17.4521 14.4153 17.4005 13.8164 17.1834 13.27C17.7135 13.0221 18.1641 12.6322 18.4852 12.1428C18.8054 11.6543 18.9837 11.0853 18.9999 10.5Z"
                 fill="#A06AFF"
               />
             </svg>
           </div>
-          <p className="text-[13px] font-normal text-[#8B98A5] leading-4">
-            23 post
-          </p>
+          <p className="text-[13px] font-normal leading-4 text-[#8B98A5]">23 post</p>
         </div>
       </div>
 
       {/* Cover/Banner image */}
-      <div className="relative w-full h-[200px] bg-[#16181C]">
+      <div className="relative w-full overflow-hidden rounded-3xl border border-[#181B22] bg-[#16181C]">
         <img
           src="https://api.builder.io/api/v1/image/assets/TEMP/df14e9248350a32d57d5b54a31308a2e855bb11e?width=2118"
-          alt=""
-          className="w-full h-full object-cover"
+          alt="Profile cover"
+          className="h-[200px] w-full object-cover"
         />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/60" />
+        <button
+          type="button"
+          className="group absolute right-4 top-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/40 px-4 py-2 text-sm font-semibold text-white shadow-[0_12px_30px_rgba(0,0,0,0.35)] backdrop-blur-xl transition-all duration-200 hover:-translate-y-0.5 hover:border-white/40 hover:bg-black/55 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+        >
+          <svg
+            className="h-5 w-5 text-[#D6DAE2]"
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M4.16602 17.4996C7.67433 13.5402 11.617 8.28922 17.4993 12.2275"
+              stroke="currentColor"
+              strokeWidth="1.5"
+            />
+            <path
+              d="M11.666 2.50193C11.2743 2.5 10.0249 2.5 9.58268 2.5C5.85073 2.5 3.98476 2.5 2.82538 3.65937C1.66602 4.81874 1.66602 6.68472 1.66602 10.4167C1.66602 14.1486 1.66602 16.0146 2.82538 17.174C3.98476 18.3333 5.85073 18.3333 9.58268 18.3333C13.3146 18.3333 15.1806 18.3333 16.34 17.174C17.4554 16.0586 17.4977 14.2892 17.4993 10.8333"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+            />
+            <path
+              d="M14.166 6.25033C14.5756 6.67174 15.6658 8.33366 16.2493 8.33366M16.2493 8.33366C16.8328 8.33366 17.9231 6.67174 18.3327 6.25033M16.2493 8.33366V1.66699"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          <span className="whitespace-nowrap">Update cover</span>
+        </button>
       </div>
 
       {/* Avatar and action buttons container */}
       <div className="relative px-4">
         {/* Avatar positioned to overlap banner */}
-        <div className="absolute -top-16 left-4 w-[132px] h-[132px] rounded-full border-4 border-black overflow-hidden">
-          <img
-            src="https://api.builder.io/api/v1/image/assets/TEMP/8dcd522167ed749bb95dadfd1a39f43e695d33a0?width=320"
-            alt="Profile"
-            className="h-full w-full rounded-full object-cover object-center scale-[1.08]"
-          />
+        <div className="absolute -top-16 left-4">
+          <div className="group relative h-[132px] w-[132px]">
+            <img
+              src="https://api.builder.io/api/v1/image/assets/TEMP/8dcd522167ed749bb95dadfd1a39f43e695d33a0?width=320"
+              alt="Profile"
+              className="h-full w-full rounded-full border-4 border-[#0B0E13] object-cover object-center shadow-[0_18px_40px_-28px_rgba(160,106,255,0.8)]"
+            />
+            <button
+              type="button"
+              aria-label="Update profile picture"
+              className="absolute inset-0 flex items-center justify-center rounded-full bg-black/0 text-white transition-all duration-200 group-hover:bg-black/55 group-hover:backdrop-blur-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+            >
+              <svg
+                className="h-5 w-5 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M5.83268 5C4.81548 5.00305 4.25254 5.02738 3.78995 5.22154C3.14201 5.4935 2.61435 5.99586 2.3061 6.63425C2.0545 7.15532 2.01333 7.82292 1.93098 9.15813L1.80195 11.2504C1.59717 14.5707 1.49478 16.2309 2.46909 17.2819C3.44339 18.3329 5.08479 18.3329 8.36761 18.3329H11.6311C14.9139 18.3329 16.5553 18.3329 17.5296 17.2819C18.5039 16.2309 18.4015 14.5707 18.1968 11.2504L18.0677 9.15813C17.9854 7.82292 17.9442 7.15532 17.6926 6.63425C17.3844 5.99586 16.8567 5.4935 16.2088 5.22154C15.7462 5.02738 15.1832 5.00305 14.166 5"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                />
+                <path
+                  d="M14.1673 5.83366L13.4292 3.98818C13.1107 3.19196 12.8335 2.28874 12.0145 1.88328C11.5777 1.66699 11.052 1.66699 10.0007 1.66699C8.94932 1.66699 8.42365 1.66699 7.98678 1.88328C7.16782 2.28874 6.89066 3.19196 6.57218 3.98818L5.83398 5.83366"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M12.9173 11.6667C12.9173 13.2775 11.6115 14.5833 10.0007 14.5833C8.38982 14.5833 7.08398 13.2775 7.08398 11.6667C7.08398 10.0558 8.38982 8.75 10.0007 8.75C11.6115 8.75 12.9173 10.0558 12.9173 11.6667Z"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                />
+                <path
+                  d="M10 5H10.0075"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+            <span className="pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-black/80 px-3 py-1 text-xs font-semibold text-white opacity-0 shadow-[0_6px_20px_rgba(0,0,0,0.35)] transition-all duration-200 group-hover:-translate-y-1 group-hover:opacity-100">
+              Update profile picture
+            </span>
+          </div>
         </div>
 
         {/* Action buttons panel */}
-        <div className="flex justify-end items-start gap-3 py-3">
-          <button className={iconButtonClass}>
+        <div className="flex items-start justify-end gap-3 py-3">
+          <button type="button" className={iconButtonClass}>
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
               <path
                 d="M2.5 10.0002C2.5 9.0835 3.25 8.3335 4.16667 8.3335C5.08333 8.3335 5.83333 9.0835 5.83333 10.0002C5.83333 10.9168 5.08333 11.6668 4.16667 11.6668C3.25 11.6668 2.5 10.9168 2.5 10.0002ZM10 11.6668C10.9167 11.6668 11.6667 10.9168 11.6667 10.0002C11.6667 9.0835 10.9167 8.3335 10 8.3335C9.08333 8.3335 8.33333 9.0835 8.33333 10.0002C8.33333 10.9168 9.08333 11.6668 10 11.6668ZM15.8333 11.6668C16.75 11.6668 17.5 10.9168 17.5 10.0002C17.5 9.0835 16.75 8.3335 15.8333 8.3335C14.9167 8.3335 14.1667 9.0835 14.1667 10.0002C14.1667 10.9168 14.9167 11.6668 15.8333 11.6668Z"
@@ -80,7 +156,7 @@ const UserHeader: FC<Props> = ({ isOwn = true, className }) => {
             </svg>
           </button>
 
-          <button className={iconButtonClass}>
+          <button type="button" className={iconButtonClass}>
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
               <path
                 d="M1.66501 4.58333C1.66501 3.4325 2.59751 2.5 3.74834 2.5H16.2483C17.3992 2.5 18.3317 3.4325 18.3317 4.58333V15.4167C18.3317 16.5675 17.3992 17.5 16.2483 17.5H3.74834C2.59751 17.5 1.66501 16.5675 1.66501 15.4167V4.58333ZM3.74834 4.16667C3.51834 4.16667 3.33168 4.35333 3.33168 4.58333V6.88667L9.99834 9.91833L16.665 6.88833V4.58333C16.665 4.35333 16.4783 4.16667 16.2483 4.16667H3.74834ZM16.665 8.71917L9.99834 11.7492L3.33168 8.7175V15.4167C3.33168 15.6467 3.51834 15.8333 3.74834 15.8333H16.2483C16.4783 15.8333 16.665 15.6467 16.665 15.4167V8.71917Z"
@@ -90,13 +166,13 @@ const UserHeader: FC<Props> = ({ isOwn = true, className }) => {
           </button>
 
           {isOwn ? (
-            <button className={primaryActionButtonClass}>
+            <button type="button" className={primaryActionButtonClass}>
               <span className="relative z-10 text-center font-semibold leading-5">
                 Edit profile
               </span>
             </button>
           ) : (
-            <button className={primaryActionButtonClass}>
+            <button type="button" className={primaryActionButtonClass}>
               <span className="relative z-10 text-center font-semibold leading-5">
                 Follow
               </span>
@@ -106,27 +182,23 @@ const UserHeader: FC<Props> = ({ isOwn = true, className }) => {
       </div>
 
       {/* User info section */}
-      <div className="flex flex-col px-4 gap-3 pt-4 pb-4">
+      <div className="flex flex-col gap-3 px-4 pb-4 pt-4">
         {/* Name and username */}
         <div className="flex flex-col gap-0.5">
           <div className="flex items-center gap-1">
-            <h1 className="text-xl font-bold text-[#F7F9F9] leading-6">
-              Jane Doe
-            </h1>
+            <h1 className="text-xl font-bold leading-6 text-[#F7F9F9]">Jane Doe</h1>
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
               <path
-                d="M18.9999 10.5C18.9837 9.9156 18.8054 9.34658 18.4843 8.85717C18.1641 8.36867 17.7135 7.97786 17.1834 7.72999C17.3852 7.18087 17.4277 6.58653 17.3101 6.01389C17.1916 5.44035 16.9147 4.91204 16.5122 4.48776C16.087 4.0852 15.5596 3.80928 14.986 3.68987C14.4134 3.57226 13.8191 3.61478 13.2699 3.81652C13.023 3.28549 12.6331 2.83408 12.1437 2.51384C11.6543 2.19359 11.0852 2.01447 10.4999 2C9.91554 2.01538 9.34833 2.19269 8.85983 2.51384C8.37132 2.83498 7.98323 3.2864 7.73807 3.81652C7.18805 3.61478 6.59189 3.57046 6.01745 3.68987C5.443 3.80747 4.91379 4.08429 4.4886 4.48776C4.08604 4.91294 3.81103 5.44216 3.69433 6.01479C3.57673 6.58743 3.62196 7.18178 3.8246 7.72999C3.29357 7.97786 2.84125 8.36776 2.5192 8.85627C2.19715 9.34477 2.01713 9.9147 1.99994 10.5C2.01803 11.0853 2.19715 11.6543 2.5192 12.1437C2.84125 12.6322 3.29357 13.023 3.8246 13.27C3.62196 13.8182 3.57673 14.4126 3.69433 14.9852C3.81193 15.5587 4.08604 16.0871 4.4877 16.5122C4.91288 16.913 5.44119 17.188 6.01383 17.3065C6.58646 17.4259 7.18081 17.3825 7.72993 17.1835C7.9778 17.7136 8.3677 18.1641 8.85711 18.4853C9.34562 18.8055 9.91554 18.9837 10.4999 19C11.0852 18.9855 11.6543 18.8073 12.1437 18.4871C12.6331 18.1668 13.023 17.7145 13.2699 17.1844C13.8164 17.4006 14.4152 17.4522 14.9915 17.3327C15.5668 17.2133 16.0951 16.9284 16.5113 16.5122C16.9274 16.0961 17.2133 15.5678 17.3327 14.9915C17.4521 14.4153 17.4005 13.8164 17.1834 13.27C17.7135 13.0221 18.1641 12.6322 18.4852 12.1428C18.8054 11.6543 18.9837 11.0844 18.9999 10.5ZM9.28953 13.9829L6.18752 10.8818L7.35722 9.70392L9.23163 11.5783L13.2121 7.24149L14.4306 8.36867L9.28953 13.9829Z"
+                d="M18.9999 10.5C18.9837 9.9156 18.8054 9.34658 18.4843 8.85717C18.1641 8.36867 17.7135 7.97786 17.1834 7.72999C17.3852 7.18087 17.4277 6.58653 17.3101 6.01389C17.1916 5.44035 16.9147 4.91204 16.5122 4.48776C16.087 4.0852 15.5596 3.80928 14.986 3.68987C14.4134 3.57226 13.8191 3.61478 13.2699 3.81652C13.023 3.28549 12.6331 2.83408 12.1437 2.51384C11.6543 2.19359 11.0852 2.01447 10.4999 2C9.91554 2.01538 9.34833 2.19269 8.85983 2.51384C8.37132 2.83498 7.98323 3.2864 7.73807 3.81652C7.18805 3.61478 6.59189 3.57046 6.01745 3.68987C5.443 3.80747 4.91379 4.08429 4.4886 4.48776C4.08604 4.91294 3.81103 5.44216 3.69433 6.01479C3.57673 6.58743 3.62196 7.18178 3.8246 7.72999C3.29357 7.97786 2.84125 8.36776 2.5192 8.85627C2.19715 9.34477 2.01713 9.9147 1.99994 10.5C2.01803 11.0853 2.19715 11.6543 2.5192 12.1437C2.84125 12.6322 3.29357 13.023 3.8246 13.27C3.62196 13.8182 3.57673 14.4126 3.69433 14.9852C3.81193 15.5587 4.08604 16.0871 4.4877 16.5122C4.91288 16.913 5.44119 17.188 6.01383 17.3065C6.58646 17.4259 7.18081 17.3825 7.72993 17.1835C7.9778 17.7136 8.3677 18.1641 8.85711 18.4853C9.34562 18.8055 9.91554 18.9837 10.4999 19C11.0852 18.9855 11.6543 18.8073 12.1437 18.4871C12.6331 18.1668 13.023 17.7145 13.2699 17.1844C13.8164 17.4006 14.4152 17.4522 14.9915 17.3327C15.5668 17.2133 16.0951 16.9284 16.5113 16.5122C16.9274 16.0961 17.2133 15.5678 17.3327 14.9915C17.4521 14.4153 17.4005 13.8164 17.1834 13.27C17.7135 13.0221 18.1641 12.6322 18.4852 12.1428C18.8054 11.6543 18.9837 11.0853 18.9999 10.5Z"
                 fill="#A06AFF"
               />
             </svg>
           </div>
-          <p className="text-[13px] font-normal text-[#8B98A5] leading-4">
-            @beautydoe
-          </p>
+          <p className="text-[13px] font-normal leading-4 text-[#8B98A5]">@beautydoe</p>
         </div>
 
         {/* Bio/Description */}
-        <p className="text-[15px] font-normal text-[#F7F9F9] leading-5">
+        <p className="text-[15px] font-normal leading-5 text-[#F7F9F9]">
           Designing Products that Users Love
         </p>
 
@@ -140,7 +212,7 @@ const UserHeader: FC<Props> = ({ isOwn = true, className }) => {
                 fill="#8B98A5"
               />
             </svg>
-            <span className="text-[15px] font-normal text-[#8B98A5] leading-5">
+            <span className="text-[15px] font-normal leading-5 text-[#8B98A5]">
               Tier 4
             </span>
           </div>
@@ -153,7 +225,7 @@ const UserHeader: FC<Props> = ({ isOwn = true, className }) => {
                 fill="#8B98A5"
               />
             </svg>
-            <span className="text-[15px] font-normal text-[#8B98A5] leading-5">
+            <span className="text-[15px] font-normal leading-5 text-[#8B98A5]">
               United States
             </span>
           </div>
@@ -168,7 +240,7 @@ const UserHeader: FC<Props> = ({ isOwn = true, className }) => {
             </svg>
             <a
               href="https://beautydoe.com"
-              className="text-[15px] font-normal text-[#A06AFF] leading-5 hover:underline"
+              className="text-[15px] font-normal leading-5 text-[#A06AFF] hover:underline"
             >
               beautydoe.com
             </a>
@@ -182,27 +254,27 @@ const UserHeader: FC<Props> = ({ isOwn = true, className }) => {
                 fill="#8B98A5"
               />
             </svg>
-            <span className="text-[15px] font-normal text-[#8B98A5] leading-5">
+            <span className="text-[15px] font-normal leading-5 text-[#8B98A5]">
               Joined November 2010
             </span>
           </div>
         </div>
 
         {/* Following/Followers counts */}
-        <div className="flex items-baseline gap-3 flex-wrap">
+        <div className="flex flex-wrap items-baseline gap-3">
           <div className="flex items-baseline gap-1">
-            <span className="text-[15px] font-bold text-[#F7F9F9] leading-5">
+            <span className="text-[15px] font-bold leading-5 text-[#F7F9F9]">
               143
             </span>
-            <span className="text-[15px] font-normal text-[#8B98A5] leading-5">
+            <span className="text-[15px] font-normal leading-5 text-[#8B98A5]">
               Following
             </span>
           </div>
           <div className="flex items-baseline gap-1">
-            <span className="text-[15px] font-bold text-[#F7F9F9] leading-5">
+            <span className="text-[15px] font-bold leading-5 text-[#F7F9F9]">
               149
             </span>
-            <span className="text-[15px] font-normal text-[#8B98A5] leading-5">
+            <span className="text-[15px] font-normal leading-5 text-[#8B98A5]">
               Followers
             </span>
           </div>
