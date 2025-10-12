@@ -62,6 +62,7 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
 
   const replyMenuRef = useRef<HTMLDivElement>(null);
   const emojiMenuRef = useRef<HTMLDivElement>(null);
+  const toolbarFileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     setMounted(true);
