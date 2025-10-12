@@ -5,8 +5,8 @@ import { defaultProfile } from "@/data/socialProfile";
 import { cn } from "@/lib/utils";
 import {
   Image as ImageIcon,
-  Images,
-  Gif,
+  ImagePlus,
+  Video,
   BarChart3,
   CalendarClock,
   MapPin,
@@ -65,7 +65,7 @@ const readImageFile = (file: File): Promise<ChosenImage> =>
           height: image.height,
         });
       image.onerror = () =>
-        reject(new Error("Не удалось получить параметры изображения"));
+        reject(new Error("Не удалось получить параметры изо��ражения"));
       image.src = result;
     };
     reader.readAsDataURL(file);
@@ -301,7 +301,7 @@ const ChosenMediaGrid: FC<{
         >
           <button
             type="button"
-            aria-label="Удалить изо��ражение"
+            aria-label="Удалить изображение"
             onClick={() => onRemove(image.id)}
             className="absolute right-2 top-2 flex h-8 w-8 items-center justify-center rounded-full bg-black/55 text-white opacity-0 transition-opacity group-hover:opacity-100"
           >
@@ -356,7 +356,7 @@ const VariantClassic: FC = () => {
                 onChange={composer.handleFiles}
               />
               <IconActionButton label="GIF" icon={<Gif className="h-5 w-5" />} />
-              <IconActionButton label="Опрос" icon={<BarChart3 className="h-5 w-5" />} />
+              <IconActionButton label="Оп��ос" icon={<BarChart3 className="h-5 w-5" />} />
               <EmojiPickerButton onSelect={(emoji) => composer.setText((prev) => prev + emoji)} />
               <IconActionButton label="Запланировать" icon={<CalendarClock className="h-5 w-5" />} />
               <IconActionButton label="Локация" icon={<MapPin className="h-5 w-5" />} />
@@ -420,7 +420,7 @@ const VariantToolbar: FC = () => {
                 <IconActionButton
                   label="Добавить изображение"
                   onClick={openFilePicker}
-                  icon={<Images className="h-5 w-5" />}
+                  icon={<ImagePlus className="h-5 w-5" />}
                 />
                 <input
                   ref={fileInputRef}
@@ -504,8 +504,8 @@ const VariantMinimal: FC = () => {
             onChange={composer.handleFiles}
           />
           <IconActionButton
-            label="GIF"
-            icon={<Gif className="h-4 w-4" />}
+            label="Видео или GIF"
+            icon={<Video className="h-4 w-4" />}
             className="text-[#1DA1F2] hover:bg-[#1DA1F2]/10"
           />
           <IconActionButton
