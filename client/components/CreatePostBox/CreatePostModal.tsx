@@ -413,7 +413,7 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
       }
     }
 
-    onClose();
+    onClose(blocks);
   }, [blocks, onClose, saveDraft]);
 
   const gradientStroke = useMemo(() => {
