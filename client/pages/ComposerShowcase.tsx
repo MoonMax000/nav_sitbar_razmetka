@@ -558,8 +558,7 @@ const MediaEditorPreview: FC<MediaEditorPreviewProps> = ({ variant }) => {
                 <button
                   type="button"
                   aria-label="Aspect ratio: portrait"
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 backdrop-blur-sm text-white"
-                  style={{ boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.04)" }}
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[rgba(0,0,0,0.72)] text-white/90 backdrop-blur-sm transition-colors duration-200 hover:bg-[rgba(255,255,255,0.18)]"
                 >
                   <svg
                     viewBox="0 0 24 24"
@@ -567,16 +566,13 @@ const MediaEditorPreview: FC<MediaEditorPreviewProps> = ({ variant }) => {
                     className="h-5 w-5 text-white"
                     fill="currentColor"
                   >
-                    <g>
-                      <path d="M3 9.5C3 8.119 4.119 7 5.5 7h13C19.881 7 21 8.119 21 9.5v5c0 1.381-1.119 2.5-2.5 2.5h-13C4.119 17 3 15.881 3 14.5v-5zM5.5 9c-.276 0-.5.224-.5.5v5c0 .276.224.5.5.5h13c.276 0 .5-.224.5-.5v-5c0-.276-.224-.5-.5-.5h-13z" />
-                    </g>
+                    <path d="M3 9.5C3 8.119 4.119 7 5.5 7h13C19.881 7 21 8.119 21 9.5v5c0 1.381-1.119 2.5-2.5 2.5h-13C4.119 17 3 15.881 3 14.5v-5zM5.5 9c-.276 0-.5.224-.5.5v5c0 .276.224.5.5.5h13c.276 0 .5-.224.5-.5v-5c0-.276-.224-.5-.5-.5h-13z" />
                   </svg>
                 </button>
                 <button
                   type="button"
                   aria-label="Aspect ratio: landscape"
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 backdrop-blur-sm text-white"
-                  style={{ boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.04)" }}
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[rgba(0,0,0,0.72)] text-white/90 backdrop-blur-sm transition-colors duration-200 hover:bg-[rgba(255,255,255,0.18)]"
                 >
                   <svg
                     viewBox="0 0 24 24"
@@ -584,9 +580,7 @@ const MediaEditorPreview: FC<MediaEditorPreviewProps> = ({ variant }) => {
                     className="h-5 w-5 text-white"
                     fill="currentColor"
                   >
-                    <g>
-                      <path d="M3 5.5C3 4.119 4.119 3 5.5 3h13C19.881 3 21 4.119 21 5.5v13c0 1.381-1.119 2.5-2.5 2.5h-13C4.119 21 3 19.881 3 18.5v-13zM5.5 5c-.276 0-.5.224-.5.5v13c0 .276.224.5.5.5h13c.276 0 .5-.224.5-.5v-13c0-.276-.224-.5-.5-.5h-13z" />
-                    </g>
+                    <path d="M3 5.5C3 4.119 4.119 3 5.5 3h13C19.881 3 21 4.119 21 5.5v13c0 1.381-1.119 2.5-2.5 2.5h-13C4.119 21 3 19.881 3 18.5v-13zM5.5 5c-.276 0-.5.224-.5.5v13c0 .276.224.5.5.5h13c.276 0 .5-.224.5-.5v-13c0-.276-.224-.5-.5-.5h-13z" />
                   </svg>
                 </button>
               </div>
@@ -1032,7 +1026,7 @@ const ComposerShowcase: FC = () => {
             </ShowcaseCard>
             <ShowcaseCard
               title="Drafts list"
-              description="Список сохранённых черновиков."
+              description="Спис��к сохранённых черновиков."
             >
               <DraftsListPreview />
             </ShowcaseCard>
