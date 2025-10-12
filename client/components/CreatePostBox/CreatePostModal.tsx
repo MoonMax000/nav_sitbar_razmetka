@@ -501,7 +501,6 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
 
   if (!mounted || !isOpen) return null;
 
-  const selectedReply = replyOptions.find((opt) => opt.id === replySetting) || replyOptions[0];
   const replySummary = REPLY_SUMMARY_TEXT[replySetting];
 
   return createPortal(
