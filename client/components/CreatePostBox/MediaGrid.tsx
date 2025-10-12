@@ -79,7 +79,25 @@ export const MediaGrid: FC<MediaGridProps> = ({
             </div>
           )}
 
-          <div className={`absolute top-3 left-3 transition-opacity ${isInteractive ? "opacity-0 group-hover:opacity-100" : "opacity-100"}`}>
+          <div className={`absolute top-3 left-3 flex items-center gap-2 transition-opacity ${isInteractive ? "opacity-0 group-hover:opacity-100" : "opacity-100"}`}>
+            <button
+              aria-label="Drag and drop media"
+              role="button"
+              type="button"
+              onClick={(e) => { e.stopPropagation(); }}
+              className={`flex h-9 w-9 items-center justify-center rounded-full bg-[rgba(0,0,0,0.72)] text-white/90 backdrop-blur-sm transition-colors duration-200 ${
+                isInteractive
+                  ? "hover:bg-[rgba(255,255,255,0.08)]"
+                  : "opacity-60 cursor-default"
+              }`}
+            >
+              <svg viewBox="0 0 24 24" aria-hidden className="h-4 w-4" fill="none">
+                <g>
+                  <path d="M19.996 10h-16V8h16v2zm0 6h-16v-2h16v2z" fill="currentColor" />
+                </g>
+              </svg>
+            </button>
+
             <button
               type="button"
               onClick={isInteractive ? () => onEdit(item) : undefined}
