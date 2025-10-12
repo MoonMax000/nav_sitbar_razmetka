@@ -378,7 +378,7 @@ const StaticComposerWindow: FC<StaticComposerWindowProps> = ({
               )}
             </div>
 
-            {totalChars > 0 && (
+            {hasContent && (
               <>
                 <div className="h-8 w-px bg-white/15" />
                 <button
