@@ -201,6 +201,11 @@ const StaticComposerWindow: FC<StaticComposerWindowProps> = ({
   const circumference = 88;
   const gradientStroke = `${charRatio * circumference} ${circumference}`;
   const replySummary = REPLY_SUMMARY_TEXT[replyPolicy];
+  const hasContent =
+    totalChars > 0 ||
+    blocks.some((block) =>
+      block.media.length > 0 || (block.codeBlocks?.length ?? 0) > 0,
+    );
   const isThread = blocks.length > 1;
 
   return (
