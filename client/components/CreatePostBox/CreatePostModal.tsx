@@ -166,6 +166,8 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
     return hasContent && noOverflow && !isPosting;
   }, [blocks, isPosting]);
 
+  const hasTypedText = useMemo(() => blocks.some((b) => b.text.trim().length > 0), [blocks]);
+
   // propagate blocks changes to parent if requested (live sync)
   const onBlocksChangeRef = useRef<typeof onBlocksChange | null>(null);
 
