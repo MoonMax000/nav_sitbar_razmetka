@@ -512,13 +512,20 @@ const MediaEditorPreview: FC<MediaEditorPreviewProps> = ({ variant }) => {
         </button>
         <button
           type="button"
-          className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
+          className={`flex items-center rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
             isWarning
               ? "bg-[#F97316]/20 text-[#F97316]"
               : "text-[#E7E9EA] hover:bg-white/10"
           }`}
         >
-          Content warning
+          <svg
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            className="h-5 w-5"
+            fill="currentColor"
+          >
+            <path d="M3 2h18.61l-3.5 7 3.5 7H5v6H3V2zm2 12h13.38l-2.5-5 2.5-5H5v10z" />
+          </svg>
         </button>
       </div>
 
