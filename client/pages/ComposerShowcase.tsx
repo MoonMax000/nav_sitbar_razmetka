@@ -801,9 +801,28 @@ const ComposerShowcase: FC = () => {
 
   const [topMenuActive, setTopMenuActive] = useState<"foryou" | "following">("foryou");
 
+  // Shared composer state between page empty state and modal
+  const [sharedBlocks, setSharedBlocks] = useState<StaticBlock[]>([
+    { id: "empty", text: "", media: [], codeBlocks: [] },
+  ]);
+  const [sharedReply, setSharedReply] = useState<ReplyPolicy>("everyone");
+  const [sharedSentiment, setSharedSentiment] = useState<"bullish" | "bearish" | null>(null);
+
   return (
     <div className="min-h-screen bg-black py-12 px-6">
-      <CreatePostModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <CreatePostModal
+        isOpen={isModalOpen}
+        initialBlocks={sharedBlocks.map((b) => ({ ...b }))}
+        initialReplySetting={sharedReply}
+        initialSentiment={sharedSentiment}
+        onClose={(newBlocks) => {
+          // update shared state when modal closes (newBlocks may be undefined)
+          if (newBlocks) {
+            setSharedBlocks(newBlocks.map((b) => ({ id: b.id, text: b.text, media: b.media, codeBlocks: b.codeBlocks })));
+          }
+          setIsModalOpen(false);
+        }}
+      />
       <div className="mx-auto max-w-7xl space-y-12">
         {/* Top social-style menu (moved from /social/home) */}
         <div className="flex justify-center">
