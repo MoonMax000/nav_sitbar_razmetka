@@ -883,9 +883,9 @@ const ComposerShowcase: FC = () => {
               description="Пустое окно по умолчанию."
             >
               <StaticComposerWindow
-                blocks={[{ id: "empty", text: "", media: [], codeBlocks: [] }]}
-                replyPolicy="everyone"
-                sentiment={null}
+                blocks={sharedBlocks}
+                replyPolicy={sharedReply}
+                sentiment={sharedSentiment}
                 showAddAnother
               />
             </ShowcaseCard>
@@ -965,7 +965,7 @@ const ComposerShowcase: FC = () => {
             </ShowcaseCard>
             <ShowcaseCard
               title="ALT"
-              description="Р��дактирование ALT-текста для доступности."
+              description="Р����дактирование ALT-текста для доступности."
             >
               <MediaEditorPreview variant="alt" />
             </ShowcaseCard>
