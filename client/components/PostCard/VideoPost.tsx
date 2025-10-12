@@ -203,8 +203,8 @@ const VideoPost: FC<VideoPostProps> = ({
           </div>
         </div>
 
-        <div className="flex w-full items-center gap-3">
-          <div className="flex items-center gap-1">
+        <div className="grid w-full grid-cols-5 items-center">
+          <div className="col-span-1 flex items-center">
             <div className="flex items-center gap-1 rounded bg-[#1C3430] px-1 py-0.5">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M13.3333 8.66659V5.33325H10" stroke="#2EBD85" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -222,7 +222,7 @@ const VideoPost: FC<VideoPostProps> = ({
             </div>
           </div>
 
-          <div className="flex flex-1 items-center justify-center gap-12">
+          <div className="col-span-1 flex items-center justify-center">
             <div className="flex items-center gap-1.5">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clipPath="url(#clip0_video_post_card)">
@@ -248,6 +248,9 @@ const VideoPost: FC<VideoPostProps> = ({
               </svg>
               <div className="text-xs font-bold leading-normal text-[#B0B0B0]">{comments}</div>
             </div>
+          </div>
+
+          <div className="col-span-1 flex items-center justify-center">
             <div className="flex items-center gap-1.5">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -267,7 +270,7 @@ const VideoPost: FC<VideoPostProps> = ({
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="col-span-1 flex items-center justify-end gap-2">
             <div className="flex h-[26px] w-[26px] items-center justify-center rounded-lg">
               <svg
                 width="20"
@@ -284,7 +287,7 @@ const VideoPost: FC<VideoPostProps> = ({
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
-              </svg>
+            </svg>
             </div>
 
             <button
