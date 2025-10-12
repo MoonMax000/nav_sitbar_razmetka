@@ -764,15 +764,18 @@ const DraftsListPreview: FC = () => (
 );
 
 const ComposerShowcase: FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(true);
+
   return (
     <div className="min-h-screen bg-black py-12 px-6">
+      <CreatePostModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       <div className="mx-auto max-w-7xl space-y-12">
         <div className="rounded-3xl border border-[#A06AFF]/30 bg-gradient-to-br from-[#A06AFF]/10 to-transparent p-8 backdrop-blur-[70px]">
           <h1 className="text-4xl font-bold text-white">
             Post Composer <span className="text-gradient-purple">Showcase</span>
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-[#808283]">
-            На этой странице уже раскрыты все окна конструктора постов.
+            На этой странице уже раскрыты все ок��а конструктора постов.
             Исполь��уйте режим Design и инструмент "Select elements", чтобы
             настраивать внешний вид и состояния без дополнительных кликов.
           </p>
@@ -798,10 +801,10 @@ const ComposerShowcase: FC = () => {
         <section className="space-y-6">
           <header>
             <h2 className="text-2xl font-semibold text-white">
-              Основное окно композера
+              Основное окно ком��озера
             </h2>
             <p className="text-sm text-[#808283]">
-              Вариации с текстом, медиа, код-блоками и тредами, доступные для
+              Вариации с текстом, медиа, код-блоками и тредами, доступные ��ля
               точечной стилизации.
             </p>
           </header>
@@ -839,7 +842,7 @@ const ComposerShowcase: FC = () => {
 
             <ShowcaseCard
               title="Gallery"
-              description="Несколько изображений и ALT подписи."
+              description="Не��колько изображений и ALT подписи."
             >
               <StaticComposerWindow
                 blocks={[
