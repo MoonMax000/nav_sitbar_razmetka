@@ -791,10 +791,37 @@ const DraftsListPreview: FC = () => (
 const ComposerShowcase: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const [topMenuActive, setTopMenuActive] = useState<"foryou" | "following">("foryou");
+
   return (
     <div className="min-h-screen bg-black py-12 px-6">
       <CreatePostModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       <div className="mx-auto max-w-7xl space-y-12">
+        {/* Top social-style menu (moved from /social/home) */}
+        <div className="flex justify-center">
+          <div className="inline-flex items-center gap-3 rounded-full border border-[#181B22] bg-[rgba(12,16,20,0.5)] p-1">
+            {(["foryou", "following"] as const).map((value) => {
+              const isActive = topMenuActive === value;
+
+              return (
+                <button
+                  key={value}
+                  type="button"
+                  onClick={() => setTopMenuActive(value)}
+                  aria-pressed={isActive}
+                  className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition ${
+                    isActive
+                      ? "bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white"
+                      : "text-[#B0B0B0] hover:text-white"
+                  }`}
+                >
+                  <span>{value === "foryou" ? "For you" : "Following"}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
         <div className="rounded-3xl border border-[#A06AFF]/30 bg-gradient-to-br from-[#A06AFF]/10 to-transparent p-8 backdrop-blur-[70px]">
           <h1 className="text-4xl font-bold text-white">
             Post Composer <span className="text-gradient-purple">Showcase</span>
@@ -827,7 +854,7 @@ const ComposerShowcase: FC = () => {
           <div className="flex items-center justify-between">
             <header>
               <h2 className="text-2xl font-semibold text-white">
-                Основное окно композера
+                Основное окно к��мпозера
               </h2>
               <p className="text-sm text-[#808283]">
                 Вариации с текстом, медиа, код-блоками и тредами, доступные для
