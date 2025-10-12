@@ -206,7 +206,6 @@ const StaticComposerWindow: FC<StaticComposerWindowProps> = ({
     blocks.some((block) =>
       block.media.length > 0 || (block.codeBlocks?.length ?? 0) > 0,
     );
-  const isThread = blocks.length > 1;
 
   return (
     <div className="relative mx-auto w-full max-w-[720px] overflow-hidden rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.95)] shadow-[0_40px_120px_-40px_rgba(0,0,0,0.85)] backdrop-blur-[110px]">
@@ -1037,7 +1036,7 @@ const ComposerShowcase: FC = () => {
             </ShowcaseCard>
             <ShowcaseCard
               title="Code block modal"
-              description="Фор��а добавления блока с кодом."
+              description="Фор��а добав��ения блока с кодом."
             >
               <CodeBlockModalPreview />
             </ShowcaseCard>
