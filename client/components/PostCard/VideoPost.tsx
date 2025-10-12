@@ -223,7 +223,7 @@ const VideoPost: FC<VideoPostProps> = ({
           </div>
 
           <div className="col-span-1 relative">
-            <div style={{position: 'absolute', left: '33.3333%'}} className="-translate-x-1/2 flex items-center gap-1.5">
+            <div style={{left: '33.3333%', top: '50%'}} className="absolute -translate-x-1/2 -translate-y-1/2 flex items-center gap-1.5">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clipPath="url(#clip0_video_post_card)">
                   <path
