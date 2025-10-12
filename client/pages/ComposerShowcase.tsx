@@ -1,4 +1,4 @@
-import { FC, ReactNode } from "react";
+import { FC, ReactNode, useState } from "react";
 import { TweetBlock } from "../components/CreatePostBox/TweetBlock";
 import { EmojiPicker } from "../components/CreatePostBox/EmojiPicker";
 import {
