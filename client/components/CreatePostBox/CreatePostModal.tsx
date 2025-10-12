@@ -167,14 +167,22 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
   }, [blocks, isPosting]);
 
   // propagate blocks changes to parent if requested (live sync)
+  const onBlocksChangeRef = useRef<typeof onBlocksChange | null>(null);
+
   useEffect(() => {
-    // @ts-ignore
-    if ((typeof (CreatePostModal as any) !== "undefined") && typeof (onBlocksChange) === "function") {
-      onBlocksChange?.(blocks);
-    } else {
-      onBlocksChange?.(blocks);
+    onBlocksChangeRef.current = onBlocksChange ?? null;
+  }, [onBlocksChange]);
+
+  useEffect(() => {
+    if (onBlocksChangeRef.current) {
+      try {
+        onBlocksChangeRef.current(blocks);
+      } catch (e) {
+        console.error("onBlocksChange handler failed:", e);
+      }
     }
-  }, [blocks, onBlocksChange]);
+    // only depend on blocks to avoid loops caused by parent callback identity changes
+  }, [blocks]);
 
   const isThread = blocks.length > 1;
 
