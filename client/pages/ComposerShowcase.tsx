@@ -164,6 +164,8 @@ const draftsPreview: StaticDraft[] = [
   },
 ];
 
+import CreatePostModal from "@/components/CreatePostBox/CreatePostModal";
+
 const ShowcaseCard: FC<ShowcaseCardProps> = ({
   title,
   description,
@@ -771,7 +773,7 @@ const ComposerShowcase: FC = () => {
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-[#808283]">
             На этой странице уже раскрыты все окна конструктора постов.
-            Используйте режим Design и инструмент "Select elements", чтобы
+            Исполь��уйте режим Design и инструмент "Select elements", чтобы
             настраивать внешний вид и состояния без дополнительных кликов.
           </p>
           <ul className="mt-6 space-y-2 text-sm text-[#E7E9EA]">
