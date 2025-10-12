@@ -131,7 +131,7 @@ const useComposerState = (variantLabel: string) => {
       const queue = Array.from(files).slice(0, remaining);
       if (queue.length < files.length) {
         toast({
-          title: "Ограничени��",
+          title: "Ограничение",
           description:
             "Выбрано слишком много файлов. Добавлено максимум 4 изображ��ния.",
         });
@@ -178,7 +178,7 @@ const useComposerState = (variantLabel: string) => {
     if (!canPost) return;
     toast({
       title: "Пост опубликован",
-      description: `Вариант «${variantLabel}» отправлен в общий пот��к`,
+      description: `Вариант «${variantLabel}» отправлен в общий поток`,
     });
     console.log(`[${variantLabel}] Post`, {
       text,
@@ -483,7 +483,7 @@ const VariantToolbar: FC = () => {
                   icon={<BarChart3 className="h-5 w-5" />}
                 />
                 <IconActionButton
-                  label="Добавить изображение"
+                  label="Добавить изоб��ажение"
                   onClick={openFilePicker}
                   icon={<ImagePlus className="h-5 w-5" />}
                 />
@@ -584,11 +584,8 @@ const VariantMinimal: FC = () => {
             className="hidden"
             onChange={composer.handleFiles}
           />
-          <IconActionButton
-            label="Emoji"
-            icon={<Smile className="h-4 w-4" />}
-            className="text-[#A06AFF] hover:bg-[#482090]/10"
-            onClick={() => window.dispatchEvent(new CustomEvent('open-composer'))}
+          <EmojiPickerButton
+            onSelect={(emoji) => composer.setText((prev) => prev + emoji)}
           />
           <IconActionButton
             label="Локация"
