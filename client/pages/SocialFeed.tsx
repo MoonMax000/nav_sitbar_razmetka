@@ -219,42 +219,28 @@ const SocialFeed: FC = () => {
 
           {postsToDisplay.length > 0 ? (
             <div className="flex flex-col gap-6">
-              {postsToDisplay.map((post) =>
-                post.type === "video" && post.videoUrl ? (
-                  <VideoPost
-                    key={post.id}
-                    author={post.author}
-                    timestamp={post.timestamp}
-                    title={post.title}
-                    content={post.body ?? post.preview}
-                    videoUrl={post.videoUrl}
-                    sentiment={post.sentiment}
-                    likes={post.likes}
-                    comments={post.comments}
-                    isFollowing={post.isFollowing}
-                    hashtags={post.hashtags}
-                    truncate
-                    onOpen={() => handleOpenPost(post)}
-                  />
-                ) : (
-                  <PostCard
-                    key={post.id}
-                    author={{
-                      name: post.author.name,
-                      avatar: post.author.avatar,
-                    }}
-                    category={post.category}
-                    timestamp={post.timestamp}
-                    title={post.title}
-                    content={post.preview ?? post.body}
-                    image={post.mediaUrl}
-                    sentiment={post.sentiment}
-                    likes={post.likes}
-                    comments={post.comments}
-                    onOpen={() => handleOpenPost(post)}
-                  />
-                ),
-              )}
+              {postsToDisplay.map((post) => (
+                <VideoPost
+                  key={post.id}
+                  author={{
+                    name: post.author.name,
+                    avatar: post.author.avatar,
+                    handle: post.author.handle,
+                    verified: post.author.verified,
+                  }}
+                  timestamp={post.timestamp}
+                  title={post.title}
+                  content={post.body ?? post.preview}
+                  videoUrl={post.videoUrl ?? post.mediaUrl ?? post.image ?? ""}
+                  sentiment={post.sentiment}
+                  likes={post.likes ?? 0}
+                  comments={post.comments ?? 0}
+                  isFollowing={post.isFollowing}
+                  hashtags={post.hashtags}
+                  truncate
+                  onOpen={() => handleOpenPost(post)}
+                />
+              ))}
             </div>
           ) : (
             <EmptyTimeline
