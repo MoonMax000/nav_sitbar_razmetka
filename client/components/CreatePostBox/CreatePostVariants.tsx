@@ -554,8 +554,6 @@ const VariantMinimal: FC = () => {
 
 const CreatePostVariants: FC = () => (
   <div className="flex w-full flex-col gap-5">
-    <VariantClassic />
-    <VariantToolbar />
     <VariantMinimal />
   </div>
 );
