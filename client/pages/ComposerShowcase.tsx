@@ -465,7 +465,7 @@ const MediaEditorPreview: FC<MediaEditorPreviewProps> = ({ variant }) => {
           Back
         </button>
         <span className="text-sm font-semibold text-[#808283]">
-          Media editor
+          Crop media
         </span>
         <button
           type="button"
@@ -1012,7 +1012,7 @@ const ComposerShowcase: FC = () => {
               Всп��могательные окна
             </h2>
             <p className="text-sm text-[#808283]">
-              Окна выбора эмодзи, ��ста��ки кода и управления черновиками.
+              Окна выб��ра эмодзи, ��ста��ки кода и управления черновиками.
             </p>
           </header>
 
