@@ -44,16 +44,16 @@ const replyOptions: { id: ReplyPolicy; label: string; description: string }[] = 
   { id: "mentioned", label: "Only accounts you mention", description: "Only people you mention can reply." },
 ];
 
-const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
-  const [blocks, setBlocks] = useState<BlockState[]>([{ id: "1", text: "", media: [], codeBlocks: [] }]);
-  const [replySetting, setReplySetting] = useState<ReplyPolicy>("everyone");
+const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlocks, initialReplySetting, initialSentiment }) => {
+  const [blocks, setBlocks] = useState<BlockState[]>(initialBlocks ?? [{ id: "1", text: "", media: [], codeBlocks: [] }]);
+  const [replySetting, setReplySetting] = useState<ReplyPolicy>(initialReplySetting ?? "everyone");
   const [isReplyMenuOpen, setIsReplyMenuOpen] = useState(false);
   const [isEmojiPickerOpen, setIsEmojiPickerOpen] = useState(false);
   const [isCodeBlockOpen, setIsCodeBlockOpen] = useState(false);
   const [activeBlockId, setActiveBlockId] = useState<string | null>(null);
   const [editingMedia, setEditingMedia] = useState<MediaItem | null>(null);
   const [isDraftsOpen, setIsDraftsOpen] = useState(false);
-  const [sentiment, setSentiment] = useState<"bullish" | "bearish" | null>("bullish");
+  const [sentiment, setSentiment] = useState<"bullish" | "bearish" | null>(initialSentiment ?? "bullish");
   const [mounted, setMounted] = useState(false);
   const [isPosting, setIsPosting] = useState(false);
 
