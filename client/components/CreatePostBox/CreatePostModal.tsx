@@ -174,15 +174,26 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
   }, [onBlocksChange]);
 
   useEffect(() => {
-    if (onBlocksChangeRef.current) {
-      try {
-        onBlocksChangeRef.current(blocks);
-      } catch (e) {
-        console.error("onBlocksChange handler failed:", e);
+    if (!isOpen) return; // only sync while modal is open
+
+    let mounted = true;
+    const handle = setTimeout(() => {
+      if (!mounted) return;
+      if (onBlocksChangeRef.current) {
+        try {
+          onBlocksChangeRef.current(blocks);
+        } catch (e) {
+          console.error("onBlocksChange handler failed:", e);
+        }
       }
-    }
-    // only depend on blocks to avoid loops caused by parent callback identity changes
-  }, [blocks]);
+    }, 120);
+
+    return () => {
+      mounted = false;
+      clearTimeout(handle);
+    };
+    // intentionally only watch blocks and isOpen to debounce updates
+  }, [blocks, isOpen]);
 
   const isThread = blocks.length > 1;
 
