@@ -815,6 +815,9 @@ const ComposerShowcase: FC = () => {
         initialBlocks={sharedBlocks.map((b) => ({ ...b }))}
         initialReplySetting={sharedReply}
         initialSentiment={sharedSentiment}
+        onBlocksChange={(newBlocks) => {
+          setSharedBlocks(newBlocks.map((b) => ({ id: b.id, text: b.text, media: b.media, codeBlocks: b.codeBlocks })));
+        }}
         onClose={(newBlocks) => {
           // update shared state when modal closes (newBlocks may be undefined)
           if (newBlocks) {
@@ -965,7 +968,7 @@ const ComposerShowcase: FC = () => {
             </ShowcaseCard>
             <ShowcaseCard
               title="ALT"
-              description="Р����дактирование ALT-текста для доступности."
+              description="Р��дактирование ALT-текста для доступности."
             >
               <MediaEditorPreview variant="alt" />
             </ShowcaseCard>
@@ -984,7 +987,7 @@ const ComposerShowcase: FC = () => {
               Вспомогательные окна
             </h2>
             <p className="text-sm text-[#808283]">
-              Окна выбора эмодзи, ��ставки кода и управления черновиками.
+              Окна выбора эмодзи, ��ста��ки кода и управления черновиками.
             </p>
           </header>
 
