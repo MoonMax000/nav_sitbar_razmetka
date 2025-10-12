@@ -138,7 +138,7 @@ const threadBlocks: StaticBlock[] = [
   },
   {
     id: "thread-3",
-    text: "Bonus snippet: here's the helper I use to mark retests automatically ����",
+    text: "Bonus snippet: here's the helper I use to mark retests automatically ��",
     media: [],
     codeBlocks: [codeSample],
   },
@@ -352,10 +352,10 @@ const StaticComposerWindow: FC<StaticComposerWindowProps> = ({
                   type="button"
                   onClick={noop}
                   aria-label="Add post"
-                  className="ml-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/20 text-[#1D9BF0] hover:bg-black/30"
+                  className="ml-3 flex h-6 w-6 items-center justify-center rounded-full bg-black/20 text-[#1D9BF0] hover:bg-black/30"
                 >
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                    <path d="M11 11V4h2v7h7v2h-7v7h-2v-7H4v-2h7z" fill="#1D9BF0" />
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden>
+                    <path d="M12 5v14M5 12h14" stroke="#1D9BF0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </button>
               )}
@@ -959,7 +959,7 @@ const ComposerShowcase: FC = () => {
           <div className="grid grid-cols-1 gap-6">
             <ShowcaseCard
               title="Crop"
-              description="Вкладка обрезки с активными пресетами."
+              description="Вкладка обрезки с акт��вными пресетами."
             >
               <MediaEditorPreview variant="crop" />
             </ShowcaseCard>
@@ -971,7 +971,7 @@ const ComposerShowcase: FC = () => {
             </ShowcaseCard>
             <ShowcaseCard
               title="Content warning"
-              description="Список предупреждений по конт��нту."
+              description="Список предупреждений по контенту."
             >
               <MediaEditorPreview variant="warning" />
             </ShowcaseCard>
