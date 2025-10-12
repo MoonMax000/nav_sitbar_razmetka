@@ -317,35 +317,51 @@ const StaticComposerWindow: FC<StaticComposerWindowProps> = ({
       <div className="flex items-center justify-between border-t border-[#181B22] px-5 py-4">
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2">
-            <svg className="h-8 w-8 -rotate-90" viewBox="0 0 32 32">
-              <circle
-                cx="16"
-                cy="16"
-                r="14"
-                fill="none"
-                stroke="#2F3336"
-                strokeWidth="4"
-              />
-              <circle
-                cx="16"
-                cy="16"
-                r="14"
-                fill="none"
-                stroke={
-                  isOverLimit ? "#EF454A" : isNearLimit ? "#FFD400" : "#A06AFF"
-                }
-                strokeWidth="4"
-                strokeDasharray={gradientStroke}
-                strokeLinecap="round"
-              />
-            </svg>
-            {(isNearLimit || isOverLimit) && (
-              <span
-                className={`text-sm font-semibold ${isOverLimit ? "text-[#EF454A]" : "text-[#FFD400]"}`}
-              >
-                {remainingChars}
-              </span>
-            )}
+            <div className="relative">
+              <svg className="h-8 w-8 -rotate-90" viewBox="0 0 32 32">
+                <circle
+                  cx="16"
+                  cy="16"
+                  r="14"
+                  fill="none"
+                  stroke="#2F3336"
+                  strokeWidth="4"
+                />
+                <circle
+                  cx="16"
+                  cy="16"
+                  r="14"
+                  fill="none"
+                  stroke={
+                    isOverLimit ? "#EF454A" : isNearLimit ? "#FFD400" : "#A06AFF"
+                  }
+                  strokeWidth="4"
+                  strokeDasharray={gradientStroke}
+                  strokeLinecap="round"
+                />
+              </svg>
+
+              {totalChars > 0 && (
+                <button
+                  type="button"
+                  onClick={noop}
+                  aria-label="Add post"
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex h-6 w-6 items-center justify-center rounded-full bg-black/20 text-[#1D9BF0] hover:bg-black/30"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                    <path d="M11 11V4h2v7h7v2h-7v7h-2v-7H4v-2h7z" fill="#1D9BF0" />
+                  </svg>
+                </button>
+              )}
+
+              {(isNearLimit || isOverLimit) && (
+                <span
+                  className={`absolute -right-6 top-1/2 -translate-y-1/2 text-sm font-semibold ${isOverLimit ? "text-[#EF454A]" : "text-[#FFD400]"}`}
+                >
+                  {remainingChars}
+                </span>
+              )}
+            </div>
           </div>
         </div>
 
@@ -899,7 +915,7 @@ const ComposerShowcase: FC = () => {
 
             <ShowcaseCard
               title="Thread + code"
-              description="Тред из нескольких бл��ков и вставкой кода."
+              description="Тред из нескольких блоков и вставкой кода."
             >
               <StaticComposerWindow
                 blocks={threadBlocks}
