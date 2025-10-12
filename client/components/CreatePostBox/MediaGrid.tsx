@@ -138,11 +138,6 @@ export const MediaGrid: FC<MediaGridProps> = ({
           </div>
 
           <div className="absolute bottom-3 left-3 flex flex-wrap items-center gap-2">
-            {item.alt && (
-              <span className="rounded-full bg-black/70 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
-                ALT
-              </span>
-            )}
             {item.sensitiveTags && item.sensitiveTags.length > 0 && (
               <span className="rounded-full bg-[#A06AFF]/20 px-3 py-1 text-xs font-semibold text-[#A06AFF]">
                 Warning
