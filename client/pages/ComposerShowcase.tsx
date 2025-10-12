@@ -316,50 +316,43 @@ const StaticComposerWindow: FC<StaticComposerWindowProps> = ({
 
       <div className="flex items-center justify-between border-t border-[#181B22] px-5 py-4">
         <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2 relative">
-              <div>
-                <svg className="h-8 w-8 -rotate-90" viewBox="0 0 32 32">
-                  <circle
-                    cx="16"
-                    cy="16"
-                    r="14"
-                    fill="none"
-                    stroke="#2F3336"
-                    strokeWidth="4"
-                  />
-                  <circle
-                    cx="16"
-                    cy="16"
-                    r="14"
-                    fill="none"
-                    stroke={isOverLimit ? "#EF454A" : isNearLimit ? "#FFD400" : "#A06AFF"}
-                    strokeWidth="4"
-                    strokeDasharray={gradientStroke}
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </div>
+            <div className="flex items-center gap-2">
+              <svg className="h-8 w-8 -rotate-90" viewBox="0 0 32 32">
+                <circle cx="16" cy="16" r="14" fill="none" stroke="#2F3336" strokeWidth="4" />
+                <circle
+                  cx="16"
+                  cy="16"
+                  r="14"
+                  fill="none"
+                  stroke={isOverLimit ? "#EF454A" : isNearLimit ? "#FFD400" : "#A06AFF"}
+                  strokeWidth="4"
+                  strokeDasharray={gradientStroke}
+                  strokeLinecap="round"
+                />
+              </svg>
 
               {(isNearLimit || isOverLimit) && (
                 <span className={`text-sm font-semibold ${isOverLimit ? "text-[#EF454A]" : "text-[#FFD400]"}`}>
                   {remainingChars}
                 </span>
               )}
+            </div>
 
-              {/* plus button positioned to the right side of this left column (acts as quick add) */}
-              {totalChars > 0 && (
+            {totalChars > 0 && (
+              <>
+                <div className="h-6 w-px bg-white/10" />
                 <button
                   type="button"
                   onClick={noop}
                   aria-label="Add post"
-                  className="ml-3 flex h-6 w-6 items-center justify-center rounded-full bg-black/20 text-[#1D9BF0] hover:bg-black/30"
+                  className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 text-[#1D9BF0] transition-colors hover:bg-white/20"
                 >
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden>
                     <path d="M12 5v14M5 12h14" stroke="#1D9BF0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </button>
-              )}
-            </div>
+              </>
+            )}
           </div>
 
         <div className="flex items-center gap-3">
@@ -959,7 +952,7 @@ const ComposerShowcase: FC = () => {
           <div className="grid grid-cols-1 gap-6">
             <ShowcaseCard
               title="Crop"
-              description="Вкладка обрезки с акт��вными пресетами."
+              description="Вкладка обрезки с активными пресетами."
             >
               <MediaEditorPreview variant="crop" />
             </ShowcaseCard>
