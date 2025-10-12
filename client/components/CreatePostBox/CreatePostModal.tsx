@@ -626,14 +626,14 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
             <div className="flex items-center gap-2">
               <button
                 type="button"
-                className="flex h-10 w-10 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#A06AFF]/10"
+                className="flex h-10 w-10 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#482090]/10"
                 title="Видео или GIF"
               >
                 <Video className="h-5 w-5" />
               </button>
               <button
                 type="button"
-                className="flex h-10 w-10 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#A06AFF]/10"
+                className="flex h-10 w-10 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#482090]/10"
                 title="Опрос"
               >
                 <BarChart3 className="h-5 w-5" />
@@ -641,7 +641,7 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
               <button
                 type="button"
                 onClick={openToolbarFilePicker}
-                className="flex h-10 w-10 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#A06AFF]/10"
+                className="flex h-10 w-10 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#482090]/10"
                 title="Добавить медиа"
                 disabled={blocks.length === 0}
               >
@@ -658,7 +658,7 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
               <button
                 type="button"
                 onClick={handleToolbarEmojiToggle}
-                className="flex h-10 w-10 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#A06AFF]/10"
+                className="flex h-10 w-10 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#482090]/10"
                 title="Добавить эмодзи"
                 disabled={blocks.length === 0}
               >
@@ -666,14 +666,14 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
               </button>
               <button
                 type="button"
-                className="flex h-10 w-10 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#A06AFF]/10"
+                className="flex h-10 w-10 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#482090]/10"
                 title="Запланировать"
               >
                 <CalendarClock className="h-5 w-5" />
               </button>
               <button
                 type="button"
-                className="flex h-10 w-10 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#A06AFF]/10"
+                className="flex h-10 w-10 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#482090]/10"
                 title="Локация"
               >
                 <MapPin className="h-5 w-5" />
