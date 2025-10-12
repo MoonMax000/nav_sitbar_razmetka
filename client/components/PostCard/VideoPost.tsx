@@ -203,8 +203,8 @@ const VideoPost: FC<VideoPostProps> = ({
           </div>
         </div>
 
-        <div className="flex w-full flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center gap-2">
+        <div className="flex w-full items-center gap-3">
+          <div className="flex items-center gap-1">
             <div className="flex items-center gap-1 rounded bg-[#1C3430] px-1 py-0.5">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M13.3333 8.66659V5.33325H10" stroke="#2EBD85" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -220,6 +220,9 @@ const VideoPost: FC<VideoPostProps> = ({
                 {sentiment === "bullish" ? "Bullish" : "Bearish"}
               </div>
             </div>
+          </div>
+
+          <div className="flex flex-1 items-center justify-center gap-12">
             <div className="flex items-center gap-1.5">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clipPath="url(#clip0_video_post_card)">
@@ -263,6 +266,7 @@ const VideoPost: FC<VideoPostProps> = ({
               </div>
             </div>
           </div>
+
           <div className="flex items-center gap-2">
             <div className="flex h-[26px] w-[26px] items-center justify-center rounded-lg">
               <svg
