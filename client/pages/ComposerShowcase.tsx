@@ -606,9 +606,6 @@ const MediaEditorPreview: FC<MediaEditorPreviewProps> = ({ variant }) => {
                 Fill
               </span>
               <span className="rounded-full border border-[#2F3336] px-3 py-1 text-[#808283]">
-                Rotate 90°
-              </span>
-              <span className="rounded-full border border-[#2F3336] px-3 py-1 text-[#808283]">
                 Flip H
               </span>
               <span className="rounded-full border border-[#2F3336] px-3 py-1 text-[#808283]">
@@ -1020,7 +1017,7 @@ const ComposerShowcase: FC = () => {
           <div className="grid grid-cols-1 gap-6">
             <ShowcaseCard
               title="Emoji picker"
-              description="Категории эмодзи с поиском."
+              description="Категории эм��дзи с поиском."
             >
               <div className="mx-auto h-96 w-96 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.95)] p-4 backdrop-blur-[100px]">
                 <EmojiPicker onSelect={noop} />
