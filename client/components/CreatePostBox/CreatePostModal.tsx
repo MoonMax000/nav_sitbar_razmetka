@@ -45,7 +45,7 @@ const replyOptions: { id: ReplyPolicy; label: string; description: string }[] = 
   { id: "mentioned", label: "Only accounts you mention", description: "Only people you mention can reply." },
 ];
 
-const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlocks, initialReplySetting, initialSentiment }) => {
+const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlocks, initialReplySetting, initialSentiment, onBlocksChange }) => {
   const [blocks, setBlocks] = useState<BlockState[]>(initialBlocks ?? [{ id: "1", text: "", media: [], codeBlocks: [] }]);
   const [replySetting, setReplySetting] = useState<ReplyPolicy>(initialReplySetting ?? "everyone");
   const [isReplyMenuOpen, setIsReplyMenuOpen] = useState(false);
