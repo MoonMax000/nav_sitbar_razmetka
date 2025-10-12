@@ -184,23 +184,38 @@ const SocialFeed: FC = () => {
     <div className="flex w-full justify-center pb-12">
       <div className="grid w-full max-w-[1180px] grid-cols-1 items-start gap-8 lg:grid-cols-[minmax(0,720px)_minmax(0,320px)]">
         <section className="flex min-h-screen w-full max-w-[720px] flex-col gap-6 justify-self-center lg:justify-self-start">
-          <header className="flex flex-col gap-1">
-            <h1 className="text-3xl font-bold text-white">Лента</h1>
-            <p className="text-sm text-[#6C7080]">
-              Собранные в одном месте идеи, видео и аналитика от вашего сообщества.
-            </p>
-          </header>
+          <div className="flex flex-col gap-3">
+            <div className="inline-flex items-center gap-3 rounded-full border border-[#181B22] bg-[rgba(12,16,20,0.5)] p-1">
+              {(["foryou", "following"] as const).map((value) => {
+                const isActive = activeTab === value;
 
-          <CreatePostVariants />
+                return (
+                  <button
+                    key={value}
+                    type="button"
+                    onClick={() => setActiveTab(value)}
+                    aria-pressed={isActive}
+                    className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition ${
+                      isActive
+                        ? "bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white"
+                        : "text-[#B0B0B0] hover:text-white"
+                    }`}
+                  >
+                    <span>{value === "foryou" ? "For you" : "Following"}</span>
+                  </button>
+                );
+              })}
+            </div>
 
-          <FeedTabs tabs={FEED_TABS} activeTab={activeTab} onTabChange={setActiveTab} />
+            <CreatePostVariants />
 
-          <FilterControls
-            activeFilter={filter}
-            counts={filterCounts}
-            onFilterChange={setFilter}
-            onOpenExplore={openExplore}
-          />
+            <FilterControls
+              activeFilter={filter}
+              counts={filterCounts}
+              onFilterChange={setFilter}
+              onOpenExplore={openExplore}
+            />
+          </div>
 
           {postsToDisplay.length > 0 ? (
             <div className="flex flex-col gap-6">
