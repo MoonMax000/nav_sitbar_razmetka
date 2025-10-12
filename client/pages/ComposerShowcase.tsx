@@ -356,26 +356,13 @@ const StaticComposerWindow: FC<StaticComposerWindowProps> = ({
 
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-2">
-              <svg className="h-8 w-8 -rotate-90" viewBox="0 0 32 32">
-                <circle cx="16" cy="16" r="14" fill="none" stroke="#2F3336" strokeWidth="4" />
-                <circle
-                  cx="16"
-                  cy="16"
-                  r="14"
-                  fill="none"
-                  stroke={isOverLimit ? "#EF454A" : isNearLimit ? "#FFD400" : "#A06AFF"}
-                  strokeWidth="4"
-                  strokeDasharray={gradientStroke}
-                  strokeLinecap="round"
-                  className="transition-all"
-                />
-              </svg>
-              {(isNearLimit || isOverLimit) && (
-                <span className={`text-sm font-semibold ${isOverLimit ? "text-[#EF454A]" : "text-[#FFD400]"}`}>
-                  {remainingChars}
-                </span>
-              )}
-            </div>
+            <svg viewBox="0 0 24 24" aria-hidden="true" className="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-lrvibr r-m6rgpd r-z80fyv r-19wmn03" style={{ color: 'rgb(29, 155, 240)' }}>
+              <g>
+                <path d="M3 7.5C3 6.119 4.119 5 5.5 5h13C19.881 5 21 6.119 21 7.5v9c0 1.381-1.119 2.5-2.5 2.5h-13C4.119 19 3 17.881 3 16.5v-9zM5.5 7c-.276 0-.5.224-.5.5v9c0 .276.224.5.5.5h13c.276 0 .5-.224.5-.5v-9c0-.276-.224-.5-.5-.5h-13z"></path>
+              </g>
+            </svg>
+            <span className="text-sm font-semibold text-[#1D9BF0]">Everyone can reply</span>
+          </div>
 
             {hasContent && (
               <>
