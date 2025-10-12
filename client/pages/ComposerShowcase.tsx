@@ -433,7 +433,7 @@ const StaticComposerWindow: FC<StaticComposerWindowProps> = ({
           className={`inline-flex h-10 min-w-[100px] items-center justify-center rounded-full px-6 text-sm font-semibold transition-all ${
             hasContent
               ? "bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white hover:shadow-[0_12px_30px_-18px_rgba(160,106,255,0.8)]"
-              : "bg-[#A06AFF]/20 text-white/40"
+              : "cursor-not-allowed bg-[#A06AFF]/20 text-white/40"
           }`}
         >
           Post all
