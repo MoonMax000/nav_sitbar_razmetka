@@ -79,7 +79,7 @@ const readImageFile = (file: File): Promise<ChosenImage> =>
           height: image.height,
         });
       image.onerror = () =>
-        reject(new Error("Не удалось получить параметры изо��ражения"));
+        reject(new Error("Не удалось получить параме��ры изо��ражения"));
       image.src = result;
     };
     reader.readAsDataURL(file);
@@ -133,7 +133,7 @@ const useComposerState = (variantLabel: string) => {
         toast({
           title: "Ограничение",
           description:
-            "Выбрано слишком много файлов. Добавлено мак��имум 4 изображ��ния.",
+            "Выбрано слишком много файлов. Добавлено максимум 4 изображ��ния.",
         });
       }
 
@@ -240,36 +240,15 @@ const IconActionButton: FC<{
   </button>
 );
 
-const EmojiPickerButton: FC<{ onSelect: (emoji: string) => void }> = ({
-  onSelect,
-}) => (
-  <Popover>
-    <PopoverTrigger asChild>
-      <button
-        type="button"
-        aria-label="Добавить эмодзи"
-        className="flex h-10 w-10 items-center justify-center rounded-full text-[#9AA0A8] transition-colors hover:bg-[#482090]/10"
-      >
-        <Smile className="h-5 w-5" />
-      </button>
-    </PopoverTrigger>
-    <PopoverContent
-      align="start"
-      sideOffset={8}
-      className="grid w-[210px] grid-cols-6 gap-2 rounded-2xl border border-[#1F242B] bg-[rgba(12,16,20,0.95)] p-3 shadow-[0_12px_40px_rgba(0,0,0,0.45)]"
-    >
-      {EMOJI_PRESETS.map((emoji) => (
-        <button
-          key={emoji}
-          type="button"
-          onClick={() => onSelect(emoji)}
-          className="flex h-10 w-10 items-center justify-center rounded-full text-lg transition-colors hover:bg-[#482090]/10"
-        >
-          {emoji}
-        </button>
-      ))}
-    </PopoverContent>
-  </Popover>
+const EmojiPickerButton: FC<{ onSelect: (emoji: string) => void }> = ({ onSelect }) => (
+  <button
+    type="button"
+    aria-label="Открыть композер"
+    onClick={() => window.dispatchEvent(new CustomEvent('open-composer'))}
+    className="flex h-10 w-10 items-center justify-center rounded-full text-[#9AA0A8] transition-colors hover:bg-[#482090]/10"
+  >
+    <Smile className="h-5 w-5" />
+  </button>
 );
 
 const ChosenMediaGrid: FC<{
