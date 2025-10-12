@@ -11,6 +11,7 @@ import SuggestedProfilesWidget, {
 import TrendingTopicsWidget, {
   type TrendingTopic,
 } from "@/components/SocialFeedWidgets/TrendingTopicsWidget";
+import { Search } from "lucide-react";
 import {
   type FilterType,
   type SocialPost,
@@ -29,7 +30,7 @@ const POSTS: SocialPost[] = socialPosts;
 const FEED_TABS: TabDefinition[] = [
   {
     id: "popular",
-    label: "В тренде",
+    label: "В тре��де",
     description: "Самые обсуждаемые идеи сообщества",
   },
   {
