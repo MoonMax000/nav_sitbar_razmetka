@@ -210,7 +210,7 @@ const StaticComposerWindow: FC<StaticComposerWindowProps> = ({
         <div>
           <button
             type="button"
-            className="flex h-9 w-9 items-center justify-center rounded-full text-[#E7E9EA] transition-colors hover:bg-white/10"
+            className="flex h-10 w-10 items-center justify-center rounded-full text-[#E7E9EA] transition-colors hover:bg-white/10"
             aria-label="Close"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
@@ -260,7 +260,7 @@ const StaticComposerWindow: FC<StaticComposerWindowProps> = ({
           <button
             type="button"
             onClick={noop}
-            className={`flex h-9 w-9 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#A06AFF]/10`}
+            className={`flex h-10 w-10 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#A06AFF]/10`}
             title="Add video"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
@@ -272,7 +272,7 @@ const StaticComposerWindow: FC<StaticComposerWindowProps> = ({
           <button
             type="button"
             onClick={noop}
-            className={`flex h-9 w-9 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#A06AFF]/10`}
+            className={`flex h-10 w-10 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#A06AFF]/10`}
             title="Add poll"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
@@ -283,7 +283,7 @@ const StaticComposerWindow: FC<StaticComposerWindowProps> = ({
           <button
             type="button"
             onClick={noopFile}
-            className={`flex h-9 w-9 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#A06AFF]/10`}
+            className={`flex h-10 w-10 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#A06AFF]/10`}
             title="Add media"
           >
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -296,7 +296,7 @@ const StaticComposerWindow: FC<StaticComposerWindowProps> = ({
           <button
             type="button"
             onClick={noop}
-            className={`flex h-9 w-9 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#A06AFF]/10`}
+            className={`flex h-10 w-10 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#A06AFF]/10`}
             title="Add emoji"
           >
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -309,7 +309,7 @@ const StaticComposerWindow: FC<StaticComposerWindowProps> = ({
           <button
             type="button"
             onClick={noop}
-            className={`flex h-9 w-9 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#A06AFF]/10`}
+            className={`flex h-10 w-10 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#A06AFF]/10`}
             title="Add code block"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
@@ -663,7 +663,7 @@ const CodeBlockModalPreview: FC = () => (
       </div>
       <button
         type="button"
-        className="flex h-9 w-9 items-center justify-center rounded-full text-[#E7E9EA] transition-colors hover:bg-white/10"
+        className="flex h-10 w-10 items-center justify-center rounded-full text-[#E7E9EA] transition-colors hover:bg-white/10"
       >
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
           <path
@@ -740,7 +740,7 @@ const DraftsListPreview: FC = () => (
       <h2 className="text-lg font-bold text-white">Drafts</h2>
       <button
         type="button"
-        className="flex h-9 w-9 items-center justify-center rounded-full text-[#E7E9EA] transition-colors hover:bg-white/10"
+        className="flex h-10 w-10 items-center justify-center rounded-full text-[#E7E9EA] transition-colors hover:bg-white/10"
       >
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
           <path
@@ -945,7 +945,7 @@ const ComposerShowcase: FC = () => {
         <section className="space-y-6">
           <header>
             <h2 className="text-2xl font-semibold text-white">
-              Редактор медиа
+              Редактор ��едиа
             </h2>
             <p className="text-sm text-[#808283]">
               Статичные экземпляры вкладок Crop, ALT и Content warning.
