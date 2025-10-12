@@ -159,7 +159,7 @@ const SocialFeed: FC = () => {
   const emptyTitle = isFollowingTab
     ? "Здесь появятся идеи людей, на которых вы подписаны"
     : isVideoFilterEmpty
-      ? "Видео пока не найдены"
+      ? "В��део пока не найдены"
       : "Записей пока нет";
 
   const emptyDescription = isFollowingTab
@@ -191,7 +191,7 @@ const SocialFeed: FC = () => {
             </p>
           </header>
 
-          <CreatePostBox />
+          <CreatePostVariants />
 
           <FeedTabs tabs={FEED_TABS} activeTab={activeTab} onTabChange={setActiveTab} />
 
