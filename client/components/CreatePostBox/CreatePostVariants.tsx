@@ -1,4 +1,13 @@
-import { ChangeEvent, FC, useCallback, useLayoutEffect, useMemo, useRef, useState } from "react";
+import {
+  type CSSProperties,
+  ChangeEvent,
+  FC,
+  useCallback,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { motion } from "framer-motion";
 import { toast } from "@/hooks/use-toast";
 import { defaultProfile } from "@/data/socialProfile";
@@ -288,7 +297,7 @@ const ChosenMediaGrid: FC<{
   return (
     <div
       className={cn(containerClass, tone === "minimal" && "gap-2")}
-      style={gridAreas ? ({ gridTemplateAreas: gridAreas } as React.CSSProperties) : undefined}
+      style={gridAreas ? ({ gridTemplateAreas: gridAreas } as CSSProperties) : undefined}
     >
       {items.map((image, index) => (
         <div
@@ -301,7 +310,7 @@ const ChosenMediaGrid: FC<{
         >
           <button
             type="button"
-            aria-label="Удалить изображение"
+            aria-label="У��алить изображение"
             onClick={() => onRemove(image.id)}
             className="absolute right-2 top-2 flex h-8 w-8 items-center justify-center rounded-full bg-black/55 text-white opacity-0 transition-opacity group-hover:opacity-100"
           >
@@ -355,8 +364,8 @@ const VariantClassic: FC = () => {
                 className="hidden"
                 onChange={composer.handleFiles}
               />
-              <IconActionButton label="GIF" icon={<Gif className="h-5 w-5" />} />
-              <IconActionButton label="Оп��ос" icon={<BarChart3 className="h-5 w-5" />} />
+              <IconActionButton label="Видео или GIF" icon={<Video className="h-5 w-5" />} />
+              <IconActionButton label="Опрос" icon={<BarChart3 className="h-5 w-5" />} />
               <EmojiPickerButton onSelect={(emoji) => composer.setText((prev) => prev + emoji)} />
               <IconActionButton label="Запланировать" icon={<CalendarClock className="h-5 w-5" />} />
               <IconActionButton label="Локация" icon={<MapPin className="h-5 w-5" />} />
