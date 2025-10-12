@@ -543,8 +543,7 @@ const MediaEditorPreview: FC<MediaEditorPreviewProps> = ({ variant }) => {
                 <button
                   type="button"
                   aria-label="Aspect ratio: original"
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 backdrop-blur-sm text-white"
-                  style={{ boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.04)" }}
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[rgba(0,0,0,0.72)] text-white/90 backdrop-blur-sm transition-colors duration-200 hover:bg-[rgba(255,255,255,0.18)]"
                 >
                   <svg
                     viewBox="0 0 24 24"
@@ -932,7 +931,7 @@ const ComposerShowcase: FC = () => {
 
             <ShowcaseCard
               title="Gallery"
-              description="Не��колько изображений и ALT подписи."
+              description="Не���колько изображений и ALT подписи."
             >
               <StaticComposerWindow
                 blocks={[
