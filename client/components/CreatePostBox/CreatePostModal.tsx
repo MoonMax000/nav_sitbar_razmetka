@@ -471,7 +471,7 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
         <div className="flex items-center justify-between border-b border-[#181B22] px-5 py-4">
           <button
             onClick={handleClose}
-            className="flex h-9 w-9 items-center justify-center rounded-full text-[#E7E9EA] transition-colors hover:bg-white/10"
+            className="flex h-10 w-10 items-center justify-center rounded-full text-[#E7E9EA] transition-colors hover:bg-white/10"
             disabled={isPosting}
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
