@@ -86,9 +86,9 @@ export const MediaGrid: FC<MediaGridProps> = ({
               type="button"
               onClick={isInteractive ? () => onEdit(item) : undefined}
               disabled={!isInteractive}
-              className={`flex h-9 w-9 items-center justify-center rounded-full bg-[rgba(255,255,255,0.04)] text-white/90 backdrop-blur-sm border border-white/6 ${
+              className={`flex h-9 w-9 items-center justify-center rounded-full bg-[rgba(0,0,0,0.45)] text-white/90 backdrop-blur-sm ${
                 isInteractive
-                  ? "hover:bg-[rgba(255,255,255,0.06)]"
+                  ? "hover:bg-[rgba(0,0,0,0.55)]"
                   : "opacity-60 cursor-default"
               }`}
               title="Edit"
@@ -115,9 +115,9 @@ export const MediaGrid: FC<MediaGridProps> = ({
               type="button"
               onClick={isInteractive ? () => onRemove(item.id) : undefined}
               disabled={!isInteractive}
-              className={`flex h-9 w-9 items-center justify-center rounded-full bg-[rgba(255,255,255,0.04)] text-white/90 backdrop-blur-sm border border-white/6 ${
+              className={`flex h-9 w-9 items-center justify-center rounded-full bg-[rgba(0,0,0,0.45)] text-white/90 backdrop-blur-sm ${
                 isInteractive
-                  ? "hover:bg-[rgba(255,255,255,0.06)]"
+                  ? "hover:bg-[rgba(0,0,0,0.55)]"
                   : "opacity-60 cursor-default"
               }`}
               title="Remove"
