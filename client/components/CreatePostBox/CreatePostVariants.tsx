@@ -591,16 +591,19 @@ const VariantMinimal: FC = () => {
 
         <div className="flex items-center gap-3">
           {composer.text.length > 0 && (
-            <button
-              type="button"
-              onClick={composer.handleSubmit}
-              aria-label="Quick add post"
-              className="flex h-6 w-6 items-center justify-center rounded-full bg-black/20 text-[#1D9BF0] hover:bg-black/30"
-            >
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" aria-hidden>
-                <path d="M12 5v14M5 12h14" stroke="#1D9BF0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
+            <>
+              <div className="h-6 w-px bg-white/15" />
+              <button
+                type="button"
+                onClick={composer.handleSubmit}
+                aria-label="Quick add post"
+                className="flex h-6 w-6 items-center justify-center rounded-full border border-white/20 bg-white/5 text-[#1D9BF0] transition-colors hover:bg-white/15 hover:border-white/30"
+              >
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" aria-hidden>
+                  <path d="M12 5v14M5 12h14" stroke="#1D9BF0" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+            </>
           )}
 
           <button
