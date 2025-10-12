@@ -78,6 +78,7 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
   }, [isOpen]);
 
   useEffect(() => {
+    // Only initialize/reset when modal open state changes to avoid update loops
     if (!isOpen) {
       setTimeout(() => {
         setBlocks(initialBlocks ?? [{ id: "1", text: "", media: [], codeBlocks: [] }]);
@@ -93,7 +94,7 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
       setReplySetting(initialReplySetting ?? "everyone");
       setSentiment(initialSentiment ?? "bullish");
     }
-  }, [isOpen, initialBlocks, initialReplySetting, initialSentiment]);
+  }, [isOpen]);
 
 
   useEffect(() => {
