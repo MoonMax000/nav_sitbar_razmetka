@@ -7,6 +7,7 @@ import {
   MediaItem,
   ReplyPolicy,
   createDefaultTransform,
+  REPLY_SUMMARY_TEXT,
 } from "../components/CreatePostBox/types";
 
 const replyOptions: { id: ReplyPolicy; label: string; description: string }[] =
@@ -994,7 +995,7 @@ const ComposerShowcase: FC = () => {
           <div className="grid grid-cols-1 gap-6">
             <ShowcaseCard
               title="Emoji picker"
-              description="Категории эмодзи с поиском."
+              description="Категори�� эмодзи с поиском."
             >
               <div className="mx-auto h-96 w-96 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.95)] p-4 backdrop-blur-[100px]">
                 <EmojiPicker onSelect={noop} />
