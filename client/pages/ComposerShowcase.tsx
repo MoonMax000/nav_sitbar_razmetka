@@ -259,6 +259,29 @@ const StaticComposerWindow: FC<StaticComposerWindowProps> = ({
         <div className="flex items-center gap-2">
           <button
             type="button"
+            onClick={noop}
+            className={`flex h-9 w-9 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#A06AFF]/10`}
+            title="Add video"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M23 7l-7 5 7 5V7z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <rect x="1" y="5" width="14" height="14" rx="2" stroke="currentColor" strokeWidth="1.5" />
+            </svg>
+          </button>
+
+          <button
+            type="button"
+            onClick={noop}
+            className={`flex h-9 w-9 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#A06AFF]/10`}
+            title="Add poll"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M3 12h4v7H3zM10 7h4v12h-4zM17 3h4v16h-4z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+
+          <button
+            type="button"
             onClick={noopFile}
             className={`flex h-9 w-9 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#A06AFF]/10`}
             title="Add media"
