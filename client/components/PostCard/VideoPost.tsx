@@ -185,6 +185,16 @@ const VideoPost: FC<VideoPostProps> = ({
           )}
         </div>
 
+        {hashtags && hashtags.length > 0 && (
+          <div className="flex w-full flex-wrap gap-3 mb-2">
+            {hashtags.map((tag) => (
+              <span key={tag} className="text-sm font-semibold text-[#A06AFF]">
+                #{tag}
+              </span>
+            ))}
+          </div>
+        )}
+
         <div className="relative w-full overflow-hidden rounded-2xl border border-[#181B22]">
           <img src={videoUrl} alt="" className="aspect-[1043/585] w-full object-cover" />
           <div className="absolute inset-0 flex items-center justify-center">
@@ -304,15 +314,6 @@ const VideoPost: FC<VideoPostProps> = ({
         </div>
       </div>
 
-      {hashtags && hashtags.length > 0 && (
-        <div className="flex w-full flex-wrap gap-3">
-          {hashtags.map((tag) => (
-            <span key={tag} className="text-sm font-semibold text-[#A06AFF]">
-              #{tag}
-            </span>
-          ))}
-        </div>
-      )}
     </div>
   );
 };
