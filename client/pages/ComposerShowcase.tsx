@@ -343,27 +343,29 @@ const StaticComposerWindow: FC<StaticComposerWindowProps> = ({
         <div className="flex items-center gap-3">
           <button
             type="button"
-            className={`rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-wide inline-flex items-center gap-2 transition-colors ${
+            className={`rounded inline-flex items-center gap-1 px-1 py-0.5 text-xs font-bold transition-colors ${
               sentiment === "bullish"
-                ? "bg-[#2EBD85] text-black"
-                : "bg-white/5 text-[#2EBD85]"
+                ? "bg-[#1C3430] text-white"
+                : "bg-white/5 text-white/40"
             }`}
           >
-            <svg className="h-3 w-3" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M6 2L10 6H7V10H5V6H2L6 2Z" fill="currentColor" />
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M13.3333 8.66659V5.33325H10" stroke="#2EBD85" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M13.3334 5.33325L10.0001 8.66659C9.41168 9.25499 9.11755 9.54912 8.75648 9.58165C8.69675 9.58705 8.63675 9.58705 8.57702 9.58165C8.21595 9.54912 7.92181 9.25499 7.33341 8.66659C6.74501 8.07819 6.45085 7.78405 6.08979 7.75152C6.03011 7.74612 5.97005 7.74612 5.91037 7.75152C5.54931 7.78405 5.25512 8.07819 4.66675 8.66659L2.66675 10.6666" stroke="#2EBD85" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
             Bullish
           </button>
           <button
             type="button"
-            className={`rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-wide inline-flex items-center gap-2 transition-colors ${
+            className={`rounded inline-flex items-center gap-1 px-1 py-0.5 text-xs font-bold transition-colors ${
               sentiment === "bearish"
-                ? "bg-[#EF454A] text-white"
-                : "bg-white/5 text-[#EF454A]"
+                ? "bg-[#3A2127] text-white"
+                : "bg-white/5 text-white/40"
             }`}
           >
-            <svg className="h-3 w-3" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M6 10L2 6H5V2H7V6H10L6 10Z" fill="currentColor" />
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M13.3333 7.3335V10.6668H10" stroke="#EF454A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M13.3334 10.6668L10.0001 7.3335C9.41168 6.7451 9.11755 6.45093 8.75648 6.41841C8.69675 6.41303 8.63675 6.41303 8.57702 6.41841C8.21595 6.45093 7.92181 6.7451 7.33341 7.3335C6.74501 7.9219 6.45085 8.21603 6.08979 8.24856C6.03011 8.25396 5.97005 8.25396 5.91037 8.24856C5.54931 8.21603 5.25512 7.9219 4.66675 7.3335L2.66675 5.3335" stroke="#EF454A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
             Bearish
           </button>
