@@ -22,6 +22,7 @@ interface CreatePostModalProps {
   initialBlocks?: BlockState[];
   initialReplySetting?: ReplyPolicy;
   initialSentiment?: "bullish" | "bearish" | null;
+  onBlocksChange?: (blocks: BlockState[]) => void;
 }
 
 interface CodeBlock {
