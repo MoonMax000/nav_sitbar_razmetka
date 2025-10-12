@@ -615,23 +615,6 @@ const MediaEditorPreview: FC<MediaEditorPreviewProps> = ({ variant }) => {
           </>
         )}
 
-        {isAlt && (
-          <div className="space-y-4">
-            <div className="rounded-2xl border border-[#181B22] bg-[#0C1014] p-4 text-sm text-[#B0B0B0]">
-              Adding a clear image description improves accessibility for people
-              using screen readers.
-            </div>
-            <textarea
-              className="h-48 w-full resize-none rounded-2xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] p-4 text-sm text-[#E7E9EA] outline-none"
-              defaultValue="Wide shot of a modern trading desk with multi-screen setup, ambient neon lighting and analytics dashboards."
-              readOnly
-            />
-            <div className="flex items-center justify-between text-xs text-[#808283]">
-              <span>0 warnings</span>
-              <span>136 / 1000</span>
-            </div>
-          </div>
-        )}
 
         {isWarning && (
           <div className="space-y-4">
