@@ -811,7 +811,7 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
         {isEmojiPickerOpen && (
           <div
             ref={emojiMenuRef}
-            className="absolute bottom-24 left-12 z-[2100] h-96 w-96 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.95)] p-4 shadow-2xl backdrop-blur-[100px]"
+            className="absolute bottom-24 left-6 z-[2100] h-96 w-96 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.95)] p-4 shadow-2xl backdrop-blur-[100px]"
           >
             <EmojiPicker onSelect={handleEmojiSelect} />
           </div>
