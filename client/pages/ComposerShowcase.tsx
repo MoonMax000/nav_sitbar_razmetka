@@ -809,7 +809,7 @@ const ComposerShowcase: FC = () => {
   const [sharedSentiment, setSharedSentiment] = useState<"bullish" | "bearish" | null>(null);
 
   return (
-    <div className="min-h-screen bg-black py-12 px-6">
+    <div className="min-h-screen py-12 px-6">
       <CreatePostModal
         isOpen={isModalOpen}
         initialBlocks={sharedBlocks.map((b) => ({ ...b }))}
@@ -913,7 +913,7 @@ const ComposerShowcase: FC = () => {
 
             <ShowcaseCard
               title="Gallery"
-              description="Не��колько изображений и ALT подписи."
+              description="Не��колько изображений и ALT подпис��."
             >
               <StaticComposerWindow
                 blocks={[
