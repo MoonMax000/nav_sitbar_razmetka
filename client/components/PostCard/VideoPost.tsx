@@ -203,7 +203,7 @@ const VideoPost: FC<VideoPostProps> = ({
           </div>
         </div>
 
-        <div className="grid w-full grid-cols-5 items-center">
+        <div className="grid w-full grid-cols-[auto_1fr_auto] items-center">
           <div className="col-span-1 flex items-center">
             <div className="flex items-center gap-1 rounded bg-[#1C3430] px-1 py-0.5">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -222,8 +222,8 @@ const VideoPost: FC<VideoPostProps> = ({
             </div>
           </div>
 
-          <div className="col-span-1 flex items-center justify-center">
-            <div className="flex items-center gap-1.5">
+          <div className="col-span-1 relative">
+            <div style={{position: 'absolute', left: '33.3333%'}} className="-translate-x-1/2 flex items-center gap-1.5">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clipPath="url(#clip0_video_post_card)">
                   <path
@@ -248,10 +248,8 @@ const VideoPost: FC<VideoPostProps> = ({
               </svg>
               <div className="text-xs font-bold leading-normal text-[#B0B0B0]">{comments}</div>
             </div>
-          </div>
 
-          <div className="col-span-1 flex items-center justify-center">
-            <div className="flex items-center gap-1.5">
+            <div style={{position: 'absolute', left: '66.6666%'}} className="-translate-x-1/2 flex items-center gap-1.5">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M16.2192 3.32846C13.9844 1.95769 12.034 2.51009 10.8623 3.39001C10.3818 3.7508 10.1417 3.93119 10.0003 3.93119C9.85899 3.93119 9.61882 3.7508 9.13832 3.39001C7.96667 2.51009 6.01623 1.95769 3.78152 3.32846C0.848716 5.12745 0.185092 11.0624 6.94993 16.0695C8.23842 17.0232 8.88266 17.5 10.0003 17.5C11.118 17.5 11.7622 17.0232 13.0507 16.0695C19.8156 11.0624 19.1519 5.12745 16.2192 3.32846Z"
