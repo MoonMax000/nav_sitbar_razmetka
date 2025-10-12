@@ -572,9 +572,23 @@ const MediaEditorPreview: FC<MediaEditorPreviewProps> = ({ variant }) => {
                     </g>
                   </svg>
                 </button>
-                <span className="flex h-10 items-center justify-center rounded-lg border border-[#2F3336] px-4 text-sm text-[#E7E9EA]">
-                  Landscape
-                </span>
+                <button
+                  type="button"
+                  aria-label="Aspect ratio: landscape"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 backdrop-blur-sm text-white"
+                  style={{ boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.04)" }}
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    className="h-5 w-5 text-white"
+                    fill="currentColor"
+                  >
+                    <g>
+                      <path d="M3 5.5C3 4.119 4.119 3 5.5 3h13C19.881 3 21 4.119 21 5.5v13c0 1.381-1.119 2.5-2.5 2.5h-13C4.119 21 3 19.881 3 18.5v-13zM5.5 5c-.276 0-.5.224-.5.5v13c0 .276.224.5.5.5h13c.276 0 .5-.224.5-.5v-13c0-.276-.224-.5-.5-.5h-13z" />
+                    </g>
+                  </svg>
+                </button>
               </div>
               <div className="h-6 w-px bg-[#2F3336]" />
               <div className="flex flex-1 items-center gap-3">
@@ -877,7 +891,7 @@ const ComposerShowcase: FC = () => {
           <div className="flex items-center justify-between">
             <header>
               <h2 className="text-2xl font-semibold text-white">
-                Основное окно композера
+                Основ��ое окно композера
               </h2>
               <p className="text-sm text-[#808283]">
                 Вариации с т��кстом, медиа, код-блоками и тредами, доступн��е для
