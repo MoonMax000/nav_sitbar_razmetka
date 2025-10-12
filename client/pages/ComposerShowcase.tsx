@@ -397,91 +397,48 @@ const StaticComposerWindow: FC<StaticComposerWindowProps> = ({
         </div>
       </div>
 
-      <div className="flex items-center justify-between border-t border-[#181B22] px-5 py-4">
-        <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2">
-              <svg className="h-8 w-8 -rotate-90" viewBox="0 0 32 32">
-                <circle cx="16" cy="16" r="14" fill="none" stroke="#2F3336" strokeWidth="4" />
-                <circle
-                  cx="16"
-                  cy="16"
-                  r="14"
-                  fill="none"
-                  stroke={isOverLimit ? "#EF454A" : isNearLimit ? "#FFD400" : "#A06AFF"}
-                  strokeWidth="4"
-                  strokeDasharray={gradientStroke}
-                  strokeLinecap="round"
-                />
-              </svg>
-
-              {(isNearLimit || isOverLimit) && (
-                <span className={`text-sm font-semibold ${isOverLimit ? "text-[#EF454A]" : "text-[#FFD400]"}`}>
-                  {remainingChars}
-                </span>
-              )}
-            </div>
-
-            {totalChars > 0 && (
-              <>
-                <div className="h-8 w-px bg-white/15" />
-                <button
-                  type="button"
-                  onClick={noop}
-                  aria-label="Add post"
-                  className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-white/20 bg-white/5 text-[#1D9BF0] transition-colors hover:bg-white/15 hover:border-white/30"
-                >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
-                    <path d="M12 5v14M5 12h14" stroke="#1D9BF0" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </button>
-              </>
-            )}
-          </div>
-
+      <div className="flex flex-wrap items-center justify-between gap-3 border-t border-[#181B22] px-5 py-4">
         <div className="flex items-center gap-3">
           <button
             type="button"
-            className={`rounded inline-flex items-center gap-1 px-1 py-0.5 text-xs font-bold transition-colors ${
+            className={`rounded inline-flex items-center gap-1 px-2.5 py-1 text-xs font-bold transition-colors ${
               sentiment === "bullish"
                 ? "bg-[#1C3430] text-white"
-                : "bg-white/5 text-white/40"
+                : "bg-white/5 text-white/40 hover:text-white"
             }`}
           >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M13.3333 8.66659V5.33325H10" stroke="#2EBD85" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M13.3334 5.33325L10.0001 8.66659C9.41168 9.25499 9.11755 9.54912 8.75648 9.58165C8.69675 9.58705 8.63675 9.58705 8.57702 9.58165C8.21595 9.54912 7.92181 9.25499 7.33341 8.66659C6.74501 8.07819 6.45085 7.78405 6.08979 7.75152C6.03011 7.74612 5.97005 7.74612 5.91037 7.75152C5.54931 7.78405 5.25512 8.07819 4.66675 8.66659L2.66675 10.6666" stroke="#2EBD85" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
+              <path d="M13.3333 8.66659V5.33325H10" stroke="#2EBD85" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M13.3334 5.33325L10.0001 8.66659C9.41168 9.25499 9.11755 9.54912 8.75648 9.58165C8.69675 9.58705 8.63675 9.58705 8.57702 9.58165C8.21595 9.54912 7.92181 9.25499 7.33341 8.66659C6.74501 8.07819 6.45085 7.78405 6.08979 7.75152C6.03011 7.74612 5.97005 7.74612 5.91037 7.75152C5.54931 7.78405 5.25512 8.07819 4.66675 8.66659L2.66675 10.6666" stroke="#2EBD85" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
             Bullish
           </button>
           <button
             type="button"
-            className={`rounded inline-flex items-center gap-1 px-1 py-0.5 text-xs font-bold transition-colors ${
+            className={`rounded inline-flex items-center gap-1 px-2.5 py-1 text-xs font-bold transition-colors ${
               sentiment === "bearish"
                 ? "bg-[#3A2127] text-white"
-                : "bg-white/5 text-white/40"
+                : "bg-white/5 text-white/40 hover:text-white"
             }`}
           >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M13.3333 7.3335V10.6668H10" stroke="#EF454A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M13.3334 10.6668L10.0001 7.3335C9.41168 6.7451 9.11755 6.45093 8.75648 6.41841C8.69675 6.41303 8.63675 6.41303 8.57702 6.41841C8.21595 6.45093 7.92181 6.7451 7.33341 7.3335C6.74501 7.9219 6.45085 8.21603 6.08979 8.24856C6.03011 8.25396 5.97005 8.25396 5.91037 8.24856C5.54931 8.21603 5.25512 7.9219 4.66675 7.3335L2.66675 5.3335" stroke="#EF454A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
+              <path d="M13.3333 7.3335V10.6668H10" stroke="#EF454A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M13.3334 10.6668L10.0001 7.3335C9.41168 6.7451 9.11755 6.45093 8.75648 6.41841C8.69675 6.41303 8.63675 6.41303 8.57702 6.41841C8.21595 6.45093 7.92181 6.7451 7.33341 7.3335C6.74501 7.9219 6.45085 8.21603 6.08979 8.24856C6.03011 8.25396 5.97005 8.25396 5.91037 8.24856C5.54931 8.21603 5.25512 7.9219 4.66675 7.3335L2.66675 5.3335" stroke="#EF454A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
             Bearish
           </button>
-          <button
-            type="button"
-            className={`inline-flex h-10 min-w-[100px] items-center justify-center rounded-full px-6 text-sm font-semibold transition-all ${
-              totalChars > 0 ||
-              blocks.some(
-                (block) =>
-                  block.media.length > 0 || (block.codeBlocks?.length ?? 0) > 0,
-              )
-                ? "bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white"
-                : "bg-[#A06AFF]/20 text-white/40"
-            }`}
-          >
-            Post all
-          </button>
         </div>
+
+        <button
+          type="button"
+          className={`inline-flex h-10 min-w-[100px] items-center justify-center rounded-full px-6 text-sm font-semibold transition-all ${
+            hasContent
+              ? "bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white hover:shadow-[0_12px_30px_-18px_rgba(160,106,255,0.8)]"
+              : "bg-[#A06AFF]/20 text-white/40"
+          }`}
+        >
+          Post all
+        </button>
       </div>
 
       {showEmojiPicker && (
