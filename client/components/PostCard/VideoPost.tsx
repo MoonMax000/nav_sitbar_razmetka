@@ -222,23 +222,6 @@ const VideoPost: FC<VideoPostProps> = ({
             </div>
             <div className="flex items-center gap-1.5">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M16.2192 3.32846C13.9844 1.95769 12.034 2.51009 10.8623 3.39001C10.3818 3.7508 10.1417 3.93119 10.0003 3.93119C9.85899 3.93119 9.61882 3.7508 9.13832 3.39001C7.96667 2.51009 6.01623 1.95769 3.78152 3.32846C0.848716 5.12745 0.185092 11.0624 6.94993 16.0695C8.23842 17.0232 8.88266 17.5 10.0003 17.5C11.118 17.5 11.7622 17.0232 13.0507 16.0695C19.8156 11.0624 19.1519 5.12745 16.2192 3.32846Z"
-                  fill="url(#paint0_linear_video_post_card)"
-                />
-                <defs>
-                  <linearGradient id="paint0_linear_video_post_card" x1="18.3337" y1="10" x2="1.66699" y2="10" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#A06AFF" />
-                    <stop offset="1" stopColor="#482090" />
-                  </linearGradient>
-                </defs>
-              </svg>
-              <div className="text-xs font-bold leading-normal text-[#A06AFF]">
-                {likes >= 1000 ? `${(likes / 1000).toFixed(1)}K` : likes}
-              </div>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clipPath="url(#clip0_video_post_card)">
                   <path
                     d="M18.3337 9.63875C18.3337 14.0414 14.6022 17.611 10.0003 17.611C9.45924 17.6118 8.91966 17.5617 8.38816 17.4619C8.0056 17.39 7.81431 17.3541 7.68077 17.3745C7.54722 17.3949 7.35798 17.4955 6.97948 17.6968C5.90878 18.2663 4.66028 18.4673 3.45958 18.244C3.91594 17.6827 4.22762 17.0092 4.36514 16.2872C4.44848 15.8455 4.24199 15.4165 3.93273 15.1024C2.5281 13.6761 1.66699 11.7541 1.66699 9.63875C1.66699 5.23615 5.39848 1.6665 10.0003 1.6665C14.6022 1.6665 18.3337 5.23615 18.3337 9.63875Z"
@@ -261,6 +244,23 @@ const VideoPost: FC<VideoPostProps> = ({
                 </defs>
               </svg>
               <div className="text-xs font-bold leading-normal text-[#B0B0B0]">{comments}</div>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M16.2192 3.32846C13.9844 1.95769 12.034 2.51009 10.8623 3.39001C10.3818 3.7508 10.1417 3.93119 10.0003 3.93119C9.85899 3.93119 9.61882 3.7508 9.13832 3.39001C7.96667 2.51009 6.01623 1.95769 3.78152 3.32846C0.848716 5.12745 0.185092 11.0624 6.94993 16.0695C8.23842 17.0232 8.88266 17.5 10.0003 17.5C11.118 17.5 11.7622 17.0232 13.0507 16.0695C19.8156 11.0624 19.1519 5.12745 16.2192 3.32846Z"
+                  fill="url(#paint0_linear_video_post_card)"
+                />
+                <defs>
+                  <linearGradient id="paint0_linear_video_post_card" x1="18.3337" y1="10" x2="1.66699" y2="10" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#A06AFF" />
+                    <stop offset="1" stopColor="#482090" />
+                  </linearGradient>
+                </defs>
+              </svg>
+              <div className="text-xs font-bold leading-normal text-[#A06AFF]">
+                {likes >= 1000 ? `${(likes / 1000).toFixed(1)}K` : likes}
+              </div>
             </div>
           </div>
           <div className="flex items-center gap-2">
