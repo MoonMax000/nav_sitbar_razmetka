@@ -8,6 +8,12 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: process.env.PORT ? Number(process.env.PORT) : 8080,
+    // Configure HMR for environments where the app is proxied under a different hostname
+    hmr: {
+      protocol: process.env.HMR_PROTOCOL || "wss",
+      host: process.env.HMR_HOST || undefined,
+      clientPort: process.env.HMR_CLIENT_PORT ? Number(process.env.HMR_CLIENT_PORT) : undefined,
+    },
     fs: {
       allow: ["./client", "./shared"],
       deny: [".env", ".env.*", "*.{crt,pem}", "**/.git/**", "server/**"],
