@@ -22,7 +22,6 @@ const SuggestedProfilesWidget: FC<SuggestedProfilesWidgetProps> = ({
     <section className="rounded-[24px] border border-[#181B22] bg-[rgba(12,16,20,0.72)] p-5 shadow-[0_24px_48px_rgba(10,12,16,0.45)] backdrop-blur-[40px]">
       <div className="flex items-center justify-between gap-3">
         <h3 className="text-lg font-semibold text-white">{title}</h3>
-        <span className="rounded-full bg-[rgba(160,106,255,0.15)] px-3 py-1 text-[13px] font-medium text-[#C5A6FF]">For you</span>
       </div>
       <ul className="mt-4 flex flex-col gap-4">
         {profiles.map((profile) => (
