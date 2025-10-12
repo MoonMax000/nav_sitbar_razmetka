@@ -295,8 +295,8 @@ const StaticComposerWindow: FC<StaticComposerWindowProps> = ({
               <span>{replySummary}</span>
             </button>
 
-            <div className="flex flex-1 flex-wrap items-center justify-between gap-2 text-[#A06AFF]">
-              <div className="flex items-center gap-2">
+            <div className="flex flex-1 items-center justify-between gap-2">
+              <div className="flex items-center gap-2 text-[#A06AFF]">
                 <button
                   type="button"
                   onClick={noop}
@@ -975,7 +975,7 @@ const ComposerShowcase: FC = () => {
 
             <ShowcaseCard
               title="Thread + code"
-              description="Тред из нескольких блоков и вст��вкой кода."
+              description="Тред из нескольких блоков и вставкой кода."
             >
               <StaticComposerWindow
                 blocks={threadBlocks}
