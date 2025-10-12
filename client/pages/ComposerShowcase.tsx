@@ -343,22 +343,28 @@ const StaticComposerWindow: FC<StaticComposerWindowProps> = ({
         <div className="flex items-center gap-3">
           <button
             type="button"
-            className={`rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-wide transition-colors ${
+            className={`rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-wide inline-flex items-center gap-2 transition-colors ${
               sentiment === "bullish"
                 ? "bg-[#2EBD85] text-black"
                 : "bg-white/5 text-[#2EBD85]"
             }`}
           >
+            <svg className="h-3 w-3" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 2L10 6H7V10H5V6H2L6 2Z" fill="currentColor" />
+            </svg>
             Bullish
           </button>
           <button
             type="button"
-            className={`rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-wide transition-colors ${
+            className={`rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-wide inline-flex items-center gap-2 transition-colors ${
               sentiment === "bearish"
                 ? "bg-[#EF454A] text-white"
                 : "bg-white/5 text-[#EF454A]"
             }`}
           >
+            <svg className="h-3 w-3" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 10L2 6H5V2H7V6H10L6 10Z" fill="currentColor" />
+            </svg>
             Bearish
           </button>
           <button
