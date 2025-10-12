@@ -282,27 +282,44 @@ const StaticComposerWindow: FC<StaticComposerWindowProps> = ({
       </div>
 
       <div className="relative border-t border-[#181B22] px-5 py-3">
-        <button
-          type="button"
-          className="inline-flex items-center gap-2 rounded-full bg-[#A06AFF]/10 px-3 py-1.5 text-sm font-semibold text-[#A06AFF]"
-        >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M21 11.5C21 7.08172 17.4183 3.5 13 3.5C8.58172 3.5 5 7.08172 5 11.5"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-            />
-            <path
-              d="M18 8.5C18 5.73858 15.7614 3.5 13 3.5C10.2386 3.5 8 5.73858 8 8.5"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-            />
-            <path d="M12 13L9 16H11V20H13V16H15L12 13Z" fill="currentColor" />
-          </svg>
-          {selectedReply.label}
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={noopFile}
+            className={`flex h-9 w-9 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#A06AFF]/10`}
+            title="Add media"
+          >
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M6.25 7.5C6.94036 7.5 7.5 6.94036 7.5 6.25C7.5 5.55964 6.94036 5 6.25 5C5.55964 5 5 5.55964 5 6.25C5 6.94036 5.55964 7.5 6.25 7.5Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M2.08301 10C2.08301 6.26809 2.08301 4.40212 3.24237 3.24274C4.40175 2.08337 6.26772 2.08337 9.99967 2.08337C13.7316 2.08337 15.5976 2.08337 16.757 3.24274C17.9163 4.40212 17.9163 6.26809 17.9163 10C17.9163 13.732 17.9163 15.598 16.757 16.7574C15.5976 17.9167 13.7316 17.9167 9.99967 17.9167C6.26772 17.9167 4.40175 17.9167 3.24237 16.7574C2.08301 15.598 2.08301 13.732 2.08301 10Z" stroke="currentColor" strokeWidth="1.5"/>
+              <path d="M4.16699 17.5C7.81071 13.1458 11.8954 7.40334 17.9149 11.2853" stroke="currentColor" strokeWidth="1.5"/>
+            </svg>
+          </button>
+
+          <button
+            type="button"
+            onClick={noop}
+            className={`flex h-9 w-9 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#A06AFF]/10`}
+            title="Add emoji"
+          >
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M10.0003 18.3333C14.6027 18.3333 18.3337 14.6023 18.3337 9.99996C18.3337 5.39759 14.6027 1.66663 10.0003 1.66663C5.39795 1.66663 1.66699 5.39759 1.66699 9.99996C1.66699 14.6023 5.39795 18.3333 10.0003 18.3333Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M6.66699 12.5C7.42709 13.512 8.63724 14.1667 10.0003 14.1667C11.3634 14.1667 12.5736 13.512 13.3337 12.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M6.67447 7.5H6.66699M13.3337 7.5H13.3262" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+
+          <button
+            type="button"
+            onClick={noop}
+            className={`flex h-9 w-9 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#A06AFF]/10`}
+            title="Add code block"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M8 7L3 12L8 17M16 7L21 12L16 17M14 3L10 21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+        </div>
       </div>
 
       <div className="flex items-center justify-between border-t border-[#181B22] px-5 py-4">
@@ -793,14 +810,14 @@ const ComposerShowcase: FC = () => {
               редактировать любые элементы.
             </li>
             <li>
-              • Страница доступна по ад��есу{" "}
+              • Страница доступна по адресу{" "}
               <code className="rounded bg-[#2F3336] px-2 py-1 text-[#A06AFF]">
                 /composer-showcase
               </code>
               .
             </li>
             <li>
-              • Карточки сгруппиров��ны по типу окна: основной композер, редактор
+              • Карточки сгруппированы по типу окна: основной композер, редактор
               медиа и вспомогательные модал��и.
             </li>
           </ul>
