@@ -208,36 +208,27 @@ const StaticComposerWindow: FC<StaticComposerWindowProps> = ({
   return (
     <div className="relative mx-auto w-full max-w-[720px] overflow-hidden rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.95)] shadow-[0_40px_120px_-40px_rgba(0,0,0,0.85)] backdrop-blur-[110px]">
       <div className="flex items-center justify-between border-b border-[#181B22] px-5 py-4">
-        <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-r from-[#A06AFF] to-[#482090]">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+        {/* Left: close icon */}
+        <div>
+          <button
+            type="button"
+            className="flex h-9 w-9 items-center justify-center rounded-full text-[#E7E9EA] transition-colors hover:bg-white/10"
+            aria-label="Close"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
               <path
-                d="M20 7H4M20 12H10M20 17H14"
+                d="M18 6L6 18M6 6L18 18"
                 stroke="currentColor"
                 strokeWidth="2"
                 strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
-          </div>
-          <div>
-            <h2 className="text-lg font-bold text-white">{headline}</h2>
-            <p className="text-xs text-[#808283]">{subheadline}</p>
-          </div>
+          </button>
         </div>
-        <button
-          type="button"
-          className="flex h-9 w-9 items-center justify-center rounded-full text-[#E7E9EA] transition-colors hover:bg-white/10"
-        >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M18 6L6 18M6 6L18 18"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </button>
+
+        {/* Right: Drafts label */}
+        <div className="text-sm font-semibold text-[#A06AFF]">Drafts</div>
       </div>
 
       <div className="max-h-[560px] space-y-6 overflow-y-auto px-5 py-5 scrollbar">
@@ -908,7 +899,7 @@ const ComposerShowcase: FC = () => {
 
             <ShowcaseCard
               title="Thread + code"
-              description="Тред из нескольких блоков и вставкой кода."
+              description="Тред из нескольких бл��ков и вставкой кода."
             >
               <StaticComposerWindow
                 blocks={threadBlocks}
