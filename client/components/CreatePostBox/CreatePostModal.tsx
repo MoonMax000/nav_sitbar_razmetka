@@ -613,7 +613,7 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
                   : "cursor-not-allowed bg-[#A06AFF]/20 text-white/40"
               }`}
             >
-              {isPosting ? "Posting..." : isThread ? "Post all" : "Post"}
+              {isPosting ? "Posting..." : "Post all"}
             </button>
           </div>
         </div>

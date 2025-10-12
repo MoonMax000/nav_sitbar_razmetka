@@ -381,7 +381,7 @@ const StaticComposerWindow: FC<StaticComposerWindowProps> = ({
                 : "bg-[#A06AFF]/20 text-white/40"
             }`}
           >
-            {isThread ? "Post all" : "Post"}
+            Post all
           </button>
         </div>
       </div>
@@ -793,14 +793,14 @@ const ComposerShowcase: FC = () => {
               редактировать любые элементы.
             </li>
             <li>
-              • Страница доступна по адресу{" "}
+              • Страница доступна по ад��есу{" "}
               <code className="rounded bg-[#2F3336] px-2 py-1 text-[#A06AFF]">
                 /composer-showcase
               </code>
               .
             </li>
             <li>
-              • Карточки сгруппированы по типу окна: основной композер, редактор
+              • Карточки сгруппиров��ны по типу окна: основной композер, редактор
               медиа и вспомогательные модал��и.
             </li>
           </ul>
