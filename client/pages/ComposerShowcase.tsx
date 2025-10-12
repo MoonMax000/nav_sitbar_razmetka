@@ -50,7 +50,6 @@ interface StaticComposerWindowProps {
   blocks: StaticBlock[];
   replyPolicy: ReplyPolicy;
   sentiment: "bullish" | "bearish" | null;
-  showAddAnother?: boolean;
   showEmojiPicker?: boolean;
   headline?: string;
   subheadline?: string;
@@ -187,7 +186,6 @@ const StaticComposerWindow: FC<StaticComposerWindowProps> = ({
   blocks,
   replyPolicy,
   sentiment,
-  showAddAnother = false,
   showEmojiPicker = false,
   headline = "Create post",
   subheadline = "Share your thoughts with followers",
@@ -255,22 +253,6 @@ const StaticComposerWindow: FC<StaticComposerWindowProps> = ({
           />
         ))}
 
-        {showAddAnother && (
-          <div className="flex items-center gap-3 text-[#A06AFF]">
-            <div className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-dashed border-[#A06AFF]">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M12 5V19M5 12H19"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
-            <span className="text-sm font-semibold">Add another post</span>
-          </div>
-        )}
       </div>
 
       <div className="relative border-t border-[#181B22] px-5 py-3">
@@ -879,7 +861,6 @@ const ComposerShowcase: FC = () => {
                 blocks={sharedBlocks}
                 replyPolicy={sharedReply}
                 sentiment={sharedSentiment}
-                showAddAnother
               />
             </ShowcaseCard>
 
@@ -933,7 +914,6 @@ const ComposerShowcase: FC = () => {
                 blocks={threadBlocks}
                 replyPolicy="verified"
                 sentiment="bullish"
-                showAddAnother
               />
             </ShowcaseCard>
           </div>
