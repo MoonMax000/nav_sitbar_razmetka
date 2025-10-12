@@ -79,15 +79,21 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
   useEffect(() => {
     if (!isOpen) {
       setTimeout(() => {
-        setBlocks([{ id: "1", text: "", media: [], codeBlocks: [] }]);
-        setReplySetting("everyone");
-        setSentiment("bullish");
+        setBlocks(initialBlocks ?? [{ id: "1", text: "", media: [], codeBlocks: [] }]);
+        setReplySetting(initialReplySetting ?? "everyone");
+        setSentiment(initialSentiment ?? "bullish");
         setIsEmojiPickerOpen(false);
         setIsReplyMenuOpen(false);
         setIsCodeBlockOpen(false);
       }, 200);
+    } else {
+      // when opening, initialize from incoming props
+      setBlocks(initialBlocks ?? [{ id: "1", text: "", media: [], codeBlocks: [] }]);
+      setReplySetting(initialReplySetting ?? "everyone");
+      setSentiment(initialSentiment ?? "bullish");
     }
-  }, [isOpen]);
+  }, [isOpen, initialBlocks, initialReplySetting, initialSentiment]);
+
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
