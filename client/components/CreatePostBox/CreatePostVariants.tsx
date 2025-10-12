@@ -567,7 +567,7 @@ const VariantMinimal: FC = () => {
             label="Emoji"
             icon={<Smile className="h-4 w-4" />}
             className="text-[#A06AFF] hover:bg-[#482090]/10"
-            onClick={() => composer.setText((prev) => prev + "😊")}
+            onClick={() => window.dispatchEvent(new CustomEvent('open-composer'))}
           />
           <IconActionButton
             label="Локация"
