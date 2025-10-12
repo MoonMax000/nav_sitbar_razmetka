@@ -827,33 +827,6 @@ const ComposerShowcase: FC = () => {
           <CreatePostVariants />
         </div>
 
-        <div className="rounded-3xl border border-[#A06AFF]/30 bg-gradient-to-br from-[#A06AFF]/10 to-transparent p-8 backdrop-blur-[70px]">
-          <h1 className="text-4xl font-bold text-white">
-            Post Composer <span className="text-gradient-purple">Showcase</span>
-          </h1>
-          <p className="mt-4 max-w-2xl text-lg text-[#808283]">
-            На этой странице уже раскрыты все ок��а конструктора постов.
-            Исполь��уйте режим Design и инструмент "Select elements", чтобы
-            настраивать внешн��й вид и состояния без дополнительных кликов.
-          </p>
-          <ul className="mt-6 space-y-2 text-sm text-[#E7E9EA]">
-            <li>
-              • Компоненты ниже рендерятся как отдельные состояния — можно
-              редактировать любые элементы.
-            </li>
-            <li>
-              • Страница доступна по адресу{" "}
-              <code className="rounded bg-[#2F3336] px-2 py-1 text-[#A06AFF]">
-                /composer-showcase
-              </code>
-              .
-            </li>
-            <li>
-              • Карточки сгруппированы по типу окна: основной композер, редактор
-              медиа и вспомогательные модал��и.
-            </li>
-          </ul>
-        </div>
 
         <section className="space-y-6">
           <div className="flex items-center justify-between">
@@ -985,7 +958,7 @@ const ComposerShowcase: FC = () => {
               Вспомогательные окна
             </h2>
             <p className="text-sm text-[#808283]">
-              Окна выбора эмодзи, вставки кода и управления черновиками.
+              Окна выбора эмодзи, ��ставки кода и управления черновиками.
             </p>
           </header>
 
