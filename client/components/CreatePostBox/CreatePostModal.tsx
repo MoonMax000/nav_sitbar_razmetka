@@ -8,7 +8,6 @@ import { DraftsList } from "./DraftsList";
 import { CodeBlockModal } from "./CodeBlockModal";
 import {
   MediaItem,
-  TweetBlockPayload,
   ReplyPolicy,
   ComposerDraft,
   CHAR_LIMIT,
