@@ -44,7 +44,7 @@ const EMOJI_PRESETS = [
   "😂",
   "😍",
   "🔥",
-  "🤔",
+  "���",
   "🚀",
   "📈",
   "💡",
@@ -133,7 +133,7 @@ const useComposerState = (variantLabel: string) => {
         toast({
           title: "Ограничение",
           description:
-            "Выбрано слишком много файлов. Добавлено максимум 4 изображения.",
+            "Выбрано слишком много файлов. Добавлено максимум 4 изображ��ния.",
         });
       }
 
@@ -588,19 +588,35 @@ const VariantMinimal: FC = () => {
             className="text-[#A06AFF] hover:bg-[#482090]/10"
           />
         </div>
-        <button
-          type="button"
-          onClick={composer.handleSubmit}
-          disabled={!composer.canPost}
-          className={cn(
-            "inline-flex min-w-[78px] items-center justify-center rounded-full px-4 py-2 text-sm font-semibold",
-            composer.canPost
-              ? "bg-[#482090] text-white"
-              : "bg-[#1A2834] text-[#3C5870]",
+
+        <div className="flex items-center gap-3">
+          {composer.text.length > 0 && (
+            <button
+              type="button"
+              onClick={composer.handleSubmit}
+              aria-label="Quick add post"
+              className="flex h-6 w-6 items-center justify-center rounded-full bg-black/20 text-[#1D9BF0] hover:bg-black/30"
+            >
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" aria-hidden>
+                <path d="M12 5v14M5 12h14" stroke="#1D9BF0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
           )}
-        >
-          Post
-        </button>
+
+          <button
+            type="button"
+            onClick={composer.handleSubmit}
+            disabled={!composer.canPost}
+            className={cn(
+              "inline-flex min-w-[78px] items-center justify-center rounded-full px-4 py-2 text-sm font-semibold",
+              composer.canPost
+                ? "bg-[#482090] text-white"
+                : "bg-[#1A2834] text-[#3C5870]",
+            )}
+          >
+            Post
+          </button>
+        </div>
       </div>
     </div>
   );
