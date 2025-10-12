@@ -631,6 +631,29 @@ const VariantMinimal: FC = () => {
           {composer.text.length > 0 && (
             <>
               <div className="h-8 w-px bg-white/15" />
+              <div className="flex h-8 w-8 items-center justify-center">
+                <svg className="-rotate-90" width="32" height="32" viewBox="0 0 32 32">
+                  <circle
+                    cx="16"
+                    cy="16"
+                    r="14"
+                    fill="none"
+                    stroke="rgba(113, 118, 123, 0.3)"
+                    strokeWidth="3"
+                  />
+                  <circle
+                    cx="16"
+                    cy="16"
+                    r="14"
+                    fill="none"
+                    stroke="rgb(29, 155, 240)"
+                    strokeWidth="3"
+                    strokeDasharray={`${(Math.min(composer.text.length / CHAR_LIMIT, 1) * 87.96).toFixed(2)} 87.96`}
+                    strokeDashoffset="0"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </div>
               <button
                 type="button"
                 onClick={composer.handleSubmit}
