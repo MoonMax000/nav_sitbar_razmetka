@@ -200,8 +200,7 @@ const StaticComposerWindow: FC<StaticComposerWindowProps> = ({
   const isOverLimit = remainingChars < 0;
   const circumference = 88;
   const gradientStroke = `${charRatio * circumference} ${circumference}`;
-  const selectedReply =
-    replyOptions.find((opt) => opt.id === replyPolicy) ?? replyOptions[0];
+  const replySummary = REPLY_SUMMARY_TEXT[replyPolicy];
   const isThread = blocks.length > 1;
 
   return (
@@ -995,7 +994,7 @@ const ComposerShowcase: FC = () => {
           <div className="grid grid-cols-1 gap-6">
             <ShowcaseCard
               title="Emoji picker"
-              description="Категори�� эмодзи с поиском."
+              description="Категории эмодзи с поиском."
             >
               <div className="mx-auto h-96 w-96 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.95)] p-4 backdrop-blur-[100px]">
                 <EmojiPicker onSelect={noop} />
