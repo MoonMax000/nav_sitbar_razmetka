@@ -19,6 +19,13 @@ export type TweetBlockPayload = {
 
 export type ReplyPolicy = "everyone" | "following" | "verified" | "mentioned";
 
+export const REPLY_SUMMARY_TEXT: Record<ReplyPolicy, string> = {
+  everyone: "Everyone can reply",
+  following: "People you follow can reply",
+  verified: "Only verified accounts can reply",
+  mentioned: "Only accounts you mention can reply",
+};
+
 export type ComposerDraft = {
   id: string;
   blocks: TweetBlockPayload[];
