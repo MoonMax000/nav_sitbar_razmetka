@@ -380,6 +380,14 @@ const VariantClassic: FC = () => {
               transition={{ delay: 0.1 }}
             >
               <IconActionButton
+                label="Видео или GIF"
+                icon={<Video className="h-5 w-5" />}
+              />
+              <IconActionButton
+                label="Опрос"
+                icon={<BarChart3 className="h-5 w-5" />}
+              />
+              <IconActionButton
                 label="Добавить медиа"
                 onClick={openFilePicker}
                 icon={<ImageIcon className="h-5 w-5" />}
@@ -391,14 +399,6 @@ const VariantClassic: FC = () => {
                 multiple
                 className="hidden"
                 onChange={composer.handleFiles}
-              />
-              <IconActionButton
-                label="Видео или GIF"
-                icon={<Video className="h-5 w-5" />}
-              />
-              <IconActionButton
-                label="Опрос"
-                icon={<BarChart3 className="h-5 w-5" />}
               />
               <EmojiPickerButton
                 onSelect={(emoji) => composer.setText((prev) => prev + emoji)}
@@ -474,6 +474,14 @@ const VariantToolbar: FC = () => {
           <div className="mt-3 flex flex-col gap-3">
             <div className="flex items-center justify-between gap-3 rounded-2xl border border-[#1F242B] bg-[rgba(12,16,20,0.65)] px-3 py-2">
               <div className="flex items-center gap-2">
+                <IconActionButton
+                  label="Видео или GIF"
+                  icon={<Video className="h-5 w-5" />}
+                />
+                <IconActionButton
+                  label="Опрос"
+                  icon={<BarChart3 className="h-5 w-5" />}
+                />
                 <IconActionButton
                   label="Добавить изображение"
                   onClick={openFilePicker}
@@ -553,6 +561,16 @@ const VariantMinimal: FC = () => {
       <div className="flex items-center justify-between pt-3">
         <div className="flex items-center gap-3 text-[#A06AFF]">
           <IconActionButton
+            label="Видео или GIF"
+            icon={<Video className="h-4 w-4" />}
+            className="text-[#A06AFF] hover:bg-[#482090]/10"
+          />
+          <IconActionButton
+            label="Опрос"
+            icon={<BarChart3 className="h-4 w-4" />}
+            className="text-[#A06AFF] hover:bg-[#482090]/10"
+          />
+          <IconActionButton
             label="Добавить изображение"
             onClick={() => fileInputRef.current?.click()}
             icon={<ImageIcon className="h-4 w-4" />}
@@ -565,16 +583,6 @@ const VariantMinimal: FC = () => {
             multiple
             className="hidden"
             onChange={composer.handleFiles}
-          />
-          <IconActionButton
-            label="Видео или GIF"
-            icon={<Video className="h-4 w-4" />}
-            className="text-[#A06AFF] hover:bg-[#482090]/10"
-          />
-          <IconActionButton
-            label="Опрос"
-            icon={<BarChart3 className="h-4 w-4" />}
-            className="text-[#A06AFF] hover:bg-[#482090]/10"
           />
           <IconActionButton
             label="Emoji"
