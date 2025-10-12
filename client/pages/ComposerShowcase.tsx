@@ -355,7 +355,7 @@ const StaticComposerWindow: FC<StaticComposerWindowProps> = ({
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="flex items-center">
+            <div className="flex h-10 w-10 items-center justify-center">
               <svg className="-rotate-90" width="32" height="32" viewBox="0 0 32 32">
                 <circle
                   cx="16"
@@ -381,12 +381,12 @@ const StaticComposerWindow: FC<StaticComposerWindowProps> = ({
 
             {hasContent && (
               <>
-                <div className="h-8 w-px bg-white/15" />
+                <div className="h-10 w-px bg-white/15" />
                 <button
                   type="button"
                   onClick={noop}
                   aria-label="Add post"
-                  className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-white/20 bg-white/5 text-[#1D9BF0] transition-colors hover:bg-white/15 hover:border-white/30"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-white/20 bg-white/5 text-[#1D9BF0] transition-colors hover:bg-white/15 hover:border-white/30"
                 >
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
                     <path d="M12 5v14M5 12h14" stroke="#1D9BF0" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
@@ -1037,7 +1037,7 @@ const ComposerShowcase: FC = () => {
             </ShowcaseCard>
             <ShowcaseCard
               title="Code block modal"
-              description="Фор��а добав����ения блока с кодом."
+              description="Фор��а добав����ения блока с к��дом."
             >
               <CodeBlockModalPreview />
             </ShowcaseCard>
