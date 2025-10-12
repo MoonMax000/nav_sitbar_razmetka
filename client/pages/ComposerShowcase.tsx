@@ -555,9 +555,23 @@ const MediaEditorPreview: FC<MediaEditorPreviewProps> = ({ variant }) => {
                     <path d="M3 7.5C3 6.119 4.119 5 5.5 5h13C19.881 5 21 6.119 21 7.5v9c0 1.381-1.119 2.5-2.5 2.5h-13C4.119 19 3 17.881 3 16.5v-9zM5.5 7c-.276 0-.5.224-.5.5v9c0 .276.224.5.5.5h13c.276 0 .5-.224.5-.5v-9c0-.276-.224-.5-.5-.5h-13z" />
                   </svg>
                 </button>
-                <span className="flex h-10 items-center justify-center rounded-lg border border-[#2F3336] px-4 text-sm text-[#E7E9EA]">
-                  Portrait
-                </span>
+                <button
+                  type="button"
+                  aria-label="Aspect ratio: portrait"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 backdrop-blur-sm text-white"
+                  style={{ boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.04)" }}
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    className="h-5 w-5 text-white"
+                    fill="currentColor"
+                  >
+                    <g>
+                      <path d="M3 9.5C3 8.119 4.119 7 5.5 7h13C19.881 7 21 8.119 21 9.5v5c0 1.381-1.119 2.5-2.5 2.5h-13C4.119 17 3 15.881 3 14.5v-5zM5.5 9c-.276 0-.5.224-.5.5v5c0 .276.224.5.5.5h13c.276 0 .5-.224.5-.5v-5c0-.276-.224-.5-.5-.5h-13z" />
+                    </g>
+                  </svg>
+                </button>
                 <span className="flex h-10 items-center justify-center rounded-lg border border-[#2F3336] px-4 text-sm text-[#E7E9EA]">
                   Landscape
                 </span>
