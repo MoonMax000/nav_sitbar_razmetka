@@ -823,6 +823,10 @@ const ComposerShowcase: FC = () => {
           </div>
         </div>
 
+        <div className="mx-auto max-w-[720px]">
+          <CreatePostVariants />
+        </div>
+
         <div className="rounded-3xl border border-[#A06AFF]/30 bg-gradient-to-br from-[#A06AFF]/10 to-transparent p-8 backdrop-blur-[70px]">
           <h1 className="text-4xl font-bold text-white">
             Post Composer <span className="text-gradient-purple">Showcase</span>
@@ -962,7 +966,7 @@ const ComposerShowcase: FC = () => {
             </ShowcaseCard>
             <ShowcaseCard
               title="ALT"
-              description="Редактирование ALT-текста для доступности."
+              description="Р��дактирование ALT-текста для доступности."
             >
               <MediaEditorPreview variant="alt" />
             </ShowcaseCard>
