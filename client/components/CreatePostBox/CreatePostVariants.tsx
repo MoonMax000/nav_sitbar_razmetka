@@ -66,7 +66,7 @@ const makeId = () =>
 const readImageFile = (file: File): Promise<ChosenImage> =>
   new Promise((resolve, reject) => {
     const reader = new FileReader();
-    reader.onerror = () => reject(new Error("Не удалось прочитать файл"));
+    reader.onerror = () => reject(new Error("Не удалось п��очитать файл"));
     reader.onload = () => {
       const result = reader.result as string;
       const image = new Image();
@@ -339,7 +339,7 @@ const ChosenMediaGrid: FC<{
           </button>
           <img
             src={image.url}
-            alt="Предпросмотр"
+            alt="Предпросмо��р"
             className="h-full w-full object-cover"
           />
         </div>
@@ -558,39 +558,73 @@ const VariantMinimal: FC = () => {
         </div>
       </div>
       <div className="flex items-center justify-between pt-3">
-        <div className="flex items-center gap-3 text-[#A06AFF]">
-          <IconActionButton
-            label="Видео или GIF"
-            icon={<Video className="h-4 w-4" />}
-            className="text-[#A06AFF] hover:bg-[#482090]/10"
-          />
-          <IconActionButton
-            label="Опрос"
-            icon={<BarChart3 className="h-4 w-4" />}
-            className="text-[#A06AFF] hover:bg-[#482090]/10"
-          />
-          <IconActionButton
-            label="Добавить изображение"
-            onClick={() => fileInputRef.current?.click()}
-            icon={<ImageIcon className="h-4 w-4" />}
-            className="text-[#A06AFF] hover:bg-[#482090]/10"
-          />
-          <input
-            ref={fileInputRef}
-            type="file"
-            accept="image/jpeg,image/png,image/webp,image/gif"
-            multiple
-            className="hidden"
-            onChange={composer.handleFiles}
-          />
-          <EmojiPickerButton
-            onSelect={(emoji) => composer.setText((prev) => prev + emoji)}
-          />
-          <IconActionButton
-            label="Локация"
-            icon={<MapPin className="h-4 w-4" />}
-            className="text-[#A06AFF] hover:bg-[#482090]/10"
-          />
+        <div className="flex flex-col gap-2">
+          <button
+            type="button"
+            className="inline-flex items-center gap-2 rounded-full bg-white/5 px-4 py-1.5 text-sm font-semibold text-[#1D9BF0] transition-colors hover:bg-white/10"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
+              <path
+                d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2Z"
+                stroke="currentColor"
+                strokeWidth="1.4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M12 2v1.5M12 20.5V22M4.5 12H2M22 12h-2.5M7.05 4.05l1.06 1.06M15.89 17.95l1.06 1.06M5.56 18.44l1.06-1.06M17.38 6.62l1.06-1.06"
+                stroke="currentColor"
+                strokeWidth="1.4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M12 13.2a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4Z"
+                stroke="currentColor"
+                strokeWidth="1.4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path d="M8.75 17.5 8 14l-1-3-2.2-1.27" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="m17 14-.5-3-1-3 2.5-1" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            <span>Everyone can reply</span>
+          </button>
+
+          <div className="flex items-center gap-3 text-[#A06AFF]">
+            <IconActionButton
+              label="Видео или GIF"
+              icon={<Video className="h-4 w-4" />}
+              className="text-[#A06AFF] hover:bg-[#482090]/10"
+            />
+            <IconActionButton
+              label="Опрос"
+              icon={<BarChart3 className="h-4 w-4" />}
+              className="text-[#A06AFF] hover:bg-[#482090]/10"
+            />
+            <IconActionButton
+              label="Добавить изображение"
+              onClick={() => fileInputRef.current?.click()}
+              icon={<ImageIcon className="h-4 w-4" />}
+              className="text-[#A06AFF] hover:bg-[#482090]/10"
+            />
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept="image/jpeg,image/png,image/webp,image/gif"
+              multiple
+              className="hidden"
+              onChange={composer.handleFiles}
+            />
+            <EmojiPickerButton
+              onSelect={(emoji) => composer.setText((prev) => prev + emoji)}
+            />
+            <IconActionButton
+              label="Локация"
+              icon={<MapPin className="h-4 w-4" />}
+              className="text-[#A06AFF] hover:bg-[#482090]/10"
+            />
+          </div>
         </div>
 
         <div className="flex items-center gap-3">
