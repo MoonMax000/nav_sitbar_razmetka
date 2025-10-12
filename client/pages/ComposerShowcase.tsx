@@ -564,27 +564,23 @@ const MediaEditorPreview: FC<MediaEditorPreviewProps> = ({ variant }) => {
               </div>
               <div className="h-6 w-px bg-[#2F3336]" />
               <div className="flex flex-1 items-center gap-3">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  className="text-[#E7E9EA]"
+                <button
+                  type="button"
+                  aria-label="Adjust"
+                  className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/5 backdrop-blur-sm text-white"
+                  style={{ boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.04)" }}
                 >
-                  <path
-                    d="M12 5V4M5 12H4M12 20V19M20 12H19"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
-                  <circle
-                    cx="12"
-                    cy="12"
-                    r="4"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  />
-                </svg>
+                  <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    className="h-4 w-4 text-white"
+                    fill="currentColor"
+                  >
+                    <g>
+                      <path d="M3 9.5C3 8.119 4.119 7 5.5 7h13C19.881 7 21 8.119 21 9.5v5c0 1.381-1.119 2.5-2.5 2.5h-13C4.119 17 3 15.881 3 14.5v-5zM5.5 9c-.276 0-.5.224-.5.5v5c0 .276.224.5.5.5h13c.276 0 .5-.224.5-.5v-5c0-.276-.224-.5-.5-.5h-13z" />
+                    </g>
+                  </svg>
+                </button>
                 <input
                   type="range"
                   min={0}
