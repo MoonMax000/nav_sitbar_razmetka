@@ -131,7 +131,7 @@ const useComposerState = (variantLabel: string) => {
       const queue = Array.from(files).slice(0, remaining);
       if (queue.length < files.length) {
         toast({
-          title: "Ограничение",
+          title: "Ограничени��",
           description:
             "Выбрано слишком много файлов. Добавлено максимум 4 изображ��ния.",
         });
@@ -178,7 +178,7 @@ const useComposerState = (variantLabel: string) => {
     if (!canPost) return;
     toast({
       title: "Пост опубликован",
-      description: `Вариант «${variantLabel}» отправлен в общий поток`,
+      description: `Вариант «${variantLabel}» отправлен в общий пот��к`,
     });
     console.log(`[${variantLabel}] Post`, {
       text,
@@ -240,15 +240,36 @@ const IconActionButton: FC<{
   </button>
 );
 
-const EmojiPickerButton: FC<{ onSelect: (emoji: string) => void }> = ({ onSelect }) => (
-  <button
-    type="button"
-    aria-label="Открыть композер"
-    onClick={() => window.dispatchEvent(new CustomEvent('open-composer'))}
-    className="flex h-10 w-10 items-center justify-center rounded-full text-[#9AA0A8] transition-colors hover:bg-[#482090]/10"
-  >
-    <Smile className="h-5 w-5" />
-  </button>
+const EmojiPickerButton: FC<{ onSelect: (emoji: string) => void }> = ({
+  onSelect,
+}) => (
+  <Popover>
+    <PopoverTrigger asChild>
+      <button
+        type="button"
+        aria-label="Добавить эмодзи"
+        className="flex h-10 w-10 items-center justify-center rounded-full text-[#9AA0A8] transition-colors hover:bg-[#482090]/10"
+      >
+        <Smile className="h-5 w-5" />
+      </button>
+    </PopoverTrigger>
+    <PopoverContent
+      align="start"
+      sideOffset={8}
+      className="grid w-[210px] grid-cols-6 gap-2 rounded-2xl border border-[#1F242B] bg-[rgba(12,16,20,0.95)] p-3 shadow-[0_12px_40px_rgba(0,0,0,0.45)]"
+    >
+      {EMOJI_PRESETS.map((emoji) => (
+        <button
+          key={emoji}
+          type="button"
+          onClick={() => onSelect(emoji)}
+          className="flex h-10 w-10 items-center justify-center rounded-full text-lg transition-colors hover:bg-[#482090]/10"
+        >
+          {emoji}
+        </button>
+      ))}
+    </PopoverContent>
+  </Popover>
 );
 
 const ChosenMediaGrid: FC<{
