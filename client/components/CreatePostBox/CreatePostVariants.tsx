@@ -79,7 +79,7 @@ const readImageFile = (file: File): Promise<ChosenImage> =>
           height: image.height,
         });
       image.onerror = () =>
-        reject(new Error("Не удалось получить параме��ры изо��ражения"));
+        reject(new Error("Не удалось по��учить параме��ры изо��ражения"));
       image.src = result;
     };
     reader.readAsDataURL(file);
@@ -539,7 +539,6 @@ const VariantMinimal: FC = () => {
 
   return (
     <div className="rounded-2xl border border-[#0F1419] bg-[#05080D] p-4">
-      <h2 className="pb-3 text-base font-semibold text-white">Home</h2>
       <div className="flex items-start gap-3 border-b border-white/10 pb-4">
         <AvatarBadge size={40} />
         <div className="flex-1">
