@@ -55,8 +55,9 @@ const EMOJI_PRESETS = [
 ];
 
 const fallbackAvatar =
-  defaultProfile.avatar ||
-  "https://cdn.builder.io/api/v1/image/assets/TEMP/103523";
+  defaultProfile.avatar && defaultProfile.avatar !== "/placeholder.svg"
+    ? defaultProfile.avatar
+    : "https://i.pravatar.cc/120?img=12";
 
 const makeId = () =>
   typeof crypto !== "undefined" && crypto.randomUUID
