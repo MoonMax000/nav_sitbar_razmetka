@@ -566,119 +566,101 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
 
        </div>
 
-        <div className="relative border-t border-[#181B22] px-5 py-3">
-          <button
-            onClick={() => setIsReplyMenuOpen((prev) => !prev)}
-            className="inline-flex items-center gap-2 rounded-full bg-[#A06AFF]/10 px-3 py-1.5 text-sm font-semibold text-[#A06AFF] transition-colors hover:bg-[#A06AFF]/20"
-            disabled={isPosting}
-          >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M21 11.5C21 7.08172 17.4183 3.5 13 3.5C8.58172 3.5 5 7.08172 5 11.5"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-              />
-              <path
-                d="M18 8.5C18 5.73858 15.7614 3.5 13 3.5C10.2386 3.5 8 5.73858 8 8.5"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-              />
-              <path d="M12 13L9 16H11V20H13V16H15L12 13Z" fill="currentColor" />
-            </svg>
-            {selectedReply.label}
-          </button>
+        <div className="relative border-t border-[#181B22] px-5 py-4">
+          <div className="flex flex-wrap items-start justify-between gap-4">
+            <div className="flex flex-col gap-3">
+              <button
+                type="button"
+                onClick={() => setIsReplyMenuOpen((prev) => !prev)}
+                className="inline-flex items-center gap-2 rounded-full bg-white/5 px-4 py-1.5 text-sm font-semibold text-[#1D9BF0] transition-colors hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-[#1D9BF0]/40"
+                aria-label="Adjust reply settings"
+                aria-expanded={isReplyMenuOpen}
+                disabled={isPosting}
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
+                  <path
+                    d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2Z"
+                    stroke="currentColor"
+                    strokeWidth="1.4"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M12 2v1.5M12 20.5V22M4.5 12H2M22 12h-2.5M7.05 4.05l1.06 1.06M15.89 17.95l1.06 1.06M5.56 18.44l1.06-1.06M17.38 6.62l1.06-1.06"
+                    stroke="currentColor"
+                    strokeWidth="1.4"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M12 13.2a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4Z"
+                    stroke="currentColor"
+                    strokeWidth="1.4"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path d="M8.75 17.5 8 14l-1-3-2.2-1.27" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="m17 14-.5-3-1-3 2.5-1" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <span>{replySummary}</span>
+              </button>
 
-          {isReplyMenuOpen && (
-            <div
-              ref={replyMenuRef}
-              className="absolute left-5 bottom-full z-[2100] mb-3 w-72 rounded-2xl border border-[#181B22] bg-[rgba(12,16,20,0.95)] p-3 shadow-2xl backdrop-blur-[100px]"
-            >
-              <h3 className="mb-2 text-sm font-bold text-white">Who can reply?</h3>
-              <p className="mb-3 text-xs text-[#808283]">
-                Choose who can reply to this post.
-              </p>
-              <div className="space-y-2">
-                {replyOptions.map((opt) => (
-                  <button
-                    key={opt.id}
-                    onClick={() => {
-                      setReplySetting(opt.id);
-                      setIsReplyMenuOpen(false);
-                    }}
-                    className={`w-full rounded-xl border px-3 py-2 text-left transition-colors ${
-                      opt.id === replySetting
-                        ? "border-[#A06AFF] bg-[#A06AFF]/10 text-white"
-                        : "border-transparent bg-white/5 text-[#E7E9EA] hover:bg-white/10"
-                    }`}
-                  >
-                    <div className="text-sm font-semibold">{opt.label}</div>
-                    <div className="text-xs text-[#808283]">{opt.description}</div>
-                  </button>
-                ))}
+              <div className="flex flex-wrap items-center gap-2 text-[#A06AFF]">
+                <button
+                  type="button"
+                  className="flex h-10 w-10 items-center justify-center rounded-full text-inherit transition-colors hover:bg-[#482090]/10"
+                  title="Видео или GIF"
+                >
+                  <Video className="h-5 w-5" />
+                </button>
+                <button
+                  type="button"
+                  className="flex h-10 w-10 items-center justify-center rounded-full text-inherit transition-colors hover:bg-[#482090]/10"
+                  title="Опрос"
+                >
+                  <BarChart3 className="h-5 w-5" />
+                </button>
+                <button
+                  type="button"
+                  onClick={openToolbarFilePicker}
+                  className="flex h-10 w-10 items-center justify-center rounded-full text-inherit transition-colors hover:bg-[#482090]/10 disabled:text-white/30"
+                  title="Добавить медиа"
+                  disabled={blocks.length === 0}
+                >
+                  <ImageIcon className="h-5 w-5" />
+                </button>
+                <input
+                  ref={toolbarFileInputRef}
+                  type="file"
+                  accept="image/*,video/*"
+                  multiple
+                  className="hidden"
+                  onChange={handleToolbarMediaPick}
+                />
+                <button
+                  type="button"
+                  onClick={handleToolbarEmojiToggle}
+                  className="flex h-10 w-10 items-center justify-center rounded-full text-inherit transition-colors hover:bg-[#482090]/10 disabled:text-white/30"
+                  title="Добавить эмодзи"
+                  disabled={blocks.length === 0}
+                >
+                  <Smile className="h-5 w-5" />
+                </button>
+                <button
+                  type="button"
+                  className="flex h-10 w-10 items-center justify-center rounded-full text-inherit transition-colors hover:bg-[#482090]/10"
+                  title="Запланировать"
+                >
+                  <CalendarClock className="h-5 w-5" />
+                </button>
+                <button
+                  type="button"
+                  className="flex h-10 w-10 items-center justify-center rounded-full text-inherit transition-colors hover:bg-[#482090]/10"
+                  title="Локация"
+                >
+                  <MapPin className="h-5 w-5" />
+                </button>
               </div>
-            </div>
-          )}
-        </div>
-
-        <div className="flex flex-wrap items-center justify-between gap-4 border-t border-[#181B22] px-5 py-4">
-          <div className="flex flex-wrap items-center gap-4">
-            <div className="flex items-center gap-2">
-              <button
-                type="button"
-                className="flex h-10 w-10 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#482090]/10"
-                title="Видео или GIF"
-              >
-                <Video className="h-5 w-5" />
-              </button>
-              <button
-                type="button"
-                className="flex h-10 w-10 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#482090]/10"
-                title="Опрос"
-              >
-                <BarChart3 className="h-5 w-5" />
-              </button>
-              <button
-                type="button"
-                onClick={openToolbarFilePicker}
-                className="flex h-10 w-10 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#482090]/10"
-                title="Добавить медиа"
-                disabled={blocks.length === 0}
-              >
-                <ImageIcon className="h-5 w-5" />
-              </button>
-              <input
-                ref={toolbarFileInputRef}
-                type="file"
-                accept="image/*,video/*"
-                multiple
-                className="hidden"
-                onChange={handleToolbarMediaPick}
-              />
-              <button
-                type="button"
-                onClick={handleToolbarEmojiToggle}
-                className="flex h-10 w-10 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#482090]/10"
-                title="Добавить эмодзи"
-                disabled={blocks.length === 0}
-              >
-                <Smile className="h-5 w-5" />
-              </button>
-              <button
-                type="button"
-                className="flex h-10 w-10 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#482090]/10"
-                title="Запланировать"
-              >
-                <CalendarClock className="h-5 w-5" />
-              </button>
-              <button
-                type="button"
-                className="flex h-10 w-10 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#482090]/10"
-                title="Локация"
-              >
-                <MapPin className="h-5 w-5" />
-              </button>
             </div>
 
             <div className="flex items-center gap-3">
@@ -723,6 +705,39 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
             </div>
           </div>
 
+          {isReplyMenuOpen && (
+            <div
+              ref={replyMenuRef}
+              className="absolute left-5 bottom-full z-[2100] mb-3 w-72 rounded-2xl border border-[#181B22] bg-[rgba(12,16,20,0.95)] p-3 shadow-2xl backdrop-blur-[100px]"
+            >
+              <h3 className="mb-2 text-sm font-bold text-white">Who can reply?</h3>
+              <p className="mb-3 text-xs text-[#808283]">
+                Choose who can reply to this post.
+              </p>
+              <div className="space-y-2">
+                {replyOptions.map((opt) => (
+                  <button
+                    key={opt.id}
+                    onClick={() => {
+                      setReplySetting(opt.id);
+                      setIsReplyMenuOpen(false);
+                    }}
+                    className={`w-full rounded-xl border px-3 py-2 text-left transition-colors ${
+                      opt.id === replySetting
+                        ? "border-[#A06AFF] bg-[#A06AFF]/10 text-white"
+                        : "border-transparent bg-white/5 text-[#E7E9EA] hover:bg-white/10"
+                    }`}
+                  >
+                    <div className="text-sm font-semibold">{opt.label}</div>
+                    <div className="text-xs text-[#808283]">{opt.description}</div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+
+        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-[#181B22] px-5 py-4">
           <div className="flex items-center gap-3">
             <button
               onClick={() => setSentiment("bullish")}
@@ -793,20 +808,20 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
               </svg>
               Bearish
             </button>
-
-            <button
-              onClick={handlePost}
-              disabled={!canPost}
-              className={cn(
-                "inline-flex h-10 min-w-[100px] items-center justify-center rounded-full px-6 text-sm font-semibold transition-all",
-                canPost
-                  ? "bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white hover:shadow-[0_12px_30px_-18px_rgba(160,106,255,0.8)]"
-                  : "cursor-not-allowed bg-[#A06AFF]/20 text-white/40",
-              )}
-            >
-              {isPosting ? "Posting..." : "Post all"}
-            </button>
           </div>
+
+          <button
+            onClick={handlePost}
+            disabled={!canPost}
+            className={cn(
+              "inline-flex h-10 min-w-[100px] items-center justify-center rounded-full px-6 text-sm font-semibold transition-all",
+              canPost
+                ? "bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white hover:shadow-[0_12px_30px_-18px_rgba(160,106,255,0.8)]"
+                : "cursor-not-allowed bg-[#A06AFF]/20 text-white/40",
+            )}
+          >
+            {isPosting ? "Posting..." : "Post all"}
+          </button>
         </div>
 
         {isEmojiPickerOpen && (
