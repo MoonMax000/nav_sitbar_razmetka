@@ -340,15 +340,15 @@ const StaticComposerWindow: FC<StaticComposerWindowProps> = ({
 
             {totalChars > 0 && (
               <>
-                <div className="h-6 w-px bg-white/10" />
+                <div className="h-6 w-px bg-white/15" />
                 <button
                   type="button"
                   onClick={noop}
                   aria-label="Add post"
-                  className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 text-[#1D9BF0] transition-colors hover:bg-white/20"
+                  className="flex h-6 w-6 items-center justify-center rounded-full border border-white/20 bg-white/5 text-[#1D9BF0] transition-colors hover:bg-white/15 hover:border-white/30"
                 >
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden>
-                    <path d="M12 5v14M5 12h14" stroke="#1D9BF0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M12 5v14M5 12h14" stroke="#1D9BF0" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </button>
               </>
