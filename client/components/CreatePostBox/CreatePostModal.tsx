@@ -18,7 +18,10 @@ import {
 
 interface CreatePostModalProps {
   isOpen: boolean;
-  onClose: () => void;
+  onClose: (blocks?: BlockState[]) => void;
+  initialBlocks?: BlockState[];
+  initialReplySetting?: ReplyPolicy;
+  initialSentiment?: "bullish" | "bearish" | null;
 }
 
 interface CodeBlock {
