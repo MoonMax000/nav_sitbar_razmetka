@@ -265,7 +265,7 @@ const SocialFeed: FC = () => {
           <div className="sticky top-28 flex flex-col gap-5">
             <div className="relative">
               <Search
-                className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#6C7080]"
+                className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#6C7080] z-10"
                 aria-hidden
               />
               <input
