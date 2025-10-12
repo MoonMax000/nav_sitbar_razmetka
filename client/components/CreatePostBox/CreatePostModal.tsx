@@ -165,6 +165,16 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
     return hasContent && noOverflow && !isPosting;
   }, [blocks, isPosting]);
 
+  // propagate blocks changes to parent if requested (live sync)
+  useEffect(() => {
+    // @ts-ignore
+    if ((typeof (CreatePostModal as any) !== "undefined") && typeof (onBlocksChange) === "function") {
+      onBlocksChange?.(blocks);
+    } else {
+      onBlocksChange?.(blocks);
+    }
+  }, [blocks, onBlocksChange]);
+
   const isThread = blocks.length > 1;
 
   const handleBlockTextChange = useCallback((blockId: string, text: string) => {
