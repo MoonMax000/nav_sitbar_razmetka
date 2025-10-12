@@ -598,20 +598,6 @@ const MediaEditorPreview: FC<MediaEditorPreviewProps> = ({ variant }) => {
               </div>
             </div>
 
-            <div className="flex items-center gap-3 text-sm text-[#E7E9EA]">
-              <span className="rounded-full border border-[#2F3336] px-3 py-1">
-                Fit
-              </span>
-              <span className="rounded-full border border-[#2F3336] px-3 py-1 text-[#808283]">
-                Fill
-              </span>
-              <span className="rounded-full border border-[#2F3336] px-3 py-1 text-[#808283]">
-                Flip H
-              </span>
-              <span className="rounded-full border border-[#2F3336] px-3 py-1 text-[#808283]">
-                Grid • Thirds
-              </span>
-            </div>
           </>
         )}
 
@@ -872,7 +858,7 @@ const ComposerShowcase: FC = () => {
                 Основное окно композера
               </h2>
               <p className="text-sm text-[#808283]">
-                Вариации с т��кстом, медиа, код-блоками и тредами, доступные для
+                Вариации с т��кстом, медиа, код-блоками и тредами, доступн��е для
                 точечной стилизации.
               </p>
             </header>
