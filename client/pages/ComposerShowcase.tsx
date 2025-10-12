@@ -540,9 +540,22 @@ const MediaEditorPreview: FC<MediaEditorPreviewProps> = ({ variant }) => {
 
             <div className="flex items-center gap-4">
               <div className="flex gap-2">
-                <span className="flex h-10 items-center justify-center rounded-lg border border-[#2F3336] px-4 text-sm font-semibold text-[#1D9BF0]">
-                  Square
-                </span>
+                <button
+                  type="button"
+                  aria-label="Aspect ratio: original"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[#2F3336] text-[#1D9BF0]"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    className="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-lrvibr r-m6rgpd r-z80fyv r-19wmn03"
+                    style={{ color: "rgb(29, 155, 240)" }}
+                  >
+                    <g>
+                      <path d="M3 7.5C3 6.119 4.119 5 5.5 5h13C19.881 5 21 6.119 21 7.5v9c0 1.381-1.119 2.5-2.5 2.5h-13C4.119 19 3 17.881 3 16.5v-9zM5.5 7c-.276 0-.5.224-.5.5v9c0 .276.224.5.5.5h13c.276 0 .5-.224.5-.5v-9c0-.276-.224-.5-.5-.5h-13z" />
+                    </g>
+                  </svg>
+                </button>
                 <span className="flex h-10 items-center justify-center rounded-lg border border-[#2F3336] px-4 text-sm text-[#E7E9EA]">
                   Portrait
                 </span>
