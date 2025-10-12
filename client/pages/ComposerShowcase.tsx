@@ -386,7 +386,7 @@ const StaticComposerWindow: FC<StaticComposerWindowProps> = ({
         </div>
       </div>
 
-      <div className="flex flex-wrap items-center justify-between gap-3 border-t border-[#181B22] px-5 py-4">
+      <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-4">
         <div className="flex items-center gap-3">
           <button
             type="button"
@@ -929,11 +929,11 @@ const ComposerShowcase: FC = () => {
           <div className="flex items-center justify-between">
             <header>
               <h2 className="text-2xl font-semibold text-white">
-                Основ����ое окно композера
+                Основ��ое окно композера
               </h2>
               <p className="text-sm text-[#808283]">
                 Вариации с ����кстом, медиа, код-блоками и тредами, доступн��е для
-                точечной стилизации.
+                точечной ��тилизации.
               </p>
             </header>
 
@@ -1034,13 +1034,13 @@ const ComposerShowcase: FC = () => {
             </ShowcaseCard>
             <ShowcaseCard
               title="ALT"
-              description="Р��д��ктирован��е ALT-текста для доступности."
+              description="Р��дактирован��е ALT-текста для доступности."
             >
               <MediaEditorPreview variant="alt" />
             </ShowcaseCard>
             <ShowcaseCard
               title="Content warning"
-              description="Список предупреждений по кон��енту."
+              description="Список пре��упреждений по кон��енту."
             >
               <MediaEditorPreview variant="warning" />
             </ShowcaseCard>
