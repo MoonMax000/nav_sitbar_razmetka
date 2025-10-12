@@ -217,7 +217,7 @@ const IconActionButton: FC<{
     disabled={disabled}
     aria-label={label}
     className={cn(
-      "flex h-9 w-9 items-center justify-center rounded-full text-[#3BA2FF] transition-colors hover:bg-white/5 disabled:opacity-50",
+      "flex h-9 w-9 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#482090]/10 disabled:opacity-50",
       className,
     )}
   >
@@ -231,7 +231,7 @@ const EmojiPickerButton: FC<{ onSelect: (emoji: string) => void }> = ({ onSelect
       <button
         type="button"
         aria-label="Добавить эмодзи"
-        className="flex h-9 w-9 items-center justify-center rounded-full text-[#9AA0A8] transition-colors hover:bg-white/5"
+        className="flex h-9 w-9 items-center justify-center rounded-full text-[#9AA0A8] transition-colors hover:bg-[#482090]/10"
       >
         <Smile className="h-5 w-5" />
       </button>
@@ -246,7 +246,7 @@ const EmojiPickerButton: FC<{ onSelect: (emoji: string) => void }> = ({ onSelect
           key={emoji}
           type="button"
           onClick={() => onSelect(emoji)}
-          className="flex h-9 w-9 items-center justify-center rounded-full text-lg transition-colors hover:bg-white/10"
+          className="flex h-9 w-9 items-center justify-center rounded-full text-lg transition-colors hover:bg-[#482090]/10"
         >
           {emoji}
         </button>
@@ -461,7 +461,7 @@ const VariantToolbar: FC = () => {
                 className={cn(
                   "inline-flex min-w-[92px] items-center justify-center rounded-full px-5 py-2 text-sm font-semibold",
                   composer.canPost
-                    ? "bg-[#3BA2FF] text-white shadow-[0_16px_40px_-24px_rgba(59,162,255,0.8)]"
+                    ? "bg-[#482090] text-white shadow-[0_16px_40px_-24px_rgba(72,32,144,0.8)]"
                     : "bg-white/5 text-[#7C8291]",
                 )}
               >
@@ -497,12 +497,12 @@ const VariantMinimal: FC = () => {
         </div>
       </div>
       <div className="flex items-center justify-between pt-3">
-        <div className="flex items-center gap-3 text-[#1DA1F2]">
+        <div className="flex items-center gap-3 text-[#A06AFF]">
           <IconActionButton
             label="Добавить изображение"
             onClick={() => fileInputRef.current?.click()}
             icon={<ImageIcon className="h-4 w-4" />}
-            className="text-[#1DA1F2] hover:bg-[#1DA1F2]/10"
+            className="text-[#A06AFF] hover:bg-[#482090]/10"
           />
           <input
             ref={fileInputRef}
@@ -515,23 +515,23 @@ const VariantMinimal: FC = () => {
           <IconActionButton
             label="Видео или GIF"
             icon={<Video className="h-4 w-4" />}
-            className="text-[#1DA1F2] hover:bg-[#1DA1F2]/10"
+            className="text-[#A06AFF] hover:bg-[#482090]/10"
           />
           <IconActionButton
             label="Опрос"
             icon={<BarChart3 className="h-4 w-4" />}
-            className="text-[#1DA1F2] hover:bg-[#1DA1F2]/10"
+            className="text-[#A06AFF] hover:bg-[#482090]/10"
           />
           <IconActionButton
             label="Emoji"
             icon={<Smile className="h-4 w-4" />}
-            className="text-[#1DA1F2] hover:bg-[#1DA1F2]/10"
+            className="text-[#A06AFF] hover:bg-[#482090]/10"
             onClick={() => composer.setText((prev) => prev + "😊")}
           />
           <IconActionButton
             label="Локация"
             icon={<MapPin className="h-4 w-4" />}
-            className="text-[#1DA1F2] hover:bg-[#1DA1F2]/10"
+            className="text-[#A06AFF] hover:bg-[#482090]/10"
           />
         </div>
         <button
@@ -541,7 +541,7 @@ const VariantMinimal: FC = () => {
           className={cn(
             "inline-flex min-w-[78px] items-center justify-center rounded-full px-4 py-2 text-sm font-semibold",
             composer.canPost
-              ? "bg-[#1DA1F2] text-white"
+              ? "bg-[#482090] text-white"
               : "bg-[#1A2834] text-[#3C5870]",
           )}
         >
