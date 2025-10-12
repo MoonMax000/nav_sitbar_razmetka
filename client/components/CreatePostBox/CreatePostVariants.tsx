@@ -541,7 +541,7 @@ const VariantMinimal: FC = () => {
     <div className="rounded-2xl border border-[#0F1419] bg-[#05080D] p-4">
       <div className="flex items-start gap-3 pb-4">
         <AvatarBadge size={40} />
-        <div className="flex-1">
+        <div className="flex-1 bg-transparent">
           <textarea
             ref={composer.textareaRef}
             value={composer.text}
