@@ -23,7 +23,11 @@ import {
   X,
   Sparkles,
 } from "lucide-react";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 
 interface ChosenImage {
   id: string;
@@ -51,12 +55,13 @@ const EMOJI_PRESETS = [
 ];
 
 const fallbackAvatar =
-  defaultProfile.avatar || "https://cdn.builder.io/api/v1/image/assets/TEMP/103523";
+  defaultProfile.avatar ||
+  "https://cdn.builder.io/api/v1/image/assets/TEMP/103523";
 
 const makeId = () =>
-  (typeof crypto !== "undefined" && crypto.randomUUID
+  typeof crypto !== "undefined" && crypto.randomUUID
     ? crypto.randomUUID()
-    : Math.random().toString(36).slice(2));
+    : Math.random().toString(36).slice(2);
 
 const readImageFile = (file: File): Promise<ChosenImage> =>
   new Promise((resolve, reject) => {
@@ -115,7 +120,10 @@ const useComposerState = (variantLabel: string) => {
 
       const remaining = MAX_FILES - imagesRef.current.length;
       if (remaining <= 0) {
-        toast({ title: "Ограничение", description: "Можно прикрепить до 4 изображений." });
+        toast({
+          title: "Ограничение",
+          description: "Можно прикрепить до 4 изображений.",
+        });
         event.target.value = "";
         return;
       }
@@ -124,7 +132,8 @@ const useComposerState = (variantLabel: string) => {
       if (queue.length < files.length) {
         toast({
           title: "Ограничение",
-          description: "Выбрано слишком много файлов. Добавлено максимум 4 изображения.",
+          description:
+            "Выбрано слишком много файлов. Добавлено максимум 4 изображения.",
         });
       }
 
@@ -135,7 +144,10 @@ const useComposerState = (variantLabel: string) => {
           results.push(chosen);
         } catch (error) {
           console.error(error);
-          toast({ title: "Ошибка", description: "Не удалось обработать изображение." });
+          toast({
+            title: "Ошибка",
+            description: "Не удалось обработать изображение.",
+          });
         }
       }
 
@@ -170,7 +182,10 @@ const useComposerState = (variantLabel: string) => {
     });
     console.log(`[${variantLabel}] Post`, {
       text,
-      attachments: images.map((item) => ({ name: item.file.name, size: item.file.size })),
+      attachments: images.map((item) => ({
+        name: item.file.name,
+        size: item.file.size,
+      })),
     });
     reset();
   }, [canPost, images, reset, text, variantLabel]);
@@ -225,7 +240,9 @@ const IconActionButton: FC<{
   </button>
 );
 
-const EmojiPickerButton: FC<{ onSelect: (emoji: string) => void }> = ({ onSelect }) => (
+const EmojiPickerButton: FC<{ onSelect: (emoji: string) => void }> = ({
+  onSelect,
+}) => (
   <Popover>
     <PopoverTrigger asChild>
       <button
@@ -297,7 +314,11 @@ const ChosenMediaGrid: FC<{
   return (
     <div
       className={cn(containerClass, tone === "minimal" && "gap-2")}
-      style={gridAreas ? ({ gridTemplateAreas: gridAreas } as CSSProperties) : undefined}
+      style={
+        gridAreas
+          ? ({ gridTemplateAreas: gridAreas } as CSSProperties)
+          : undefined
+      }
     >
       {items.map((image, index) => (
         <div
@@ -316,7 +337,11 @@ const ChosenMediaGrid: FC<{
           >
             <X className="h-4 w-4" />
           </button>
-          <img src={image.url} alt="Предпросмотр" className="h-full w-full object-cover" />
+          <img
+            src={image.url}
+            alt="Предпросмотр"
+            className="h-full w-full object-cover"
+          />
         </div>
       ))}
     </div>
@@ -342,7 +367,10 @@ const VariantClassic: FC = () => {
             placeholder="What's happening?"
             className="w-full resize-none bg-transparent text-[15px] font-medium text-white placeholder:text-[#8B98A5] outline-none"
           />
-          <ChosenMediaGrid items={composer.images} onRemove={composer.removeImage} />
+          <ChosenMediaGrid
+            items={composer.images}
+            onRemove={composer.removeImage}
+          />
 
           <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
             <motion.div
@@ -364,18 +392,34 @@ const VariantClassic: FC = () => {
                 className="hidden"
                 onChange={composer.handleFiles}
               />
-              <IconActionButton label="Видео или GIF" icon={<Video className="h-5 w-5" />} />
-              <IconActionButton label="Опрос" icon={<BarChart3 className="h-5 w-5" />} />
-              <EmojiPickerButton onSelect={(emoji) => composer.setText((prev) => prev + emoji)} />
-              <IconActionButton label="Запланировать" icon={<CalendarClock className="h-5 w-5" />} />
-              <IconActionButton label="Локация" icon={<MapPin className="h-5 w-5" />} />
+              <IconActionButton
+                label="Видео или GIF"
+                icon={<Video className="h-5 w-5" />}
+              />
+              <IconActionButton
+                label="Опрос"
+                icon={<BarChart3 className="h-5 w-5" />}
+              />
+              <EmojiPickerButton
+                onSelect={(emoji) => composer.setText((prev) => prev + emoji)}
+              />
+              <IconActionButton
+                label="Запланировать"
+                icon={<CalendarClock className="h-5 w-5" />}
+              />
+              <IconActionButton
+                label="Локация"
+                icon={<MapPin className="h-5 w-5" />}
+              />
             </motion.div>
 
             <div className="flex items-center gap-3">
               <span
                 className={cn(
                   "text-sm font-semibold",
-                  composer.charactersLeft < 20 ? "text-[#FF7A7A]" : "text-[#8B98A5]",
+                  composer.charactersLeft < 20
+                    ? "text-[#FF7A7A]"
+                    : "text-[#8B98A5]",
                 )}
               >
                 {composer.charactersLeft}
@@ -421,7 +465,11 @@ const VariantToolbar: FC = () => {
             className="w-full resize-none bg-transparent text-[15px] font-medium text-white placeholder:text-[#6C7080] outline-none"
           />
 
-          <ChosenMediaGrid items={composer.images} onRemove={composer.removeImage} tone="minimal" />
+          <ChosenMediaGrid
+            items={composer.images}
+            onRemove={composer.removeImage}
+            tone="minimal"
+          />
 
           <div className="mt-3 flex flex-col gap-3">
             <div className="flex items-center justify-between gap-3 rounded-2xl border border-[#1F242B] bg-[rgba(12,16,20,0.65)] px-3 py-2">
@@ -439,7 +487,9 @@ const VariantToolbar: FC = () => {
                   className="hidden"
                   onChange={composer.handleFiles}
                 />
-                <EmojiPickerButton onSelect={(emoji) => composer.setText((prev) => prev + emoji)} />
+                <EmojiPickerButton
+                  onSelect={(emoji) => composer.setText((prev) => prev + emoji)}
+                />
               </div>
               <span className="text-xs font-semibold uppercase tracking-wide text-[#8B98A5]">
                 {composer.charactersLeft} symbols left
@@ -493,7 +543,11 @@ const VariantMinimal: FC = () => {
             placeholder="What's happening?"
             className="w-full resize-none bg-transparent text-[15px] font-medium text-white placeholder:text-[#4E5A66] outline-none"
           />
-          <ChosenMediaGrid items={composer.images} onRemove={composer.removeImage} tone="minimal" />
+          <ChosenMediaGrid
+            items={composer.images}
+            onRemove={composer.removeImage}
+            tone="minimal"
+          />
         </div>
       </div>
       <div className="flex items-center justify-between pt-3">

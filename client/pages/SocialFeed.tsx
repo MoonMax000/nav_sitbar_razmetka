@@ -117,7 +117,9 @@ const SocialFeed: FC = () => {
       case "popular":
         return [...POSTS].sort((a, b) => (b.likes ?? 0) - (a.likes ?? 0));
       case "editors": {
-        const curated = POSTS.filter((post) => (post.views ?? 0) > 0 || post.category);
+        const curated = POSTS.filter(
+          (post) => (post.views ?? 0) > 0 || post.category,
+        );
         return curated.length > 0 ? curated : [...POSTS];
       }
       case "foryou":
@@ -137,18 +139,24 @@ const SocialFeed: FC = () => {
     return postsForTab;
   }, [filter, postsForTab]);
 
-  const filterCounts = useMemo(() => ({
-    all: postsForTab.length,
-    video: postsForTab.filter((post) => post.type === "video").length,
-  }), [postsForTab]);
+  const filterCounts = useMemo(
+    () => ({
+      all: postsForTab.length,
+      video: postsForTab.filter((post) => post.type === "video").length,
+    }),
+    [postsForTab],
+  );
 
   const openExplore = useCallback(() => {
     navigate("/social/explore");
   }, [navigate]);
 
-  const handleOpenPost = useCallback((post: SocialPost) => {
-    navigate(`/social/post/${post.id}`, { state: post });
-  }, [navigate]);
+  const handleOpenPost = useCallback(
+    (post: SocialPost) => {
+      navigate(`/social/post/${post.id}`, { state: post });
+    },
+    [navigate],
+  );
 
   const handleResetFilters = useCallback(() => {
     setFilter("all");
@@ -256,7 +264,10 @@ const SocialFeed: FC = () => {
         <aside className="hidden w-full max-w-[320px] flex-col gap-5 lg:flex">
           <div className="sticky top-28 flex flex-col gap-5">
             <div className="relative">
-              <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#6C7080]" aria-hidden />
+              <Search
+                className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#6C7080]"
+                aria-hidden
+              />
               <input
                 type="search"
                 placeholder="Поиск по авторам и темам"
@@ -296,7 +307,9 @@ const FeedTabs: FC<FeedTabsProps> = ({ tabs, activeTab, onTabChange }) => (
                 : "border border-[#181B22] bg-[rgba(12,16,20,0.65)] text-[#B0B0B0] backdrop-blur-[58px] hover:border-[#A06AFF]/40 hover:text-white"
             }`}
           >
-            <span className="text-[15px] font-semibold leading-tight">{tab.label}</span>
+            <span className="text-[15px] font-semibold leading-tight">
+              {tab.label}
+            </span>
             <span className="text-[11px] font-medium leading-tight text-white/60">
               {tab.description}
             </span>
@@ -339,9 +352,7 @@ const FilterControls: FC<FilterControlsProps> = ({
                 : "text-[#B0B0B0] hover:text-white"
             } ${isDisabled ? "opacity-60" : ""}`}
           >
-            <span>
-              {value === "all" ? "Все посты" : "Только видео"}
-            </span>
+            <span>{value === "all" ? "Все посты" : "Только видео"}</span>
             <span className="rounded-full bg-white/10 px-2 py-0.5 text-xs">
               {counts[value]}
             </span>
@@ -383,10 +394,21 @@ interface EmptyTimelineProps {
   onAction?: () => void;
 }
 
-const EmptyTimeline: FC<EmptyTimelineProps> = ({ title, description, actionLabel, onAction }) => (
+const EmptyTimeline: FC<EmptyTimelineProps> = ({
+  title,
+  description,
+  actionLabel,
+  onAction,
+}) => (
   <div className="flex flex-col items-center gap-4 rounded-3xl border border-dashed border-[#181B22] bg-[rgba(12,16,20,0.4)] p-10 text-center">
     <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#A06AFF]/20 text-[#A06AFF]">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
         <path
           d="M7 11V7C7 5.11438 7 4.17157 7.58579 3.58579C8.17157 3 9.11438 3 11 3H13C14.8856 3 15.8284 3 16.4142 3.58579C17 4.17157 17 5.11438 17 7V11M5 9H19V17C19 18.8856 19 19.8284 18.4142 20.4142C17.8284 21 16.8856 21 15 21H9C7.11438 21 6.17157 21 5.58579 20.4142C5 19.8284 5 18.8856 5 17V9Z"
           stroke="currentColor"

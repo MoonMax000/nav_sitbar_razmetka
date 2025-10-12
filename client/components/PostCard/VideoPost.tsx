@@ -46,9 +46,10 @@ const VideoPost: FC<VideoPostProps> = ({
   const formattedContent = useMemo(() => content ?? "", [content]);
   const shouldShowToggle = truncate && formattedContent.length > 260;
 
-  const displayedContent = expanded || !truncate
-    ? formattedContent
-    : `${formattedContent.slice(0, 240)}${formattedContent.length > 240 ? "…" : ""}`;
+  const displayedContent =
+    expanded || !truncate
+      ? formattedContent
+      : `${formattedContent.slice(0, 240)}${formattedContent.length > 240 ? "…" : ""}`;
 
   const handleToggle = (event: MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
@@ -68,7 +69,8 @@ const VideoPost: FC<VideoPostProps> = ({
       onClick={onOpen}
       className={cn(
         "mx-auto flex w-full max-w-[680px] flex-col items-center gap-6 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] p-4 backdrop-blur-[50px]",
-        onOpen && "cursor-pointer transition-colors duration-200 hover:border-[#A06AFF]/50",
+        onOpen &&
+          "cursor-pointer transition-colors duration-200 hover:border-[#A06AFF]/50",
         className,
       )}
     >
@@ -76,25 +78,47 @@ const VideoPost: FC<VideoPostProps> = ({
         <div className="flex w-full items-start justify-between">
           <div className="flex flex-1 items-center gap-2">
             <div className="h-11 w-11 flex-shrink-0 overflow-hidden rounded-full">
-              <img src={author.avatar} alt={author.name} className="h-full w-full object-cover" />
+              <img
+                src={author.avatar}
+                alt={author.name}
+                className="h-full w-full object-cover"
+              />
             </div>
             <div className="flex flex-1 flex-col items-start gap-0.5">
               <div className="flex items-center gap-1 text-[15px] font-bold leading-normal text-white">
                 {author.name}
                 {author.verified && (
-                  <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
                     <path
                       d="M10 2L12.118 4.23223L15.1962 4.47214L15.4721 7.55192L17.7044 9.66987L15.4721 11.7878L15.1962 14.8676L12.118 15.1075L10 17.3397L7.88197 15.1075L4.80384 14.8676L4.52793 11.7878L2.29577 9.66987L4.52793 7.55192L4.80384 4.47214L7.88197 4.23223L10 2Z"
                       stroke="#A06AFF"
                       strokeWidth="1.5"
                     />
-                    <path d="M7.5 10L9.16667 11.6667L12.5 8.33337" stroke="#A06AFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    <path
+                      d="M7.5 10L9.16667 11.6667L12.5 8.33337"
+                      stroke="#A06AFF"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
                   </svg>
                 )}
               </div>
               <div className="flex items-center gap-2">
                 <div className="flex items-center gap-1 rounded bg-[#FF6BD4] px-2 py-0.5">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
                     <path
                       d="M1.33301 7.33366C1.33301 5.13377 1.33301 4.03383 2.01643 3.35041C2.69984 2.66699 3.79979 2.66699 5.99967 2.66699H6.66634C8.86621 2.66699 9.96614 2.66699 10.6496 3.35041C11.333 4.03383 11.333 5.13377 11.333 7.33366V8.66699C11.333 10.8669 11.333 11.9668 10.6496 12.6503C9.96614 13.3337 8.86621 13.3337 6.66634 13.3337H5.99967C3.79979 13.3337 2.69984 13.3337 2.01643 12.6503C1.33301 11.9668 1.33301 10.8669 1.33301 8.66699V7.33366Z"
                       stroke="white"
@@ -106,9 +130,15 @@ const VideoPost: FC<VideoPostProps> = ({
                       strokeWidth="1.5"
                       strokeLinecap="round"
                     />
-                    <path d="M7.66699 7.33301C8.21928 7.33301 8.66699 6.88529 8.66699 6.33301C8.66699 5.78072 8.21928 5.33301 7.66699 5.33301C7.11471 5.33301 6.66699 5.78072 6.66699 6.33301C6.66699 6.88529 7.11471 7.33301 7.66699 7.33301Z" stroke="white" strokeWidth="1.5" />
+                    <path
+                      d="M7.66699 7.33301C8.21928 7.33301 8.66699 6.88529 8.66699 6.33301C8.66699 5.78072 8.21928 5.33301 7.66699 5.33301C7.11471 5.33301 6.66699 5.78072 6.66699 6.33301C6.66699 6.88529 7.11471 7.33301 7.66699 7.33301Z"
+                      stroke="white"
+                      strokeWidth="1.5"
+                    />
                   </svg>
-                  <div className="text-xs font-bold leading-normal text-white">Video</div>
+                  <div className="text-xs font-bold leading-normal text-white">
+                    Video
+                  </div>
                 </div>
                 <div className="flex-1 text-xs font-bold leading-normal text-[#B0B0B0]">
                   {timestamp}
@@ -126,7 +156,9 @@ const VideoPost: FC<VideoPostProps> = ({
                   : "bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white",
               )}
             >
-              <span className="text-xs font-bold">{isFollowing ? "Unfollow" : "Follow"}</span>
+              <span className="text-xs font-bold">
+                {isFollowing ? "Unfollow" : "Follow"}
+              </span>
             </button>
             <div className="flex h-[26px] w-[26px] items-center justify-center rounded-lg">
               <svg
@@ -169,7 +201,9 @@ const VideoPost: FC<VideoPostProps> = ({
 
       <div className="flex w-full flex-col items-start justify-center gap-4">
         <div className="flex w-full flex-col items-start justify-center gap-4">
-          <div className="text-2xl font-bold leading-normal text-white">{title}</div>
+          <div className="text-2xl font-bold leading-normal text-white">
+            {title}
+          </div>
           {displayedContent && (
             <div className="text-[15px] font-normal leading-normal text-white whitespace-pre-line">
               {displayedContent}
@@ -196,10 +230,20 @@ const VideoPost: FC<VideoPostProps> = ({
         )}
 
         <div className="relative w-full overflow-hidden rounded-2xl border border-[#181B22]">
-          <img src={videoUrl} alt="" className="aspect-[1043/585] w-full object-cover" />
+          <img
+            src={videoUrl}
+            alt=""
+            className="aspect-[1043/585] w-full object-cover"
+          />
           <div className="absolute inset-0 flex items-center justify-center">
             <span className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white shadow-[0_12px_24px_0_rgba(0,0,0,0.48)]">
-              <svg width="24" height="24" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 25 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
                 <path
                   d="M4.5 12.5004V8.94038C4.5 4.52038 7.63 2.71039 11.46 4.92039L14.55 6.70039L17.64 8.48039C21.47 10.6904 21.47 14.3104 17.64 16.5204L14.55 18.3004L11.46 20.0804C7.63 22.2904 4.5 20.4804 4.5 16.0604V12.5004Z"
                   stroke="white"
@@ -216,8 +260,20 @@ const VideoPost: FC<VideoPostProps> = ({
         <div className="grid w-full grid-cols-[auto_1fr_auto] items-center">
           <div className="col-span-1 flex items-center">
             <div className="flex items-center gap-1 rounded bg-[#1C3430] px-1 py-0.5">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M13.3333 8.66659V5.33325H10" stroke="#2EBD85" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M13.3333 8.66659V5.33325H10"
+                  stroke="#2EBD85"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
                 <path
                   d="M13.3334 5.33325L10 8.66659C9.41162 9.25499 9.11749 9.54912 8.75642 9.58165C8.69669 9.58705 8.63669 9.58705 8.57695 9.58165C8.21589 9.54912 7.92175 9.25499 7.33335 8.66659C6.74495 8.07819 6.45079 7.78405 6.08973 7.75152C6.03005 7.74612 5.96999 7.74612 5.91031 7.75152C5.54925 7.78405 5.25506 8.07819 4.66669 8.66659L2.66669 10.6666"
                   stroke="#2EBD85"
@@ -233,8 +289,17 @@ const VideoPost: FC<VideoPostProps> = ({
           </div>
 
           <div className="col-span-1 relative">
-            <div style={{left: '33.3333%', top: '50%'}} className="absolute -translate-x-1/2 -translate-y-1/2 flex items-center gap-1.5">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <div
+              style={{ left: "33.3333%", top: "50%" }}
+              className="absolute -translate-x-1/2 -translate-y-1/2 flex items-center gap-1.5"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
                 <g clipPath="url(#clip0_video_post_card)">
                   <path
                     d="M18.3337 9.63875C18.3337 14.0414 14.6022 17.611 10.0003 17.611C9.45924 17.6118 8.91966 17.5617 8.38816 17.4619C8.0056 17.39 7.81431 17.3541 7.68077 17.3745C7.54722 17.3949 7.35798 17.4955 6.97948 17.6968C5.90878 18.2663 4.66028 18.4673 3.45958 18.244C3.91594 17.6827 4.22762 17.0092 4.36514 16.2872C4.44848 15.8455 4.24199 15.4165 3.93273 15.1024C2.5281 13.6761 1.66699 11.7541 1.66699 9.63875C1.66699 5.23615 5.39848 1.6665 10.0003 1.6665C14.6022 1.6665 18.3337 5.23615 18.3337 9.63875Z"
@@ -256,17 +321,35 @@ const VideoPost: FC<VideoPostProps> = ({
                   </clipPath>
                 </defs>
               </svg>
-              <div className="text-xs font-bold leading-normal text-[#B0B0B0]">{comments}</div>
+              <div className="text-xs font-bold leading-normal text-[#B0B0B0]">
+                {comments}
+              </div>
             </div>
 
-            <div style={{left: '66.6666%', top: '50%'}} className="absolute -translate-x-1/2 -translate-y-1/2 flex items-center gap-1.5">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <div
+              style={{ left: "66.6666%", top: "50%" }}
+              className="absolute -translate-x-1/2 -translate-y-1/2 flex items-center gap-1.5"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
                 <path
                   d="M16.2192 3.32846C13.9844 1.95769 12.034 2.51009 10.8623 3.39001C10.3818 3.7508 10.1417 3.93119 10.0003 3.93119C9.85899 3.93119 9.61882 3.7508 9.13832 3.39001C7.96667 2.51009 6.01623 1.95769 3.78152 3.32846C0.848716 5.12745 0.185092 11.0624 6.94993 16.0695C8.23842 17.0232 8.88266 17.5 10.0003 17.5C11.118 17.5 11.7622 17.0232 13.0507 16.0695C19.8156 11.0624 19.1519 5.12745 16.2192 3.32846Z"
                   fill="url(#paint0_linear_video_post_card)"
                 />
                 <defs>
-                  <linearGradient id="paint0_linear_video_post_card" x1="18.3337" y1="10" x2="1.66699" y2="10" gradientUnits="userSpaceOnUse">
+                  <linearGradient
+                    id="paint0_linear_video_post_card"
+                    x1="18.3337"
+                    y1="10"
+                    x2="1.66699"
+                    y2="10"
+                    gradientUnits="userSpaceOnUse"
+                  >
                     <stop stopColor="#A06AFF" />
                     <stop offset="1" stopColor="#482090" />
                   </linearGradient>
@@ -295,25 +378,52 @@ const VideoPost: FC<VideoPostProps> = ({
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
-            </svg>
+              </svg>
             </div>
 
             <button
               type="button"
-              onClick={(e) => { e.stopPropagation(); console.log('share'); }}
+              onClick={(e) => {
+                e.stopPropagation();
+                console.log("share");
+              }}
               aria-label="Share"
               className="flex h-[26px] w-[26px] items-center justify-center rounded-lg text-[#B0B0B0] hover:bg-[#482090]/10 hover:text-white transition"
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-current">
-                <path d="M4 12v7a1 1 0 001 1h14a1 1 0 001-1v-7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M12 3v13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M8 7l4-4 4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="text-current"
+              >
+                <path
+                  d="M4 12v7a1 1 0 001 1h14a1 1 0 001-1v-7"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M12 3v13"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M8 7l4-4 4 4"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
               </svg>
             </button>
           </div>
         </div>
       </div>
-
     </div>
   );
 };
