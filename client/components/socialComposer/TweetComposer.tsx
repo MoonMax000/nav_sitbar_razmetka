@@ -164,6 +164,7 @@ const TweetComposer: FC = () => {
               </button>
               <button
                 type="button"
+                onClick={() => window.dispatchEvent(new CustomEvent('open-composer'))}
                 className="flex h-10 w-10 items-center justify-center rounded-full text-[#A06AFF] transition hover:bg-white/5 hover:text-white"
               >
                 <Smile className="h-5 w-5" />
