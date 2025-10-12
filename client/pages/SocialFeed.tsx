@@ -2,7 +2,7 @@ import type { FC } from "react";
 import { useCallback, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import CreatePostBox from "@/components/CreatePostBox/CreatePostBox";
+import CreatePostVariants from "@/components/CreatePostBox/CreatePostVariants";
 import PostCard from "@/components/PostCard/PostCard";
 import VideoPost from "@/components/PostCard/VideoPost";
 import SuggestedProfilesWidget, {
