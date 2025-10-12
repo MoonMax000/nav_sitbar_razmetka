@@ -627,7 +627,7 @@ const VariantMinimal: FC = () => {
           </div>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 self-end">
           {composer.text.length > 0 && (
             <>
               <div className="h-8 w-px bg-white/15" />
