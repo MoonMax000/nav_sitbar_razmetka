@@ -483,7 +483,7 @@ const VariantToolbar: FC = () => {
                   icon={<BarChart3 className="h-5 w-5" />}
                 />
                 <IconActionButton
-                  label="Добавить изоб��ажение"
+                  label="Д��бавить изоб��ажение"
                   onClick={openFilePicker}
                   icon={<ImagePlus className="h-5 w-5" />}
                 />
@@ -538,7 +538,7 @@ const VariantMinimal: FC = () => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   return (
-    <div className="rounded-2xl border border-[#0F1419] bg-[#05080D] p-4">
+    <div className="rounded-2xl p-4">
       <div className="flex items-start gap-3 pb-4">
         <AvatarBadge size={40} />
         <div className="flex-1">
