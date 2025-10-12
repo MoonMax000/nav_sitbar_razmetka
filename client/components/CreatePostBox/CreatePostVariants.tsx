@@ -79,7 +79,7 @@ const readImageFile = (file: File): Promise<ChosenImage> =>
           height: image.height,
         });
       image.onerror = () =>
-        reject(new Error("Не удалось по��учить параме��ры изо��ражения"));
+        reject(new Error("Не удалось по��учить параме��ры ��зо��ражения"));
       image.src = result;
     };
     reader.readAsDataURL(file);
@@ -548,7 +548,7 @@ const VariantMinimal: FC = () => {
             onChange={composer.handleTextChange}
             maxLength={CHAR_LIMIT}
             placeholder="What's happening?"
-            className="w-full resize-none bg-transparent text-[15px] font-medium text-white placeholder:text-[#4E5A66] outline-none"
+            className="w-full resize-none bg-transparent focus:bg-transparent text-[15px] font-medium text-white placeholder:text-[#4E5A66] outline-none"
           />
           <ChosenMediaGrid
             items={composer.images}
@@ -561,7 +561,7 @@ const VariantMinimal: FC = () => {
         <div className="flex flex-col gap-2">
           <button
             type="button"
-            className="inline-flex items-center gap-2 rounded-full bg-white/5 px-4 py-1.5 text-sm font-semibold text-[#1D9BF0] transition-colors hover:bg-white/10"
+            className="inline-flex items-center gap-2 rounded-full bg-transparent px-4 py-1.5 text-sm font-semibold text-[#1D9BF0] transition-colors hover:bg-transparent"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
               <path
