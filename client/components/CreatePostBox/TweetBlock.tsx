@@ -123,17 +123,40 @@ export const TweetBlock: FC<TweetBlockProps> = ({
       </div>
 
       <div className="flex-1">
-        <textarea
-          ref={textareaRef}
-          value={text}
-          onChange={handleTextChange}
-          placeholder={isFirst ? "What is happening?" : "Add another post"}
-          className={`w-full resize-none bg-transparent text-lg text-[#E7E9EA] placeholder:text-[#808283] outline-none ${
-            readOnly ? "cursor-default" : ""
-          }`}
-          rows={1}
-          readOnly={readOnly}
-        />
+        <div className="flex items-start gap-3">
+          <textarea
+            ref={textareaRef}
+            value={text}
+            onChange={handleTextChange}
+            placeholder={isFirst ? "What is happening?" : "Add another post"}
+            className={`flex-1 w-full resize-none bg-transparent text-lg text-[#E7E9EA] placeholder:text-[#808283] outline-none ${
+              readOnly ? "cursor-default" : ""
+            }`}
+            rows={1}
+            readOnly={readOnly}
+          />
+          {canDelete && (
+            <button
+              type="button"
+              onClick={handleDelete}
+              disabled={readOnly}
+              className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-[#EF454A] transition-colors ${
+                readOnly ? "cursor-default opacity-50" : "hover:bg-[#EF454A]/10"
+              }`}
+              title="Remove post"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M18 6L6 18M6 6L18 18"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+          )}
+        </div>
 
         {media.length > 0 && (
           <MediaGrid
@@ -257,29 +280,6 @@ export const TweetBlock: FC<TweetBlockProps> = ({
                 <span className="text-sm" data-testid="altTextLabel">Add description</span>
               </a>
             </div>
-          )}
-
-
-          {canDelete && (
-            <button
-              type="button"
-              onClick={handleDelete}
-              disabled={readOnly}
-              className={`ml-auto flex h-9 w-9 items-center justify-center rounded-full text-[#EF454A] transition-colors ${
-                readOnly ? "opacity-50 cursor-default" : "hover:bg-[#EF454A]/10"
-              }`}
-              title="Remove post"
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M18 6L6 18M6 6L18 18"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
           )}
         </div>
       </div>
