@@ -66,7 +66,7 @@ const makeId = () =>
 const readImageFile = (file: File): Promise<ChosenImage> =>
   new Promise((resolve, reject) => {
     const reader = new FileReader();
-    reader.onerror = () => reject(new Error("Не удалось п��очитать файл"));
+    reader.onerror = () => reject(new Error("Не удалось прочитать файл"));
     reader.onload = () => {
       const result = reader.result as string;
       const image = new Image();
@@ -339,7 +339,7 @@ const ChosenMediaGrid: FC<{
           </button>
           <img
             src={image.url}
-            alt="Предпросмо��р"
+            alt="Предпросмотр"
             className="h-full w-full object-cover"
           />
         </div>
@@ -539,7 +539,7 @@ const VariantMinimal: FC = () => {
 
   return (
     <div className="rounded-2xl border border-[#0F1419] bg-[#05080D] p-4">
-      <div className="flex items-start gap-3 border-b border-white/10 pb-4">
+      <div className="flex items-start gap-3 pb-4">
         <AvatarBadge size={40} />
         <div className="flex-1">
           <textarea
