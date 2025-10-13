@@ -13,32 +13,6 @@ interface FollowRecommendationsWidgetProps {
   onShowMore?: () => void;
 }
 
-const FollowActionButton: FC<{ profileId: string }> = ({ profileId }) => {
-  const [isFollowing, setIsFollowing] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
-
-  const baseClasses = "flex h-8 items-center justify-center rounded-full px-5 text-sm font-semibold transition-colors duration-200";
-
-  return (
-    <button
-      type="button"
-      onClick={() => setIsFollowing(!isFollowing)}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className={cn(
-        baseClasses,
-        isFollowing
-          ? "border border-[#f44] bg-transparent text-[#f44] hover:bg-[rgba(244,68,68,0.12)]"
-          : "bg-white text-black hover:bg-[#E9E9E9]"
-      )}
-      aria-pressed={isFollowing}
-      data-profile={profileId}
-    >
-      {isFollowing ? (isHovered ? "Unfollow" : "Following") : "Follow"}
-    </button>
-  );
-};
-
 const FollowRecommendationsWidget: FC<FollowRecommendationsWidgetProps> = ({
   title = "Who to follow",
   profiles,
