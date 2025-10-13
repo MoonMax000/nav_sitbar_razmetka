@@ -26,6 +26,30 @@ export const DEFAULT_SUGGESTED_PROFILES: SuggestedProfile[] = [
   },
 ];
 
+export const DEFAULT_FOLLOW_RECOMMENDATIONS: SuggestedProfile[] = [
+  {
+    id: "ilona-zuieva",
+    name: "Ilona Zuieva",
+    handle: "@Ilona5Ilonaa",
+    avatar: "https://i.pravatar.cc/120?img=21",
+    verified: true,
+  },
+  {
+    id: "doctor-profit",
+    name: "Doctor Profit",
+    handle: "@DrProfitCrypto",
+    avatar: "https://i.pravatar.cc/120?img=57",
+    verified: true,
+  },
+  {
+    id: "b24",
+    name: "B24",
+    handle: "@B24PT",
+    avatar: "https://i.pravatar.cc/120?img=11",
+    verified: true,
+  },
+];
+
 export const DEFAULT_NEWS_ITEMS: NewsItem[] = [
   {
     id: "alpha-drive",
