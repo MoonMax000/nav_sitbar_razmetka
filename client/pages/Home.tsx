@@ -5,6 +5,11 @@ import { socialPosts } from "@/data/socialPosts";
 import type { SocialPost } from "@/data/socialPosts";
 import TweetForm from "@/components/socialComposer/TweetForm";
 import Timeline from "@/components/socialComposer/Timeline";
+import SocialRightSidebar from "@/components/SocialFeedWidgets/SocialRightSidebar";
+import {
+  DEFAULT_SUGGESTED_PROFILES,
+  DEFAULT_TRENDING_TOPICS,
+} from "@/components/SocialFeedWidgets/sidebarData";
 
 export default function HomePage() {
   const [posts, setPosts] = useState<SocialPost[]>(socialPosts);
