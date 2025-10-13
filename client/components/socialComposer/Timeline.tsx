@@ -45,6 +45,7 @@ export default function Timeline({ posts, className }: TimelineProps) {
             category={post.category}
             type={post.type}
             truncate={shouldTruncate}
+            onOpen={() => navigate(`/social/post/${post.id}`, { state: post })}
           />
         );
       })}
