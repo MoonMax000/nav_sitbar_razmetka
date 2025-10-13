@@ -658,7 +658,7 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
         </div>
 
         {activeTab === "crop" && (
-          <div className="space-y-5 px-6 py-5">
+          <div className="space-y-6 p-6">
             {!isImage ? (
               <div className="rounded-2xl border border-[#181B22] bg-white/5 px-4 py-6 text-center text-sm text-[#808283]">
                 Cropping is available for images only.
@@ -668,10 +668,9 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
                 <div
                   ref={containerRef}
                   className={classNames(
-                    "relative w-full overflow-hidden rounded-2xl border-2 border-[#1D9BF0] bg-black",
+                    "relative flex h-[420px] w-full items-center justify-center overflow-hidden rounded-2xl border-2 border-[#1D9BF0] bg-black",
                     isDragging ? "cursor-grabbing" : "cursor-grab",
                   )}
-                  style={{ height: 420 }}
                   onClick={(e) => e.stopPropagation()}
                   onPointerDown={(e) => {
                     e.stopPropagation();
@@ -702,32 +701,26 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
                     handleWheel(e);
                   }}
                 >
-                  <div className="relative h-full w-full flex items-center justify-center">
-                    <div
-                      className="relative overflow-hidden"
-                      style={{
-                        width: frameSize.width || "100%",
-                        height: frameSize.height || "100%",
-                      }}
-                    >
-                      <img
-                        src={media.url}
-                        alt=""
-                        draggable={false}
-                        className={classNames(
-                          "pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none object-cover",
-                          transform.flipH ? "-scale-x-100" : "",
-                          transform.flipV ? "-scale-y-100" : "",
-                        )}
-                        style={{
-                          width: imageSize ? imageSize.width : "auto",
-                          height: imageSize ? imageSize.height : "auto",
-                          transform: `translate(-50%, -50%) translate(${transform.translateX}px, ${transform.translateY}px) scale(${transform.scale}) rotate(${transform.angle + transform.straighten}deg)`,
-                          transformOrigin: "center",
-                        }}
-                      />
-                      {renderGridOverlay()}
-                    </div>
+                  <img
+                    src={media.url}
+                    alt="Crop preview"
+                    draggable={false}
+                    className={classNames(
+                      "pointer-events-none absolute left-1/2 top-1/2 h-auto -translate-x-1/2 -translate-y-1/2 select-none",
+                      transform.flipH ? "-scale-x-100" : "",
+                      transform.flipV ? "-scale-y-100" : "",
+                    )}
+                    style={{
+                      width: imageSize ? imageSize.width : "auto",
+                      height: imageSize ? imageSize.height : "auto",
+                      transform: `translate(-50%, -50%) translate(${transform.translateX}px, ${transform.translateY}px) scale(${transform.scale}) rotate(${transform.angle + transform.straighten}deg)`,
+                      transformOrigin: "center",
+                    }}
+                  />
+                  <div className="absolute inset-0 grid grid-cols-3 grid-rows-3 opacity-40">
+                    {Array.from({ length: 9 }).map((_, idx) => (
+                      <div key={idx} className="border border-white/10" />
+                    ))}
                   </div>
                 </div>
 
