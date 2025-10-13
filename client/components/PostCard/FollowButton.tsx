@@ -55,7 +55,10 @@ const FollowButton: FC<FollowButtonProps> = ({
     onToggle?.(nextState);
   };
 
-  const { buttonClasses, buttonStyle } = useMemo(() => {
+  const { buttonClasses, buttonStyle } = useMemo<{
+    buttonClasses: string;
+    buttonStyle: CSSProperties | undefined;
+  }>(() => {
     if (following) {
       return {
         buttonClasses: "border bg-transparent font-semibold transition-colors duration-200",
@@ -63,7 +66,7 @@ const FollowButton: FC<FollowButtonProps> = ({
           borderColor: BRAND_COLOR,
           color: BRAND_COLOR,
           backgroundColor: isHovered ? BRAND_HOVER_BACKGROUND : "transparent",
-        } as React.CSSProperties,
+        },
       };
     }
 
