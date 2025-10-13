@@ -26,8 +26,9 @@ const ProfileHero: FC<ProfileHeroProps> = ({ profile, onEdit, tweetsCount = 0, i
 
   return (
     <section className="relative mb-6">
-      {/* Header bar with back button */}
-      <div className="flex items-center gap-9 px-4 py-3">
+      {/* Header bar with back button - Sticky with glass effect */}
+      <div className="sticky top-0 z-10 backdrop-blur-md bg-black/80">
+        <div className="flex items-center gap-9 px-4 py-3">
         <button
           type="button"
           onClick={() => navigate(-1)}
@@ -55,6 +56,7 @@ const ProfileHero: FC<ProfileHeroProps> = ({ profile, onEdit, tweetsCount = 0, i
           <p className="text-[13px] font-normal leading-4 text-[#8B98A5]">
             {tweetsCount} post
           </p>
+        </div>
         </div>
       </div>
 
