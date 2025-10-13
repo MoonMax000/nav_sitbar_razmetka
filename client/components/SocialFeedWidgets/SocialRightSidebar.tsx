@@ -45,6 +45,7 @@ const SocialRightSidebar: FC<SocialRightSidebarProps> = ({
         ) : null}
         <SuggestedProfilesWidget profiles={profiles} />
         <NewsWidget items={newsItems} />
+        <FollowRecommendationsWidget profiles={followRecommendations} />
       </div>
     </aside>
   );
