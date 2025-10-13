@@ -101,7 +101,7 @@ const UserHeader: FC<Props> = ({ isOwn = true, className }) => {
             <img
               src="https://api.builder.io/api/v1/image/assets/TEMP/8dcd522167ed749bb95dadfd1a39f43e695d33a0?width=320"
               alt="Profile"
-              className="h-full w-full rounded-full border-4 border-[#0B0E13] object-cover object-center shadow-[0_18px_40px_-28px_rgba(160,106,255,0.8)]"
+              className="h-full w-full rounded-full border-4 border-[#0B0E13] object-cover object-center"
             />
             <button
               type="button"
