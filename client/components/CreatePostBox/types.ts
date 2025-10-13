@@ -55,6 +55,13 @@ export type CropTransform = {
   flipV: boolean;
   straighten: number;
   grid: "thirds" | "golden" | "center" | "off";
+  // Crop export data (coordinates in original image pixels)
+  cropRect?: {
+    x: number;
+    y: number;
+    w: number;
+    h: number;
+  };
 };
 
 export type MediaItem = {
