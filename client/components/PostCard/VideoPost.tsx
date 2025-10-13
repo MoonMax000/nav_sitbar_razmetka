@@ -1,9 +1,9 @@
-import { FC, MouseEvent, useMemo, useState } from "react";
+import { type FC, type MouseEvent, useMemo, useState } from "react";
 
 import UserAvatar from "@/components/ui/Avatar/UserAvatar";
 import { cn } from "@/lib/utils";
 
-export interface VideoPostData {
+export interface FeedPostProps {
   author: {
     name: string;
     avatar: string;
@@ -13,46 +13,56 @@ export interface VideoPostData {
   timestamp: string;
   title: string;
   content?: string;
-  videoUrl: string;
-  sentiment: "bullish" | "bearish";
-  likes: number;
-  comments: number;
+  mediaUrl?: string | null;
+  sentiment?: "bullish" | "bearish";
+  likes?: number;
+  comments?: number;
+  views?: number;
   isFollowing?: boolean;
   hashtags?: string[];
-}
-
-interface VideoPostProps extends VideoPostData {
+  category?: string;
+  type?: "video" | "article" | string;
   truncate?: boolean;
   onOpen?: () => void;
   className?: string;
 }
 
-const VideoPost: FC<VideoPostProps> = ({
+const FeedPost: FC<FeedPostProps> = ({
   author,
   timestamp,
   title,
   content,
-  videoUrl,
-  sentiment,
-  likes,
-  comments,
+  mediaUrl,
+  sentiment = "bullish",
+  likes = 0,
+  comments = 0,
+  views,
   isFollowing: initialFollowing,
   hashtags,
+  category,
+  type = "article",
   truncate = false,
   onOpen,
   className,
 }) => {
   const [expanded, setExpanded] = useState(!truncate);
-  const [isFollowing, setIsFollowing] = useState(initialFollowing || false);
+  const [isFollowing, setIsFollowing] = useState(initialFollowing ?? false);
   const [isHovered, setIsHovered] = useState(false);
 
   const formattedContent = useMemo(() => content ?? "", [content]);
   const shouldShowToggle = truncate && formattedContent.length > 260;
 
-  const displayedContent =
-    expanded || !truncate
-      ? formattedContent
-      : `${formattedContent.slice(0, 240)}${formattedContent.length > 240 ? "…" : ""}`;
+  const displayedContent = useMemo(() => {
+    if (expanded || !truncate) {
+      return formattedContent;
+    }
+
+    if (formattedContent.length <= 240) {
+      return formattedContent;
+    }
+
+    return `${formattedContent.slice(0, 240)}${formattedContent.length > 240 ? "…" : ""}`;
+  }, [expanded, formattedContent, truncate]);
 
   const handleToggle = (event: MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
@@ -61,20 +71,26 @@ const VideoPost: FC<VideoPostProps> = ({
 
   const handleFollowClick = (event: MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
-    setIsFollowing(!isFollowing);
+    setIsFollowing((prev) => !prev);
   };
 
   const handleMenuClick = (event: MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
   };
 
-  const sentimentClasses = sentiment === "bullish"
-    ? "border-emerald-400/40 bg-emerald-400/10 text-emerald-300"
-    : "border-rose-400/40 bg-rose-400/10 text-rose-300";
+  const sentimentClasses =
+    sentiment === "bullish"
+      ? "border-emerald-400/40 bg-emerald-400/10 text-emerald-300"
+      : "border-rose-400/40 bg-rose-400/10 text-rose-300";
 
   const followButtonClasses = isFollowing
     ? "border border-[#f44] bg-[rgba(244,68,68,0.10)] text-[#f44] hover:bg-[rgba(244,68,68,0.20)]"
     : "bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white shadow-[0_12px_30px_-18px_rgba(72,32,144,0.85)] hover:from-[#B57FFF] hover:to-[#5A2BA0]";
+
+  const categoryLabel = category ?? (type === "video" ? "Video" : undefined);
+  const hasMedia = Boolean(mediaUrl);
+  const isVideo = type === "video" && hasMedia;
+  const likesLabel = likes >= 1000 ? `${(likes / 1000).toFixed(1)}K` : likes;
 
   return (
     <article
@@ -121,34 +137,36 @@ const VideoPost: FC<VideoPostProps> = ({
               ) : null}
             </div>
             <div className="mt-2 flex flex-wrap items-center gap-2 text-xs font-semibold text-[#B0B0B0]">
-              <span className="inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-[#482090] to-[#A06AFF] px-2 py-0.5 text-[11px] uppercase tracking-[0.12em] text-white shadow-[0_12px_28px_-20px_rgba(160,106,255,0.75)]">
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="text-white"
-                >
-                  <path
-                    d="M1.33301 7.33366C1.33301 5.13377 1.33301 4.03383 2.01643 3.35041C2.69984 2.66699 3.79979 2.66699 5.99967 2.66699H6.66634C8.86621 2.66699 9.96614 2.66699 10.6496 3.35041C11.333 4.03383 11.333 5.13377 11.333 7.33366V8.66699C11.333 10.8669 11.333 11.9668 10.6496 12.6503C9.96614 13.3337 8.86621 13.3337 6.66634 13.3337H5.99967C3.79979 13.3337 2.69984 13.3337 2.01643 12.6503C1.33301 11.9668 1.33301 10.8669 1.33301 8.66699V7.33366Z"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                  />
-                  <path
-                    d="M11.333 5.93691L11.4169 5.86765C12.8275 4.70383 13.5327 4.12192 14.0995 4.40289C14.6663 4.68386 14.6663 5.61538 14.6663 7.47841V8.52094C14.6663 10.384 14.6663 11.3155 14.0995 11.5965C13.5327 11.8774 12.8275 11.2955 11.4169 10.1317L11.333 10.0624"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                  />
-                  <path
-                    d="M7.66699 7.33301C8.21928 7.33301 8.66699 6.88529 8.66699 6.33301C8.66699 5.78072 8.21928 5.33301 7.66699 5.33301C7.11471 5.33301 6.66699 5.78072 6.66699 6.33301C6.66699 6.88529 7.11471 7.33301 7.66699 7.33301Z"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                  />
-                </svg>
-                Video
-              </span>
+              {categoryLabel ? (
+                <span className="inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-[#482090] to-[#A06AFF] px-2 py-0.5 text-[11px] uppercase tracking-[0.12em] text-white shadow-[0_12px_28px_-20px_rgba(160,106,255,0.75)]">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="text-white"
+                  >
+                    <path
+                      d="M1.33301 7.33366C1.33301 5.13377 1.33301 4.03383 2.01643 3.35041C2.69984 2.66699 3.79979 2.66699 5.99967 2.66699H6.66634C8.86621 2.66699 9.96614 2.66699 10.6496 3.35041C11.333 4.03383 11.333 5.13377 11.333 7.33366V8.66699C11.333 10.8669 11.333 11.9668 10.6496 12.6503C9.96614 13.3337 8.86621 13.3337 6.66634 13.3337H5.99967C3.79979 13.3337 2.69984 13.3337 2.01643 12.6503C1.33301 11.9668 1.33301 10.8669 1.33301 8.66699V7.33366Z"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                    />
+                    <path
+                      d="M11.333 5.93691L11.4169 5.86765C12.8275 4.70383 13.5327 4.12192 14.0995 4.40289C14.6663 4.68386 14.6663 5.61538 14.6663 7.47841V8.52094C14.6663 10.384 14.6663 11.3155 14.0995 11.5965C13.5327 11.8774 12.8275 11.2955 11.4169 10.1317L11.333 10.0624"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                    />
+                    <path
+                      d="M7.66699 7.33301C8.21928 7.33301 8.66699 6.88529 8.66699 6.33301C8.66699 5.78072 8.21928 5.33301 7.66699 5.33301C7.11471 5.33301 6.66699 5.78072 6.66699 6.33301C6.66699 6.88529 7.11471 7.33301 7.66699 7.33301Z"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                    />
+                  </svg>
+                  {categoryLabel}
+                </span>
+              ) : null}
               <span className="text-xs font-semibold text-[#8E92A0]">{timestamp}</span>
             </div>
           </div>
@@ -211,7 +229,7 @@ const VideoPost: FC<VideoPostProps> = ({
       <section className="flex w-full flex-col gap-4">
         <h2 className="text-2xl font-bold leading-snug text-white sm:text-[26px]">{title}</h2>
         {displayedContent ? (
-          <p className="text-[15px] leading-relaxed text-white/80 whitespace-pre-line">
+          <p className="whitespace-pre-line text-[15px] leading-relaxed text-white/80">
             {displayedContent}
           </p>
         ) : null}
@@ -220,7 +238,7 @@ const VideoPost: FC<VideoPostProps> = ({
             onClick={handleToggle}
             className="w-fit text-left text-[15px] font-semibold text-[#A06AFF] underline transition-colors hover:text-white"
           >
-            {expanded ? "Show less" : "Learn more"}
+            {expanded ? "Show less" : "Show more"}
           </button>
         ) : null}
       </section>
@@ -238,29 +256,33 @@ const VideoPost: FC<VideoPostProps> = ({
         </div>
       ) : null}
 
-      <div className="relative w-full overflow-hidden rounded-2xl border border-[#181B22]">
-        <img src={videoUrl} alt="" className="aspect-[1043/585] w-full object-cover" />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <span className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white shadow-[0_12px_24px_0_rgba(0,0,0,0.48)]">
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 25 25"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M4.5 12.5004V8.94038C4.5 4.52038 7.63 2.71039 11.46 4.92039L14.55 6.70039L17.64 8.48039C21.47 10.6904 21.47 14.3104 17.64 16.5204L14.55 18.3004L11.46 20.0804C7.63 22.2904 4.5 20.4804 4.5 16.0604V12.5004Z"
-                stroke="white"
-                strokeWidth="2"
-                strokeMiterlimit="10"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </span>
+      {hasMedia ? (
+        <div className="relative w-full overflow-hidden rounded-2xl border border-[#181B22]">
+          <img src={mediaUrl ?? ""} alt="" className="w-full object-cover" />
+          {isVideo ? (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white shadow-[0_12px_24px_0_rgba(0,0,0,0.48)]">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 25 25"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M4.5 12.5004V8.94038C4.5 4.52038 7.63 2.71039 11.46 4.92039L14.55 6.70039L17.64 8.48039C21.47 10.6904 21.47 14.3104 17.64 16.5204L14.55 18.3004L11.46 20.0804C7.63 22.2904 4.5 20.4804 4.5 16.0604V12.5004Z"
+                    stroke="white"
+                    strokeWidth="2"
+                    strokeMiterlimit="10"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
+            </div>
+          ) : null}
         </div>
-      </div>
+      ) : null}
 
       <footer className="flex w-full items-center justify-between gap-4">
         <div className="flex flex-wrap items-center gap-3 text-xs font-semibold text-white/70">
@@ -305,17 +327,17 @@ const VideoPost: FC<VideoPostProps> = ({
               xmlns="http://www.w3.org/2000/svg"
             >
               <defs>
-                <linearGradient id="videopost-heart" x1="18.3337" y1="10" x2="1.66699" y2="10" gradientUnits="userSpaceOnUse">
+                <linearGradient id="feedpost-heart" x1="18.3337" y1="10" x2="1.66699" y2="10" gradientUnits="userSpaceOnUse">
                   <stop stopColor="#A06AFF" />
                   <stop offset="1" stopColor="#482090" />
                 </linearGradient>
               </defs>
               <path
                 d="M16.2192 3.32846C13.9844 1.95769 12.034 2.51009 10.8623 3.39001C10.3818 3.7508 10.1417 3.93119 10.0003 3.93119C9.85899 3.93119 9.61882 3.7508 9.13832 3.39001C7.96667 2.51009 6.01623 1.95769 3.78152 3.32846C0.848716 5.12745 0.185092 11.0624 6.94993 16.0695C8.23842 17.0232 8.88266 17.5 10.0003 17.5C11.118 17.5 11.7622 17.0232 13.0507 16.0695C19.8156 11.0624 19.1519 5.12745 16.2192 3.32846Z"
-                fill="url(#videopost-heart)"
+                fill="url(#feedpost-heart)"
               />
             </svg>
-            {likes >= 1000 ? `${(likes / 1000).toFixed(1)}K` : likes}
+            {likesLabel}
           </span>
 
           <span className="flex items-center gap-1.5 text-[#9BA0AF]">
@@ -342,6 +364,34 @@ const VideoPost: FC<VideoPostProps> = ({
             </svg>
             {comments}
           </span>
+
+          {typeof views === "number" ? (
+            <span className="flex items-center gap-1.5 text-[#636A7D]">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1.66699 10C1.66699 10 4.16699 4.16663 10 4.16663C15.8337 4.16663 18.3337 10 18.3337 10C18.3337 10 15.8337 15.8333 10 15.8333C4.16699 15.8333 1.66699 10 1.66699 10Z"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M11.6667 10C11.6667 10.9205 10.9204 11.6667 9.99996 11.6667C9.07949 11.6667 8.33329 10.9205 8.33329 10C8.33329 9.07954 9.07949 8.33334 9.99996 8.33334C10.9204 8.33334 11.6667 9.07954 11.6667 10Z"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              {views >= 1000 ? `${(views / 1000).toFixed(1)}K` : views}
+            </span>
+          ) : null}
         </div>
 
         <div className="flex items-center gap-2">
@@ -359,43 +409,7 @@ const VideoPost: FC<VideoPostProps> = ({
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M3.33301 14.9843V8.08993C3.33301 5.06213 3.33301 3.54823 4.30932 2.60761C5.28563 1.66699 6.85697 1.66699 9.99967 1.66699C13.1423 1.66699 14.7138 1.66699 15.69 2.60761C16.6663 3.54823 16.6663 5.06213 16.6663 8.08993V14.9843C16.6663 16.9059 16.6663 17.8667 16.0223 18.2106C14.7751 18.8765 12.4357 16.6547 11.3247 15.9857C10.6803 15.5977 10.3582 15.4037 9.99967 15.4037C9.64117 15.4037 9.31901 15.5977 8.67467 15.9857C7.56367 16.6547 5.22423 18.8765 3.97705 18.2106C3.33301 17.8667 3.33301 16.9059 3.33301 14.9843Z"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </button>
-          <button
-            type="button"
-            onClick={(event) => event.stopPropagation()}
-            aria-label="Share"
-            className="flex h-8 w-8 items-center justify-center rounded-full text-[#9BA0AF] transition-colors duration-200 hover:bg-[#482090]/10 hover:text-white"
-          >
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M4 12v7a1 1 0 001 1h14a1 1 0 001-1v-7"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M12 3v13"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M8 7l4-4 4 4"
+                d="M3.33301 14.9838V8.08945C3.33301 5.06164 3.33301 3.54774 4.30932 2.60712C5.28563 1.6665 6.85697 1.6665 9.99967 1.6665C13.1423 1.6665 14.7138 1.6665 15.69 2.60712C16.6663 3.54774 16.6663 5.06164 16.6663 8.08945V14.9838C16.6663 16.9054 16.6663 17.8662 16.0223 18.2101C14.7751 18.876 12.4357 16.6542 11.3247 15.9852C10.6803 15.5972 10.3582 15.4032 9.99967 15.4032C9.64117 15.4032 9.31901 15.5972 8.67467 15.9852C7.56367 16.6542 5.22423 18.876 3.97705 18.2101C3.33301 17.8662 3.33301 16.9054 3.33301 14.9838Z"
                 stroke="currentColor"
                 strokeWidth="1.5"
                 strokeLinecap="round"
@@ -409,4 +423,4 @@ const VideoPost: FC<VideoPostProps> = ({
   );
 };
 
-export default VideoPost;
+export default FeedPost;
