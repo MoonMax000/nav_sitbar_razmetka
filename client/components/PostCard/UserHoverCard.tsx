@@ -4,6 +4,7 @@ import { type FC, type ReactNode } from "react";
 
 import UserAvatar from "@/components/ui/Avatar/UserAvatar";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
+import { cn } from "@/lib/utils";
 
 import FollowButton from "./FollowButton";
 import type { FeedPostProps } from "./VideoPost";
@@ -11,8 +12,9 @@ import VerifiedBadge from "./VerifiedBadge";
 
 interface UserHoverCardProps {
   author: FeedPostProps["author"];
-  isFollowing: boolean;
-  onFollowToggle: (nextState: boolean) => void;
+  isFollowing?: boolean;
+  onFollowToggle?: (nextState: boolean) => void;
+  showFollowButton?: boolean;
   children: ReactNode;
 }
 
