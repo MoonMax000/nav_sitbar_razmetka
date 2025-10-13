@@ -140,7 +140,12 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
 
   // Initialize image and state
   useEffect(() => {
-    if (!media) return;
+    if (!media) {
+      console.error("MediaEditor: No media provided");
+      return;
+    }
+
+    console.log("MediaEditor: Initializing with media:", media);
 
     const savedTransform = media.transform || createDefaultTransform();
     setTransform(savedTransform);
@@ -155,95 +160,88 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
 
     // For non-images, skip crop state initialization
     if (media.type !== "image") {
+      console.log("MediaEditor: Not an image, skipping crop");
       return;
     }
 
-    // Load image to get natural dimensions
-    const img = new Image();
-    img.crossOrigin = "anonymous"; // Handle CORS for canvas export
+    // Initialize with default state immediately, then update when image loads
+    const initWithDefaults = () => {
+      if (!containerRef.current) {
+        console.warn("MediaEditor: Container not ready, scheduling retry");
+        setTimeout(initWithDefaults, 50);
+        return;
+      }
 
-    const initCropState = (naturalW: number, naturalH: number) => {
-      const initState = () => {
-        if (!containerRef.current) {
-          console.warn("Container not ready, retrying...");
-          setTimeout(initState, 100);
-          return;
-        }
+      const rect = containerRef.current.getBoundingClientRect();
+      const viewportW = rect.width || 800;
+      const viewportH = rect.height || 420;
 
-        const rect = containerRef.current.getBoundingClientRect();
-        const viewportW = rect.width || 800; // fallback width
-        const viewportH = rect.height || 420; // fallback height
+      console.log("MediaEditor: Container ready", { viewportW, viewportH });
 
-        if (viewportW === 0 || viewportH === 0) {
-          console.warn("Container has zero dimensions, using fallback:", rect);
-        }
+      // Set initial state with estimated dimensions
+      const initialState: CropState = {
+        naturalW: 1000,
+        naturalH: 1000,
+        viewportW,
+        viewportH,
+        cropW: Math.min(viewportW - PADDING * 2, 400),
+        cropH: Math.min(viewportH - PADDING * 2, 400),
+        aspect: 1,
+        zoom: 1,
+        translateX: 0,
+        translateY: 0,
+        preset: "original",
+        minZoom: 1,
+        maxZoom: MAX_ZOOM_FACTOR,
+      };
 
+      console.log("MediaEditor: Setting initial cropState", initialState);
+      setCropState(initialState);
+
+      // Now load the actual image to get real dimensions
+      const img = new Image();
+      img.crossOrigin = "anonymous";
+
+      img.onload = () => {
+        console.log("MediaEditor: Image loaded", img.naturalWidth, "x", img.naturalHeight);
         const preset: AspectPreset = "original";
-        const newState = applyPreset(
+        const updatedState = applyPreset(
           {
-            naturalW,
-            naturalH,
-            viewportW,
-            viewportH,
-            cropW: 0,
-            cropH: 0,
-            aspect: 1,
-            zoom: 1,
-            translateX: 0,
-            translateY: 0,
-            preset,
-            minZoom: 1,
-            maxZoom: MAX_ZOOM_FACTOR,
+            ...initialState,
+            naturalW: img.naturalWidth,
+            naturalH: img.naturalHeight,
           },
           preset
         );
-
-        console.log("CropState initialized:", newState);
-        setCropState(newState);
+        console.log("MediaEditor: Updating with real dimensions", updatedState);
+        setCropState(updatedState);
       };
 
-      // Give the modal time to render
-      setTimeout(initState, 50);
+      img.onerror = (error) => {
+        console.error("MediaEditor: Failed to load image", error, media.url);
+        // Keep the default state
+      };
+
+      img.src = media.url;
+
+      // Handle cached images
+      if (img.complete && img.naturalWidth > 0) {
+        console.log("MediaEditor: Image was cached", img.naturalWidth, "x", img.naturalHeight);
+        const preset: AspectPreset = "original";
+        const updatedState = applyPreset(
+          {
+            ...initialState,
+            naturalW: img.naturalWidth,
+            naturalH: img.naturalHeight,
+          },
+          preset
+        );
+        setCropState(updatedState);
+      }
     };
 
-    img.onload = () => {
-      console.log("Image loaded:", img.naturalWidth, "x", img.naturalHeight);
-      initCropState(img.naturalWidth, img.naturalHeight);
-    };
-
-    img.onerror = (error) => {
-      console.error("Failed to load image:", error, media.url);
-      // Set a default state even on error so UI isn't stuck
-      setTimeout(() => {
-        if (containerRef.current) {
-          const rect = containerRef.current.getBoundingClientRect();
-          setCropState({
-            naturalW: 1000,
-            naturalH: 1000,
-            viewportW: rect.width || 800,
-            viewportH: rect.height || 420,
-            cropW: 400,
-            cropH: 400,
-            aspect: 1,
-            zoom: 1,
-            translateX: 0,
-            translateY: 0,
-            preset: "original",
-            minZoom: 1,
-            maxZoom: MAX_ZOOM_FACTOR,
-          });
-        }
-      }, 100);
-    };
-
-    // Set src AFTER setting up event handlers
-    img.src = media.url;
-
-    // Handle case where image is already cached/loaded
-    if (img.complete && img.naturalWidth > 0) {
-      console.log("Image was already loaded from cache");
-      initCropState(img.naturalWidth, img.naturalHeight);
-    }
+    // Start initialization after a brief delay to ensure modal is rendered
+    setTimeout(initWithDefaults, 100);
   }, [media]);
 
   // Update viewport size on resize
