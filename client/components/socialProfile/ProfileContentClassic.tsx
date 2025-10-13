@@ -8,7 +8,11 @@ import ProfileBioClassic from "./ProfileBioClassic";
 import TabListClassic from "./TabListClassic";
 import ProfileTweetsClassic from "./ProfileTweetsClassic";
 
-export default function ProfileContentClassic() {
+interface ProfileContentClassicProps {
+  isOwnProfile?: boolean;
+}
+
+export default function ProfileContentClassic({ isOwnProfile = true }: ProfileContentClassicProps) {
   const [profile, setProfile] = useState<SocialProfileData | null>(null);
   const [posts, setPosts] = useState<SocialPost[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -52,7 +56,7 @@ export default function ProfileContentClassic() {
 
   return (
     <div className="min-h-screen" style={{ "--profile-image-size": "120px" } as CSSProperties}>
-      <ProfileHero profile={profile} tweetsCount={tweetsCount} />
+      <ProfileHero profile={profile} tweetsCount={tweetsCount} isOwnProfile={isOwnProfile} />
       <main className="mt-6">
         <div className="px-6">
           {/* User info section */}
