@@ -33,6 +33,7 @@ export const DEFAULT_NEWS_ITEMS: NewsItem[] = [
     category: "Entertainment",
     publishedAgo: "1 day ago",
     engagement: "186.9K posts",
+    commentCount: 428,
   },
   {
     id: "crypto-market",
@@ -40,6 +41,7 @@ export const DEFAULT_NEWS_ITEMS: NewsItem[] = [
     category: "News",
     publishedAgo: "22 hours ago",
     engagement: "8,746 posts",
+    commentCount: 287,
     avatars: [
       "https://i.pravatar.cc/120?img=32",
       "https://i.pravatar.cc/120?img=44",
@@ -52,6 +54,7 @@ export const DEFAULT_NEWS_ITEMS: NewsItem[] = [
     category: "Entertainment",
     publishedAgo: "2 days ago",
     engagement: "13.7K posts",
+    commentCount: 64,
     avatars: [
       "https://i.pravatar.cc/120?img=14",
       "https://i.pravatar.cc/120?img=35",
