@@ -4,14 +4,17 @@ import { cn } from "@/lib/utils";
 import SuggestedProfilesWidget, {
   type SuggestedProfile,
 } from "./SuggestedProfilesWidget";
+import FollowRecommendationsWidget from "./FollowRecommendationsWidget";
 import NewsWidget, { type NewsItem } from "./TrendingTopicsWidget";
 import {
   DEFAULT_SUGGESTED_PROFILES,
+  DEFAULT_FOLLOW_RECOMMENDATIONS,
   DEFAULT_NEWS_ITEMS,
 } from "./sidebarData";
 
 interface SocialRightSidebarProps {
   profiles?: SuggestedProfile[];
+  followRecommendations?: SuggestedProfile[];
   newsItems?: NewsItem[];
   showSearch?: boolean;
   className?: string;
@@ -19,6 +22,7 @@ interface SocialRightSidebarProps {
 
 const SocialRightSidebar: FC<SocialRightSidebarProps> = ({
   profiles = DEFAULT_SUGGESTED_PROFILES,
+  followRecommendations = DEFAULT_FOLLOW_RECOMMENDATIONS,
   newsItems = DEFAULT_NEWS_ITEMS,
   showSearch = true,
   className,
