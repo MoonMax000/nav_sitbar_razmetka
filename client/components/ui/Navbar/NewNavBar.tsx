@@ -121,26 +121,26 @@ const NewNavBar: FC<Props> = ({ variant = 'primal' }) => {
   return (
     <>
       <div className='relative mt-8 ml-8 hidden lg:block'>
-        <div
-          className={cn(
-            'bg-transparent relative h-fit rounded-[12px] p-[1px] w-fit',
-            `bg-[linear-gradient(170.22deg,#523A83_0.01%,rgba(82,58,131,0)_8.28%),linear-gradient(350.89deg,#523A83_0%,rgba(82,58,131,0)_8.04%)]`
-          )}
-        >
-          <div className={cn('flex h-[calc(100vh-96px)] flex-col py-4 transition-all duration-300 custom-bg-blur rounded-[12px]', isCollapsed ? 'w-[72px]' : 'w-[222px]')}>
-            <div className='absolute right-[-12px] top-[14px]'>
-              <button
-                className='w-[26px] h-[26px] rounded-[12px] border border-[#181B22] custom-bg-blur hover:bg-[#1E1E1E] flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-md z-20'
-                onClick={() => setIsCollapsed(!isCollapsed)}
-                aria-label='Toggle compact menu'
-                aria-pressed={isCollapsed}
-              >
-                <DoubleArrow className={cn('h-4 w-4 transition-transform duration-300', isCollapsed ? '' : 'rotate-180')} />
-              </button>
-            </div>
+        <div className='flex flex-col gap-6'>
+          <div
+            className={cn(
+              'bg-transparent relative h-fit rounded-[12px] p-[1px] w-fit',
+              `bg-[linear-gradient(170.22deg,#523A83_0.01%,rgba(82,58,131,0)_8.28%),linear-gradient(350.89deg,#523A83_0%,rgba(82,58,131,0)_8.04%)]`
+            )}
+          >
+            <div className={cn('flex flex-col py-4 transition-all duration-300 custom-bg-blur rounded-[12px]', isCollapsed ? 'w-[72px]' : 'w-[222px]')}>
+              <div className='absolute right-[-12px] top-[14px]'>
+                <button
+                  className='w-[26px] h-[26px] rounded-[12px] border border-[#181B22] custom-bg-blur hover:bg-[#1E1E1E] flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-md z-20'
+                  onClick={() => setIsCollapsed(!isCollapsed)}
+                  aria-label='Toggle compact menu'
+                  aria-pressed={isCollapsed}
+                >
+                  <DoubleArrow className={cn('h-4 w-4 transition-transform duration-300', isCollapsed ? '' : 'rotate-180')} />
+                </button>
+              </div>
 
-            <div className={cn('flex-1 overflow-y-auto px-3 transition-all duration-300', { 'px-2': isCollapsed })}>
-              <div className='flex flex-col gap-1 pb-4'>
+              <div className='flex flex-col gap-1'>
                 {navElements.slice(0, 1).map((el) => renderElement(el))}
                 <div
                   className={cn('my-[14px] bg-[linear-gradient(90deg,rgba(82,58,131,0)_0%,#523A83_50%,rgba(82,58,131,0)_100%)] mx-auto h-[2px] transition-all duration-300', {
@@ -151,53 +151,67 @@ const NewNavBar: FC<Props> = ({ variant = 'primal' }) => {
                 {navElements.slice(1).map((el) => renderElement(el))}
               </div>
             </div>
+          </div>
 
-            <div className={cn('sticky bottom-4 mt-auto space-y-3 px-3 pb-2 pt-4 transition-all duration-300', { 'px-2': isCollapsed })}>
-              {/* Tweet button - opens CreateTweetDialog from GitHub */}
-              <button
-                type='button'
-                onClick={() => setIsTweetDialogOpen(true)}
+          <div className='sticky bottom-8'>
+            <div
+              className={cn(
+                'bg-transparent relative h-fit rounded-[12px] p-[1px] w-fit',
+                `bg-[linear-gradient(170.22deg,#523A83_0.01%,rgba(82,58,131,0)_8.28%),linear-gradient(350.89deg,#523A83_0%,rgba(82,58,131,0)_8.04%)]`
+              )}
+            >
+              <div
                 className={cn(
-                  'group relative flex items-center justify-center overflow-hidden rounded-full p-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF]/60 focus-visible:ring-offset-0',
-                  isCollapsed ? 'h-12 w-12' : 'h-12 w-full'
+                  'space-y-3 custom-bg-blur rounded-[12px] px-3 py-4 transition-all duration-300 shadow-[0_18px_38px_-20px_rgba(10,10,15,0.65)]',
+                  isCollapsed ? 'w-[72px] px-2' : 'w-[222px]'
                 )}
-                title="Open simple Tweet dialog"
               >
-                <span
-                  className='pointer-events-none absolute inset-0 animate-[spin_8s_linear_infinite] bg-[conic-gradient(from_0deg,#A06AFF,rgba(160,106,255,0)_60%,rgba(160,106,255,0))] opacity-70'
-                  style={{ mask: "radial-gradient(closest-side, transparent calc(100% - 2px), black calc(100% - 0.5px))", WebkitMask: "radial-gradient(closest-side, transparent calc(100% - 2px), black calc(100% - 0.5px))" }}
-                />
-                <span className='pointer-events-none absolute inset-[2px] rounded-full bg-[rgba(12,16,20,0.9)] transition group-hover:bg-[rgba(12,16,20,0.75)]' />
-                <span className={cn('relative flex items-center gap-3 text-sm font-semibold text-white', isCollapsed ? 'justify-center' : 'px-4 justify-center')}>
-                  <span className='flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white shadow-[0_12px_30px_-18px_rgba(160,106,255,0.9)]'>
-                    <QuillPen className='h-4 w-4' />
+                {/* Tweet button - opens CreateTweetDialog from GitHub */}
+                <button
+                  type='button'
+                  onClick={() => setIsTweetDialogOpen(true)}
+                  className={cn(
+                    'group relative flex items-center justify-center overflow-hidden rounded-full p-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF]/60 focus-visible:ring-offset-0',
+                    isCollapsed ? 'h-12 w-12' : 'h-12 w-full'
+                  )}
+                  title="Open simple Tweet dialog"
+                >
+                  <span
+                    className='pointer-events-none absolute inset-0 animate-[spin_8s_linear_infinite] bg-[conic-gradient(from_0deg,#A06AFF,rgba(160,106,255,0)_60%,rgba(160,106,255,0))] opacity-70'
+                    style={{ mask: "radial-gradient(closest-side, transparent calc(100% - 2px), black calc(100% - 0.5px))", WebkitMask: "radial-gradient(closest-side, transparent calc(100% - 2px), black calc(100% - 0.5px))" }}
+                  />
+                  <span className='pointer-events-none absolute inset-[2px] rounded-full bg-[rgba(12,16,20,0.9)] transition group-hover:bg-[rgba(12,16,20,0.75)]' />
+                  <span className={cn('relative flex items-center gap-3 text-sm font-semibold text-white', isCollapsed ? 'justify-center' : 'px-4 justify-center')}>
+                    <span className='flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white shadow-[0_12px_30px_-18px_rgba(160,106,255,0.9)]'>
+                      <QuillPen className='h-4 w-4' />
+                    </span>
+                    {!isCollapsed && <span>Tweet</span>}
                   </span>
-                  {!isCollapsed && <span>Tweet</span>}
-                </span>
-              </button>
+                </button>
 
-              {/* Advanced Post button - opens CreatePostModal (old composer) */}
-              <button
-                type='button'
-                onClick={() => setIsPostComposerOpen(true)}
-                className={cn(
-                  'group relative flex items-center justify-center overflow-hidden rounded-full p-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1D9BF0]/60 focus-visible:ring-offset-0',
-                  isCollapsed ? 'h-12 w-12' : 'h-12 w-full'
-                )}
-                title="Open advanced Post composer"
-              >
-                <span
-                  className='pointer-events-none absolute inset-0 animate-[spin_8s_linear_infinite] bg-[conic-gradient(from_0deg,#1D9BF0,rgba(29,155,240,0)_60%,rgba(29,155,240,0))] opacity-70'
-                  style={{ mask: "radial-gradient(closest-side, transparent calc(100% - 2px), black calc(100% - 0.5px))", WebkitMask: "radial-gradient(closest-side, transparent calc(100% - 2px), black calc(100% - 0.5px))" }}
-                />
-                <span className='pointer-events-none absolute inset-[2px] rounded-full bg-[rgba(12,16,20,0.9)] transition group-hover:bg-[rgba(12,16,20,0.75)]' />
-                <span className={cn('relative flex items-center gap-3 text-sm font-semibold text-white', isCollapsed ? 'justify-center' : 'px-4 justify-center')}>
-                  <span className='flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-r from-[#1D9BF0] to-[#0E4E78] text-white shadow-[0_12px_30px_-18px_rgba(29,155,240,0.9)]'>
-                    <QuillPen className='h-4 w-4' />
+                {/* Advanced Post button - opens CreatePostModal (old composer) */}
+                <button
+                  type='button'
+                  onClick={() => setIsPostComposerOpen(true)}
+                  className={cn(
+                    'group relative flex items-center justify-center overflow-hidden rounded-full p-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1D9BF0]/60 focus-visible:ring-offset-0',
+                    isCollapsed ? 'h-12 w-12' : 'h-12 w-full'
+                  )}
+                  title="Open advanced Post composer"
+                >
+                  <span
+                    className='pointer-events-none absolute inset-0 animate-[spin_8s_linear_infinite] bg-[conic-gradient(from_0deg,#1D9BF0,rgba(29,155,240,0)_60%,rgba(29,155,240,0))] opacity-70'
+                    style={{ mask: "radial-gradient(closest-side, transparent calc(100% - 2px), black calc(100% - 0.5px))", WebkitMask: "radial-gradient(closest-side, transparent calc(100% - 2px), black calc(100% - 0.5px))" }}
+                  />
+                  <span className='pointer-events-none absolute inset-[2px] rounded-full bg-[rgba(12,16,20,0.9)] transition group-hover:bg-[rgba(12,16,20,0.75)]' />
+                  <span className={cn('relative flex items-center gap-3 text-sm font-semibold text-white', isCollapsed ? 'justify-center' : 'px-4 justify-center')}>
+                    <span className='flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-r from-[#1D9BF0] to-[#0E4E78] text-white shadow-[0_12px_30px_-18px_rgba(29,155,240,0.9)]'>
+                      <QuillPen className='h-4 w-4' />
+                    </span>
+                    {!isCollapsed && <span>Новый пост</span>}
                   </span>
-                  {!isCollapsed && <span>Новый пост</span>}
-                </span>
-              </button>
+                </button>
+              </div>
             </div>
           </div>
         </div>
