@@ -1,7 +1,6 @@
 "use client";
 
-import PostCard from "@/components/PostCard/PostCard";
-import VideoPost from "@/components/PostCard/VideoPost";
+import FeedPost from "@/components/PostCard/VideoPost";
 import type { SocialPost } from "@/data/socialPosts";
 import { cn } from "@/lib/utils";
 
@@ -22,26 +21,24 @@ export default function Timeline({ posts, className }: TimelineProps) {
 
   return (
     <div className={cn("flex w-full flex-col items-center gap-8 pt-6", className)}>
-      {posts.map((post) => {
-        if (post.type === "video") {
-          return (
-            <VideoPost
-              key={post.id}
-              author={post.author}
-              timestamp={post.timestamp}
-              title={post.title}
-              content={post.body || post.preview}
-              videoUrl={post.videoUrl || ""}
-              sentiment={post.sentiment}
-              likes={post.likes}
-              comments={post.comments}
-              isFollowing={post.isFollowing}
-              hashtags={post.hashtags}
-            />
-          );
-        }
-        return <PostCard key={post.id} post={post} />;
-      })}
+      {posts.map((post) => (
+        <FeedPost
+          key={post.id}
+          author={post.author}
+          timestamp={post.timestamp}
+          title={post.title}
+          content={post.body ?? post.preview}
+          mediaUrl={post.videoUrl ?? post.mediaUrl ?? null}
+          sentiment={post.sentiment}
+          likes={post.likes}
+          comments={post.comments}
+          views={post.views}
+          isFollowing={post.isFollowing}
+          hashtags={post.hashtags}
+          category={post.category}
+          type={post.type}
+        />
+      ))}
     </div>
   );
 }
