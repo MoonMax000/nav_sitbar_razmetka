@@ -43,7 +43,7 @@ const exploreCollections: ExploreCollection[] = [
   {
     id: "macro-playbook",
     title: "Макростратегии 2025",
-    description: "14 подборок аналитики по ��акроэкономике и валютам",
+    description: "14 подборок аналитики по макроэкономике и валютам",
     accent: "from-[#A06AFF] to-[#482090]",
     topics: ["Рынки", "Мировые новости", "Фьючерсы"],
   },
@@ -106,7 +106,7 @@ const featuredStories: ExploreStory[] = [
     category: "Рынки",
     title: "IPO-радар: какие компании выходят в ближайшие месяцы",
     summary:
-      "Топ-7 флагманских размещений с оценкой мультипликаторов, спроса и ближайших локапов.",
+      "Топ-7 флагманских размещений с оценкой мультипликаторов, спроса �� ближайших локапов.",
     author: "@dealflow",
     readTime: "7 мин",
     tags: ["IPO", "Рынки"],
@@ -280,7 +280,7 @@ const SocialExplore: FC = () => {
 
         <aside className="hidden w-full max-w-[320px] flex-col gap-5 lg:flex">
           <SuggestedProfilesWidget profiles={recommendedProfiles} title="Кого читать" />
-          <TrendingTopicsWidget topics={highlightedTopics} title="Актуальные темы" />
+          <NewsWidget items={highlightedNews} title="Актуальные темы" />
           <div className="rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.6)] p-5">
             <h3 className="text-lg font-semibold text-white">Профессиональные списки</h3>
             <p className="mt-2 text-sm text-[#B0B0B0]">
@@ -346,7 +346,7 @@ const SpotlightCard: FC = () => (
           "Три сигнала, что риск-сентимент меняется и как успеть"
         </h2>
         <p className="text-sm text-white/80">
-          Дайджест ключевых индикаторов, тепловые карты волатильности и разбор сделок институционалов за последние 48 часов.
+          Дайджест к��ючевых индикаторов, тепловые карты волатильности и разбор сделок институционалов за последние 48 часов.
         </p>
         <div className="mt-2 flex items-center gap-3 text-xs text-white/70">
           <span>Собрано Tyrian Research</span>
@@ -368,7 +368,7 @@ const CollectionCard: FC<CollectionCardProps> = ({ collection }) => (
       <span
         className={`inline-flex w-max items-center gap-2 rounded-full bg-gradient-to-r ${collection.accent} px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-white/90`}
       >
-        Плейлис��
+        Плейлист
       </span>
       <h3 className="text-lg font-bold text-white">{collection.title}</h3>
       <p className="text-sm text-[#B0B0B0]">{collection.description}</p>
@@ -441,7 +441,7 @@ const EmptyExploreState: FC<EmptyExploreStateProps> = ({ activeCategory }) => (
     </div>
     <h3 className="text-lg font-semibold text-white">Пока нет подборок в категории «{activeCategory}»</h3>
     <p className="max-w-[360px] text-sm text-[#B0B0B0]">
-      Мы уже собираем свежие материалы. Загляните позже или выберите другую тему, чтобы вдохновиться идеями.
+      Мы уже собираем свежие материалы. Загляните ��озже или выберите другую тему, чтобы вдохновиться идеями.
     </p>
   </div>
 );
