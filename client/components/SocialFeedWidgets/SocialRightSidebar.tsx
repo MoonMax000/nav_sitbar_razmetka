@@ -1,4 +1,6 @@
 import { Search } from "lucide-react";
+import { type FC } from "react";
+import { Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 import SuggestedProfilesWidget, {
   type SuggestedProfile,
@@ -16,7 +18,7 @@ interface SocialRightSidebarProps {
   className?: string;
 }
 
-const SocialRightSidebar: React.FC<SocialRightSidebarProps> = ({
+const SocialRightSidebar: FC<SocialRightSidebarProps> = ({
   profiles = DEFAULT_SUGGESTED_PROFILES,
   topics = DEFAULT_TRENDING_TOPICS,
   showSearch = true,
