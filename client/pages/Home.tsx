@@ -58,7 +58,7 @@ export default function HomePage() {
         </div>
 
         {/* Create Tweet */}
-        <div className="border-b border-[#2F3336] px-4 py-3">
+        <div className="px-4 py-3">
           <TweetForm
             submitText="Post"
             onSubmit={handleCreatePost}
