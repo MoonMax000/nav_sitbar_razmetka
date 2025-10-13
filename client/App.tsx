@@ -51,6 +51,8 @@ const App = () => (
                   <Routes>
                     <Route path="/" element={<Dashboard />} />
                     <Route path="/dashboard" element={<Dashboard />} />
+                    <Route path="/home" element={<HomePage />} />
+                    <Route path="/profile-page" element={<ProfilePage />} />
                     <Route path="/social/home" element={<SocialFeed />} />
                     <Route path="/social/feed" element={<SocialFeed />} />
                     <Route path="/social/explore" element={<SocialExplore />} />
