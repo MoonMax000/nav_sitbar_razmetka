@@ -3,8 +3,7 @@ import { type FC, useCallback, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import CreatePostVariants from "@/components/CreatePostBox/CreatePostVariants";
-import PostCard from "@/components/PostCard/PostCard";
-import VideoPost from "@/components/PostCard/VideoPost";
+import FeedPost from "@/components/PostCard/VideoPost";
 import SocialRightSidebar from "@/components/SocialFeedWidgets/SocialRightSidebar";
 import {
   DEFAULT_SUGGESTED_PROFILES,
@@ -119,7 +118,7 @@ const SocialFeed: FC = () => {
       : "Здесь появятся свежие аналитические материалы и треды сообщества.";
 
   const emptyActionLabel = isFollowingTab
-    ? "Найти авторов"
+    ? "Найти авто��ов"
     : isVideoFilterEmpty
       ? "Показать все посты"
       : undefined;
