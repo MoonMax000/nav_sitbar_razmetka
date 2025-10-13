@@ -673,47 +673,6 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
                 </button>
               </div>
             </div>
-
-            <div className="flex items-center gap-3">
-              <div className="flex items-center gap-2">
-                <svg className="h-8 w-8 -rotate-90" viewBox="0 0 32 32">
-                  <circle cx="16" cy="16" r="14" fill="none" stroke="#2F3336" strokeWidth="4" />
-                  <circle
-                    cx="16"
-                    cy="16"
-                    r="14"
-                    fill="none"
-                    stroke={isOverLimit ? "#EF454A" : isNearLimit ? "#FFD400" : "#A06AFF"}
-                    strokeWidth="4"
-                    strokeDasharray={gradientStroke}
-                    strokeLinecap="round"
-                    className="transition-all"
-                  />
-                </svg>
-                {(isNearLimit || isOverLimit) && (
-                  <span className={`text-sm font-semibold ${isOverLimit ? "text-[#EF454A]" : "text-[#FFD400]"}`}>
-                    {remainingChars}
-                  </span>
-                )}
-              </div>
-
-              {hasTypedText && (
-                <>
-                  <div className="h-8 w-px bg-white/15" />
-                  <button
-                    type="button"
-                    onClick={handleAddBlock}
-                    aria-label="Add another post"
-                    className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-white/20 bg-white/5 text-[#1D9BF0] transition-colors hover:bg-white/15 hover:border-white/30"
-                    disabled={blocks.length >= MAX_THREAD_BLOCKS}
-                  >
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
-                      <path d="M12 5v14M5 12h14" stroke="#1D9BF0" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </button>
-                </>
-              )}
-            </div>
           </div>
 
           {isReplyMenuOpen && (
