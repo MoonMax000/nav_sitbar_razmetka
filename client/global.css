@@ -4,6 +4,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Ensure tooltips work properly */
+[title] {
+  position: relative;
+}
+
 /* Logo motion and shimmer effects */
 /* Logo animation suite */
 .logo-anim-unit {
