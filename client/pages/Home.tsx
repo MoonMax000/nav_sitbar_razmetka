@@ -38,44 +38,46 @@ export default function HomePage() {
   };
 
   return (
-    <div className="flex w-full justify-center pb-12">
-      <div className="grid w-full max-w-[1180px] grid-cols-1 items-start gap-8 lg:grid-cols-[minmax(0,720px)_minmax(0,320px)]">
-        <section className="flex min-h-screen w-full max-w-[720px] flex-col rounded-[24px] border border-[#1F242B] bg-[rgba(12,16,20,0.65)]">
-          <div className="sticky top-0 z-10 border-b border-[#2F3336] bg-black/80 backdrop-blur-md">
-            <div className="px-4 py-3">
-              <h1 className="text-xl font-bold text-white">Home</h1>
-            </div>
-
-            <div className="flex border-t border-[#2F3336]">
-              <button className="flex-1 py-4 text-white font-semibold border-b-4 border-[#1D9BF0] hover:bg-white/10 transition-colors">
-                For you
-              </button>
-              <button className="flex-1 py-4 text-muted-foreground font-semibold hover:bg-white/10 transition-colors">
-                Following
-              </button>
-            </div>
+    <div className="flex w-full gap-8">
+      <div className="flex-1 max-w-[720px]">
+        {/* Header */}
+        <div className="sticky top-0 z-10 backdrop-blur-md bg-black/80 border-b border-[#2F3336]">
+          <div className="px-4 py-3">
+            <h1 className="text-xl font-bold text-white">Home</h1>
           </div>
-
-          <div className="border-b border-[#2F3336] px-4 py-3">
-            <TweetForm
-              submitText="Post"
-              onSubmit={handleCreatePost}
-              placeholder="What's happening?"
-              collapsedOnMount={false}
-              minHeight={80}
-              userAvatar="https://i.pravatar.cc/120?img=12"
-              userName="Current User"
-            />
+          
+          {/* Tabs */}
+          <div className="flex border-b border-[#2F3336]">
+            <button className="flex-1 py-4 text-white font-semibold border-b-4 border-[#1D9BF0] hover:bg-white/10 transition-colors">
+              For you
+            </button>
+            <button className="flex-1 py-4 text-muted-foreground font-semibold hover:bg-white/10 transition-colors">
+              Following
+            </button>
           </div>
+        </div>
 
-          <Timeline posts={posts} className="flex-1" />
-        </section>
+        {/* Create Tweet */}
+        <div className="border-b border-[#2F3336] px-4 py-3">
+          <TweetForm
+            submitText="Post"
+            onSubmit={handleCreatePost}
+            placeholder="What's happening?"
+            collapsedOnMount={false}
+            minHeight={80}
+            userAvatar="https://i.pravatar.cc/120?img=12"
+            userName="Current User"
+          />
+        </div>
 
-        <SocialRightSidebar
-          profiles={DEFAULT_SUGGESTED_PROFILES}
-          topics={DEFAULT_TRENDING_TOPICS}
-        />
+        {/* Timeline */}
+        <Timeline posts={posts} />
       </div>
+
+      <SocialRightSidebar
+        profiles={DEFAULT_SUGGESTED_PROFILES}
+        topics={DEFAULT_TRENDING_TOPICS}
+      />
     </div>
   );
 }
