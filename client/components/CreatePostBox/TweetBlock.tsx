@@ -16,6 +16,8 @@ interface TweetBlockProps {
   isFirst: boolean;
   isLast: boolean;
   canDelete: boolean;
+  isActive?: boolean;
+  onClick?: () => void;
   onChange: (text: string) => void;
   onMediaAdd: (files: FileList) => void;
   onMediaRemove: (mediaId: string) => void;
@@ -36,6 +38,8 @@ export const TweetBlock: FC<TweetBlockProps> = ({
   isFirst,
   isLast,
   canDelete,
+  isActive = true,
+  onClick,
   onChange,
   onMediaAdd,
   onMediaRemove,
