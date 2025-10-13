@@ -22,7 +22,7 @@ type EditorTab = "crop" | "alt" | "warning";
 type AspectPreset = "original" | "wide" | "square";
 
 interface CropState {
-  // Оригинальные пиксели изображения
+  // Оригинальн��е пиксели изображения
   naturalW: number;
   naturalH: number;
 
@@ -555,6 +555,12 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
             {!isImage ? (
               <div className="rounded-2xl border border-[#181B22] bg-white/5 px-4 py-6 text-center text-sm text-[#808283]">
                 Cropping is available for images only.
+              </div>
+            ) : !cropState ? (
+              <div className="flex h-[420px] w-full items-center justify-center rounded-2xl border border-[#181B22] bg-black/20">
+                <div className="text-center">
+                  <div className="mb-2 text-sm text-[#808283]">Loading...</div>
+                </div>
               </div>
             ) : (
               <>
