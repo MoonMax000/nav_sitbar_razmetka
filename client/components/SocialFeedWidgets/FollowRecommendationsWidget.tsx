@@ -25,7 +25,10 @@ const FollowRecommendationsWidget: FC<FollowRecommendationsWidgetProps> = ({
       <h3 className="text-lg font-semibold text-white">{title}</h3>
       <ul className="mt-4 flex flex-col gap-4">
         {profiles.map((profile) => (
-          <li key={profile.id} className="flex items-center justify-between gap-4">
+          <li
+            key={profile.id}
+            className="flex items-center justify-between gap-4"
+          >
             <div className="flex items-center gap-3">
               <Avatar className="h-11 w-11 border border-[#31294A] bg-[rgba(25,27,34,0.9)]">
                 {profile.avatar ? (
@@ -69,7 +72,9 @@ const FollowRecommendationsWidget: FC<FollowRecommendationsWidgetProps> = ({
                     </svg>
                   )}
                 </div>
-                <span className="text-sm font-medium text-[#8E8E94]">{profile.handle}</span>
+                <span className="text-sm font-medium text-[#8E8E94]">
+                  {profile.handle}
+                </span>
               </div>
             </div>
             <FollowButton profileId={profile.id} size="compact" />

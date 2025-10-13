@@ -23,7 +23,9 @@ export default function Timeline({ posts, className }: TimelineProps) {
   }
 
   return (
-    <div className={cn("flex w-full flex-col items-center gap-8 pt-6", className)}>
+    <div
+      className={cn("flex w-full flex-col items-center gap-8 pt-6", className)}
+    >
       {posts.map((post) => {
         const content = post.body ?? post.preview ?? "";
         const shouldTruncate = content.length > 260;

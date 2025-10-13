@@ -1,4 +1,10 @@
-import { FC, useState, useEffect, useRef, PointerEvent as ReactPointerEvent } from "react";
+import {
+  FC,
+  useState,
+  useEffect,
+  useRef,
+  PointerEvent as ReactPointerEvent,
+} from "react";
 import { createPortal } from "react-dom";
 import classNames from "clsx";
 import { MediaItem, CropTransform, createDefaultTransform } from "./types";
@@ -15,28 +21,51 @@ type AspectPreset = "original" | "wide" | "square";
 const ALT_LIMIT = 1000;
 
 const WARNING_OPTIONS = [
-  { id: "nudity", label: "Nudity", description: "Includes partial or full nudity." },
-  { id: "violence", label: "Violence", description: "Graphic or physical violence present." },
-  { id: "sensitive", label: "Sensitive", description: "Potentially distressing or triggering content." },
+  {
+    id: "nudity",
+    label: "Nudity",
+    description: "Includes partial or full nudity.",
+  },
+  {
+    id: "violence",
+    label: "Violence",
+    description: "Graphic or physical violence present.",
+  },
+  {
+    id: "sensitive",
+    label: "Sensitive",
+    description: "Potentially distressing or triggering content.",
+  },
 ];
 
-export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) => {
+export const MediaEditor: FC<MediaEditorProps> = ({
+  media,
+  onSave,
+  onClose,
+}) => {
   const [mounted, setMounted] = useState(false);
   const [activeTab, setActiveTab] = useState<EditorTab>("crop");
   const [altText, setAltText] = useState("");
   const [warnings, setWarnings] = useState<string[]>([]);
-  const [transform, setTransform] = useState<CropTransform>(createDefaultTransform());
+  const [transform, setTransform] = useState<CropTransform>(
+    createDefaultTransform(),
+  );
   const [showAltHelp, setShowAltHelp] = useState(false);
-  
+
   // Crop state
   const [zoom, setZoom] = useState(1);
   const [translateX, setTranslateX] = useState(0);
   const [translateY, setTranslateY] = useState(0);
   const [aspectPreset, setAspectPreset] = useState<AspectPreset>("original");
   const [isDragging, setIsDragging] = useState(false);
-  
+
   const modalRef = useRef<HTMLDivElement>(null);
-  const dragStartRef = useRef<{ x: number; y: number; tx: number; ty: number } | null>(null);
+  const dragStartRef = useRef<{
+    x: number;
+    y: number;
+    tx: number;
+    ty: number;
+  } | null>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -81,13 +110,18 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
 
   const handleSave = () => {
     if (!media) return;
-    
+
     const updatedTransform: CropTransform = {
       ...transform,
       scale: zoom,
       translateX,
       translateY,
-      aspectRatio: aspectPreset === "original" ? "original" : aspectPreset === "wide" ? "16:9" : "1:1",
+      aspectRatio:
+        aspectPreset === "original"
+          ? "original"
+          : aspectPreset === "wide"
+            ? "16:9"
+            : "1:1",
     };
 
     onSave({
@@ -124,7 +158,13 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
               className="flex h-9 w-9 items-center justify-center rounded-full text-[#E7E9EA] transition-colors hover:bg-white/10"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                <path
+                  d="M19 12H5M5 12L12 19M5 12L12 5"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
               </svg>
             </button>
             <h2 className="text-base font-semibold text-white">Crop media</h2>
@@ -134,14 +174,26 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
             <button
               className={classNames(
                 "flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-colors",
-                activeTab === "crop" ? "bg-[#1D9BF0]/20 text-[#1D9BF0]" : "text-[#E7E9EA] hover:bg-white/10"
+                activeTab === "crop"
+                  ? "bg-[#1D9BF0]/20 text-[#1D9BF0]"
+                  : "text-[#E7E9EA] hover:bg-white/10",
               )}
               onClick={() => setActiveTab("crop")}
               disabled={!isImage}
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                <path d="M6 3V17C6 18.1046 6.89543 19 8 19H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                <path d="M3 6H17C18.1046 6 19 6.89543 19 8V21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                <path
+                  d="M6 3V17C6 18.1046 6.89543 19 8 19H21"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+                <path
+                  d="M3 6H17C18.1046 6 19 6.89543 19 8V21"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
               </svg>
               Crop
             </button>
@@ -149,7 +201,9 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
             <button
               className={classNames(
                 "rounded-full px-4 py-2 text-sm font-semibold transition-colors",
-                activeTab === "alt" ? "bg-[#1D9BF0]/20 text-[#1D9BF0]" : "text-[#E7E9EA] hover:bg-white/10"
+                activeTab === "alt"
+                  ? "bg-[#1D9BF0]/20 text-[#1D9BF0]"
+                  : "text-[#E7E9EA] hover:bg-white/10",
               )}
               onClick={() => setActiveTab("alt")}
             >
@@ -159,11 +213,18 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
             <button
               className={classNames(
                 "flex items-center rounded-full px-4 py-2 text-sm font-semibold transition-colors",
-                activeTab === "warning" ? "bg-[#F97316]/20 text-[#F97316]" : "text-[#E7E9EA] hover:bg-white/10"
+                activeTab === "warning"
+                  ? "bg-[#F97316]/20 text-[#F97316]"
+                  : "text-[#E7E9EA] hover:bg-white/10",
               )}
               onClick={() => setActiveTab("warning")}
             >
-              <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5" fill="currentColor">
+              <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                className="h-5 w-5"
+                fill="currentColor"
+              >
                 <path d="M3 2h18.61l-3.5 7 3.5 7H5v6H3V2zm2 12h13.38l-2.5-5 2.5-5H5v10z" />
               </svg>
             </button>
@@ -184,7 +245,7 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
                 <div
                   className={classNames(
                     "relative flex h-[420px] w-full items-center justify-center overflow-hidden rounded-2xl border-2 border-[#1D9BF0] bg-black",
-                    isDragging ? "cursor-grabbing" : "cursor-grab"
+                    isDragging ? "cursor-grabbing" : "cursor-grab",
                   )}
                   onPointerDown={handlePointerDown}
                   onPointerMove={handlePointerMove}
@@ -218,10 +279,16 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
                       onClick={() => setAspectPreset("original")}
                       className={classNames(
                         "inline-flex h-10 w-10 items-center justify-center rounded-full bg-transparent transition-all duration-200 hover:bg-[rgba(255,255,255,0.18)] hover:backdrop-blur-sm focus-visible:outline-none",
-                        aspectPreset === "original" ? "text-[#1D9BF0]" : "text-[#71767B] hover:text-white"
+                        aspectPreset === "original"
+                          ? "text-[#1D9BF0]"
+                          : "text-[#71767B] hover:text-white",
                       )}
                     >
-                      <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor">
+                      <svg
+                        viewBox="0 0 24 24"
+                        className="h-5 w-5"
+                        fill="currentColor"
+                      >
                         <path d="M3 7.5C3 6.119 4.119 5 5.5 5h13C19.881 5 21 6.119 21 7.5v9c0 1.381-1.119 2.5-2.5 2.5h-13C4.119 19 3 17.881 3 16.5v-9zM5.5 7c-.276 0-.5.224-.5.5v9c0 .276.224.5.5.5h13c.276 0 .5-.224.5-.5v-9c0-.276-.224-.5-.5-.5h-13z" />
                       </svg>
                     </button>
@@ -231,10 +298,16 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
                       onClick={() => setAspectPreset("wide")}
                       className={classNames(
                         "inline-flex h-10 w-10 items-center justify-center rounded-full bg-transparent transition-all duration-200 hover:bg-[rgba(255,255,255,0.18)] hover:backdrop-blur-sm focus-visible:outline-none",
-                        aspectPreset === "wide" ? "text-[#1D9BF0]" : "text-[#71767B] hover:text-white"
+                        aspectPreset === "wide"
+                          ? "text-[#1D9BF0]"
+                          : "text-[#71767B] hover:text-white",
                       )}
                     >
-                      <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor">
+                      <svg
+                        viewBox="0 0 24 24"
+                        className="h-5 w-5"
+                        fill="currentColor"
+                      >
                         <path d="M3 9.5C3 8.119 4.119 7 5.5 7h13C19.881 7 21 8.119 21 9.5v5c0 1.381-1.119 2.5-2.5 2.5h-13C4.119 17 3 15.881 3 14.5v-5zM5.5 9c-.276 0-.5.224-.5.5v5c0 .276.224.5.5.5h13c.276 0 .5-.224.5-.5v-5c0-.276-.224-.5-.5-.5h-13z" />
                       </svg>
                     </button>
@@ -244,10 +317,16 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
                       onClick={() => setAspectPreset("square")}
                       className={classNames(
                         "inline-flex h-10 w-10 items-center justify-center rounded-full bg-transparent transition-all duration-200 hover:bg-[rgba(255,255,255,0.18)] hover:backdrop-blur-sm focus-visible:outline-none",
-                        aspectPreset === "square" ? "text-[#1D9BF0]" : "text-[#71767B] hover:text-white"
+                        aspectPreset === "square"
+                          ? "text-[#1D9BF0]"
+                          : "text-[#71767B] hover:text-white",
                       )}
                     >
-                      <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor">
+                      <svg
+                        viewBox="0 0 24 24"
+                        className="h-5 w-5"
+                        fill="currentColor"
+                      >
                         <path d="M3 5.5C3 4.119 4.119 3 5.5 3h13C19.881 3 21 4.119 21 5.5v13c0 1.381-1.119 2.5-2.5 2.5h-13C4.119 21 3 19.881 3 18.5v-13zM5.5 5c-.276 0-.5.224-.5.5v13c0 .276.224.5.5.5h13c.276 0 .5-.224.5-.5v-13c0-.276-.224-.5-.5-.5h-13z" />
                       </svg>
                     </button>
@@ -261,7 +340,11 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
                       onClick={() => setZoom(Math.max(0.5, zoom * 0.9))}
                       className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-transparent text-[#71767B] transition-all duration-200 hover:bg-[rgba(255,255,255,0.18)] hover:text-white hover:backdrop-blur-sm focus-visible:outline-none"
                     >
-                      <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor">
+                      <svg
+                        viewBox="0 0 24 24"
+                        className="h-4 w-4"
+                        fill="currentColor"
+                      >
                         <path d="M11 4c-3.87 0-7 3.13-7 7s3.13 7 7 7c1.93 0 3.68-.78 4.95-2.05C17.21 14.68 18 12.93 18 11c0-3.87-3.14-7-7-7zm-9 7c0-4.97 4.03-9 9-9s9 4.03 9 9c0 2.12-.74 4.08-1.97 5.62l3.68 3.67-1.42 1.42-3.67-3.68C15.08 19.26 13.12 20 11 20c-4.97 0-9-4.03-9-9zm12.5 1h-7v-2h7v2z" />
                       </svg>
                     </button>
@@ -281,7 +364,11 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
                       onClick={() => setZoom(Math.min(3, zoom * 1.1))}
                       className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-transparent text-[#71767B] transition-all duration-200 hover:bg-[rgba(255,255,255,0.18)] hover:text-white hover:backdrop-blur-sm focus-visible:outline-none"
                     >
-                      <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor">
+                      <svg
+                        viewBox="0 0 24 24"
+                        className="h-4 w-4"
+                        fill="currentColor"
+                      >
                         <path d="M11 4c-3.87 0-7 3.13-7 7s3.13 7 7 7c1.93 0 3.68-.78 4.95-2.05C17.21 14.68 18 12.93 18 11c0-3.87-3.14-7-7-7zm-9 7c0-4.97 4.03-9 9-9s9 4.03 9 9c0 2.12-.74 4.08-1.97 5.62l3.68 3.67-1.42 1.42-3.67-3.68C15.08 19.26 13.12 20 11 20c-4.97 0-9-4.03-9-9zm8-1V7.5h2V10h2.5v2H12v2.5h-2V12H7.5v-2H10z" />
                       </svg>
                     </button>
@@ -295,7 +382,10 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
         {activeTab === "alt" && (
           <div className="space-y-4 p-6">
             <div className="flex items-center justify-between">
-              <label className="text-sm font-semibold text-[#E7E9EA]" htmlFor="alt-editor">
+              <label
+                className="text-sm font-semibold text-[#E7E9EA]"
+                htmlFor="alt-editor"
+              >
                 Description (ALT text)
               </label>
               <button
@@ -309,7 +399,8 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
 
             {showAltHelp && (
               <div className="rounded-2xl border border-[#181B22] bg-white/5 p-4 text-xs text-[#E7E9EA]">
-                Describe who or what is important in the image, the setting, and any visible text.
+                Describe who or what is important in the image, the setting, and
+                any visible text.
               </div>
             )}
 
@@ -322,7 +413,12 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
               className="h-32 w-full resize-none rounded-2xl border border-[#181B22] bg-[rgba(12,16,20,0.5)] p-4 text-sm text-[#E7E9EA] placeholder:text-[#808283] outline-none backdrop-blur-[50px] transition-colors focus:border-[#A06AFF]"
             />
 
-            <div className={classNames("text-xs", altChars >= ALT_LIMIT ? "text-[#EF454A]" : "text-[#808283]")}>
+            <div
+              className={classNames(
+                "text-xs",
+                altChars >= ALT_LIMIT ? "text-[#EF454A]" : "text-[#808283]",
+              )}
+            >
               {altChars} / {ALT_LIMIT}
             </div>
           </div>
@@ -331,7 +427,8 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
         {activeTab === "warning" && (
           <div className="space-y-4 p-6">
             <p className="text-sm text-[#E7E9EA]">
-              Helps people avoid content they don't want to see. Select all that apply.
+              Helps people avoid content they don't want to see. Select all that
+              apply.
             </p>
 
             <div className="space-y-3">
@@ -353,8 +450,12 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
                     }}
                   />
                   <div className="space-y-1">
-                    <div className="text-sm font-semibold text-white">{option.label}</div>
-                    <div className="text-xs text-[#808283]">{option.description}</div>
+                    <div className="text-sm font-semibold text-white">
+                      {option.label}
+                    </div>
+                    <div className="text-xs text-[#808283]">
+                      {option.description}
+                    </div>
                   </div>
                 </label>
               ))}
@@ -379,6 +480,6 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
         </div>
       </div>
     </div>,
-    document.body
+    document.body,
   );
 };

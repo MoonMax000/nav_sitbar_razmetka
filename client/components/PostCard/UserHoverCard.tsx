@@ -3,7 +3,11 @@ import { type FC, type MouseEvent, type ReactNode } from "react";
 import { type FC, type ReactNode } from "react";
 
 import UserAvatar from "@/components/ui/Avatar/UserAvatar";
-import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
 import { cn } from "@/lib/utils";
 
 import FollowButton from "./FollowButton";
@@ -37,11 +41,15 @@ const UserHoverCard: FC<UserHoverCardProps> = ({
   showFollowButton,
   children,
 }) => {
-  const followers = typeof author.followers === "number" ? author.followers : undefined;
-  const following = typeof author.following === "number" ? author.following : undefined;
+  const followers =
+    typeof author.followers === "number" ? author.followers : undefined;
+  const following =
+    typeof author.following === "number" ? author.following : undefined;
 
-  const followersLabel = typeof followers === "number" ? formatCount(followers) : null;
-  const followingLabel = typeof following === "number" ? formatCount(following) : null;
+  const followersLabel =
+    typeof followers === "number" ? formatCount(followers) : null;
+  const followingLabel =
+    typeof following === "number" ? formatCount(following) : null;
   const shouldRenderFollowButton = showFollowButton ?? !author.isCurrentUser;
   const headerClasses = cn(
     "flex items-start gap-4",
@@ -69,7 +77,11 @@ const UserHoverCard: FC<UserHoverCardProps> = ({
                 <span>{author.name}</span>
                 {author.verified ? <VerifiedBadge size={16} /> : null}
               </div>
-              {author.handle ? <span className="text-sm font-medium text-[#8E92A0]">{author.handle}</span> : null}
+              {author.handle ? (
+                <span className="text-sm font-medium text-[#8E92A0]">
+                  {author.handle}
+                </span>
+              ) : null}
             </div>
           </div>
           {shouldRenderFollowButton ? (
@@ -85,19 +97,27 @@ const UserHoverCard: FC<UserHoverCardProps> = ({
         </div>
 
         {author.bio ? (
-          <p className="mt-3 text-sm leading-relaxed text-white/80">{author.bio}</p>
+          <p className="mt-3 text-sm leading-relaxed text-white/80">
+            {author.bio}
+          </p>
         ) : null}
 
-        {(followersLabel || followingLabel) ? (
+        {followersLabel || followingLabel ? (
           <div className="mt-4 flex flex-wrap gap-4 text-sm text-[#8E92A0]">
             {followingLabel ? (
               <span>
-                <span className="font-semibold text-white">{followingLabel}</span> Following
+                <span className="font-semibold text-white">
+                  {followingLabel}
+                </span>{" "}
+                Following
               </span>
             ) : null}
             {followersLabel ? (
               <span>
-                <span className="font-semibold text-white">{followersLabel}</span> Followers
+                <span className="font-semibold text-white">
+                  {followersLabel}
+                </span>{" "}
+                Followers
               </span>
             ) : null}
           </div>

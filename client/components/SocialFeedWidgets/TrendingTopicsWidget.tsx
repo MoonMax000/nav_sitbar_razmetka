@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+import type { FC } from "react";
 
 import type { FC } from "react";
 
@@ -25,10 +25,7 @@ interface NewsWidgetProps {
   items: NewsItem[];
 }
 
-const NewsWidget: FC<NewsWidgetProps> = ({
-  title = "Today's News",
-  items,
-}) => {
+const NewsWidget: FC<NewsWidgetProps> = ({ title = "Today's News", items }) => {
   return (
     <section className="rounded-[24px] border border-[#181B22] bg-[rgba(12,16,20,0.72)] p-5 shadow-[0_24px_48px_rgba(10,12,16,0.45)] backdrop-blur-[40px]">
       <header className="flex items-center justify-between gap-3">
@@ -39,9 +36,9 @@ const NewsWidget: FC<NewsWidgetProps> = ({
         {items.map((item) => {
           const hasComments = (item.commentCount ?? 0) > 0;
           const avatarSources = hasComments
-            ? (item.avatars && item.avatars.length > 0
-                ? item.avatars
-                : FALLBACK_AVATARS)
+            ? item.avatars && item.avatars.length > 0
+              ? item.avatars
+              : FALLBACK_AVATARS
             : [];
 
           return (
@@ -60,7 +57,11 @@ const NewsWidget: FC<NewsWidgetProps> = ({
                         key={`${item.id}-avatar-${index}`}
                         className="inline-flex h-5 w-5 overflow-hidden rounded-full border border-[#0C1014]"
                       >
-                        <img src={avatar} alt="" className="h-full w-full object-cover" />
+                        <img
+                          src={avatar}
+                          alt=""
+                          className="h-full w-full object-cover"
+                        />
                       </span>
                     ))}
                   </div>
@@ -68,13 +69,19 @@ const NewsWidget: FC<NewsWidgetProps> = ({
                 <span>{item.publishedAgo}</span>
                 {item.category ? (
                   <>
-                    <span className="h-1 w-1 rounded-full bg-[#2F3336]" aria-hidden />
+                    <span
+                      className="h-1 w-1 rounded-full bg-[#2F3336]"
+                      aria-hidden
+                    />
                     <span>{item.category}</span>
                   </>
                 ) : null}
                 {item.engagement ? (
                   <>
-                    <span className="h-1 w-1 rounded-full bg-[#2F3336]" aria-hidden />
+                    <span
+                      className="h-1 w-1 rounded-full bg-[#2F3336]"
+                      aria-hidden
+                    />
                     <span>{item.engagement}</span>
                   </>
                 ) : null}

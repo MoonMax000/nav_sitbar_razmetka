@@ -12,7 +12,9 @@ interface ProfileContentClassicProps {
   isOwnProfile?: boolean;
 }
 
-export default function ProfileContentClassic({ isOwnProfile = true }: ProfileContentClassicProps) {
+export default function ProfileContentClassic({
+  isOwnProfile = true,
+}: ProfileContentClassicProps) {
   const navigate = useNavigate();
   const [profile, setProfile] = useState<SocialProfileData | null>(null);
   const [posts, setPosts] = useState<SocialPost[]>([]);
@@ -22,7 +24,7 @@ export default function ProfileContentClassic({ isOwnProfile = true }: ProfileCo
   useEffect(() => {
     const loadProfile = async () => {
       setIsLoading(true);
-      
+
       // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 300));
 
@@ -30,7 +32,7 @@ export default function ProfileContentClassic({ isOwnProfile = true }: ProfileCo
       // In real app, fetch profile by user_id
       setProfile(defaultProfile);
       setPosts(getProfileTimeline(defaultProfile));
-      
+
       setIsLoading(false);
     };
 
@@ -56,7 +58,10 @@ export default function ProfileContentClassic({ isOwnProfile = true }: ProfileCo
   const tweetsCount = posts.length;
 
   return (
-    <div className="min-h-screen" style={{ "--profile-image-size": "120px" } as CSSProperties}>
+    <div
+      className="min-h-screen"
+      style={{ "--profile-image-size": "120px" } as CSSProperties}
+    >
       {/* Sticky Header */}
       <div className="sticky top-0 z-50 backdrop-blur-md bg-black/80">
         <div className="flex items-center gap-9 px-4 py-3">
@@ -91,7 +96,11 @@ export default function ProfileContentClassic({ isOwnProfile = true }: ProfileCo
         </div>
       </div>
 
-      <ProfileHero profile={profile} tweetsCount={tweetsCount} isOwnProfile={isOwnProfile} />
+      <ProfileHero
+        profile={profile}
+        tweetsCount={tweetsCount}
+        isOwnProfile={isOwnProfile}
+      />
       <main className="mt-6">
         <div className="px-6">
           {/* User info section */}

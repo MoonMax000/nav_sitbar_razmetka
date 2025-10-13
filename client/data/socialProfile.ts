@@ -39,7 +39,8 @@ export const defaultProfile: SocialProfileData = {
   },
   joined: "Март 2021",
   avatar: "https://i.pravatar.cc/300?img=33",
-  cover: "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=1400&h=400&fit=crop",
+  cover:
+    "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=1400&h=400&fit=crop",
   stats: {
     tweets: 1480,
     following: 312,
@@ -49,9 +50,13 @@ export const defaultProfile: SocialProfileData = {
   highlightedPostId: "ai-article",
 };
 
-export const getProfileTimeline = (profile: SocialProfileData): SocialPost[] => {
+export const getProfileTimeline = (
+  profile: SocialProfileData,
+): SocialPost[] => {
   if (profile.highlightedPostId) {
-    const pinned = socialPosts.find((post) => post.id === profile.highlightedPostId);
+    const pinned = socialPosts.find(
+      (post) => post.id === profile.highlightedPostId,
+    );
     if (pinned) {
       const rest = socialPosts.filter((post) => post.id !== pinned.id);
       return [pinned, ...rest];

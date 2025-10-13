@@ -28,7 +28,13 @@ const actions = [
   { id: "poll", Icon: BarChart3, alt: "Poll", color: "#A06AFF" },
   { id: "emoji", Icon: Smile, alt: "Emoji", color: "#A06AFF" },
   { id: "schedule", Icon: Calendar, alt: "Schedule", color: "#A06AFF" },
-  { id: "location", Icon: MapPin, alt: "Location", color: "#A06AFF", disabled: true },
+  {
+    id: "location",
+    Icon: MapPin,
+    alt: "Location",
+    color: "#A06AFF",
+    disabled: true,
+  },
 ];
 
 export default function TweetForm({
@@ -53,7 +59,8 @@ export default function TweetForm({
     }
   }, [shouldFocus]);
 
-  const percentage = text.length >= MAX_CHARS ? 100 : (text.length / MAX_CHARS) * 100;
+  const percentage =
+    text.length >= MAX_CHARS ? 100 : (text.length / MAX_CHARS) * 100;
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -94,7 +101,12 @@ export default function TweetForm({
           size={40}
           containerClassName="mr-4"
         />
-        <div className={cn("flex-1 flex min-h-0", expanded ? "flex-col" : "flex-row items-center")}>
+        <div
+          className={cn(
+            "flex-1 flex min-h-0",
+            expanded ? "flex-col" : "flex-row items-center",
+          )}
+        >
           <TextareaAutosize
             ref={inputRef}
             onChange={(e) => setText(e.target.value)}
@@ -105,12 +117,7 @@ export default function TweetForm({
             className="w-full tweet-textarea bg-transparent border-none pt-2.5 text-lg resize-none outline-none text-white placeholder:text-[#4E5A66]"
           />
 
-          <div
-            className={cn(
-              "flex items-center",
-              expanded ? "mt-3" : "mt-0"
-            )}
-          >
+          <div className={cn("flex items-center", expanded ? "mt-3" : "mt-0")}>
             {expanded &&
               actions.map((action) => (
                 <button
@@ -149,11 +156,11 @@ export default function TweetForm({
                         exceededMax
                           ? "red"
                           : maxAlmostReached
-                          ? "#ffd400"
-                          : "#A06AFF"
+                            ? "#ffd400"
+                            : "#A06AFF"
                       }
                       strokeWidth="2.2"
-                      strokeDasharray={`${percentage * (maxAlmostReached ? 106.8 : 75.4) / 100} ${
+                      strokeDasharray={`${(percentage * (maxAlmostReached ? 106.8 : 75.4)) / 100} ${
                         maxAlmostReached ? 106.8 : 75.4
                       }`}
                       strokeLinecap="round"
@@ -163,7 +170,7 @@ export default function TweetForm({
                     <span
                       className={cn(
                         "absolute top-0 bottom-0 left-0 right-0 m-auto h-max w-max text-sm",
-                        exceededMax ? "text-red-500" : "text-muted-foreground"
+                        exceededMax ? "text-red-500" : "text-muted-foreground",
                       )}
                     >
                       {charsLeft}
@@ -171,7 +178,9 @@ export default function TweetForm({
                   )}
                 </div>
               )}
-              {!isInputEmpty && <hr className="h-7 w-0.5 border-none bg-[#444] mx-4" />}
+              {!isInputEmpty && (
+                <hr className="h-7 w-0.5 border-none bg-[#444] mx-4" />
+              )}
               <button
                 type="submit"
                 className="bg-gradient-to-r from-[#482090] to-[#A06AFF] px-5 py-2.5 text-white rounded-full font-bold text-base disabled:opacity-60 hover:from-[#482090] hover:to-[#482090] transition-colors"

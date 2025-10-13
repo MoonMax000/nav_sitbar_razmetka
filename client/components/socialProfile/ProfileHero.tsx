@@ -9,7 +9,12 @@ interface ProfileHeroProps {
   isOwnProfile?: boolean;
 }
 
-const ProfileHero: FC<ProfileHeroProps> = ({ profile, onEdit, tweetsCount = 0, isOwnProfile = true }) => {
+const ProfileHero: FC<ProfileHeroProps> = ({
+  profile,
+  onEdit,
+  tweetsCount = 0,
+  isOwnProfile = true,
+}) => {
   const [isFollowing, setIsFollowing] = useState(false);
 
   const handleFollowClick = () => {
@@ -27,7 +32,11 @@ const ProfileHero: FC<ProfileHeroProps> = ({ profile, onEdit, tweetsCount = 0, i
       {/* Cover/Banner image */}
       <div className="w-full overflow-hidden rounded-3xl bg-gradient-to-br from-[#141923] to-[#0B0E13]">
         {profile.cover ? (
-          <img src={profile.cover} alt={`${profile.name} cover`} className="h-[200px] w-full object-cover" />
+          <img
+            src={profile.cover}
+            alt={`${profile.name} cover`}
+            className="h-[200px] w-full object-cover"
+          />
         ) : (
           <div className="h-[200px] w-full" />
         )}
@@ -36,7 +45,11 @@ const ProfileHero: FC<ProfileHeroProps> = ({ profile, onEdit, tweetsCount = 0, i
       <div className="px-6 pt-4">
         <div className="flex items-start justify-between gap-4">
           <div className="relative -mt-16 h-[132px] w-[132px] overflow-hidden rounded-full border-4 border-[#0B0E13] bg-[#121720]">
-            <img src={profile.avatar} alt={profile.name} className="h-full w-full object-cover" />
+            <img
+              src={profile.avatar}
+              alt={profile.name}
+              className="h-full w-full object-cover"
+            />
           </div>
 
           <div className="flex items-center gap-3 pt-2">
@@ -64,7 +77,11 @@ const ProfileHero: FC<ProfileHeroProps> = ({ profile, onEdit, tweetsCount = 0, i
               className={primaryActionButtonClass}
             >
               <span className="relative z-10 text-center font-semibold leading-5">
-                {isOwnProfile ? "Edit profile" : (isFollowing ? "Unfollow" : "Follow")}
+                {isOwnProfile
+                  ? "Edit profile"
+                  : isFollowing
+                    ? "Unfollow"
+                    : "Follow"}
               </span>
             </button>
           </div>

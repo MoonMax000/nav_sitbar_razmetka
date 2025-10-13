@@ -1,4 +1,11 @@
-import { type ButtonHTMLAttributes, type CSSProperties, type FC, type MouseEvent, useMemo, useState } from "react";
+import {
+  type ButtonHTMLAttributes,
+  type CSSProperties,
+  type FC,
+  type MouseEvent,
+  useMemo,
+  useState,
+} from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -35,7 +42,8 @@ const FollowButton: FC<FollowButtonProps> = ({
   const [internalFollowing, setInternalFollowing] = useState(defaultFollowing);
   const [isHovered, setIsHovered] = useState(false);
 
-  const following = typeof isFollowing === "boolean" ? isFollowing : internalFollowing;
+  const following =
+    typeof isFollowing === "boolean" ? isFollowing : internalFollowing;
 
   const handleToggle = (event: MouseEvent<HTMLButtonElement>) => {
     if (stopPropagation) {
@@ -61,7 +69,8 @@ const FollowButton: FC<FollowButtonProps> = ({
   }>(() => {
     if (following) {
       return {
-        buttonClasses: "border bg-transparent font-semibold transition-colors duration-200",
+        buttonClasses:
+          "border bg-transparent font-semibold transition-colors duration-200",
         buttonStyle: {
           borderColor: BRAND_COLOR,
           color: BRAND_COLOR,

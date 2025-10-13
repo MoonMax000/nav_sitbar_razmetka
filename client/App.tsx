@@ -54,25 +54,49 @@ const App = () => (
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/home" element={<HomePage />} />
                     <Route path="/profile-page" element={<ProfilePage />} />
-                    <Route path="/other-profile" element={<OtherProfilePage />} />
+                    <Route
+                      path="/other-profile"
+                      element={<OtherProfilePage />}
+                    />
                     <Route path="/social/home" element={<SocialFeed />} />
                     <Route path="/social/feed" element={<SocialFeed />} />
                     <Route path="/social/explore" element={<SocialExplore />} />
-                    <Route path="/social/notifications" element={<SocialNotifications />} />
-                    <Route path="/social/messages" element={<SocialMessages />} />
+                    <Route
+                      path="/social/notifications"
+                      element={<SocialNotifications />}
+                    />
+                    <Route
+                      path="/social/messages"
+                      element={<SocialMessages />}
+                    />
                     <Route path="/social/compose" element={<SocialCompose />} />
-                    <Route path="/social/compose-classic" element={<SocialTweetComposer />} />
+                    <Route
+                      path="/social/compose-classic"
+                      element={<SocialTweetComposer />}
+                    />
                     <Route path="/social/create" element={<SocialCompose />} />
-                    <Route path="/social/profile-classic" element={<SocialProfileClassic />} />
-                    <Route path="/social/post/preview" element={<SocialPostPreview />} />
-                    <Route path="/social/post/:postId" element={<SocialPostDetail />} />
+                    <Route
+                      path="/social/profile-classic"
+                      element={<SocialProfileClassic />}
+                    />
+                    <Route
+                      path="/social/post/preview"
+                      element={<SocialPostPreview />}
+                    />
+                    <Route
+                      path="/social/post/:postId"
+                      element={<SocialPostDetail />}
+                    />
                     <Route path="/pricing" element={<Pricing />} />
                     <Route path="/profile" element={<ProfileNew />} />
                     <Route path="/profile-old" element={<Profile />} />
                     <Route path="/portfolio" element={<PortfolioPage />} />
                     <Route path="/portfolios" element={<PortfolioPage />} />
                     <Route path="/billing" element={<Billing />} />
-                    <Route path="/composer-showcase" element={<ComposerShowcase />} />
+                    <Route
+                      path="/composer-showcase"
+                      element={<ComposerShowcase />}
+                    />
                     {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                     <Route path="*" element={<NotFound />} />
                   </Routes>

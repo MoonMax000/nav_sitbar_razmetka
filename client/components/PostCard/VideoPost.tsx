@@ -55,7 +55,8 @@ const FeedPost: FC<FeedPostProps> = ({
   const [isFollowing, setIsFollowing] = useState(initialFollowing ?? false);
 
   const formattedContent = useMemo(() => content ?? "", [content]);
-  const shouldShowToggle = truncate && !expanded && formattedContent.length > 260;
+  const shouldShowToggle =
+    truncate && !expanded && formattedContent.length > 260;
   const showFollowButton = !author.isCurrentUser;
 
   const displayedContent = useMemo(() => {
@@ -148,7 +149,9 @@ const FeedPost: FC<FeedPostProps> = ({
                     {categoryLabel}
                   </span>
                 ) : null}
-                <span className="text-xs font-semibold text-[#8E92A0]">{timestamp}</span>
+                <span className="text-xs font-semibold text-[#8E92A0]">
+                  {timestamp}
+                </span>
               </div>
             </div>
           </div>
@@ -198,7 +201,9 @@ const FeedPost: FC<FeedPostProps> = ({
       </header>
 
       <section className="flex w-full flex-col gap-4">
-        <h2 className="text-2xl font-bold leading-snug text-white sm:text-[26px]">{title}</h2>
+        <h2 className="text-2xl font-bold leading-snug text-white sm:text-[26px]">
+          {title}
+        </h2>
         {displayedContent ? (
           <p className="whitespace-pre-line text-[15px] leading-relaxed text-white/80">
             {displayedContent}
@@ -299,7 +304,14 @@ const FeedPost: FC<FeedPostProps> = ({
               xmlns="http://www.w3.org/2000/svg"
             >
               <defs>
-                <linearGradient id="feedpost-heart" x1="18.3337" y1="10" x2="1.66699" y2="10" gradientUnits="userSpaceOnUse">
+                <linearGradient
+                  id="feedpost-heart"
+                  x1="18.3337"
+                  y1="10"
+                  x2="1.66699"
+                  y2="10"
+                  gradientUnits="userSpaceOnUse"
+                >
                   <stop stopColor="#A06AFF" />
                   <stop offset="1" stopColor="#482090" />
                 </linearGradient>

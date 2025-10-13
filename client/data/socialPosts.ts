@@ -72,8 +72,7 @@ export const socialPosts: SocialPost[] = [
     title: "New Tools for Crypto Analytics",
     preview:
       "On the other hand, the continued development of various activities significantly drives the creation of new strategic directions.",
-    body:
-      "On the other hand, the continued development of various activities significantly drives the creation of new strategic directions. In this context, introducing a new organizational model serves as a valuable experiment in testing growth frameworks. High-level strategic thinking, along with the strengthening and evolution of internal structures, plays a key role in shaping effective training systems that address current workforce needs.\n\nOur broad and diverse experience — supported by ongoing communication and outreach — helps lay the groundwork for inclusive, large-scale participation. At the same time, it’s important to recognize that effective training enables a wider range of professionals to actively shape their roles and responsibilities in meeting organizational goals.",
+    body: "On the other hand, the continued development of various activities significantly drives the creation of new strategic directions. In this context, introducing a new organizational model serves as a valuable experiment in testing growth frameworks. High-level strategic thinking, along with the strengthening and evolution of internal structures, plays a key role in shaping effective training systems that address current workforce needs.\n\nOur broad and diverse experience — supported by ongoing communication and outreach — helps lay the groundwork for inclusive, large-scale participation. At the same time, it’s important to recognize that effective training enables a wider range of professionals to actively shape their roles and responsibilities in meeting organizational goals.",
     videoUrl:
       "https://api.builder.io/api/v1/image/assets/TEMP/e4b8b038e464896411fd0b568f4594d8cfdf3453?width=2086",
     sentiment: "bullish",
@@ -99,8 +98,7 @@ export const socialPosts: SocialPost[] = [
     title: "Do This To Win Like Hedge Funds",
     preview:
       "Hedge funds don’t just beat the market by luck, they use proven strategies. Here’s how you can apply their tactics.",
-    body:
-      "Hedge funds don’t just beat the market by luck, they use proven strategies. Here’s how you can apply their tactics:\n\n• Focus on asymmetric risk/reward — Only take trades where potential upside >> downside. Hedge funds target 3:1 or better.\n• Be contrarian — The biggest profits come when you go against the crowd. Buy fear, sell greed.\n• Use leverage wisely — Hedge funds amplify gains with controlled risk. Never over-leverage.\n• Stay disciplined — Stick to your strategy. Emotional trading kills returns.\n• Diversify beyond stocks — Explore options, futures, arbitrage, and macro trends.\n\nMost traders fail because they chase hype. Winners think like institutions. Write in the comments what investment strategy you follow.",
+    body: "Hedge funds don’t just beat the market by luck, they use proven strategies. Here’s how you can apply their tactics:\n\n• Focus on asymmetric risk/reward — Only take trades where potential upside >> downside. Hedge funds target 3:1 or better.\n• Be contrarian — The biggest profits come when you go against the crowd. Buy fear, sell greed.\n• Use leverage wisely — Hedge funds amplify gains with controlled risk. Never over-leverage.\n• Stay disciplined — Stick to your strategy. Emotional trading kills returns.\n• Diversify beyond stocks — Explore options, futures, arbitrage, and macro trends.\n\nMost traders fail because they chase hype. Winners think like institutions. Write in the comments what investment strategy you follow.",
     mediaUrl:
       "https://cdn.builder.io/api/v1/image/assets%2F7ee0e08331ad4de59dd7fa404556ca59%2F26e47da892d74e88bcb53dbb23d89ed5?format=webp&width=800",
     sentiment: "bullish",

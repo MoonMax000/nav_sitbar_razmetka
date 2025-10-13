@@ -36,7 +36,9 @@ const CommentCard: FC<CommentCardProps> = ({ comment }) => {
             <span>{comment.author.name}</span>
             {comment.author.verified ? <VerifiedBadge size={14} /> : null}
           </div>
-          <span className="text-sm text-[#8E92A0]">{comment.author.handle}</span>
+          <span className="text-sm text-[#8E92A0]">
+            {comment.author.handle}
+          </span>
           <span className="text-sm text-[#6C7080]">·</span>
           <span className="text-sm text-[#6C7080]">{comment.timestamp}</span>
         </div>
@@ -71,7 +73,10 @@ const CommentCard: FC<CommentCardProps> = ({ comment }) => {
           </button>
 
           {typeof comment.replies === "number" && comment.replies > 0 ? (
-            <button type="button" className="group flex items-center gap-1.5 transition-colors hover:text-[#A06AFF]">
+            <button
+              type="button"
+              className="group flex items-center gap-1.5 transition-colors hover:text-[#A06AFF]"
+            >
               <svg
                 width="18"
                 height="18"
@@ -91,7 +96,10 @@ const CommentCard: FC<CommentCardProps> = ({ comment }) => {
             </button>
           ) : null}
 
-          <button type="button" className="group flex items-center gap-1.5 transition-colors hover:text-[#A06AFF]">
+          <button
+            type="button"
+            className="group flex items-center gap-1.5 transition-colors hover:text-[#A06AFF]"
+          >
             <svg
               width="18"
               height="18"

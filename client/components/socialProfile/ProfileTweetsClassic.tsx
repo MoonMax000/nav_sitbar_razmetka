@@ -6,7 +6,9 @@ interface ProfileTweetsClassicProps {
   posts: SocialPost[];
 }
 
-export default function ProfileTweetsClassic({ posts }: ProfileTweetsClassicProps) {
+export default function ProfileTweetsClassic({
+  posts,
+}: ProfileTweetsClassicProps) {
   if (!posts || posts.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center py-20 text-[#888]">

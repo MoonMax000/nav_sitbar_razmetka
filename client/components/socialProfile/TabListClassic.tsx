@@ -2,10 +2,10 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 
 const tabs = [
-  { id: 'tweets', label: 'Tweets' },
-  { id: 'tweet-replies', label: 'Tweets & replies' },
-  { id: 'media', label: 'Media' },
-  { id: 'likes', label: 'Likes' },
+  { id: "tweets", label: "Tweets" },
+  { id: "tweet-replies", label: "Tweets & replies" },
+  { id: "media", label: "Media" },
+  { id: "likes", label: "Likes" },
 ];
 
 interface TabListClassicProps {
@@ -31,7 +31,8 @@ export default function TabListClassic({ onTabChange }: TabListClassicProps) {
           <span
             className={cn(
               "relative w-full py-5 px-2",
-              activeTab === tab.id && "text-white after:content-[''] after:h-[3px] after:w-full after:bg-[#A06AFF] after:rounded-[40px] after:absolute after:bottom-0 after:left-0"
+              activeTab === tab.id &&
+                "text-white after:content-[''] after:h-[3px] after:w-full after:bg-[#A06AFF] after:rounded-[40px] after:absolute after:bottom-0 after:left-0",
             )}
           >
             {tab.label}
