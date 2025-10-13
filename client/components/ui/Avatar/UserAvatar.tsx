@@ -1,4 +1,4 @@
-import type { FC, CSSProperties } from "react";
+import { useState, type CSSProperties, type FC } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -23,6 +23,8 @@ const UserAvatar: FC<UserAvatarProps> = ({
   style,
   accent = true,
 }) => {
+  const [hasError, setHasError] = useState(false);
+  const resolvedSrc = !src || src.includes("placeholder") || hasError ? DEFAULT_AVATAR : src;
   const dimensionStyle: CSSProperties = {
     width: size,
     height: size,
@@ -40,9 +42,10 @@ const UserAvatar: FC<UserAvatarProps> = ({
     >
       <div className={cn("h-full w-full overflow-hidden rounded-full", accent ? "bg-[#0F1319]" : "bg-transparent")}>
         <img
-          src={src || DEFAULT_AVATAR}
+          src={resolvedSrc}
           alt={alt}
           className={cn("h-full w-full object-cover", className)}
+          onError={() => setHasError(true)}
         />
       </div>
     </div>
