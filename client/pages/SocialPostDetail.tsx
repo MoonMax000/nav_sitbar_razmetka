@@ -46,21 +46,31 @@ const SocialPostDetail: FC = () => {
   }
 
   return (
-    <div className="flex min-h-screen w-full flex-col gap-6 pb-12">
-      <div className="flex items-center gap-3">
-        <button
-          type="button"
-          onClick={handleBack}
-          className="flex items-center gap-2 rounded-full border border-[#181B22] bg-[rgba(12,16,20,0.50)] px-4 py-2 text-sm font-semibold text-[#B0B0B0] transition-colors duration-200 hover:border-[#A06AFF] hover:text-white"
-        >
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-5 w-5">
-            <path d="M11.6667 5L6.66675 10L11.6667 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-          Back
-        </button>
+    <div className="flex w-full gap-8">
+      <div className="flex-1 max-w-[720px]">
+        <div className="sticky top-0 z-10 mb-6 flex items-center gap-3 bg-black/80 py-3 backdrop-blur-md">
+          <button
+            type="button"
+            onClick={handleBack}
+            className="flex h-9 w-9 items-center justify-center rounded-full text-white transition-colors hover:bg-[#482090]/20"
+            aria-label="Back"
+          >
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11.6667 5L6.66675 10L11.6667 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+          <h1 className="text-xl font-bold text-white">Post</h1>
+        </div>
+
+        <PostDetailView post={post} />
       </div>
 
-      <PostDetailView post={post} />
+      <aside className="sticky top-4 hidden h-fit w-[340px] flex-col gap-4 lg:flex">
+        <SuggestedProfilesWidget
+          title="Relevant people"
+          profiles={DEFAULT_SUGGESTED_PROFILES}
+        />
+      </aside>
     </div>
   );
 };
