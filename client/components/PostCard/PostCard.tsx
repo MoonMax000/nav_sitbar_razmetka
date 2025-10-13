@@ -21,6 +21,15 @@ export interface PostCardProps {
   title?: string;
   content?: string;
   image?: string;
+  mediaUrl?: string;
+  body?: string;
+  preview?: string;
+  videoUrl?: string;
+  hashtags?: string[];
+  views?: number;
+  type?: string;
+  isFollowing?: boolean;
+  id?: string;
   sentiment?: "bullish" | "bearish";
   likes?: number;
   comments?: number;
