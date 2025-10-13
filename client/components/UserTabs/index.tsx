@@ -3,7 +3,7 @@ import { FC, useMemo, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import type { ViewMode } from "@/screens/home/Home";
 
-import PostCard, { PostCardProps } from "../PostCard/PostCard";
+import FeedPost, { type FeedPostProps } from "../PostCard/VideoPost";
 import CompactPostCard from "../PostCard/CompactPostCard";
 
 interface Tab {
