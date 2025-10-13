@@ -23,13 +23,11 @@ interface NewsItem {
 interface NewsWidgetProps {
   title?: string;
   items: NewsItem[];
-  onDismissAll?: () => void;
 }
 
 const NewsWidget: FC<NewsWidgetProps> = ({
   title = "Today's News",
   items,
-  onDismissAll,
 }) => {
   return (
     <section className="rounded-[24px] border border-[#181B22] bg-[rgba(12,16,20,0.72)] p-5 shadow-[0_24px_48px_rgba(10,12,16,0.45)] backdrop-blur-[40px]">
