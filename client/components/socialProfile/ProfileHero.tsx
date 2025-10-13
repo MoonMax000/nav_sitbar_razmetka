@@ -25,7 +25,7 @@ const ProfileHero: FC<ProfileHeroProps> = ({ profile, onEdit, tweetsCount = 0, i
     "group relative flex items-center justify-center overflow-hidden rounded-full border border-black/30 bg-[rgba(25,25,25,0.65)] px-6 py-2.5 text-[15px] font-semibold text-[#F7F9F9] shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_12px_32px_rgba(0,0,0,0.45)] backdrop-blur-xl transition-all duration-200 hover:-translate-y-0.5 hover:border-[#A06AFF]/40 hover:bg-[rgba(32,32,32,0.75)] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_18px_36px_rgba(0,0,0,0.5)] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-black before:absolute before:inset-x-4 before:-top-1 before:h-1 before:rounded-full before:bg-white/50 before:opacity-0 before:transition-opacity before:duration-200 group-hover:before:opacity-100";
 
   return (
-    <section className="relative mb-6">
+    <section className="mb-6">
       {/* Header bar with back button - Sticky with glass effect */}
       <div className="sticky top-0 z-10 backdrop-blur-md bg-black/80">
         <div className="flex items-center gap-9 px-4 py-3">
