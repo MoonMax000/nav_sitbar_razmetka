@@ -41,13 +41,13 @@ export default function HomePage() {
     <div className="flex w-full gap-8">
       <div className="flex-1 max-w-[720px]">
         {/* Header */}
-        <div className="sticky top-0 z-10 backdrop-blur-md bg-black/80 border-b border-[#2F3336]">
+        <div className="sticky top-0 z-10 backdrop-blur-md bg-black/80">
           <div className="px-4 py-3">
             <h1 className="text-xl font-bold text-white">Home</h1>
           </div>
-          
+
           {/* Tabs */}
-          <div className="flex border-b border-[#2F3336]">
+          <div className="flex">
             <button className="flex-1 py-4 text-white font-semibold border-b-4 border-[#A06AFF] hover:bg-[#482090]/10 transition-colors">
               For you
             </button>
