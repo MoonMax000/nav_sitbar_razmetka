@@ -840,14 +840,16 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
         )}
       </div>
 
-      <MediaEditor
-        media={editingMedia}
-        onSave={handleMediaSave}
-        onClose={() => {
-          setEditingMedia(null);
-          setActiveBlockId(null);
-        }}
-      />
+      {editingMedia && (
+        <MediaEditor
+          media={editingMedia}
+          onSave={handleMediaSave}
+          onClose={() => {
+            setEditingMedia(null);
+            setActiveBlockId(null);
+          }}
+        />
+      )}
 
       <CodeBlockModal
         isOpen={isCodeBlockOpen}
