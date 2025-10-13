@@ -102,8 +102,7 @@ export default function TweetForm({
             value={text}
             onClick={onClick}
             minRows={expanded ? 3 : 1}
-            className="w-full bg-transparent border-none pt-2.5 text-lg resize-none outline-none text-white placeholder:text-[#4E5A66]"
-            style={{ backgroundColor: 'transparent !important' } as React.CSSProperties}
+            className="w-full tweet-textarea bg-transparent border-none pt-2.5 text-lg resize-none outline-none text-white placeholder:text-[#4E5A66]"
           />
 
           <div

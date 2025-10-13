@@ -404,6 +404,11 @@ textarea::-webkit-scrollbar-track {
     backdrop-filter: blur(100px);
   }
 
+  .tweet-textarea {
+    background-color: transparent !important;
+    backdrop-filter: none !important;
+  }
+
   .text-gradient-purple {
     @apply bg-gradient-to-r from-[#A06AFF] to-[#6AA5FF] bg-clip-text text-transparent;
   }
