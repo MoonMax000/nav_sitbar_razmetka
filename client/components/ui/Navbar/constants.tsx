@@ -70,6 +70,11 @@ export const navElements: NavElementProps[] = [
         route: "/profile-page",
       },
       {
+        icon: <BoxIcon className="h-5 w-5" />,
+        title: "Чужой профиль",
+        route: "/other-profile",
+      },
+      {
         icon: <HomeIcon className="h-5 w-5" />,
         title: "Home",
         route: "/social/home",
