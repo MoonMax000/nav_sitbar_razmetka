@@ -87,7 +87,6 @@ export default function TweetForm({
       <form
         onSubmit={submit}
         className={cn("w-full flex", expanded ? "items-start" : "items-center")}
-        style={{ minHeight: expanded ? `${minHeight}px` : "40px" }}
       >
         <UserAvatar
           src={userAvatar}
