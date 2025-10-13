@@ -92,6 +92,13 @@ export default function TweetForm({
           <img src={userAvatar} alt={userName} className="w-full h-full object-cover" />
         </div>
 
+        <UserAvatar
+          src={userAvatar}
+          alt={userName}
+          size={40}
+          accent={false}
+          containerClassName="mr-4"
+        />
         <div className={cn("flex-1 flex", expanded ? "flex-col" : "flex-row items-center")}>
           <textarea
             ref={inputRef}
