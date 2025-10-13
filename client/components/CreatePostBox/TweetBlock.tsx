@@ -1,4 +1,5 @@
 import { FC, useRef, useEffect, ChangeEvent } from "react";
+import { cn } from "@/lib/utils";
 import { MediaItem, CHAR_LIMIT } from "./types";
 import { MediaGrid } from "./MediaGrid";
 
