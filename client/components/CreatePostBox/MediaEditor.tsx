@@ -153,16 +153,33 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
       warnings: media.sensitiveTags || [],
     };
 
+    // For non-images, skip crop state initialization
+    if (media.type !== "image") {
+      return;
+    }
+
     // Load image to get natural dimensions
     const img = new Image();
+
     img.onload = () => {
       const naturalW = img.naturalWidth;
       const naturalH = img.naturalHeight;
 
-      if (containerRef.current) {
+      // Wait for container to be ready with a small delay
+      const initCropState = () => {
+        if (!containerRef.current) {
+          console.warn("Container not ready, retrying...");
+          setTimeout(initCropState, 100);
+          return;
+        }
+
         const rect = containerRef.current.getBoundingClientRect();
-        const viewportW = rect.width;
-        const viewportH = rect.height;
+        const viewportW = rect.width || 800; // fallback width
+        const viewportH = rect.height || 420; // fallback height
+
+        if (viewportW === 0 || viewportH === 0) {
+          console.warn("Container has zero dimensions, using fallback");
+        }
 
         const preset: AspectPreset = "original";
         const newState = applyPreset(
@@ -185,8 +202,35 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
         );
 
         setCropState(newState);
+      };
+
+      // Give the modal time to render
+      setTimeout(initCropState, 50);
+    };
+
+    img.onerror = (error) => {
+      console.error("Failed to load image:", error);
+      // Set a default state even on error so UI isn't stuck
+      if (containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect();
+        setCropState({
+          naturalW: 1000,
+          naturalH: 1000,
+          viewportW: rect.width || 800,
+          viewportH: rect.height || 420,
+          cropW: 400,
+          cropH: 400,
+          aspect: 1,
+          zoom: 1,
+          translateX: 0,
+          translateY: 0,
+          preset: "original",
+          minZoom: 1,
+          maxZoom: MAX_ZOOM_FACTOR,
+        });
       }
     };
+
     img.src = media.url;
   }, [media]);
 
