@@ -426,7 +426,7 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
     const saved = localStorage.getItem("composer-drafts");
     const drafts: ComposerDraft[] = saved ? JSON.parse(saved) : [];
     drafts.unshift(draft);
-    localStorage.setItem("composer-drafts", JSON.stringify(drafts.slice(0, 10)));
+    localStorage.setItem("composer-drafts", JSON.stringify(drafts.slice(0, MAX_DRAFTS)));
   }, [blocks, replySetting]);
 
   const handleOpenDraft = useCallback((draft: ComposerDraft) => {
@@ -667,7 +667,7 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
                 <button
                   type="button"
                   className="flex h-10 w-10 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#482090]/10"
-                  title="��лок кода"
+                  title="Блок кода"
                 >
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                     <path d="M8 7L3 12L8 17M16 7L21 12L16 17M14 3L10 21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
