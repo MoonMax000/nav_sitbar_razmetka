@@ -108,8 +108,8 @@ export default function TweetForm({
 
           <div
             className={cn(
-              "flex h-12 items-center",
-              expanded ? "mt-auto" : "mt-0"
+              "flex items-center",
+              expanded ? "mt-3" : "mt-0"
             )}
           >
             {expanded &&
