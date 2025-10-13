@@ -104,6 +104,8 @@ const arraysEqual = (a: string[], b: string[]) => {
 };
 
 export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) => {
+  console.log("MediaEditor: Component rendered with media:", media);
+
   const [mounted, setMounted] = useState(false);
   const [activeTab, setActiveTab] = useState<EditorTab>("crop");
   const [altText, setAltText] = useState("");
