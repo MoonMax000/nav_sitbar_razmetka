@@ -1,5 +1,7 @@
 import { type FC, type MouseEvent, type ReactNode } from "react";
 
+import { type FC, type ReactNode } from "react";
+
 import UserAvatar from "@/components/ui/Avatar/UserAvatar";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 
