@@ -117,19 +117,20 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-[#181B22] px-6 py-4">
-          <button
-            onClick={onClose}
-            className="flex h-9 w-9 items-center justify-center rounded-full text-[#E7E9EA] transition-colors hover:bg-white/10"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-              <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </button>
+        <div className="relative flex items-center border-b border-[#181B22] px-6 py-4">
+          <div className="flex items-center gap-3">
+            <button
+              onClick={onClose}
+              className="flex h-9 w-9 items-center justify-center rounded-full text-[#E7E9EA] transition-colors hover:bg-white/10"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+            <h2 className="text-base font-semibold text-white">Crop media</h2>
+          </div>
 
-          <h2 className="text-base font-semibold text-white">Crop media</h2>
-
-          <div className="flex items-center gap-2">
+          <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center gap-2">
             <button
               className={classNames(
                 "flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-colors",
