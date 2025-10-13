@@ -733,35 +733,80 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
 
                 <div className="flex items-center gap-4" onClick={(e) => e.stopPropagation()}>
                   <div className="flex gap-2">
-                    {ASPECT_RATIOS.map((preset) => (
-                      <button
-                        type="button"
-                        key={preset.id}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          e.preventDefault();
-                          handleAspectRatioChange(preset.id);
-                        }}
-                        className={classNames(
-                          "flex h-10 items-center justify-center rounded-lg border px-4 text-sm font-semibold transition-all",
-                          transform.aspectRatio === preset.id
-                            ? "border-[#1D9BF0] bg-[#1D9BF0]/10 text-[#1D9BF0]"
-                            : "border-[#2F3336] bg-transparent text-[#E7E9EA] hover:bg-white/5",
-                        )}
+                    <button
+                      type="button"
+                      aria-label="Aspect ratio: original"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        e.preventDefault();
+                        handleAspectRatioChange("original");
+                      }}
+                      className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-transparent text-[#71767B] transition-all duration-200 hover:bg-[rgba(255,255,255,0.18)] hover:text-white hover:backdrop-blur-sm focus-visible:bg-[rgba(255,255,255,0.18)] focus-visible:text-white focus-visible:backdrop-blur-sm focus-visible:outline-none"
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                        className="h-5 w-5"
+                        fill="currentColor"
                       >
-                        {preset.label}
-                      </button>
-                    ))}
+                        <path d="M3 7.5C3 6.119 4.119 5 5.5 5h13C19.881 5 21 6.119 21 7.5v9c0 1.381-1.119 2.5-2.5 2.5h-13C4.119 19 3 17.881 3 16.5v-9zM5.5 7c-.276 0-.5.224-.5.5v9c0 .276.224.5.5.5h13c.276 0 .5-.224.5-.5v-9c0-.276-.224-.5-.5-.5h-13z" />
+                      </svg>
+                    </button>
+                    <button
+                      type="button"
+                      aria-label="Aspect ratio: portrait"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        e.preventDefault();
+                        handleAspectRatioChange("4:5");
+                      }}
+                      className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-transparent text-[#71767B] transition-all duration-200 hover:bg-[rgba(255,255,255,0.18)] hover:text-white hover:backdrop-blur-sm focus-visible:bg-[rgba(255,255,255,0.18)] focus-visible:text-white focus-visible:backdrop-blur-sm focus-visible:outline-none"
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                        className="h-5 w-5"
+                        fill="currentColor"
+                      >
+                        <path d="M3 9.5C3 8.119 4.119 7 5.5 7h13C19.881 7 21 8.119 21 9.5v5c0 1.381-1.119 2.5-2.5 2.5h-13C4.119 17 3 15.881 3 14.5v-5zM5.5 9c-.276 0-.5.224-.5.5v5c0 .276.224.5.5.5h13c.276 0 .5-.224.5-.5v-5c0-.276-.224-.5-.5-.5h-13z" />
+                      </svg>
+                    </button>
+                    <button
+                      type="button"
+                      aria-label="Aspect ratio: landscape"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        e.preventDefault();
+                        handleAspectRatioChange("16:9");
+                      }}
+                      className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-transparent text-[#71767B] transition-all duration-200 hover:bg-[rgba(255,255,255,0.18)] hover:text-white hover:backdrop-blur-sm focus-visible:bg-[rgba(255,255,255,0.18)] focus-visible:text-white focus-visible:backdrop-blur-sm focus-visible:outline-none"
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                        className="h-5 w-5"
+                        fill="currentColor"
+                      >
+                        <path d="M3 5.5C3 4.119 4.119 3 5.5 3h13C19.881 3 21 4.119 21 5.5v13c0 1.381-1.119 2.5-2.5 2.5h-13C4.119 21 3 19.881 3 18.5v-13zM5.5 5c-.276 0-.5.224-.5.5v13c0 .276.224.5.5.5h13c.276 0 .5-.224.5-.5v-13c0-.276-.224-.5-.5-.5h-13z" />
+                      </svg>
+                    </button>
                   </div>
-
                   <div className="h-6 w-px bg-[#2F3336]" />
-
                   <div className="flex flex-1 items-center gap-3">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-[#E7E9EA]">
-                      <circle cx="11" cy="11" r="8" stroke="currentColor" strokeWidth="2" />
-                      <path d="M21 21l-4.35-4.35" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                      <path d="M11 8v6M8 11h6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                    </svg>
+                    <button
+                      type="button"
+                      aria-label="Adjust"
+                      className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-transparent text-[#71767B] transition-all duration-200 hover:bg-[rgba(255,255,255,0.18)] hover:text-white hover:backdrop-blur-sm focus-visible:bg-[rgba(255,255,255,0.18)] focus-visible:text-white focus-visible:backdrop-blur-sm focus-visible:outline-none"
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                        className="h-4 w-4"
+                        fill="currentColor"
+                      >
+                        <path d="M11 4c-3.87 0-7 3.13-7 7s3.13 7 7 7c1.93 0 3.68-.78 4.95-2.05C17.21 14.68 18 12.93 18 11c0-3.87-3.14-7-7-7zm-9 7c0-4.97 4.03-9 9-9s9 4.03 9 9c0 2.12-.74 4.08-1.97 5.62l3.68 3.67-1.42 1.42-3.67-3.68C15.08 19.26 13.12 20 11 20c-4.97 0-9-4.03-9-9zm12.5 1h-7v-2h7v2z" />
+                      </svg>
+                    </button>
                     <input
                       type="range"
                       min={minScale}
@@ -778,11 +823,20 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
                       onClick={(e) => e.stopPropagation()}
                       className="h-1 flex-1 cursor-pointer accent-[#1D9BF0]"
                     />
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-[#E7E9EA]">
-                      <circle cx="11" cy="11" r="8" stroke="currentColor" strokeWidth="2" />
-                      <path d="M21 21l-4.35-4.35" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                      <path d="M8 11h6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                    </svg>
+                    <button
+                      type="button"
+                      aria-label="Zoom in"
+                      className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-transparent text-[#71767B] transition-all duration-200 hover:bg-[rgba(255,255,255,0.18)] hover:text-white hover:backdrop-blur-sm focus-visible:bg-[rgba(255,255,255,0.18)] focus-visible:text-white focus-visible:backdrop-blur-sm focus-visible:outline-none"
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                        className="h-4 w-4"
+                        fill="currentColor"
+                      >
+                        <path d="M11 4c-3.87 0-7 3.13-7 7s3.13 7 7 7c1.93 0 3.68-.78 4.95-2.05C17.21 14.68 18 12.93 18 11c0-3.87-3.14-7-7-7zm-9 7c0-4.97 4.03-9 9-9s9 4.03 9 9c0 2.12-.74 4.08-1.97 5.62l3.68 3.67-1.42 1.42-3.67-3.68C15.08 19.26 13.12 20 11 20c-4.97 0-9-4.03-9-9zm8-1V7.5h2V10h2.5v2H12v2.5h-2V12H7.5v-2H10z" />
+                      </svg>
+                    </button>
                   </div>
                 </div>
               </>
