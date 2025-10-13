@@ -3,6 +3,7 @@
 import PostCard from "@/components/PostCard/PostCard";
 import VideoPost from "@/components/PostCard/VideoPost";
 import type { SocialPost } from "@/data/socialPosts";
+import { cn } from "@/lib/utils";
 
 interface TimelineProps {
   posts: SocialPost[];
@@ -20,7 +21,7 @@ export default function Timeline({ posts, className }: TimelineProps) {
   }
 
   return (
-    <div className={className}>
+    <div className={cn("flex w-full flex-col items-center gap-8 pt-6", className)}>
       {posts.map((post) => {
         if (post.type === "video") {
           return (
