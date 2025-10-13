@@ -56,6 +56,7 @@ const FeedPost: FC<FeedPostProps> = ({
 
   const formattedContent = useMemo(() => content ?? "", [content]);
   const shouldShowToggle = truncate && !expanded && formattedContent.length > 260;
+  const showFollowButton = !author.isCurrentUser;
 
   const displayedContent = useMemo(() => {
     if (expanded || !truncate) {
