@@ -776,7 +776,7 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
                 <path d="M6.67447 7.5H6.66699M13.3337 7.5H13.3262" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
-            <button type="button" className="flex h-10 w-10 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#482090]/10" title="Блок кода">
+            <button type="button" onClick={() => handleCodeBlockClick(activeBlockId || blocks[0]?.id)} className="flex h-10 w-10 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#482090]/10 disabled:text-white/30 disabled:hover:bg-transparent" title="Блок кода" disabled={blocks.length === 0}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                 <path d="M8 7L3 12L8 17M16 7L21 12L16 17M14 3L10 21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
