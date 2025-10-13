@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { type CSSProperties, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { defaultProfile, getProfileTimeline } from "@/data/socialProfile";
 import type { SocialProfileData } from "@/data/socialProfile";
@@ -51,7 +52,7 @@ export default function ProfileContentClassic() {
   const tweetsCount = posts.length;
 
   return (
-    <div className="min-h-screen" style={{ "--profile-image-size": "120px" } as React.CSSProperties}>
+    <div className="min-h-screen" style={{ "--profile-image-size": "120px" } as CSSProperties}>
       <ProfileHeaderClassic profile={profile} tweetsCount={tweetsCount} />
       <main>
         <ProfileBioClassic profile={profile} isOwnProfile={false} />
