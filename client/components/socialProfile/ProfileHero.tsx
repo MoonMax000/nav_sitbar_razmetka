@@ -69,7 +69,7 @@ const ProfileHero: FC<ProfileHeroProps> = ({ profile, onEdit, tweetsCount = 0, i
 
       <div className="px-6 pt-4">
         <div className="flex items-start justify-between gap-4">
-          <div className="relative -mt-16 h-[132px] w-[132px] overflow-hidden rounded-full border-4 border-[#0B0E13] bg-[#121720] shadow-[0_18px_40px_-28px_rgba(160,106,255,0.8)]">
+          <div className="relative -mt-16 h-[132px] w-[132px] overflow-hidden rounded-full border-4 border-[#0B0E13] bg-[#121720]">
             <img src={profile.avatar} alt={profile.name} className="h-full w-full object-cover" />
           </div>
 
