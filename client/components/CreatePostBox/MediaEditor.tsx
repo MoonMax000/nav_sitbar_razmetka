@@ -584,8 +584,8 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
             className={classNames(
               "flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold",
               activeTab === "crop"
-                ? "bg-[#A06AFF]/20 text-[#A06AFF]"
-                : "text-[#808283] hover:bg-white/5",
+                ? "bg-[#1D9BF0]/20 text-[#1D9BF0]"
+                : "text-[#E7E9EA] hover:bg-white/10",
             )}
             onClick={(e) => {
               e.stopPropagation();
@@ -593,10 +593,19 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
             }}
             disabled={!isImage}
           >
-            <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-              <rect x="3" y="5" width="12" height="10" rx="2" stroke="currentColor" strokeWidth="1.5" />
-              <path d="M3 9H15" stroke="currentColor" strokeWidth="1.5" />
-              <path d="M8 5V15" stroke="currentColor" strokeWidth="1.5" />
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M6 3V17C6 18.1046 6.89543 19 8 19H21"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+              <path
+                d="M3 6H17C18.1046 6 19 6.89543 19 8V21"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
             </svg>
             Crop
           </button>
@@ -627,28 +636,24 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
 
           <button
             className={classNames(
-              "flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold",
+              "flex items-center rounded-full px-4 py-2 text-sm font-semibold",
               activeTab === "warning"
-                ? "bg-[#A06AFF]/20 text-[#A06AFF]"
-                : "text-[#808283] hover:bg-white/5",
+                ? "bg-[#F97316]/20 text-[#F97316]"
+                : "text-[#E7E9EA] hover:bg-white/10",
             )}
             onClick={(e) => {
               e.stopPropagation();
               setActiveTab("warning");
             }}
           >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M10.29 3.85998L2.82002 16C2.64931 16.3083 2.55882 16.6563 2.55767 17.0096C2.55651 17.3628 2.64471 17.7115 2.81329 18.0209C2.98186 18.3303 3.22493 18.5892 3.51737 18.7733C3.80981 18.9573 4.14164 19.0603 4.48202 19.073L19.518 19.073C19.8584 19.0603 20.1902 18.9573 20.4827 18.7733C20.7751 18.5892 21.0181 18.3303 21.1867 18.0209C21.3553 17.7115 21.4435 17.3628 21.4423 17.0096C21.4412 16.6563 21.3507 16.3083 21.18 16L13.71 3.85998C13.532 3.56536 13.2802 3.32529 12.9782 3.16455C12.6762 3.00381 12.3354 2.9292 11.992 2.94979C11.6487 2.97038 11.3184 3.08532 11.0387 3.28137C10.7589 3.47742 10.5429 3.74606 10.412 4.05699L10.29 3.85998Z"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path d="M12 9V13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M12 17H12.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            <svg
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              className="h-5 w-5"
+              fill="currentColor"
+            >
+              <path d="M3 2h18.61l-3.5 7 3.5 7H5v6H3V2zm2 12h13.38l-2.5-5 2.5-5H5v10z" />
             </svg>
-            Content warning
           </button>
         </div>
 
