@@ -140,11 +140,6 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
 
   // Initialize image and state
   useEffect(() => {
-    if (!media) {
-      console.error("MediaEditor: No media provided");
-      return;
-    }
-
     console.log("MediaEditor: Initializing with media:", media);
 
     const savedTransform = media.transform || createDefaultTransform();
