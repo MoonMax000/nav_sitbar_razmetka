@@ -43,7 +43,7 @@ interface CropState {
   // Текущий пресет
   preset: AspectPreset;
 
-  // В��помогательное
+  // Вспомогательное
   minZoom: number;
   maxZoom: number;
 }
@@ -431,13 +431,13 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
     }
   };
 
-  if (!mounted || !media || !cropState) return null;
+  if (!mounted || !media) return null;
 
   const isImage = media.type === "image";
   const altChars = altText.length;
 
-  const coverScale = Math.max(cropState.cropW / cropState.naturalW, cropState.cropH / cropState.naturalH);
-  const realScale = coverScale * cropState.zoom;
+  const coverScale = cropState ? Math.max(cropState.cropW / cropState.naturalW, cropState.cropH / cropState.naturalH) : 1;
+  const realScale = cropState ? coverScale * cropState.zoom : 1;
 
   return createPortal(
     <div
