@@ -9,7 +9,7 @@ export default function OtherProfilePage() {
   return (
     <div className="flex w-full gap-8">
       <div className="flex-1 max-w-[720px]">
-        <ProfileContentClassic />
+        <ProfileContentClassic isOwnProfile={false} />
       </div>
       <SocialRightSidebar
         profiles={DEFAULT_SUGGESTED_PROFILES}
