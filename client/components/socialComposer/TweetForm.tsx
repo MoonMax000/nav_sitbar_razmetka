@@ -78,7 +78,7 @@ export default function TweetForm({
     <div className={cn("w-full", className)}>
       {isReplying && expanded && (
         <span className="ml-14 mb-2.5 flex text-sm text-muted-foreground">
-          Replying to <span className="ml-1 text-[#1D9BF0]">@{replyingTo}</span>
+          Replying to <span className="ml-1 text-[#A06AFF]">@{replyingTo}</span>
         </span>
       )}
       <form
@@ -146,7 +146,7 @@ export default function TweetForm({
                           ? "red"
                           : maxAlmostReached
                           ? "#ffd400"
-                          : "#1D9BF0"
+                          : "#A06AFF"
                       }
                       strokeWidth="2.2"
                       strokeDasharray={`${percentage * (maxAlmostReached ? 106.8 : 75.4) / 100} ${
@@ -170,7 +170,7 @@ export default function TweetForm({
               {!isInputEmpty && <hr className="h-7 w-0.5 border-none bg-[#444] mx-4" />}
               <button
                 type="submit"
-                className="bg-[#1D9BF0] px-5 py-2.5 text-white rounded-full font-bold text-base disabled:opacity-60 hover:bg-[#1A8CD8] transition-colors"
+                className="bg-gradient-to-r from-[#482090] to-[#A06AFF] px-5 py-2.5 text-white rounded-full font-bold text-base disabled:opacity-60 hover:from-[#482090] hover:to-[#482090] transition-colors"
                 disabled={isInputEmpty}
               >
                 {submitText}
