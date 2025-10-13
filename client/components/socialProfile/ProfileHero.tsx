@@ -1,4 +1,4 @@
-import type { FC } from "react";
+import { type FC, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import type { SocialProfileData } from "@/data/socialProfile";
@@ -12,6 +12,11 @@ interface ProfileHeroProps {
 
 const ProfileHero: FC<ProfileHeroProps> = ({ profile, onEdit, tweetsCount = 0, isOwnProfile = true }) => {
   const navigate = useNavigate();
+  const [isFollowing, setIsFollowing] = useState(false);
+
+  const handleFollowClick = () => {
+    setIsFollowing(!isFollowing);
+  };
 
   const iconButtonClass =
     "group relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-white/10 bg-white/5 text-[#F7F9F9] shadow-[0_8px_20px_rgba(0,0,0,0.35)] backdrop-blur-xl transition-all duration-200 hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-black active:translate-y-0 before:absolute before:inset-x-3 before:-top-1 before:h-1 before:rounded-full before:bg-white/40 before:opacity-0 before:transition-opacity before:duration-200 group-hover:before:opacity-70";
@@ -87,9 +92,13 @@ const ProfileHero: FC<ProfileHeroProps> = ({ profile, onEdit, tweetsCount = 0, i
               </svg>
             </button>
 
-            <button type="button" onClick={onEdit} className={primaryActionButtonClass}>
+            <button
+              type="button"
+              onClick={isOwnProfile ? onEdit : handleFollowClick}
+              className={primaryActionButtonClass}
+            >
               <span className="relative z-10 text-center font-semibold leading-5">
-                {isOwnProfile ? "Edit profile" : "Follow"}
+                {isOwnProfile ? "Edit profile" : (isFollowing ? "Unfollow" : "Follow")}
               </span>
             </button>
           </div>
