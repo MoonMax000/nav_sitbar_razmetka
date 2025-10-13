@@ -107,9 +107,9 @@ const SocialFeed: FC = () => {
   const isVideoFilterEmpty = filter === "video" && filterCounts.video === 0;
 
   const emptyTitle = isFollowingTab
-    ? "Здесь появятся идеи людей, на которых вы подп��саны"
+    ? "Здесь появятся идеи людей, на которых вы подписаны"
     : isVideoFilterEmpty
-      ? "В��део пока не найдены"
+      ? "В��део пока н�� найдены"
       : "Записей пока нет";
 
   const emptyDescription = isFollowingTab
@@ -202,23 +202,10 @@ const SocialFeed: FC = () => {
           )}
         </section>
 
-        <aside className="hidden w-full max-w-[320px] flex-col gap-5 lg:flex">
-          <div className="sticky top-28 flex flex-col gap-5">
-            <div className="relative">
-              <Search
-                className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#6C7080] z-10"
-                aria-hidden
-              />
-              <input
-                type="search"
-                placeholder="Поиск по авторам и темам"
-                className="w-full rounded-full border border-[#181B22] bg-[rgba(12,16,20,0.8)] py-3 pl-11 pr-4 text-sm font-medium text-white placeholder:text-[#6C7080] shadow-[0_14px_30px_rgba(10,12,16,0.35)] transition focus:border-[#A06AFF] focus:outline-none focus:ring-2 focus:ring-[#A06AFF]/40"
-              />
-            </div>
-            <SuggestedProfilesWidget profiles={SUGGESTED_PROFILES} />
-            <TrendingTopicsWidget topics={TRENDING_TOPICS} />
-          </div>
-        </aside>
+        <SocialRightSidebar
+          profiles={DEFAULT_SUGGESTED_PROFILES}
+          topics={DEFAULT_TRENDING_TOPICS}
+        />
       </div>
     </div>
   );
