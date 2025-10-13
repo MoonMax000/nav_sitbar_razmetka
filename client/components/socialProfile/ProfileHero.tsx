@@ -7,9 +7,10 @@ interface ProfileHeroProps {
   profile: SocialProfileData;
   onEdit?: () => void;
   tweetsCount?: number;
+  isOwnProfile?: boolean;
 }
 
-const ProfileHero: FC<ProfileHeroProps> = ({ profile, onEdit, tweetsCount = 0 }) => {
+const ProfileHero: FC<ProfileHeroProps> = ({ profile, onEdit, tweetsCount = 0, isOwnProfile = true }) => {
   const navigate = useNavigate();
 
   const iconButtonClass =
@@ -88,7 +89,7 @@ const ProfileHero: FC<ProfileHeroProps> = ({ profile, onEdit, tweetsCount = 0 })
 
             <button type="button" onClick={onEdit} className={primaryActionButtonClass}>
               <span className="relative z-10 text-center font-semibold leading-5">
-                Edit profile
+                {isOwnProfile ? "Edit profile" : "Follow"}
               </span>
             </button>
           </div>
