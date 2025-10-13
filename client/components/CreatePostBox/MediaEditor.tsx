@@ -43,7 +43,7 @@ interface CropState {
   // Текущий пресет
   preset: AspectPreset;
 
-  // Вспомогательное
+  // В��помогательное
   minZoom: number;
   maxZoom: number;
 }
@@ -384,10 +384,38 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
   }, [transform, altText, warnings]);
 
   const handleSave = () => {
-    if (!media) return;
+    if (!media || !cropState) return;
+
+    // Calculate cropRect in original image pixels (as per X/Twitter spec §8.1)
+    const coverScale = Math.max(cropState.cropW / cropState.naturalW, cropState.cropH / cropState.naturalH);
+    const S = coverScale * cropState.zoom;
+
+    const cropRectW = cropState.cropW / S;
+    const cropRectH = cropState.cropH / S;
+
+    const cropRectX = cropState.naturalW / 2 - cropRectW / 2 - cropState.translateX / S;
+    const cropRectY = cropState.naturalH / 2 - cropRectH / 2 - cropState.translateY / S;
+
+    // Round and clamp to image bounds
+    const cropRect = {
+      x: Math.max(0, Math.min(Math.round(cropRectX), cropState.naturalW - Math.round(cropRectW))),
+      y: Math.max(0, Math.min(Math.round(cropRectY), cropState.naturalH - Math.round(cropRectH))),
+      w: Math.round(cropRectW),
+      h: Math.round(cropRectH),
+    };
+
+    const updatedTransform: CropTransform = {
+      ...transform,
+      scale: cropState.zoom,
+      translateX: cropState.translateX,
+      translateY: cropState.translateY,
+      aspectRatio: cropState.preset === "original" ? "original" : cropState.preset === "wide" ? "16:9" : "1:1",
+      cropRect,
+    };
+
     onSave({
       ...media,
-      transform,
+      transform: updatedTransform,
       alt: altText,
       sensitiveTags: warnings,
     });
