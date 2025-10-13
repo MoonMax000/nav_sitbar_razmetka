@@ -1,6 +1,7 @@
 import { FC, MouseEvent } from "react";
 
 import type { SocialPost } from "@/data/socialPosts";
+import UserAvatar from "@/components/ui/Avatar/UserAvatar";
 import { cn } from "@/lib/utils";
 
 const DEFAULT_AUTHOR = {
