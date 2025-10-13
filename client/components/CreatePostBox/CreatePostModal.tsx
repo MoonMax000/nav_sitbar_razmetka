@@ -502,6 +502,7 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
 
   const circumference = 88;
   const dashOffset = circumference - charRatio * circumference;
+  const canAddBlock = blocks.length < MAX_THREAD_BLOCKS;
 
   if (!mounted || !isOpen) return null;
 
