@@ -27,6 +27,8 @@ import SocialCompose from "./pages/SocialCompose";
 import SocialProfileClassic from "./pages/SocialProfileClassic";
 import SocialTweetComposer from "./pages/SocialTweetComposer";
 import PortfolioPage from "./pages/Portfolios";
+import HomePage from "./pages/Home";
+import ProfilePage from "./pages/ProfilePage";
 import { ClientLayout } from "./components/ClientLayout/ClientLayout";
 
 const queryClient = new QueryClient({
