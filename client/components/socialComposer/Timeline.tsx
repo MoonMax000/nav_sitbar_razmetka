@@ -21,24 +21,30 @@ export default function Timeline({ posts, className }: TimelineProps) {
 
   return (
     <div className={cn("flex w-full flex-col items-center gap-8 pt-6", className)}>
-      {posts.map((post) => (
-        <FeedPost
-          key={post.id}
-          author={post.author}
-          timestamp={post.timestamp}
-          title={post.title}
-          content={post.body ?? post.preview}
-          mediaUrl={post.videoUrl ?? post.mediaUrl ?? null}
-          sentiment={post.sentiment}
-          likes={post.likes}
-          comments={post.comments}
-          views={post.views}
-          isFollowing={post.isFollowing}
-          hashtags={post.hashtags}
-          category={post.category}
-          type={post.type}
-        />
-      ))}
+      {posts.map((post) => {
+        const content = post.body ?? post.preview ?? "";
+        const shouldTruncate = content.length > 260;
+
+        return (
+          <FeedPost
+            key={post.id}
+            author={post.author}
+            timestamp={post.timestamp}
+            title={post.title}
+            content={content}
+            mediaUrl={post.videoUrl ?? post.mediaUrl ?? null}
+            sentiment={post.sentiment}
+            likes={post.likes}
+            comments={post.comments}
+            views={post.views}
+            isFollowing={post.isFollowing}
+            hashtags={post.hashtags}
+            category={post.category}
+            type={post.type}
+            truncate={shouldTruncate}
+          />
+        );
+      })}
     </div>
   );
 }
