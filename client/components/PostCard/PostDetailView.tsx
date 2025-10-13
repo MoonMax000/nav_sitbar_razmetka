@@ -137,6 +137,19 @@ const PostDetailView: FC<PostDetailViewProps> = ({ post }) => {
           Reply
         </button>
       </footer>
+
+      {comments.length > 0 ? (
+        <section className="mt-4 flex flex-col">
+          <h3 className="mb-3 text-lg font-semibold text-white">
+            Comments ({comments.length})
+          </h3>
+          <div className="flex flex-col">
+            {comments.map((comment) => (
+              <CommentCard key={comment.id} comment={comment} />
+            ))}
+          </div>
+        </section>
+      ) : null}
     </article>
   );
 };
