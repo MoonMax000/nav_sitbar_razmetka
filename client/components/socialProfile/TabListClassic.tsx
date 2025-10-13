@@ -21,7 +21,7 @@ export default function TabListClassic({ onTabChange }: TabListClassicProps) {
   };
 
   return (
-    <div className="grid grid-cols-[1fr_2fr_1fr_1fr] border-b border-[#555] w-full">
+    <div className="grid grid-cols-[1fr_2fr_1fr_1fr] w-full">
       {tabs.map((tab) => (
         <button
           key={tab.id}
