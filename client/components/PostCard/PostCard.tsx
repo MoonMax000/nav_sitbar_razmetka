@@ -46,6 +46,9 @@ const PostCard: FC<PostCardProps> = ({
   content =
     "In recent years, artificial intelligence (AI) has become an integral part of the global economy. However, its impact on emerging economies raises serious concerns. Automated systems and algorithms, designed to improve efficiency, are beginning to replace traditional jobs—leaving millions without a source of income. In regions already struggling with economic instability, the rise of AI only deepens existing issues of inequality and poverty.",
   image = "https://api.builder.io/api/v1/image/assets/TEMP/23fc35ab171b1cddbf955c164017b8e4c372f935?width=1198",
+  mediaUrl,
+  body,
+  preview,
   sentiment = "bullish",
   likes = 1500,
   comments = 563,
