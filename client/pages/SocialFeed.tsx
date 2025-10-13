@@ -48,63 +48,6 @@ const FEED_TABS: TabDefinition[] = [
   },
 ];
 
-const SUGGESTED_PROFILES: SuggestedProfile[] = [
-  {
-    id: "lark-davis",
-    name: "Lark Davis",
-    handle: "@TheCryptoLark",
-    avatar: "https://i.pravatar.cc/120?img=12",
-    verified: true,
-  },
-  {
-    id: "xbox",
-    name: "Xbox",
-    handle: "@Xbox",
-    avatar: "https://i.pravatar.cc/120?img=25",
-    verified: true,
-  },
-  {
-    id: "si-paling-masker",
-    name: "Si Paling Masker",
-    handle: "@TipeDarah",
-    avatar: "https://i.pravatar.cc/120?img=47",
-    verified: true,
-  },
-];
-
-const TRENDING_TOPICS: TrendingTopic[] = [
-  {
-    id: "axios-show",
-    category: "Live",
-    headline: "The Axios Show",
-    meta: "Now streaming · Axios",
-  },
-  {
-    id: "bear-trend",
-    category: "Trending in Vietnam",
-    headline: "Bear",
-    meta: "121K posts",
-  },
-  {
-    id: "quiet-trend",
-    category: "Trending in Vietnam",
-    headline: "Quiet",
-    meta: "163K posts",
-  },
-  {
-    id: "thanh-trend",
-    category: "Trending in Vietnam",
-    headline: "Thành",
-    meta: "32.1K posts",
-  },
-  {
-    id: "purple-pepe",
-    category: "Trending in Vietnam",
-    headline: "Purple Pepe",
-    meta: "18.5K posts",
-  },
-];
-
 const SocialFeed: FC = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<TabType>("popular");
@@ -164,7 +107,7 @@ const SocialFeed: FC = () => {
   const isVideoFilterEmpty = filter === "video" && filterCounts.video === 0;
 
   const emptyTitle = isFollowingTab
-    ? "Здесь появятся идеи людей, на которых вы подписаны"
+    ? "Здесь появятся идеи людей, на которых вы подп��саны"
     : isVideoFilterEmpty
       ? "В��део пока не найдены"
       : "Записей пока нет";
