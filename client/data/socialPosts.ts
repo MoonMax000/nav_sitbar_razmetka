@@ -11,6 +11,7 @@ export interface SocialAuthor {
   bio?: string;
   followers?: number;
   following?: number;
+  isCurrentUser?: boolean;
 }
 
 export interface SocialPost {
