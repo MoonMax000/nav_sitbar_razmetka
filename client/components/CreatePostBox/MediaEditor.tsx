@@ -26,9 +26,8 @@ const ASPECT_RATIOS: {
   value?: number;
 }[] = [
   { id: "original", label: "Original" },
+  { id: "16:9", label: "Wide", value: 16 / 9 },
   { id: "1:1", label: "Square", value: 1 },
-  { id: "4:5", label: "Portrait", value: 4 / 5 },
-  { id: "16:9", label: "Landscape", value: 16 / 9 },
 ];
 
 const GRID_SEQUENCE: CropTransform["grid"][] = ["thirds", "golden", "center", "off"];
@@ -728,13 +727,17 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
                   <div className="flex gap-2">
                     <button
                       type="button"
-                      aria-label="Aspect ratio: original"
+                      aria-label="Original"
+                      title="Original"
                       onClick={(e) => {
                         e.stopPropagation();
                         e.preventDefault();
                         handleAspectRatioChange("original");
                       }}
-                      className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-transparent text-[#71767B] transition-all duration-200 hover:bg-[rgba(255,255,255,0.18)] hover:text-white hover:backdrop-blur-sm focus-visible:bg-[rgba(255,255,255,0.18)] focus-visible:text-white focus-visible:backdrop-blur-sm focus-visible:outline-none"
+                      className={classNames(
+                        "inline-flex h-10 w-10 items-center justify-center rounded-full bg-transparent transition-all duration-200 hover:bg-[rgba(255,255,255,0.18)] hover:backdrop-blur-sm focus-visible:bg-[rgba(255,255,255,0.18)] focus-visible:backdrop-blur-sm focus-visible:outline-none",
+                        transform.aspectRatio === "original" ? "text-[#1D9BF0]" : "text-[#71767B] hover:text-white focus-visible:text-white"
+                      )}
                     >
                       <svg
                         viewBox="0 0 24 24"
@@ -747,13 +750,17 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
                     </button>
                     <button
                       type="button"
-                      aria-label="Aspect ratio: portrait"
+                      aria-label="Wide"
+                      title="Wide"
                       onClick={(e) => {
                         e.stopPropagation();
                         e.preventDefault();
-                        handleAspectRatioChange("4:5");
+                        handleAspectRatioChange("16:9");
                       }}
-                      className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-transparent text-[#71767B] transition-all duration-200 hover:bg-[rgba(255,255,255,0.18)] hover:text-white hover:backdrop-blur-sm focus-visible:bg-[rgba(255,255,255,0.18)] focus-visible:text-white focus-visible:backdrop-blur-sm focus-visible:outline-none"
+                      className={classNames(
+                        "inline-flex h-10 w-10 items-center justify-center rounded-full bg-transparent transition-all duration-200 hover:bg-[rgba(255,255,255,0.18)] hover:backdrop-blur-sm focus-visible:bg-[rgba(255,255,255,0.18)] focus-visible:backdrop-blur-sm focus-visible:outline-none",
+                        transform.aspectRatio === "16:9" ? "text-[#1D9BF0]" : "text-[#71767B] hover:text-white focus-visible:text-white"
+                      )}
                     >
                       <svg
                         viewBox="0 0 24 24"
@@ -766,13 +773,17 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
                     </button>
                     <button
                       type="button"
-                      aria-label="Aspect ratio: landscape"
+                      aria-label="Square"
+                      title="Square"
                       onClick={(e) => {
                         e.stopPropagation();
                         e.preventDefault();
-                        handleAspectRatioChange("16:9");
+                        handleAspectRatioChange("1:1");
                       }}
-                      className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-transparent text-[#71767B] transition-all duration-200 hover:bg-[rgba(255,255,255,0.18)] hover:text-white hover:backdrop-blur-sm focus-visible:bg-[rgba(255,255,255,0.18)] focus-visible:text-white focus-visible:backdrop-blur-sm focus-visible:outline-none"
+                      className={classNames(
+                        "inline-flex h-10 w-10 items-center justify-center rounded-full bg-transparent transition-all duration-200 hover:bg-[rgba(255,255,255,0.18)] hover:backdrop-blur-sm focus-visible:bg-[rgba(255,255,255,0.18)] focus-visible:backdrop-blur-sm focus-visible:outline-none",
+                        transform.aspectRatio === "1:1" ? "text-[#1D9BF0]" : "text-[#71767B] hover:text-white focus-visible:text-white"
+                      )}
                     >
                       <svg
                         viewBox="0 0 24 24"
