@@ -1,8 +1,9 @@
 import { type FC, useState } from "react";
 
+import { type FC } from "react";
+
 import FollowButton from "@/components/PostCard/FollowButton";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { cn } from "@/lib/utils";
 
 import type { SuggestedProfile } from "./SuggestedProfilesWidget";
 
@@ -71,7 +72,7 @@ const FollowRecommendationsWidget: FC<FollowRecommendationsWidgetProps> = ({
                 <span className="text-sm font-medium text-[#8E8E94]">{profile.handle}</span>
               </div>
             </div>
-            <FollowActionButton profileId={profile.id} />
+            <FollowButton profileId={profile.id} size="default" />
           </li>
         ))}
       </ul>
