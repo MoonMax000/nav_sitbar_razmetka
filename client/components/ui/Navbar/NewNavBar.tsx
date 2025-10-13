@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils';
 import { navElements, NavElementProps } from './constants';
 import { ChevronDown, DoubleArrow, QuillPen } from './icons';
 import CreatePostModal from '@/components/CreatePostBox/CreatePostModal';
+import CreateTweetDialog from '@/components/socialComposer/CreateTweetDialog';
 
 interface Props {
   variant?: LayoutVariant;
@@ -14,6 +15,7 @@ const NewNavBar: FC<Props> = ({ variant = 'primal' }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [openGroup, setOpenGroup] = useState<string | null>(null);
   const [isPostComposerOpen, setIsPostComposerOpen] = useState(false);
+  const [isTweetDialogOpen, setIsTweetDialogOpen] = useState(false);
 
   const toggleGroup = (title: string) => setOpenGroup(openGroup === title ? null : title);
 
@@ -172,6 +174,12 @@ const NewNavBar: FC<Props> = ({ variant = 'primal' }) => {
       </div>
 
       <CreatePostModal isOpen={isPostComposerOpen} onClose={() => setIsPostComposerOpen(false)} />
+      <CreateTweetDialog
+        isOpen={isTweetDialogOpen}
+        onClose={() => setIsTweetDialogOpen(false)}
+        userAvatar="https://i.pravatar.cc/120?img=12"
+        userName="Current User"
+      />
     </>
   );
 };
