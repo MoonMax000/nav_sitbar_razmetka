@@ -155,16 +155,16 @@ const NewNavBar: FC<Props> = ({ variant = 'primal' }) => {
                 type='button'
                 onClick={(e) => {
                   if (e.shiftKey) {
-                    setIsTweetDialogOpen(true);
-                  } else {
                     setIsPostComposerOpen(true);
+                  } else {
+                    setIsTweetDialogOpen(true);
                   }
                 }}
                 className={cn(
                   'group relative flex items-center justify-center overflow-hidden rounded-full p-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF]/60 focus-visible:ring-offset-0',
                   isCollapsed ? 'h-12 w-12' : 'h-12 w-full'
                 )}
-                title="Click to open composer, Shift+Click for simple tweet dialog"
+                title="Click to tweet, Shift+Click for advanced composer"
               >
                 <span className='pointer-events-none absolute inset-0 animate-[spin_8s_linear_infinite] bg-[conic-gradient(from_0deg,#A06AFF,rgba(160,106,255,0)_60%,rgba(160,106,255,0))] opacity-70' />
                 <span className='pointer-events-none absolute inset-[2px] rounded-full bg-[rgba(12,16,20,0.9)] transition group-hover:bg-[rgba(12,16,20,0.75)]' />
@@ -172,7 +172,7 @@ const NewNavBar: FC<Props> = ({ variant = 'primal' }) => {
                   <span className='flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white shadow-[0_12px_30px_-18px_rgba(160,106,255,0.9)]'>
                     <QuillPen className='h-4 w-4' />
                   </span>
-                  {!isCollapsed && <span>Новый пост</span>}
+                  {!isCollapsed && <span>Tweet</span>}
                 </span>
               </button>
             </div>
