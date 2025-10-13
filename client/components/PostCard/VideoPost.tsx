@@ -1,5 +1,6 @@
 import { FC, MouseEvent, useMemo, useState } from "react";
 
+import UserAvatar from "@/components/ui/Avatar/UserAvatar";
 import { cn } from "@/lib/utils";
 
 export interface VideoPostData {
