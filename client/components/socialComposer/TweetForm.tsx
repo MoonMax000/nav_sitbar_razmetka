@@ -92,7 +92,6 @@ export default function TweetForm({
           src={userAvatar}
           alt={userName}
           size={40}
-          accent={false}
           containerClassName="mr-4"
         />
         <div className={cn("flex-1 flex", expanded ? "flex-col" : "flex-row items-center")}>
