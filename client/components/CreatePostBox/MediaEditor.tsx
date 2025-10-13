@@ -37,7 +37,7 @@ interface CropState {
 
   // Трансформация изображения под кадром
   zoom: number; // масштаб относительно fit-to-crop
-  translateX: number; // сдвиг изображения под кадром, px
+  translateX: number; // сдви�� изображения под кадром, px
   translateY: number;
 
   // Текущий пресет
@@ -142,7 +142,10 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
 
   // Initialize image and state
   useEffect(() => {
-    console.log("MediaEditor: Initializing with media:", media);
+    console.log("MediaEditor: useEffect triggered");
+    console.log("MediaEditor: media =", media);
+    console.log("MediaEditor: media.type =", media?.type);
+    console.log("MediaEditor: media.url =", media?.url);
 
     const savedTransform = media.transform || createDefaultTransform();
     setTransform(savedTransform);
