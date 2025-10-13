@@ -43,7 +43,7 @@ const exploreCollections: ExploreCollection[] = [
   {
     id: "macro-playbook",
     title: "Макростратегии 2025",
-    description: "14 подборок аналитики по макроэкономике и валютам",
+    description: "14 подборок аналитики по ��акроэкономике и валютам",
     accent: "from-[#A06AFF] to-[#482090]",
     topics: ["Рынки", "Мировые новости", "Фьючерсы"],
   },
@@ -76,7 +76,7 @@ const featuredStories: ExploreStory[] = [
     category: "Trending",
     title: "Фонды страхуют риск через опционы на золото — что это значит",
     summary:
-      "Опционы на золото снова в фокусе: фонды страхуют портфели от волатильности доходностей. Разбираем ключевые уровни, сценарии и влияни�� на валюты.",
+      "Опционы на золото снова в фокусе: фонды страхуют портфели от волатильности доходностей. Разбираем ключевые уровни, сценарии и влияние на валюты.",
     author: "@macroclub",
     readTime: "6 мин",
     tags: ["Рынки", "Мировые новости", "Фьючерсы"],
@@ -247,17 +247,17 @@ const SocialExplore: FC = () => {
           <div className="rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.6)] p-5">
             <h3 className="text-lg font-semibold text-white">Что в фокусе</h3>
             <div className="mt-4 flex flex-col divide-y divide-white/5">
-              {highlightedTopics.map((topic, index) => (
+              {highlightedNews.map((item, index) => (
                 <button
-                  key={topic.id}
+                  key={item.id}
                   type="button"
                   className="grid grid-cols-[auto_1fr_auto] items-center gap-4 py-3 text-left transition hover:bg-white/5"
                 >
                   <span className="text-sm font-medium text-white/40">{index + 1}</span>
                   <div className="flex flex-col">
-                    <span className="text-xs uppercase tracking-[0.2em] text-white/40">{topic.category}</span>
-                    <span className="text-sm font-semibold text-white">{topic.headline}</span>
-                    <span className="text-xs text-white/50">{topic.meta}</span>
+                    <span className="text-xs uppercase tracking-[0.2em] text-white/40">{item.category}</span>
+                    <span className="text-sm font-semibold text-white">{item.title}</span>
+                    <span className="text-xs text-white/50">{item.engagement}</span>
                   </div>
                   <span className="rounded-full border border-white/10 px-3 py-1 text-xs font-semibold text-white/60">
                     Следить
@@ -368,7 +368,7 @@ const CollectionCard: FC<CollectionCardProps> = ({ collection }) => (
       <span
         className={`inline-flex w-max items-center gap-2 rounded-full bg-gradient-to-r ${collection.accent} px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-white/90`}
       >
-        Плейлист
+        Плейлис��
       </span>
       <h3 className="text-lg font-bold text-white">{collection.title}</h3>
       <p className="text-sm text-[#B0B0B0]">{collection.description}</p>
