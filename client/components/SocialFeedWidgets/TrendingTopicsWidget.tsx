@@ -1,5 +1,6 @@
 import type { FC } from 'react';
 
+import type { FC } from "react";
 import { X } from "lucide-react";
 
 interface NewsItem {
