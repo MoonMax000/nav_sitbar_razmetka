@@ -1,5 +1,6 @@
 import { type FC, useState } from "react";
 
+import FollowButton from "@/components/PostCard/FollowButton";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
 
