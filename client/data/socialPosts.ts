@@ -62,7 +62,7 @@ export const socialPosts: SocialPost[] = [
     type: "video",
     author: {
       name: "John Smith",
-      avatar: "/placeholder.svg",
+      avatar: "https://i.pravatar.cc/120?img=27",
       handle: "@johncrypto",
       bio: "Market strategist sharing actionable insights on digital assets.",
       followers: 405800,
