@@ -36,13 +36,15 @@ const VideoPost: FC<VideoPostProps> = ({
   sentiment,
   likes,
   comments,
-  isFollowing,
+  isFollowing: initialFollowing,
   hashtags,
   truncate = false,
   onOpen,
   className,
 }) => {
   const [expanded, setExpanded] = useState(!truncate);
+  const [isFollowing, setIsFollowing] = useState(initialFollowing || false);
+  const [isHovered, setIsHovered] = useState(false);
 
   const formattedContent = useMemo(() => content ?? "", [content]);
   const shouldShowToggle = truncate && formattedContent.length > 260;
@@ -59,6 +61,7 @@ const VideoPost: FC<VideoPostProps> = ({
 
   const handleFollowClick = (event: MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
+    setIsFollowing(!isFollowing);
   };
 
   const handleMenuClick = (event: MouseEvent<HTMLButtonElement>) => {
@@ -70,8 +73,8 @@ const VideoPost: FC<VideoPostProps> = ({
     : "border-rose-400/40 bg-rose-400/10 text-rose-300";
 
   const followButtonClasses = isFollowing
-    ? "border border-[#181B22] bg-[rgba(12,16,20,0.50)] text-[#B0B0B0]"
-    : "bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white shadow-[0_12px_30px_-18px_rgba(72,32,144,0.85)]";
+    ? "border border-[#f44] bg-[rgba(244,68,68,0.10)] text-[#f44] hover:bg-[rgba(244,68,68,0.20)]"
+    : "bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white shadow-[0_12px_30px_-18px_rgba(72,32,144,0.85)] hover:from-[#B57FFF] hover:to-[#5A2BA0]";
 
   return (
     <article
@@ -153,12 +156,14 @@ const VideoPost: FC<VideoPostProps> = ({
         <div className="flex items-center gap-2">
           <button
             onClick={handleFollowClick}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
             className={cn(
-              "flex h-8 items-center justify-center gap-2.5 rounded-full px-4 text-xs font-bold transition-colors",
+              "flex h-8 items-center justify-center gap-2.5 rounded-full px-4 text-xs font-bold transition-all duration-200",
               followButtonClasses,
             )}
           >
-            {isFollowing ? "Unfollow" : "Follow"}
+            {isFollowing ? (isHovered ? "Unfollow" : "Following") : "Follow"}
           </button>
           <button
             type="button"
