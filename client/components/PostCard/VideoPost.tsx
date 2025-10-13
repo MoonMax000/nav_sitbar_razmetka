@@ -55,7 +55,7 @@ const FeedPost: FC<FeedPostProps> = ({
   const [isFollowing, setIsFollowing] = useState(initialFollowing ?? false);
 
   const formattedContent = useMemo(() => content ?? "", [content]);
-  const shouldShowToggle = truncate && formattedContent.length > 260;
+  const shouldShowToggle = truncate && !expanded && formattedContent.length > 260;
 
   const displayedContent = useMemo(() => {
     if (expanded || !truncate) {
@@ -69,9 +69,9 @@ const FeedPost: FC<FeedPostProps> = ({
     return `${formattedContent.slice(0, 240)}${formattedContent.length > 240 ? "…" : ""}`;
   }, [expanded, formattedContent, truncate]);
 
-  const handleToggle = (event: MouseEvent<HTMLButtonElement>) => {
+  const handleShowMore = (event: MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
-    setExpanded((prev) => !prev);
+    setExpanded(true);
   };
 
   const handleMenuClick = (event: MouseEvent<HTMLButtonElement>) => {
@@ -204,10 +204,11 @@ const FeedPost: FC<FeedPostProps> = ({
         ) : null}
         {shouldShowToggle ? (
           <button
-            onClick={handleToggle}
-            className="w-fit text-left text-[15px] font-semibold text-[#A06AFF] underline transition-colors hover:text-white"
+            type="button"
+            onClick={handleShowMore}
+            className="w-fit text-left text-[15px] font-semibold text-[#A06AFF] transition-colors hover:text-white hover:underline"
           >
-            {expanded ? "Show less" : "Show more"}
+            Show more
           </button>
         ) : null}
       </section>
