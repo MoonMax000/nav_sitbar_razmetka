@@ -371,7 +371,14 @@ const UserTabs: FC<Props> = ({ isOwn = true, viewMode = "normal" }) => {
               {activePosts.map((post, index) => (
                 <CompactPostCard
                   key={`${activeTab}-compact-${index}-${post.title}`}
-                  {...post}
+                  author={post.author}
+                  category={post.category}
+                  timestamp={post.timestamp}
+                  title={post.title}
+                  image={post.mediaUrl ?? undefined}
+                  sentiment={post.sentiment}
+                  likes={post.likes}
+                  comments={post.comments}
                 />
               ))}
             </div>
@@ -383,7 +390,7 @@ const UserTabs: FC<Props> = ({ isOwn = true, viewMode = "normal" }) => {
         <div className="flex flex-col gap-6">
           {activePosts.length > 0
             ? activePosts.map((post, index) => (
-                <PostCard
+                <FeedPost
                   key={`${activeTab}-${index}-${post.title}`}
                   {...post}
                 />
