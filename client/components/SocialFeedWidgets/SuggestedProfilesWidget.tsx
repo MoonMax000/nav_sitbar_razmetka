@@ -1,5 +1,6 @@
-import type { FC } from "react";
+import { type FC, useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { cn } from "@/lib/utils";
 
 export interface SuggestedProfile {
   id: string;
@@ -13,6 +14,30 @@ interface SuggestedProfilesWidgetProps {
   title?: string;
   profiles: SuggestedProfile[];
 }
+
+const FollowButton: FC<{ profileId: string }> = ({ profileId }) => {
+  const [isFollowing, setIsFollowing] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+
+  const buttonClasses = isFollowing
+    ? "border border-[#f44] bg-[rgba(244,68,68,0.10)] text-[#f44] hover:bg-[rgba(244,68,68,0.20)]"
+    : "bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white shadow-[0_8px_24px_rgba(160,106,255,0.25)] hover:from-[#B57FFF] hover:to-[#5A2BA0]";
+
+  return (
+    <button
+      type="button"
+      onClick={() => setIsFollowing(!isFollowing)}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className={cn(
+        "flex h-[26px] items-center justify-center gap-2 rounded-full px-3 text-xs font-semibold transition-all duration-200",
+        buttonClasses
+      )}
+    >
+      {isFollowing ? (isHovered ? "Unfollow" : "Following") : "Follow"}
+    </button>
+  );
+};
 
 const SuggestedProfilesWidget: FC<SuggestedProfilesWidgetProps> = ({
   title = "You might like",
@@ -77,12 +102,7 @@ const SuggestedProfilesWidget: FC<SuggestedProfilesWidgetProps> = ({
                 </span>
               </div>
             </div>
-            <button
-              type="button"
-              className="flex h-[26px] items-center justify-center gap-2 rounded-full px-3 text-xs font-semibold text-white bg-gradient-to-r from-[#A06AFF] to-[#482090] shadow-[0_8px_24px_rgba(160,106,255,0.25)] transition-transform duration-200 hover:scale-[1.02] active:scale-[0.97]"
-            >
-              Follow
-            </button>
+            <FollowButton profileId={profile.id} />
           </li>
         ))}
       </ul>
