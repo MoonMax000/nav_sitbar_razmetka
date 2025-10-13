@@ -1,5 +1,6 @@
 import type { SocialPost } from "@/data/socialPosts";
 import FeedPost from "@/components/PostCard/VideoPost";
+import type { SocialPost } from "@/data/socialPosts";
 
 interface ProfileTweetsClassicProps {
   posts: SocialPost[];
