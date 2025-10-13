@@ -103,6 +103,7 @@ const FeedPost: FC<FeedPostProps> = ({
           author={author}
           isFollowing={isFollowing}
           onFollowToggle={(nextState) => setIsFollowing(nextState)}
+          showFollowButton={showFollowButton}
         >
           <div className="flex flex-1 items-start gap-3">
             <UserAvatar
