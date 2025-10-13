@@ -162,7 +162,7 @@ const NewNavBar: FC<Props> = ({ variant = 'primal' }) => {
                 title="Open simple Tweet dialog"
               >
                 <span className='pointer-events-none absolute inset-0 animate-[spin_8s_linear_infinite] bg-[conic-gradient(from_0deg,#A06AFF,rgba(160,106,255,0)_60%,rgba(160,106,255,0))] opacity-70' />
-                <span className='pointer-events-none absolute inset-[2px] rounded-full bg-[rgba(12,16,20,0.9)] transition group-hover:bg-[rgba(12,16,20,0.75)]' />
+                <span className='pointer-events-none absolute inset-[2px] rounded-full border border-white/10 bg-transparent transition group-hover:border-white/30' />
                 <span className={cn('relative flex items-center gap-3 text-sm font-semibold text-white', isCollapsed ? 'justify-center' : 'px-4 justify-center')}>
                   <span className='flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white shadow-[0_12px_30px_-18px_rgba(160,106,255,0.9)]'>
                     <QuillPen className='h-4 w-4' />
@@ -182,7 +182,7 @@ const NewNavBar: FC<Props> = ({ variant = 'primal' }) => {
                 title="Open advanced Post composer"
               >
                 <span className='pointer-events-none absolute inset-0 animate-[spin_8s_linear_infinite] bg-[conic-gradient(from_0deg,#1D9BF0,rgba(29,155,240,0)_60%,rgba(29,155,240,0))] opacity-70' />
-                <span className='pointer-events-none absolute inset-[2px] rounded-full bg-[rgba(12,16,20,0.9)] transition group-hover:bg-[rgba(12,16,20,0.75)]' />
+                <span className='pointer-events-none absolute inset-[2px] rounded-full border border-white/10 bg-transparent transition group-hover:border-white/30' />
                 <span className={cn('relative flex items-center gap-3 text-sm font-semibold text-white', isCollapsed ? 'justify-center' : 'px-4 justify-center')}>
                   <span className='flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-r from-[#1D9BF0] to-[#0E4E78] text-white shadow-[0_12px_30px_-18px_rgba(29,155,240,0.9)]'>
                     <QuillPen className='h-4 w-4' />
