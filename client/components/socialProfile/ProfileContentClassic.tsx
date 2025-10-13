@@ -52,7 +52,7 @@ export default function ProfileContentClassic() {
 
   return (
     <div className="min-h-screen" style={{ "--profile-image-size": "120px" } as CSSProperties}>
-      <ProfileHero profile={profile} />
+      <ProfileHero profile={profile} tweetsCount={tweetsCount} />
       <main className="mt-6">
         <div className="px-6">
           {/* User info section */}
