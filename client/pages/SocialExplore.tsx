@@ -56,7 +56,7 @@ const exploreCollections: ExploreCollection[] = [
   },
   {
     id: "pro-traders",
-    title: "Профессиональные трейд��ры",
+    title: "Профессиональные трейдеры",
     description: "Сигналы, живые сессии и менторские комнаты",
     accent: "from-[#2EBD85] to-[#0F6D40]",
     topics: ["Рынки", "Фьючерсы"],
@@ -76,7 +76,7 @@ const featuredStories: ExploreStory[] = [
     category: "Trending",
     title: "Фонды страхуют риск через опционы на золото — что это значит",
     summary:
-      "Опционы на золото снова в фокусе: фонды страхуют портфели от волатильности доходностей. Разбираем ключевые уровни, сценарии и влияние на валюты.",
+      "Опционы на золото снова в фокусе: фонды страхуют портфели от волатильности доходностей. Разбираем ключевые уровни, сценарии и влияни�� на валюты.",
     author: "@macroclub",
     readTime: "6 мин",
     tags: ["Рынки", "Мировые новости", "Фьючерсы"],
@@ -199,13 +199,13 @@ const SocialExplore: FC = () => {
     return featuredStories.filter((story) => story.tags.includes(activeCategory));
   }, [activeCategory]);
 
-  const highlightedTopics = useMemo(() => {
+  const highlightedNews = useMemo(() => {
     if (activeCategory === DEFAULT_CATEGORY) {
-      return exploreTopics;
+      return exploreNews;
     }
 
-    const matching = exploreTopics.filter((topic) => topic.category === activeCategory);
-    return matching.length > 0 ? matching : exploreTopics;
+    const matching = exploreNews.filter((item) => item.category === activeCategory);
+    return matching.length > 0 ? matching : exploreNews;
   }, [activeCategory]);
 
   return (
@@ -346,7 +346,7 @@ const SpotlightCard: FC = () => (
           "Три сигнала, что риск-сентимент меняется и как успеть"
         </h2>
         <p className="text-sm text-white/80">
-          Дайджест ключевых индикаторов, тепловые карты волатильности и разбо�� сделок институционалов за последние 48 часов.
+          Дайджест ключевых индикаторов, тепловые карты волатильности и разбор сделок институционалов за последние 48 часов.
         </p>
         <div className="mt-2 flex items-center gap-3 text-xs text-white/70">
           <span>Собрано Tyrian Research</span>
