@@ -2,7 +2,7 @@ import ProfileContentClassic from "@/components/socialProfile/ProfileContentClas
 import SocialRightSidebar from "@/components/SocialFeedWidgets/SocialRightSidebar";
 import {
   DEFAULT_SUGGESTED_PROFILES,
-  DEFAULT_TRENDING_TOPICS,
+  DEFAULT_NEWS_ITEMS,
 } from "@/components/SocialFeedWidgets/sidebarData";
 
 export default function ProfilePage() {
