@@ -13,15 +13,23 @@ interface ProfilePageProps {
   userId?: string;
 }
 
+const profileTabs = [
+  { id: "posts", label: "Посты" },
+  { id: "replies", label: "Ответы" },
+  { id: "media", label: "Медиа" },
+  { id: "likes", label: "Лайки" },
+];
+
 export default function ProfilePage({ userId }: ProfilePageProps) {
   const [profile, setProfile] = useState<SocialProfileData | null>(null);
   const [posts, setPosts] = useState<SocialPost[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState("posts");
 
   useEffect(() => {
     const loadProfile = async () => {
       setIsLoading(true);
-      
+
       // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 300));
 
@@ -29,7 +37,7 @@ export default function ProfilePage({ userId }: ProfilePageProps) {
       // In real app, fetch profile by userId
       setProfile(defaultProfile);
       setPosts(getProfileTimeline(defaultProfile));
-      
+
       setIsLoading(false);
     };
 
@@ -53,10 +61,10 @@ export default function ProfilePage({ userId }: ProfilePageProps) {
   }
 
   return (
-    <div className="min-h-screen">
-      <ProfileHero coverImage={profile.cover} />
+    <div className="min-h-screen space-y-4">
+      <ProfileHero profile={profile} />
       <ProfileDetails profile={profile} />
-      <ProfileTabs />
+      <ProfileTabs tabs={profileTabs} activeTab={activeTab} onTabChange={setActiveTab} />
       <ProfileTimeline posts={posts} />
     </div>
   );
