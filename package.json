@@ -28,6 +28,7 @@
     "express": "^5.1.0",
     "js-cookie": "^3.0.5",
     "react-redux": "^9.2.0",
+    "react-textarea-autosize": "^8.5.9",
     "zod": "^3.25.76"
   },
   "devDependencies": {
