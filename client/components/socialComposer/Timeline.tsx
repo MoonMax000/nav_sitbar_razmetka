@@ -1,5 +1,7 @@
 "use client";
 
+import { useNavigate } from "react-router-dom";
+
 import FeedPost from "@/components/PostCard/VideoPost";
 import type { SocialPost } from "@/data/socialPosts";
 import { cn } from "@/lib/utils";
@@ -10,6 +12,7 @@ interface TimelineProps {
 }
 
 export default function Timeline({ posts, className }: TimelineProps) {
+  const navigate = useNavigate();
   if (!posts || posts.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center py-20 text-muted-foreground">
