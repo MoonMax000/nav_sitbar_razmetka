@@ -32,12 +32,13 @@ const UserAvatar: FC<UserAvatarProps> = ({
   return (
     <div
       className={cn(
-        "flex-shrink-0 overflow-hidden rounded-full bg-gradient-to-br from-[#A06AFF]/40 to-[#482090]/40 p-[1.5px]",
+        "flex-shrink-0 overflow-hidden rounded-full",
+        accent && "bg-gradient-to-br from-[#A06AFF]/40 to-[#482090]/40 p-[1.5px]",
         containerClassName,
       )}
       style={dimensionStyle}
     >
-      <div className="h-full w-full overflow-hidden rounded-full bg-[#0F1319]">
+      <div className={cn("h-full w-full overflow-hidden rounded-full", accent ? "bg-[#0F1319]" : "bg-transparent")}>
         <img
           src={src || DEFAULT_AVATAR}
           alt={alt}
