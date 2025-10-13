@@ -4,8 +4,8 @@ import { useMemo, useState } from "react";
 import SuggestedProfilesWidget, {
   type SuggestedProfile,
 } from "@/components/SocialFeedWidgets/SuggestedProfilesWidget";
-import TrendingTopicsWidget, {
-  type TrendingTopic,
+import NewsWidget, {
+  type NewsItem,
 } from "@/components/SocialFeedWidgets/TrendingTopicsWidget";
 
 interface ExploreCollection {
@@ -50,7 +50,7 @@ const exploreCollections: ExploreCollection[] = [
   {
     id: "ai-alpha",
     title: "AI Alpha Insider",
-    description: "Лучшие трейды на пересечении технологий и рынков",
+    description: "Лучшие трейды на пересечении техно��огий и рынков",
     accent: "from-[#4FC3F7] to-[#8057FF]",
     topics: ["AI", "Рынки"],
   },
