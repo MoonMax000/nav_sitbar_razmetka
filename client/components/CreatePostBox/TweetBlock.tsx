@@ -112,9 +112,18 @@ export const TweetBlock: FC<TweetBlockProps> = ({
   };
 
   return (
-    <div className="relative flex gap-4">
+    <div
+      className={cn(
+        "relative flex gap-4 transition-opacity cursor-pointer rounded-xl p-2 -m-2",
+        !isActive && "opacity-40 hover:opacity-60"
+      )}
+      onClick={onClick}
+    >
       {!isFirst && (
-        <div className="absolute left-[22px] -top-4 h-4 w-0.5 bg-[#2F3336]" />
+        <div className={cn(
+          "absolute left-[22px] -top-4 h-4 w-0.5 bg-[#2F3336]",
+          !isActive && "opacity-40"
+        )} />
       )}
 
       <div className="flex flex-col items-center gap-2">
@@ -123,7 +132,10 @@ export const TweetBlock: FC<TweetBlockProps> = ({
           alt="User avatar"
           className="h-11 w-11 rounded-full"
         />
-        {!isLast && <div className="flex-1 w-0.5 bg-[#2F3336]" />}
+        {!isLast && <div className={cn(
+          "flex-1 w-0.5 bg-[#2F3336]",
+          !isActive && "opacity-40"
+        )} />}
       </div>
 
       <div className="flex-1">
