@@ -29,7 +29,7 @@ const UserTabs: FC<Props> = ({ isOwn = true, viewMode = "normal" }) => {
   const [activeTab, setActiveTab] = useState<TabId>("ideas");
   const { toast } = useToast();
 
-  const postsByTab = useMemo<Record<TabId, PostCardProps[]>>(
+  const postsByTab = useMemo<Record<TabId, FeedPostProps[]>>(
     () => ({
       ideas: [
         {
@@ -40,11 +40,12 @@ const UserTabs: FC<Props> = ({ isOwn = true, viewMode = "normal" }) => {
             "AI Constructs Threaten Emerging Economies: A New Wave of Unemployment and Inequality",
           content:
             "Artificial intelligence is reshaping the global economy. Emerging markets must invest in reskilling programs to soften the blow of automation and create pathways into future-proof careers.",
-          image:
+          mediaUrl:
             "https://api.builder.io/api/v1/image/assets/TEMP/23fc35ab171b1cddbf955c164017b8e4c372f935?width=1198",
           sentiment: "bullish",
           likes: 1500,
           comments: 563,
+          type: "article",
         },
         {
           author: { name: "Jane Doe", avatar: "/placeholder.svg" },
@@ -53,11 +54,12 @@ const UserTabs: FC<Props> = ({ isOwn = true, viewMode = "normal" }) => {
           title: "Layer-2 Rollups Will Reprice NFT Liquidity in 2024",
           content:
             "Lower gas fees and compressed transactions will unlock entirely new NFT inventory classes. Expect marketplace fragmentation before consolidation around multi-chain aggregators.",
-          image:
+          mediaUrl:
             "https://api.builder.io/api/v1/image/assets/TEMP/7da696181764ec7a3a8683ab01b16c0daac1ab16?width=1198",
           sentiment: "bullish",
           likes: 980,
           comments: 201,
+          type: "article",
         },
       ],
       opinions: [
@@ -68,11 +70,12 @@ const UserTabs: FC<Props> = ({ isOwn = true, viewMode = "normal" }) => {
           title: "Why Bitcoin Needs Stronger Treasury Narratives",
           content:
             "Institutional treasuries need clearer playbooks and hedging frameworks before they commit to Bitcoin. Building these narratives is our job as market educators.",
-          image:
+          mediaUrl:
             "https://api.builder.io/api/v1/image/assets/TEMP/eacd3fbf97330649a97100e9a7099651e9a0fdb4?width=1198",
           sentiment: "bullish",
           likes: 640,
           comments: 142,
+          type: "article",
         },
       ],
       analytics: [
@@ -83,11 +86,12 @@ const UserTabs: FC<Props> = ({ isOwn = true, viewMode = "normal" }) => {
           title: "Solana Liquidity Heatmap — Week 04 Insights",
           content:
             "DEX volume rotated from meme tokens back into Layer-1 infrastructure plays. Watch the funding spreads on SOL perpetuals while staking inflows continue.",
-          image:
+          mediaUrl:
             "https://api.builder.io/api/v1/image/assets/TEMP/4c8ef9d846ef46a09cccefd4aaa3cdd3c3a0de47?width=1198",
           sentiment: "bullish",
           likes: 312,
           comments: 88,
+          type: "article",
         },
       ],
       softwares: [],
