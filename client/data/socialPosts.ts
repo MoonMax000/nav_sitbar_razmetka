@@ -8,6 +8,9 @@ export interface SocialAuthor {
   avatar: string;
   handle?: string;
   verified?: boolean;
+  bio?: string;
+  followers?: number;
+  following?: number;
 }
 
 export interface SocialPost {
