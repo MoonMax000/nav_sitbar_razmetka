@@ -61,6 +61,16 @@ export const navElements: NavElementProps[] = [
     children: [
       {
         icon: <HomeIcon className="h-5 w-5" />,
+        title: "x_Home",
+        route: "/home",
+      },
+      {
+        icon: <BoxIcon className="h-5 w-5" />,
+        title: "x_Profile",
+        route: "/profile-page",
+      },
+      {
+        icon: <HomeIcon className="h-5 w-5" />,
         title: "Home",
         route: "/social/home",
       },
