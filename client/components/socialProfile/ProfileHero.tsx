@@ -2,7 +2,6 @@ import type { FC } from "react";
 import { useNavigate } from "react-router-dom";
 
 import type { SocialProfileData } from "@/data/socialProfile";
-import { cn } from "@/lib/utils";
 
 interface ProfileHeroProps {
   profile: SocialProfileData;
