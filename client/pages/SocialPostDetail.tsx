@@ -3,6 +3,8 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 import PostDetailView from "@/components/PostCard/PostDetailView";
 import { getSocialPostById, type SocialPost } from "@/data/socialPosts";
+import SuggestedProfilesWidget from "@/components/SocialFeedWidgets/SuggestedProfilesWidget";
+import { DEFAULT_SUGGESTED_PROFILES } from "@/components/SocialFeedWidgets/sidebarData";
 
 const SocialPostDetail: FC = () => {
   const navigate = useNavigate();
