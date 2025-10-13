@@ -1,5 +1,3 @@
-"use client";
-
 import { useState } from "react";
 import { socialPosts } from "@/data/socialPosts";
 import type { SocialPost } from "@/data/socialPosts";
