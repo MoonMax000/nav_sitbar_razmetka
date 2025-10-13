@@ -50,7 +50,7 @@ const exploreCollections: ExploreCollection[] = [
   {
     id: "ai-alpha",
     title: "AI Alpha Insider",
-    description: "Лучшие трейды на пересе��ении техно��огий и рынков",
+    description: "Лучшие трейды на пересечении техно��огий и рынков",
     accent: "from-[#4FC3F7] to-[#8057FF]",
     topics: ["AI", "Рынки"],
   },
@@ -76,7 +76,7 @@ const featuredStories: ExploreStory[] = [
     category: "Trending",
     title: "Фонды страхуют риск через опционы на золото — что это значит",
     summary:
-      "Опционы на золото снова в фокусе: фонды страхуют портфели от волатильности доходностей. Разбираем ключевые уровни, сценарии и влияние на валюты.",
+      "Опционы на золото снова в фокусе: фонды страхуют портфели от волатильности доходностей. Разбираем ключевые уровни, сценарии и влияние на в��люты.",
     author: "@macroclub",
     readTime: "6 мин",
     tags: ["Рынки", "Мировые новости", "Фьючерсы"],
@@ -104,7 +104,7 @@ const featuredStories: ExploreStory[] = [
   {
     id: "ipo-radar",
     category: "Рынки",
-    title: "IPO-радар: какие компании выходят в ближайшие месяцы",
+    title: "IPO-радар: какие компании выходят в ближайшие м��сяцы",
     summary:
       "Топ-7 флагманских размещений с оценкой мультипликаторов, спроса и ближайших локапов.",
     author: "@dealflow",
@@ -143,6 +143,7 @@ const exploreNews: NewsItem[] = [
     title: "ETH staking",
     publishedAgo: "сейчас",
     engagement: "212K постов",
+    commentCount: 540,
   },
   {
     id: "ai-traders",
@@ -150,6 +151,7 @@ const exploreNews: NewsItem[] = [
     title: "AI traders",
     publishedAgo: "12 мин назад",
     engagement: "176K постов",
+    commentCount: 312,
   },
   {
     id: "usd-jpy",
@@ -157,6 +159,7 @@ const exploreNews: NewsItem[] = [
     title: "USD/JPY",
     publishedAgo: "25 мин назад",
     engagement: "41K постов",
+    commentCount: 118,
   },
   {
     id: "oil-range",
@@ -164,6 +167,7 @@ const exploreNews: NewsItem[] = [
     title: "Brent 95$",
     publishedAgo: "38 мин назад",
     engagement: "28K постов",
+    commentCount: 0,
   },
   {
     id: "ipo-watch",
@@ -171,6 +175,7 @@ const exploreNews: NewsItem[] = [
     title: "Stripe S-1",
     publishedAgo: "1 час назад",
     engagement: "64K постов",
+    commentCount: 86,
   },
 ];
 
@@ -442,7 +447,7 @@ const EmptyExploreState: FC<EmptyExploreStateProps> = ({ activeCategory }) => (
         />
       </svg>
     </div>
-    <h3 className="text-lg font-semibold text-white">Пок�� нет подборок в категории «{activeCategory}»</h3>
+    <h3 className="text-lg font-semibold text-white">Пока нет подборок в категории «{activeCategory}»</h3>
     <p className="max-w-[360px] text-sm text-[#B0B0B0]">
       Мы уже собираем свежие материалы. Загляните позже или выберите другую тему, чтобы вдохновиться идеями.
     </p>
