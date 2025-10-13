@@ -484,7 +484,7 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
     }
   };
 
-  if (!mounted || !media) return null;
+  if (!mounted) return null;
 
   const isImage = media.type === "image";
   const altChars = altText.length;
