@@ -16,7 +16,7 @@ export default function ProfileTweetsClassic({ posts }: ProfileTweetsClassicProp
   }
 
   return (
-    <div className="border-t border-[#2F3336]">
+    <div>
       <div className="flex flex-col items-center gap-8 pt-6">
         {posts.map((post) => (
           <FeedPost
