@@ -30,12 +30,23 @@ const formatCount = (value: number) => {
   return value.toLocaleString();
 };
 
-const UserHoverCard: FC<UserHoverCardProps> = ({ author, isFollowing, onFollowToggle, children }) => {
+const UserHoverCard: FC<UserHoverCardProps> = ({
+  author,
+  isFollowing = false,
+  onFollowToggle,
+  showFollowButton,
+  children,
+}) => {
   const followers = typeof author.followers === "number" ? author.followers : undefined;
   const following = typeof author.following === "number" ? author.following : undefined;
 
   const followersLabel = typeof followers === "number" ? formatCount(followers) : null;
   const followingLabel = typeof following === "number" ? formatCount(following) : null;
+  const shouldRenderFollowButton = showFollowButton ?? !author.isCurrentUser;
+  const headerClasses = cn(
+    "flex items-start gap-4",
+    shouldRenderFollowButton ? "justify-between" : "justify-start",
+  );
 
   return (
     <HoverCard openDelay={150} closeDelay={200}>
@@ -45,7 +56,7 @@ const UserHoverCard: FC<UserHoverCardProps> = ({ author, isFollowing, onFollowTo
         sideOffset={16}
         className="w-[320px] rounded-[28px] border border-[#1B1F2A] bg-[rgba(10,12,18,0.95)] p-5 shadow-[0_24px_56px_rgba(2,6,18,0.58)] backdrop-blur-[28px]"
       >
-        <div className="flex items-start justify-between gap-4">
+        <div className={headerClasses}>
           <div className="flex items-center gap-3">
             <UserAvatar
               src={author.avatar}
@@ -61,14 +72,16 @@ const UserHoverCard: FC<UserHoverCardProps> = ({ author, isFollowing, onFollowTo
               {author.handle ? <span className="text-sm font-medium text-[#8E92A0]">{author.handle}</span> : null}
             </div>
           </div>
-          <FollowButton
-            size="compact"
-            stopPropagation
-            isFollowing={isFollowing}
-            onToggle={onFollowToggle}
-            profileId={author.handle ?? author.name}
-            className="gap-2"
-          />
+          {shouldRenderFollowButton ? (
+            <FollowButton
+              size="compact"
+              stopPropagation
+              isFollowing={isFollowing}
+              onToggle={onFollowToggle}
+              profileId={author.handle ?? author.name}
+              className="gap-2"
+            />
+          ) : null}
         </div>
 
         {author.bio ? (
