@@ -1,14 +1,19 @@
 import type { FC } from "react";
 
+import { type FC, useMemo } from "react";
+
 import VideoPost from "./VideoPost";
+import CommentCard from "./CommentCard";
 
 import type { SocialPost } from "@/data/socialPosts";
+import { getCommentsByPostId } from "@/data/socialComments";
 
 interface PostDetailViewProps {
   post: SocialPost;
 }
 
 const PostDetailView: FC<PostDetailViewProps> = ({ post }) => {
+  const comments = useMemo(() => getCommentsByPostId(post.id), [post.id]);
   if (post.type === "video") {
     return (
       <VideoPost
