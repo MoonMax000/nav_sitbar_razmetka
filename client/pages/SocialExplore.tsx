@@ -50,7 +50,7 @@ const exploreCollections: ExploreCollection[] = [
   {
     id: "ai-alpha",
     title: "AI Alpha Insider",
-    description: "Лучшие трейды на пересечении техно��огий и рынков",
+    description: "Лучшие трейды на пересе��ении техно��огий и рынков",
     accent: "from-[#4FC3F7] to-[#8057FF]",
     topics: ["AI", "Рынки"],
   },
@@ -106,7 +106,7 @@ const featuredStories: ExploreStory[] = [
     category: "Рынки",
     title: "IPO-радар: какие компании выходят в ближайшие месяцы",
     summary:
-      "Топ-7 флагманских размещений с оценкой мультипликаторов, спроса �� ближайших локапов.",
+      "Топ-7 флагманских размещений с оценкой мультипликаторов, спроса и ближайших локапов.",
     author: "@dealflow",
     readTime: "7 мин",
     tags: ["IPO", "Рынки"],
@@ -257,7 +257,10 @@ const SocialExplore: FC = () => {
                   <div className="flex flex-col">
                     <span className="text-xs uppercase tracking-[0.2em] text-white/40">{item.category}</span>
                     <span className="text-sm font-semibold text-white">{item.title}</span>
-                    <span className="text-xs text-white/50">{item.engagement}</span>
+                    <span className="text-xs text-white/50">
+                      {item.publishedAgo}
+                      {item.engagement ? ` · ${item.engagement}` : ""}
+                    </span>
                   </div>
                   <span className="rounded-full border border-white/10 px-3 py-1 text-xs font-semibold text-white/60">
                     Следить
@@ -346,7 +349,7 @@ const SpotlightCard: FC = () => (
           "Три сигнала, что риск-сентимент меняется и как успеть"
         </h2>
         <p className="text-sm text-white/80">
-          Дайджест к��ючевых индикаторов, тепловые карты волатильности и разбор сделок институционалов за последние 48 часов.
+          Дайджест ключевых индикаторов, тепловые карты волатильности и разбор сделок институционалов за последние 48 часов.
         </p>
         <div className="mt-2 flex items-center gap-3 text-xs text-white/70">
           <span>Собрано Tyrian Research</span>
@@ -439,9 +442,9 @@ const EmptyExploreState: FC<EmptyExploreStateProps> = ({ activeCategory }) => (
         />
       </svg>
     </div>
-    <h3 className="text-lg font-semibold text-white">Пока нет подборок в категории «{activeCategory}»</h3>
+    <h3 className="text-lg font-semibold text-white">Пок�� нет подборок в категории «{activeCategory}»</h3>
     <p className="max-w-[360px] text-sm text-[#B0B0B0]">
-      Мы уже собираем свежие материалы. Загляните ��озже или выберите другую тему, чтобы вдохновиться идеями.
+      Мы уже собираем свежие материалы. Загляните позже или выберите другую тему, чтобы вдохновиться идеями.
     </p>
   </div>
 );
