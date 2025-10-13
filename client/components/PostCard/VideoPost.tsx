@@ -69,21 +69,21 @@ const VideoPost: FC<VideoPostProps> = ({
     : "border-rose-400/40 bg-rose-400/10 text-rose-300";
 
   const followButtonClasses = isFollowing
-    ? "border border-tyrian/30 bg-tyrian/10 text-tyrian-soft"
-    : "bg-gradient-to-r from-tyrian-light to-tyrian text-white shadow-[0_10px_30px_-18px_rgba(102,2,60,0.85)]";
+    ? "border border-[#181B22] bg-[rgba(12,16,20,0.50)] text-[#B0B0B0]"
+    : "bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white shadow-[0_12px_30px_-18px_rgba(72,32,144,0.85)]";
 
   return (
     <article
       onClick={onOpen}
       className={cn(
-        "group relative flex w-full max-w-[680px] flex-col gap-6 rounded-[28px] border border-tyrian/35 bg-[#12040E]/80 p-6 shadow-[0_26px_80px_-48px_rgba(102,2,60,0.75)] backdrop-blur-[48px] transition-all duration-300 hover:-translate-y-1 hover:border-tyrian-light/70 hover:bg-[#1C0715]/90 hover:shadow-[0_40px_110px_-60px_rgba(102,2,60,0.85)]",
+        "mx-auto flex w-full max-w-[680px] flex-col gap-6 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] p-6 backdrop-blur-[50px] transition-colors duration-200 hover:border-[#A06AFF]/60 hover:bg-[#482090]/10",
         onOpen && "cursor-pointer",
         className,
       )}
     >
       <header className="flex w-full items-start justify-between gap-4">
         <div className="flex flex-1 items-start gap-3">
-          <div className="relative h-11 w-11 flex-shrink-0 overflow-hidden rounded-full bg-gradient-to-br from-tyrian-light to-tyrian shadow-[0_8px_20px_-10px_rgba(102,2,60,0.6)]">
+          <div className="relative h-11 w-11 flex-shrink-0 overflow-hidden rounded-full bg-gradient-to-br from-[#A06AFF] to-[#482090] shadow-[0_10px_30px_-18px_rgba(72,32,144,0.9)]">
             <img src={author.avatar} alt={author.name} className="h-full w-full object-cover" />
           </div>
           <div className="flex flex-1 flex-col">
@@ -96,7 +96,7 @@ const VideoPost: FC<VideoPostProps> = ({
                   viewBox="0 0 20 20"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="text-tyrian-light"
+                  className="text-[#A06AFF]"
                 >
                   <path
                     d="M10 2L12.118 4.23223L15.1962 4.47214L15.4721 7.55192L17.7044 9.66987L15.4721 11.7878L15.1962 14.8676L12.118 15.1075L10 17.3397L7.88197 15.1075L4.80384 14.8676L4.52793 11.7878L2.29577 9.66987L4.52793 7.55192L4.80384 4.47214L7.88197 4.23223L10 2Z"
@@ -113,15 +113,15 @@ const VideoPost: FC<VideoPostProps> = ({
                 </svg>
               ) : null}
             </div>
-            <div className="mt-2 flex flex-wrap items-center gap-2 text-xs font-semibold text-tyrian-soft/80">
-              <span className="inline-flex items-center gap-1 rounded-full border border-tyrian/30 bg-tyrian/10 px-2 py-0.5 text-[11px] uppercase tracking-[0.12em] text-tyrian-soft">
+            <div className="mt-2 flex flex-wrap items-center gap-2 text-xs font-semibold text-[#B0B0B0]">
+              <span className="inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-[#482090] to-[#A06AFF] px-2 py-0.5 text-[11px] uppercase tracking-[0.12em] text-white shadow-[0_12px_28px_-20px_rgba(160,106,255,0.75)]">
                 <svg
                   width="16"
                   height="16"
                   viewBox="0 0 16 16"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="text-tyrian-light"
+                  className="text-white"
                 >
                   <path
                     d="M1.33301 7.33366C1.33301 5.13377 1.33301 4.03383 2.01643 3.35041C2.69984 2.66699 3.79979 2.66699 5.99967 2.66699H6.66634C8.86621 2.66699 9.96614 2.66699 10.6496 3.35041C11.333 4.03383 11.333 5.13377 11.333 7.33366V8.66699C11.333 10.8669 11.333 11.9668 10.6496 12.6503C9.96614 13.3337 8.86621 13.3337 6.66634 13.3337H5.99967C3.79979 13.3337 2.69984 13.3337 2.01643 12.6503C1.33301 11.9668 1.33301 10.8669 1.33301 8.66699V7.33366Z"
@@ -142,12 +142,7 @@ const VideoPost: FC<VideoPostProps> = ({
                 </svg>
                 Video
               </span>
-              {author.handle ? (
-                <span className="text-[11px] uppercase tracking-[0.12em] text-tyrian-soft/60">
-                  {author.handle}
-                </span>
-              ) : null}
-              <span className="text-xs font-semibold text-tyrian-soft/70">{timestamp}</span>
+              <span className="text-xs font-semibold text-[#8E92A0]">{timestamp}</span>
             </div>
           </div>
         </div>
@@ -155,7 +150,7 @@ const VideoPost: FC<VideoPostProps> = ({
           <button
             onClick={handleFollowClick}
             className={cn(
-              "flex h-[32px] items-center justify-center gap-2.5 rounded-full px-4 text-xs font-bold transition-colors",
+              "flex h-8 items-center justify-center gap-2.5 rounded-full px-4 text-xs font-bold transition-colors",
               followButtonClasses,
             )}
           >
@@ -165,7 +160,7 @@ const VideoPost: FC<VideoPostProps> = ({
             type="button"
             onClick={handleMenuClick}
             aria-label="More options"
-            className="flex h-10 w-10 items-center justify-center rounded-full text-tyrian-soft/70 transition-colors duration-200 hover:bg-tyrian/10 hover:text-tyrian-soft"
+            className="flex h-9 w-9 items-center justify-center rounded-full text-[#9BA0AF] transition-colors duration-200 hover:bg-[#482090]/10 hover:text-white"
           >
             <svg
               width="16"
@@ -173,7 +168,7 @@ const VideoPost: FC<VideoPostProps> = ({
               viewBox="0 0 16 16"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className="-rotate-90 h-5 w-5"
+              className="-rotate-90 h-4 w-4"
             >
               <path
                 d="M8.00004 8.66675C8.17685 8.66675 8.34642 8.59651 8.47145 8.47149C8.59647 8.34646 8.66671 8.17689 8.66671 8.00008C8.66671 7.82327 8.59647 7.6537 8.47145 7.52868C8.34642 7.40365 8.17685 7.33341 8.00004 7.33341C7.82323 7.33341 7.65366 7.40365 7.52864 7.52868C7.40361 7.6537 7.33337 7.82327 7.33337 8.00008C7.33337 8.17689 7.40361 8.34646 7.52864 8.47149C7.65366 8.59651 7.82323 8.66675 8.00004 8.66675Z"
@@ -214,7 +209,7 @@ const VideoPost: FC<VideoPostProps> = ({
         {shouldShowToggle ? (
           <button
             onClick={handleToggle}
-            className="w-fit text-left text-[15px] font-semibold text-tyrian-light underline transition-colors hover:text-white"
+            className="w-fit text-left text-[15px] font-semibold text-[#A06AFF] underline transition-colors hover:text-white"
           >
             {expanded ? "Show less" : "Learn more"}
           </button>
@@ -226,7 +221,7 @@ const VideoPost: FC<VideoPostProps> = ({
           {hashtags.map((tag) => (
             <span
               key={tag}
-              className="inline-flex items-center rounded-full border border-tyrian/30 bg-tyrian/10 px-3 py-1 text-sm font-semibold text-tyrian-light"
+              className="inline-flex items-center rounded-full border border-[#A06AFF]/40 bg-[#A06AFF]/10 px-3 py-1 text-sm font-semibold text-[#A06AFF]"
             >
               #{tag}
             </span>
@@ -234,10 +229,10 @@ const VideoPost: FC<VideoPostProps> = ({
         </div>
       ) : null}
 
-      <div className="relative w-full overflow-hidden rounded-2xl border border-tyrian/25">
+      <div className="relative w-full overflow-hidden rounded-2xl border border-[#181B22]">
         <img src={videoUrl} alt="" className="aspect-[1043/585] w-full object-cover" />
         <div className="absolute inset-0 flex items-center justify-center">
-          <span className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r from-tyrian-light to-tyrian text-white shadow-[0_12px_24px_0_rgba(0,0,0,0.48)]">
+          <span className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white shadow-[0_12px_24px_0_rgba(0,0,0,0.48)]">
             <svg
               width="24"
               height="24"
@@ -258,61 +253,69 @@ const VideoPost: FC<VideoPostProps> = ({
         </div>
       </div>
 
-      <footer className="flex w-full flex-wrap items-center justify-between gap-4 text-xs font-semibold text-tyrian-soft/80">
-        <span
-          className={cn(
-            "inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-xs",
-            sentimentClasses,
-          )}
-        >
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 16 16"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-4 w-4"
+      <footer className="flex w-full items-center justify-between gap-4">
+        <div className="flex flex-wrap items-center gap-3 text-xs font-semibold text-white/70">
+          <span
+            className={cn(
+              "inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5",
+              sentimentClasses,
+            )}
           >
-            <path
-              d="M13.3333 8.66659V5.33325H10"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M13.3334 5.33325L10 8.66659C9.41162 9.25499 9.11749 9.54912 8.75642 9.58165C8.69669 9.58705 8.63669 9.58705 8.57695 9.58165C8.21589 9.54912 7.92175 9.25499 7.33335 8.66659C6.74495 8.07819 6.45079 7.78405 6.08973 7.75152C6.03005 7.74612 5.96999 7.74612 5.91031 7.75152C5.54925 7.78405 5.25506 8.07819 4.66669 8.66659L2.66669 10.6666"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-          {sentiment === "bullish" ? "Bullish" : "Bearish"}
-        </span>
-
-        <div className="flex items-center gap-4 text-sm">
-          <span className="flex items-center gap-1.5 text-tyrian-light">
             <svg
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="currentColor"
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
+              className="h-4 w-4"
             >
-              <path d="M16.2192 3.32846C13.9844 1.95769 12.034 2.51009 10.8623 3.39001C10.3818 3.7508 10.1417 3.93119 10.0003 3.93119C9.85899 3.93119 9.61882 3.7508 9.13832 3.39001C7.96667 2.51009 6.01623 1.95769 3.78152 3.32846C0.848716 5.12745 0.185092 11.0624 6.94993 16.0695C8.23842 17.0232 8.88266 17.5 10.0003 17.5C11.118 17.5 11.7622 17.0232 13.0507 16.0695C19.8156 11.0624 19.1519 5.12745 16.2192 3.32846Z" />
+              <path
+                d="M13.3333 8.66659V5.33325H10"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M13.3334 5.33325L10 8.66659C9.41162 9.25499 9.11749 9.54912 8.75642 9.58165C8.69669 9.58705 8.63669 9.58705 8.57695 9.58165C8.21589 9.54912 7.92175 9.25499 7.33335 8.66659C6.74495 8.07819 6.45079 7.78405 6.08973 7.75152C6.03005 7.74612 5.96999 7.74612 5.91031 7.75152C5.54925 7.78405 5.25506 8.07819 4.66669 8.66659L2.66669 10.6666"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
-            {likes >= 1000 ? `${(likes / 1000).toFixed(1)}K` : likes}
+            {sentiment === "bullish" ? "Bullish" : "Bearish"}
           </span>
-          <span className="flex items-center gap-1.5 text-tyrian-soft">
+
+          <span className="flex items-center gap-1.5 text-[#A06AFF]">
             <svg
               width="20"
               height="20"
               viewBox="0 0 20 20"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
+            >
+              <defs>
+                <linearGradient id="videopost-heart" x1="18.3337" y1="10" x2="1.66699" y2="10" gradientUnits="userSpaceOnUse">
+                  <stop stopColor="#A06AFF" />
+                  <stop offset="1" stopColor="#482090" />
+                </linearGradient>
+              </defs>
+              <path
+                d="M16.2192 3.32846C13.9844 1.95769 12.034 2.51009 10.8623 3.39001C10.3818 3.7508 10.1417 3.93119 10.0003 3.93119C9.85899 3.93119 9.61882 3.7508 9.13832 3.39001C7.96667 2.51009 6.01623 1.95769 3.78152 3.32846C0.848716 5.12745 0.185092 11.0624 6.94993 16.0695C8.23842 17.0232 8.88266 17.5 10.0003 17.5C11.118 17.5 11.7622 17.0232 13.0507 16.0695C19.8156 11.0624 19.1519 5.12745 16.2192 3.32846Z"
+                fill="url(#videopost-heart)"
+              />
+            </svg>
+            {likes >= 1000 ? `${(likes / 1000).toFixed(1)}K` : likes}
+          </span>
+
+          <span className="flex items-center gap-1.5 text-[#9BA0AF]">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
             >
               <path
                 d="M18.3337 9.63875C18.3337 14.0414 14.6022 17.611 10.0003 17.611C9.45924 17.6118 8.91966 17.5617 8.38816 17.4619C8.0056 17.39 7.81431 17.3541 7.68077 17.3745C7.54722 17.3949 7.35798 17.4955 6.97948 17.6968C5.90878 18.2663 4.66028 18.4673 3.45958 18.244C3.91594 17.6827 4.22762 17.0092 4.36514 16.2872C4.44848 15.8455 4.24199 15.4165 3.93273 15.1024C2.5281 13.6761 1.66699 11.7541 1.66699 9.63875C1.66699 5.23615 5.39848 1.6665 10.0003 1.6665C14.6022 1.6665 18.3337 5.23615 18.3337 9.63875Z"
@@ -330,11 +333,14 @@ const VideoPost: FC<VideoPostProps> = ({
             </svg>
             {comments}
           </span>
+        </div>
+
+        <div className="flex items-center gap-2">
           <button
             type="button"
             onClick={(event) => event.stopPropagation()}
             aria-label="Save"
-            className="flex h-8 w-8 items-center justify-center rounded-full text-tyrian-soft/70 transition-colors duration-200 hover:bg-tyrian/10 hover:text-tyrian-soft"
+            className="flex h-8 w-8 items-center justify-center rounded-full text-[#9BA0AF] transition-colors duration-200 hover:bg-[#482090]/10 hover:text-white"
           >
             <svg
               width="20"
@@ -342,7 +348,6 @@ const VideoPost: FC<VideoPostProps> = ({
               viewBox="0 0 20 20"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
             >
               <path
                 d="M3.33301 14.9843V8.08993C3.33301 5.06213 3.33301 3.54823 4.30932 2.60761C5.28563 1.66699 6.85697 1.66699 9.99967 1.66699C13.1423 1.66699 14.7138 1.66699 15.69 2.60761C16.6663 3.54823 16.6663 5.06213 16.6663 8.08993V14.9843C16.6663 16.9059 16.6663 17.8667 16.0223 18.2106C14.7751 18.8765 12.4357 16.6547 11.3247 15.9857C10.6803 15.5977 10.3582 15.4037 9.99967 15.4037C9.64117 15.4037 9.31901 15.5977 8.67467 15.9857C7.56367 16.6547 5.22423 18.8765 3.97705 18.2106C3.33301 17.8667 3.33301 16.9059 3.33301 14.9843Z"
@@ -357,7 +362,7 @@ const VideoPost: FC<VideoPostProps> = ({
             type="button"
             onClick={(event) => event.stopPropagation()}
             aria-label="Share"
-            className="flex h-8 w-8 items-center justify-center rounded-full text-tyrian-soft/70 transition-colors duration-200 hover:bg-tyrian/10 hover:text-tyrian-soft"
+            className="flex h-8 w-8 items-center justify-center rounded-full text-[#9BA0AF] transition-colors duration-200 hover:bg-[#482090]/10 hover:text-white"
           >
             <svg
               width="20"
@@ -365,7 +370,6 @@ const VideoPost: FC<VideoPostProps> = ({
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
             >
               <path
                 d="M4 12v7a1 1 0 001 1h14a1 1 0 001-1v-7"
