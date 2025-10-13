@@ -71,7 +71,7 @@ export default function HomePage() {
         </div>
 
         {/* Timeline */}
-        <Timeline posts={posts} />
+        <Timeline posts={posts} className="mt-6" />
       </div>
 
       <SocialRightSidebar
