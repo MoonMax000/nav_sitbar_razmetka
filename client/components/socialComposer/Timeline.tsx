@@ -23,7 +23,21 @@ export default function Timeline({ posts, className }: TimelineProps) {
     <div className={className}>
       {posts.map((post) => {
         if (post.type === "video") {
-          return <VideoPost key={post.id} post={post} />;
+          return (
+            <VideoPost
+              key={post.id}
+              author={post.author}
+              timestamp={post.timestamp}
+              title={post.title}
+              content={post.body || post.preview}
+              videoUrl={post.videoUrl || ""}
+              sentiment={post.sentiment}
+              likes={post.likes}
+              comments={post.comments}
+              isFollowing={post.isFollowing}
+              hashtags={post.hashtags}
+            />
+          );
         }
         return <PostCard key={post.id} post={post} />;
       })}
