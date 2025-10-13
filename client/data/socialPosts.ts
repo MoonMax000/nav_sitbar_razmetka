@@ -87,7 +87,7 @@ export const socialPosts: SocialPost[] = [
     type: "article",
     author: {
       name: "Tyrian Trade",
-      avatar: "/placeholder.svg",
+      avatar: "https://i.pravatar.cc/120?img=45",
       handle: "@TyrianTrade",
       verified: true,
       bio: "Macro-focused trading desk delivering distilled hedge fund tactics.",
