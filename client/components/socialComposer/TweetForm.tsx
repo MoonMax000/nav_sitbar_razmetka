@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import TextareaAutosize from "react-textarea-autosize";
 import { Image, Video, BarChart3, Smile, MapPin, Calendar } from "lucide-react";
 
 import UserAvatar from "@/components/ui/Avatar/UserAvatar";
