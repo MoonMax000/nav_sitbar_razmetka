@@ -79,6 +79,7 @@ export const MAX_PHOTOS = 4;
 export const MAX_VIDEO = 1;
 export const MAX_GIF = 1;
 export const MAX_THREAD_BLOCKS = 25;
+export const MAX_DRAFTS = 5;
 
 export const createDefaultTransform = (): CropTransform => ({
   scale: 1,
