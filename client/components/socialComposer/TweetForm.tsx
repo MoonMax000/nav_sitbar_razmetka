@@ -96,14 +96,15 @@ export default function TweetForm({
           containerClassName="mr-4"
         />
         <div className={cn("flex-1 flex", expanded ? "flex-col" : "flex-row items-center")}>
-          <textarea
+          <TextareaAutosize
             ref={inputRef}
             onChange={(e) => setText(e.target.value)}
             placeholder={placeholder}
             value={text}
             onClick={onClick}
-            className="w-full bg-transparent border-none pt-2.5 pb-0 text-lg resize-none outline-none text-white placeholder:text-[#4E5A66] flex-1"
-            style={{ minHeight: expanded ? `${minHeight - 50}px` : "40px" }}
+            minRows={expanded ? 3 : 1}
+            maxRows={12}
+            className="w-full bg-transparent border-none pt-2.5 text-lg resize-none outline-none text-white placeholder:text-[#4E5A66] flex-1"
           />
 
           <div
