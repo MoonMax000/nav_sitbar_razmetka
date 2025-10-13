@@ -9,6 +9,7 @@ interface UserAvatarProps {
   className?: string;
   containerClassName?: string;
   style?: CSSProperties;
+  accent?: boolean;
 }
 
 const DEFAULT_AVATAR = "https://i.pravatar.cc/120?img=12";
@@ -20,6 +21,7 @@ const UserAvatar: FC<UserAvatarProps> = ({
   className,
   containerClassName,
   style,
+  accent = true,
 }) => {
   const dimensionStyle: CSSProperties = {
     width: size,
