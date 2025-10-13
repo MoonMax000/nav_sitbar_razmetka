@@ -433,8 +433,6 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
   }, [transform, altText, warnings]);
 
   const handleSave = () => {
-    if (!media) return;
-
     let updatedTransform = transform;
 
     // Calculate cropRect in original image pixels (as per X/Twitter spec §8.1) only if we have cropState
