@@ -649,7 +649,7 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
             <span>{replySummary}</span>
           </button>
 
-          {isReplyMenuOpen && (
+          {isReplyMenuOpen && createPortal(
             <div className="fixed left-5 bottom-24 z-[2300] w-80 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.95)] shadow-2xl backdrop-blur-[100px] p-4">
               <h3 className="mb-3 text-sm font-semibold text-white">Who can reply?</h3>
               <div className="space-y-2">
@@ -673,7 +673,8 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
                   </button>
                 ))}
               </div>
-            </div>
+            </div>,
+            document.body
           )}
 
           <div className="flex items-center gap-3">
@@ -707,13 +708,14 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
           </div>
         </div>
 
-        {isEmojiPickerOpen && (
+        {isEmojiPickerOpen && createPortal(
           <div
             ref={emojiMenuRef}
             className="fixed bottom-24 left-6 z-[2300] h-96 w-96 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.95)] p-4 shadow-2xl backdrop-blur-[100px]"
           >
             <EmojiPicker onSelect={handleEmojiSelect} />
-          </div>
+          </div>,
+          document.body
         )}
       </div>
 
