@@ -1,7 +1,6 @@
 import type { FC } from "react";
 
-import PostCard from "@/components/PostCard/PostCard";
-import VideoPost from "@/components/PostCard/VideoPost";
+import FeedPost from "@/components/PostCard/VideoPost";
 import type { SocialPost } from "@/data/socialPosts";
 
 interface ProfileTimelineProps {
@@ -22,7 +21,7 @@ const emptyStateByTab: Record<string, { title: string; description: string }> = 
   },
   likes: {
     title: "Нет отметок 'Нравится'",
-    description: "Посты, которые вы отметите, будут собраны на этой вкладке.",
+    description: "Посты, которые вы отм��тите, будут собраны на этой вкладке.",
   },
 };
 
@@ -45,38 +44,30 @@ const ProfileTimeline: FC<ProfileTimelineProps> = ({ posts, activeTab, highlight
     <div className="flex flex-col items-center gap-8">
       {posts.map((post, index) => {
         const isPinned = highlightedPostId && post.id === highlightedPostId && index === 0;
-        const commonProps = {
-          author: post.author,
-          timestamp: post.timestamp,
-          title: post.title,
-          content: post.body ?? post.preview,
-          sentiment: post.sentiment,
-          likes: post.likes,
-          comments: post.comments,
-          onOpen: onOpenPost ? () => onOpenPost(post) : undefined,
-        } as const;
 
         return (
           <div key={post.id} className="flex w-full max-w-[680px] flex-col gap-2">
             {isPinned ? (
               <span className="inline-flex w-fit items-center gap-2 rounded-full border border-tyrian/30 bg-tyrian/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-tyrian-light">
-                Закреплённый пост
+                З��креплённый пост
               </span>
             ) : null}
-            {post.type === "video" && post.videoUrl ? (
-              <VideoPost
-                {...commonProps}
-                videoUrl={post.videoUrl}
-                hashtags={post.hashtags}
-                isFollowing={post.isFollowing}
-              />
-            ) : (
-              <PostCard
-                {...commonProps}
-                category={post.category}
-                image={post.mediaUrl}
-              />
-            )}
+            <FeedPost
+              author={post.author}
+              timestamp={post.timestamp}
+              title={post.title}
+              content={post.body ?? post.preview}
+              mediaUrl={post.videoUrl ?? post.mediaUrl ?? null}
+              sentiment={post.sentiment}
+              likes={post.likes}
+              comments={post.comments}
+              views={post.views}
+              isFollowing={post.isFollowing}
+              hashtags={post.hashtags}
+              category={post.category}
+              type={post.type}
+              onOpen={onOpenPost ? () => onOpenPost(post) : undefined}
+            />
           </div>
         );
       })}
