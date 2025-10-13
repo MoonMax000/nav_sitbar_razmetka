@@ -59,10 +59,14 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
   const [sentiment, setSentiment] = useState<"bullish" | "bearish" | null>(initialSentiment ?? "bullish");
   const [mounted, setMounted] = useState(false);
   const [isPosting, setIsPosting] = useState(false);
+  const [replyMenuPosition, setReplyMenuPosition] = useState<{ top: number; left: number } | null>(null);
+  const [emojiMenuPosition, setEmojiMenuPosition] = useState<{ top: number; left: number } | null>(null);
 
   const replyMenuRef = useRef<HTMLDivElement>(null);
   const emojiMenuRef = useRef<HTMLDivElement>(null);
   const toolbarFileInputRef = useRef<HTMLInputElement>(null);
+  const replyButtonRef = useRef<HTMLButtonElement>(null);
+  const emojiButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -634,8 +638,13 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
 
         <div className="flex flex-wrap items-center justify-between gap-3 border-t border-[#181B22] px-5 py-4">
           <button
+            ref={replyButtonRef}
             type="button"
-            onClick={() => setIsReplyMenuOpen((prev) => !prev)}
+            onClick={(e) => {
+              const rect = e.currentTarget.getBoundingClientRect();
+              setReplyMenuPosition({ top: rect.top - 10, left: rect.left });
+              setIsReplyMenuOpen((prev) => !prev);
+            }}
             className="inline-flex items-center gap-2 rounded-full bg-white/5 px-4 py-1.5 text-sm font-semibold text-[#1D9BF0] transition-colors hover:bg-white/10"
             disabled={isPosting}
           >
@@ -649,8 +658,11 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
             <span>{replySummary}</span>
           </button>
 
-          {isReplyMenuOpen && createPortal(
-            <div className="fixed left-5 bottom-24 z-[2300] w-80 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.95)] shadow-2xl backdrop-blur-[100px] p-4">
+          {isReplyMenuOpen && replyMenuPosition && createPortal(
+            <div
+              className="fixed z-[2300] w-80 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.95)] shadow-2xl backdrop-blur-[100px] p-4"
+              style={{ top: `${replyMenuPosition.top - 280}px`, left: `${replyMenuPosition.left}px` }}
+            >
               <h3 className="mb-3 text-sm font-semibold text-white">Who can reply?</h3>
               <div className="space-y-2">
                 {replyOptions.map((opt) => (
