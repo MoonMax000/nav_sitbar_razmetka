@@ -1,7 +1,6 @@
 import type { FC } from 'react';
 
 import type { FC } from "react";
-import { X } from "lucide-react";
 
 const FALLBACK_AVATARS = [
   "https://i.pravatar.cc/120?img=10",
