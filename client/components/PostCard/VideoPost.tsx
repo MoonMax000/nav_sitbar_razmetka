@@ -3,12 +3,18 @@ import { type FC, type MouseEvent, useMemo, useState } from "react";
 import UserAvatar from "@/components/ui/Avatar/UserAvatar";
 import { cn } from "@/lib/utils";
 
+import VerifiedBadge from "./VerifiedBadge";
+import UserHoverCard from "./UserHoverCard";
+
 export interface FeedPostProps {
   author: {
     name: string;
     avatar: string;
     handle?: string;
     verified?: boolean;
+    bio?: string;
+    followers?: number;
+    following?: number;
   };
   timestamp: string;
   title: string;
