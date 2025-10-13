@@ -150,21 +150,16 @@ const NewNavBar: FC<Props> = ({ variant = 'primal' }) => {
               {navElements.slice(1).map((el) => renderElement(el))}
             </div>
 
-            <div className={cn('mt-6 px-3 transition-all duration-300', { 'px-2': isCollapsed })}>
+            <div className={cn('mt-6 px-3 transition-all duration-300 space-y-3', { 'px-2': isCollapsed })}>
+              {/* Tweet button - opens CreateTweetDialog from GitHub */}
               <button
                 type='button'
-                onClick={(e) => {
-                  if (e.shiftKey) {
-                    setIsPostComposerOpen(true);
-                  } else {
-                    setIsTweetDialogOpen(true);
-                  }
-                }}
+                onClick={() => setIsTweetDialogOpen(true)}
                 className={cn(
                   'group relative flex items-center justify-center overflow-hidden rounded-full p-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF]/60 focus-visible:ring-offset-0',
                   isCollapsed ? 'h-12 w-12' : 'h-12 w-full'
                 )}
-                title="Click to tweet, Shift+Click for advanced composer"
+                title="Open simple Tweet dialog"
               >
                 <span className='pointer-events-none absolute inset-0 animate-[spin_8s_linear_infinite] bg-[conic-gradient(from_0deg,#A06AFF,rgba(160,106,255,0)_60%,rgba(160,106,255,0))] opacity-70' />
                 <span className='pointer-events-none absolute inset-[2px] rounded-full bg-[rgba(12,16,20,0.9)] transition group-hover:bg-[rgba(12,16,20,0.75)]' />
@@ -173,6 +168,26 @@ const NewNavBar: FC<Props> = ({ variant = 'primal' }) => {
                     <QuillPen className='h-4 w-4' />
                   </span>
                   {!isCollapsed && <span>Tweet</span>}
+                </span>
+              </button>
+
+              {/* Advanced Post button - opens CreatePostModal (old composer) */}
+              <button
+                type='button'
+                onClick={() => setIsPostComposerOpen(true)}
+                className={cn(
+                  'group relative flex items-center justify-center overflow-hidden rounded-full p-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1D9BF0]/60 focus-visible:ring-offset-0',
+                  isCollapsed ? 'h-12 w-12' : 'h-12 w-full'
+                )}
+                title="Open advanced Post composer"
+              >
+                <span className='pointer-events-none absolute inset-0 animate-[spin_8s_linear_infinite] bg-[conic-gradient(from_0deg,#1D9BF0,rgba(29,155,240,0)_60%,rgba(29,155,240,0))] opacity-70' />
+                <span className='pointer-events-none absolute inset-[2px] rounded-full bg-[rgba(12,16,20,0.9)] transition group-hover:bg-[rgba(12,16,20,0.75)]' />
+                <span className={cn('relative flex items-center gap-3 text-sm font-semibold text-white', isCollapsed ? 'justify-center' : 'px-4 justify-center')}>
+                  <span className='flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-r from-[#1D9BF0] to-[#0E4E78] text-white shadow-[0_12px_30px_-18px_rgba(29,155,240,0.9)]'>
+                    <QuillPen className='h-4 w-4' />
+                  </span>
+                  {!isCollapsed && <span>Новый пост</span>}
                 </span>
               </button>
             </div>
