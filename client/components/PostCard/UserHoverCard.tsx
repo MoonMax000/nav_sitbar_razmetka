@@ -2,15 +2,15 @@ import { type FC, type MouseEvent, type ReactNode } from "react";
 
 import UserAvatar from "@/components/ui/Avatar/UserAvatar";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
-import { cn } from "@/lib/utils";
 
+import FollowButton from "./FollowButton";
 import type { FeedPostProps } from "./VideoPost";
 import VerifiedBadge from "./VerifiedBadge";
 
 interface UserHoverCardProps {
   author: FeedPostProps["author"];
   isFollowing: boolean;
-  onFollowClick: (event: MouseEvent<HTMLButtonElement>) => void;
+  onFollowToggle: (nextState: boolean) => void;
   children: ReactNode;
 }
 
@@ -26,16 +26,12 @@ const formatCount = (value: number) => {
   return value.toLocaleString();
 };
 
-const UserHoverCard: FC<UserHoverCardProps> = ({ author, isFollowing, onFollowClick, children }) => {
+const UserHoverCard: FC<UserHoverCardProps> = ({ author, isFollowing, onFollowToggle, children }) => {
   const followers = typeof author.followers === "number" ? author.followers : undefined;
   const following = typeof author.following === "number" ? author.following : undefined;
 
   const followersLabel = typeof followers === "number" ? formatCount(followers) : null;
   const followingLabel = typeof following === "number" ? formatCount(following) : null;
-
-  const followButtonClasses = isFollowing
-    ? "border border-[#f44] bg-transparent text-[#f44] hover:bg-[rgba(244,68,68,0.12)]"
-    : "bg-white text-black hover:bg-[#E9E9E9]";
 
   return (
     <HoverCard openDelay={150} closeDelay={200}>
@@ -61,20 +57,14 @@ const UserHoverCard: FC<UserHoverCardProps> = ({ author, isFollowing, onFollowCl
               {author.handle ? <span className="text-sm font-medium text-[#8E92A0]">{author.handle}</span> : null}
             </div>
           </div>
-          <button
-            type="button"
-            className={cn(
-              "flex h-9 items-center justify-center rounded-full px-5 text-sm font-semibold transition-colors duration-200",
-              followButtonClasses,
-            )}
-            aria-pressed={isFollowing}
-            onClick={(event) => {
-              event.stopPropagation();
-              onFollowClick(event);
-            }}
-          >
-            {isFollowing ? "Following" : "Follow"}
-          </button>
+          <FollowButton
+            size="compact"
+            stopPropagation
+            isFollowing={isFollowing}
+            onToggle={onFollowToggle}
+            profileId={author.handle ?? author.name}
+            className="gap-2"
+          />
         </div>
 
         {author.bio ? (
