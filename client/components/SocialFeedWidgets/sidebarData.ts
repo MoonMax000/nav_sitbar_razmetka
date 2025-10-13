@@ -1,5 +1,6 @@
 import type { SuggestedProfile } from "./SuggestedProfilesWidget";
 import type { NewsItem } from "./TrendingTopicsWidget";
+import type { SuggestedProfile } from "./SuggestedProfilesWidget";
 
 export const DEFAULT_SUGGESTED_PROFILES: SuggestedProfile[] = [
   {
