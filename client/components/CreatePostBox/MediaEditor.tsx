@@ -838,7 +838,7 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
         )}
 
         {activeTab === "alt" && (
-          <div className="space-y-4 px-6 py-6">
+          <div className="space-y-4 p-6">
             <div className="flex items-center justify-between">
               <label className="text-sm font-semibold text-[#E7E9EA]" htmlFor="alt-editor">
                 Description (ALT text)
@@ -880,7 +880,7 @@ export const MediaEditor: FC<MediaEditorProps> = ({ media, onSave, onClose }) =>
         )}
 
         {activeTab === "warning" && (
-          <div className="space-y-4 px-6 py-6">
+          <div className="space-y-4 p-6">
             <p className="text-sm text-[#E7E9EA]">
               Helps people avoid content they don’t want to see. Select all that apply.
             </p>
