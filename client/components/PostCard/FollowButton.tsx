@@ -1,4 +1,4 @@
-import { type ButtonHTMLAttributes, type FC, type MouseEvent, useMemo, useState } from "react";
+import { type ButtonHTMLAttributes, type CSSProperties, type FC, type MouseEvent, useMemo, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
