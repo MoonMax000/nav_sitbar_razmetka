@@ -366,6 +366,7 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
     if (blocks.length >= MAX_THREAD_BLOCKS) return;
     const newId = `${Date.now()}`;
     setBlocks((prev) => [...prev, { id: newId, text: "", media: [], codeBlocks: [] }]);
+    setActiveBlockId(newId);
   }, [blocks.length]);
 
   const handleEmojiSelect = useCallback(
@@ -550,6 +551,8 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
               isFirst={index === 0}
               isLast={index === blocks.length - 1}
               canDelete={blocks.length > 1}
+              isActive={activeBlockId === block.id || (activeBlockId === null && index === 0)}
+              onClick={() => setActiveBlockId(block.id)}
               onChange={(text) => handleBlockTextChange(block.id, text)}
               onMediaAdd={(files) => handleMediaAdd(block.id, files)}
               onMediaRemove={(mediaId) => handleMediaRemove(block.id, mediaId)}
