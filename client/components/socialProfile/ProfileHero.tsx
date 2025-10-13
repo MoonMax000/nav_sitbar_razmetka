@@ -14,7 +14,7 @@ const ProfileHero: FC<ProfileHeroProps> = ({ profile, onEdit, tweetsCount = 0 })
   const navigate = useNavigate();
 
   return (
-    <section className="relative mb-6 rounded-3xl border border-[#1F242B] bg-[rgba(12,16,20,0.75)]">
+    <section className="relative mb-6">
       {/* Header bar with back button */}
       <div className="flex items-center gap-9 px-4 py-3">
         <button
@@ -48,7 +48,7 @@ const ProfileHero: FC<ProfileHeroProps> = ({ profile, onEdit, tweetsCount = 0 })
       </div>
 
       {/* Cover/Banner image */}
-      <div className="w-full overflow-hidden bg-gradient-to-br from-[#141923] to-[#0B0E13]">
+      <div className="w-full overflow-hidden rounded-3xl bg-gradient-to-br from-[#141923] to-[#0B0E13]">
         {profile.cover ? (
           <img src={profile.cover} alt={`${profile.name} cover`} className="h-[200px] w-full object-cover" />
         ) : (
