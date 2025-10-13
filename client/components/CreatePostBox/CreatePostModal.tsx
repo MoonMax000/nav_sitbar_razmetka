@@ -500,10 +500,8 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
     onClose(blocks);
   }, [blocks, onClose, saveDraft]);
 
-  const gradientStroke = useMemo(() => {
-    const circumference = 88;
-    return `${charRatio * circumference} ${circumference}`;
-  }, [charRatio]);
+  const circumference = 88;
+  const dashOffset = circumference - charRatio * circumference;
 
   if (!mounted || !isOpen) return null;
 
@@ -634,7 +632,7 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
                   type="button"
                   onClick={openToolbarFilePicker}
                   className="flex h-10 w-10 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#482090]/10 disabled:text-white/30 disabled:hover:bg-transparent"
-                  title="Добавить медиа"
+                  title="До��авить медиа"
                   disabled={blocks.length === 0}
                 >
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
