@@ -42,7 +42,7 @@ const ProfileTimeline: FC<ProfileTimelineProps> = ({ posts, activeTab, highlight
   }
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col items-center gap-8">
       {posts.map((post, index) => {
         const isPinned = highlightedPostId && post.id === highlightedPostId && index === 0;
         const commonProps = {
