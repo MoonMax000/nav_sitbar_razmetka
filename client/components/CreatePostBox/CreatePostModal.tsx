@@ -92,9 +92,14 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
       }, 200);
     } else {
       // when opening, initialize from incoming props
-      setBlocks(initialBlocks ?? [{ id: "1", text: "", media: [], codeBlocks: [] }]);
+      const initialBlocksData = initialBlocks ?? [{ id: "1", text: "", media: [], codeBlocks: [] }];
+      setBlocks(initialBlocksData);
       setReplySetting(initialReplySetting ?? "everyone");
       setSentiment(initialSentiment ?? "bullish");
+      // Set first block as active
+      if (initialBlocksData.length > 0) {
+        setActiveBlockId(initialBlocksData[0].id);
+      }
     }
   }, [isOpen]);
 
