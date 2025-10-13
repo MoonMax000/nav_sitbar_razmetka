@@ -56,7 +56,7 @@ const exploreCollections: ExploreCollection[] = [
   },
   {
     id: "pro-traders",
-    title: "Профессиональные трейдеры",
+    title: "Профессиональные трейд��ры",
     description: "Сигналы, живые сессии и менторские комнаты",
     accent: "from-[#2EBD85] to-[#0F6D40]",
     topics: ["Рынки", "Фьючерсы"],
@@ -136,36 +136,41 @@ const recommendedProfiles: SuggestedProfile[] = [
   },
 ];
 
-const exploreTopics: TrendingTopic[] = [
+const exploreNews: NewsItem[] = [
   {
     id: "eth-staking",
     category: "Криптовалюты",
-    headline: "ETH staking",
-    meta: "212K постов",
+    title: "ETH staking",
+    publishedAgo: "сейчас",
+    engagement: "212K постов",
   },
   {
     id: "ai-traders",
     category: "AI",
-    headline: "AI traders",
-    meta: "176K постов",
+    title: "AI traders",
+    publishedAgo: "12 мин назад",
+    engagement: "176K постов",
   },
   {
     id: "usd-jpy",
     category: "Рынки",
-    headline: "USD/JPY",
-    meta: "41K постов",
+    title: "USD/JPY",
+    publishedAgo: "25 мин назад",
+    engagement: "41K постов",
   },
   {
     id: "oil-range",
     category: "Фьючерсы",
-    headline: "Brent 95$",
-    meta: "28K постов",
+    title: "Brent 95$",
+    publishedAgo: "38 мин назад",
+    engagement: "28K постов",
   },
   {
     id: "ipo-watch",
     category: "IPO",
-    headline: "Stripe S-1",
-    meta: "64K постов",
+    title: "Stripe S-1",
+    publishedAgo: "1 час назад",
+    engagement: "64K постов",
   },
 ];
 
@@ -341,7 +346,7 @@ const SpotlightCard: FC = () => (
           "Три сигнала, что риск-сентимент меняется и как успеть"
         </h2>
         <p className="text-sm text-white/80">
-          Дайджест ключевых индикаторов, тепловые карты волатильности и разбор сделок институционалов за последние 48 часов.
+          Дайджест ключевых индикаторов, тепловые карты волатильности и разбо�� сделок институционалов за последние 48 часов.
         </p>
         <div className="mt-2 flex items-center gap-3 text-xs text-white/70">
           <span>Собрано Tyrian Research</span>
