@@ -27,7 +27,7 @@ const ProfileHero: FC<ProfileHeroProps> = ({ profile, onEdit, tweetsCount = 0, i
   return (
     <section className="mb-6">
       {/* Header bar with back button - Sticky with glass effect */}
-      <div className="sticky top-0 z-10 backdrop-blur-md bg-black/80">
+      <div className="sticky top-0 z-50 backdrop-blur-md bg-black/80">
         <div className="flex items-center gap-9 px-4 py-3">
         <button
           type="button"
