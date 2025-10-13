@@ -48,10 +48,10 @@ export default function HomePage() {
           
           {/* Tabs */}
           <div className="flex border-b border-[#2F3336]">
-            <button className="flex-1 py-4 text-white font-semibold border-b-4 border-[#1D9BF0] hover:bg-white/10 transition-colors">
+            <button className="flex-1 py-4 text-white font-semibold border-b-4 border-[#A06AFF] hover:bg-[#482090]/10 transition-colors">
               For you
             </button>
-            <button className="flex-1 py-4 text-muted-foreground font-semibold hover:bg-white/10 transition-colors">
+            <button className="flex-1 py-4 text-muted-foreground font-semibold hover:bg-[#482090]/10 transition-colors">
               Following
             </button>
           </div>
