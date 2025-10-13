@@ -127,7 +127,7 @@ const NewNavBar: FC<Props> = ({ variant = 'primal' }) => {
             `bg-[linear-gradient(170.22deg,#523A83_0.01%,rgba(82,58,131,0)_8.28%),linear-gradient(350.89deg,#523A83_0%,rgba(82,58,131,0)_8.04%)]`
           )}
         >
-          <div className={cn('flex flex-col py-4 transition-all duration-300 custom-bg-blur rounded-[12px]', isCollapsed ? 'w-[72px]' : 'w-[222px]')}>
+          <div className={cn('flex h-[calc(100vh-96px)] flex-col py-4 transition-all duration-300 custom-bg-blur rounded-[12px]', isCollapsed ? 'w-[72px]' : 'w-[222px]')}>
             <div className='absolute right-[-12px] top-[14px]'>
               <button
                 className='w-[26px] h-[26px] rounded-[12px] border border-[#181B22] custom-bg-blur hover:bg-[#1E1E1E] flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-md z-20'
@@ -139,18 +139,20 @@ const NewNavBar: FC<Props> = ({ variant = 'primal' }) => {
               </button>
             </div>
 
-            <div className='flex flex-col gap-1'>
-              {navElements.slice(0, 1).map((el) => renderElement(el))}
-              <div
-                className={cn('my-[14px] bg-[linear-gradient(90deg,rgba(82,58,131,0)_0%,#523A83_50%,rgba(82,58,131,0)_100%)] mx-auto h-[2px] transition-all duration-300', {
-                  'w-[190px]': !isCollapsed,
-                  'w-[40px]': isCollapsed,
-                })}
-              />
-              {navElements.slice(1).map((el) => renderElement(el))}
+            <div className={cn('flex-1 overflow-y-auto px-3 transition-all duration-300', { 'px-2': isCollapsed })}>
+              <div className='flex flex-col gap-1 pb-4'>
+                {navElements.slice(0, 1).map((el) => renderElement(el))}
+                <div
+                  className={cn('my-[14px] bg-[linear-gradient(90deg,rgba(82,58,131,0)_0%,#523A83_50%,rgba(82,58,131,0)_100%)] mx-auto h-[2px] transition-all duration-300', {
+                    'w-[190px]': !isCollapsed,
+                    'w-[40px]': isCollapsed,
+                  })}
+                />
+                {navElements.slice(1).map((el) => renderElement(el))}
+              </div>
             </div>
 
-            <div className={cn('mt-6 px-3 transition-all duration-300 space-y-3', { 'px-2': isCollapsed })}>
+            <div className={cn('sticky bottom-4 mt-auto space-y-3 px-3 pb-2 pt-4 transition-all duration-300', { 'px-2': isCollapsed })}>
               {/* Tweet button - opens CreateTweetDialog from GitHub */}
               <button
                 type='button'
