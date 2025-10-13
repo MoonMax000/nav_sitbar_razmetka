@@ -5,13 +5,11 @@ import { useNavigate } from "react-router-dom";
 import CreatePostVariants from "@/components/CreatePostBox/CreatePostVariants";
 import PostCard from "@/components/PostCard/PostCard";
 import VideoPost from "@/components/PostCard/VideoPost";
-import SuggestedProfilesWidget, {
-  type SuggestedProfile,
-} from "@/components/SocialFeedWidgets/SuggestedProfilesWidget";
-import TrendingTopicsWidget, {
-  type TrendingTopic,
-} from "@/components/SocialFeedWidgets/TrendingTopicsWidget";
-import { Search } from "lucide-react";
+import SocialRightSidebar from "@/components/SocialFeedWidgets/SocialRightSidebar";
+import {
+  DEFAULT_SUGGESTED_PROFILES,
+  DEFAULT_TRENDING_TOPICS,
+} from "@/components/SocialFeedWidgets/sidebarData";
 import {
   type FilterType,
   type SocialPost,
