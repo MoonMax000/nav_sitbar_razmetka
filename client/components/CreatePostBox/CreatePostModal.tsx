@@ -762,7 +762,7 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
                 <path d="M3 12h4v7H3zM10 7h4v12h-4zM17 3h4v16h-4z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
-            <button type="button" onClick={openToolbarFilePicker} className="flex h-10 w-10 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#482090]/10 disabled:text-white/30 disabled:hover:bg-transparent" title="Добавить медиа" disabled={blocks.length === 0}>
+            <button type="button" onClick={openToolbarFilePicker} className="flex h-10 w-10 items-center justify-center rounded-full text-[#A06AFF] transition-colors hover:bg-[#482090]/10 disabled:text-white/30 disabled:hover:bg-transparent" title="Доб��вить медиа" disabled={blocks.length === 0}>
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                 <path d="M6.25 7.5C6.94036 7.5 7.5 6.94036 7.5 6.25C7.5 5.55964 6.94036 5 6.25 5C5.55964 5 5 5.55964 5 6.25C5 6.94036 5.55964 7.5 6.25 7.5Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 <path d="M2.08301 10C2.08301 6.26809 2.08301 4.40212 3.24237 3.24274C4.40175 2.08337 6.26772 2.08337 9.99967 2.08337C13.7316 2.08337 15.5976 2.08337 16.757 3.24274C17.9163 4.40212 17.9163 6.26809 17.9163 10C17.9163 13.732 17.9163 15.598 16.757 16.7574C15.5976 17.9167 13.7316 17.9167 9.99967 17.9167C6.26772 17.9167 4.40175 17.9167 3.24237 16.7574C2.08301 15.598 2.08301 13.732 2.08301 10Z" stroke="currentColor" strokeWidth="1.5" />
@@ -819,6 +819,33 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
             </svg>
             <span>{replySummary}</span>
           </button>
+
+          {isReplyMenuOpen && (
+            <div className="absolute left-5 bottom-full mb-2 z-[2100] w-80 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.95)] shadow-2xl backdrop-blur-[100px] p-4">
+              <h3 className="mb-3 text-sm font-semibold text-white">Who can reply?</h3>
+              <div className="space-y-2">
+                {replyOptions.map((opt) => (
+                  <button
+                    key={opt.id}
+                    onClick={() => {
+                      setReplySetting(opt.id);
+                      setIsReplyMenuOpen(false);
+                    }}
+                    className="flex w-full items-start gap-3 rounded-2xl bg-white/5 p-3 text-left transition-colors hover:bg-white/10"
+                  >
+                    <svg className="mt-0.5 h-5 w-5 shrink-0" viewBox="0 0 24 24" fill={replySetting === opt.id ? "#1D9BF0" : "none"} stroke="currentColor" strokeWidth="2">
+                      <circle cx="12" cy="12" r="10" />
+                      {replySetting === opt.id && <circle cx="12" cy="12" r="4" fill="#1D9BF0" />}
+                    </svg>
+                    <div className="flex-1">
+                      <div className="text-sm font-semibold text-white">{opt.label}</div>
+                      <div className="text-xs text-[#808283]">{opt.description}</div>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
 
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-2">
