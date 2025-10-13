@@ -72,7 +72,7 @@ const FollowRecommendationsWidget: FC<FollowRecommendationsWidgetProps> = ({
                 <span className="text-sm font-medium text-[#8E8E94]">{profile.handle}</span>
               </div>
             </div>
-            <FollowButton profileId={profile.id} size="default" />
+            <FollowButton profileId={profile.id} size="compact" />
           </li>
         ))}
       </ul>
