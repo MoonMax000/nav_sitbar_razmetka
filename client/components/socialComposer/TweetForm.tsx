@@ -2,6 +2,8 @@
 
 import { useState, useRef, useEffect } from "react";
 import { Image, Video, BarChart3, Smile, MapPin, Calendar } from "lucide-react";
+
+import UserAvatar from "@/components/ui/Avatar/UserAvatar";
 import { cn } from "@/lib/utils";
 
 interface TweetFormProps {
