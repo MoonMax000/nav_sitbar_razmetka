@@ -115,10 +115,10 @@ const SocialFeed: FC = () => {
     ? "Подписывайтесь на трейдеров и команды в разделе «Исследовать», чтобы видеть их обновления."
     : isVideoFilterEmpty
       ? "Попробуйте показать все публикации или загляните позже — авторы уже готовят новые видео."
-      : "Здесь появятся свежие аналитические материалы и треды сообщества.";
+      : "Здесь появятся свежие аналитические мате��иалы и треды сообщества.";
 
   const emptyActionLabel = isFollowingTab
-    ? "Найти авто��ов"
+    ? "Найти авторов"
     : isVideoFilterEmpty
       ? "Показать все посты"
       : undefined;
@@ -169,23 +169,21 @@ const SocialFeed: FC = () => {
           {postsToDisplay.length > 0 ? (
             <div className="flex flex-col gap-6">
               {postsToDisplay.map((post) => (
-                <VideoPost
+                <FeedPost
                   key={post.id}
-                  author={{
-                    name: post.author.name,
-                    avatar: post.author.avatar,
-                    handle: post.author.handle,
-                    verified: post.author.verified,
-                  }}
+                  author={post.author}
                   timestamp={post.timestamp}
                   title={post.title}
                   content={post.body ?? post.preview}
-                  videoUrl={post.videoUrl ?? post.mediaUrl ?? post.image ?? ""}
+                  mediaUrl={post.videoUrl ?? post.mediaUrl ?? null}
                   sentiment={post.sentiment}
                   likes={post.likes ?? 0}
                   comments={post.comments ?? 0}
+                  views={post.views}
                   isFollowing={post.isFollowing}
                   hashtags={post.hashtags}
+                  category={post.category}
+                  type={post.type}
                   truncate
                   onOpen={() => handleOpenPost(post)}
                 />
