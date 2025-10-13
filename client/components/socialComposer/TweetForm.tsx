@@ -88,10 +88,6 @@ export default function TweetForm({
         className={cn("w-full flex", expanded ? "items-start" : "items-center")}
         style={{ minHeight: expanded ? `${minHeight}px` : "40px" }}
       >
-        <div className="w-10 h-10 rounded-full overflow-hidden mr-4 flex-shrink-0">
-          <img src={userAvatar} alt={userName} className="w-full h-full object-cover" />
-        </div>
-
         <UserAvatar
           src={userAvatar}
           alt={userName}
