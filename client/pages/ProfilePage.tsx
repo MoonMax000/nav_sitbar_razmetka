@@ -13,7 +13,7 @@ export default function ProfilePage() {
       </div>
       <SocialRightSidebar
         profiles={DEFAULT_SUGGESTED_PROFILES}
-        topics={DEFAULT_TRENDING_TOPICS}
+        newsItems={DEFAULT_NEWS_ITEMS}
       />
     </div>
   );
