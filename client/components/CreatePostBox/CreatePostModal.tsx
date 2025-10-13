@@ -650,7 +650,7 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
           </button>
 
           {isReplyMenuOpen && (
-            <div className="absolute left-5 bottom-full mb-2 z-[2100] w-80 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.95)] shadow-2xl backdrop-blur-[100px] p-4">
+            <div className="absolute left-5 bottom-full mb-2 z-[2300] w-80 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.95)] shadow-2xl backdrop-blur-[100px] p-4">
               <h3 className="mb-3 text-sm font-semibold text-white">Who can reply?</h3>
               <div className="space-y-2">
                 {replyOptions.map((opt) => (
@@ -691,11 +691,11 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
               <button
                 type="button"
                 onClick={handleAddBlock}
-                className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-[#A06AFF] text-[#A06AFF] transition-all hover:bg-[#A06AFF]/10"
+                className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#A06AFF] text-[#A06AFF] transition-all hover:bg-[#A06AFF]/10"
                 disabled={isPosting}
                 title="Add another post"
               >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                   <path d="M12 5v14M5 12h14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                 </svg>
               </button>
@@ -710,7 +710,7 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose, initialBlo
         {isEmojiPickerOpen && (
           <div
             ref={emojiMenuRef}
-            className="absolute bottom-24 left-6 z-[2100] h-96 w-96 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.95)] p-4 shadow-2xl backdrop-blur-[100px]"
+            className="absolute bottom-24 left-6 z-[2300] h-96 w-96 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.95)] p-4 shadow-2xl backdrop-blur-[100px]"
           >
             <EmojiPicker onSelect={handleEmojiSelect} />
           </div>
