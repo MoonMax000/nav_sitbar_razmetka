@@ -33,14 +33,6 @@ const NewsWidget: FC<NewsWidgetProps> = ({
     <section className="rounded-[24px] border border-[#181B22] bg-[rgba(12,16,20,0.72)] p-5 shadow-[0_24px_48px_rgba(10,12,16,0.45)] backdrop-blur-[40px]">
       <header className="flex items-center justify-between gap-3">
         <h3 className="text-lg font-semibold text-white">{title}</h3>
-        <button
-          type="button"
-          aria-label="Hide news"
-          onClick={onDismissAll}
-          className="flex h-7 w-7 items-center justify-center rounded-full text-[#6C7080] transition-colors hover:bg-[#482090]/15 hover:text-white"
-        >
-          <X className="h-4 w-4" strokeWidth={2} />
-        </button>
       </header>
 
       <ul className="mt-4 flex flex-col gap-3">
