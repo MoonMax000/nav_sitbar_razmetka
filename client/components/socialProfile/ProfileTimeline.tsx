@@ -59,7 +59,7 @@ const ProfileTimeline: FC<ProfileTimelineProps> = ({ posts, activeTab, highlight
         return (
           <div key={post.id} className="flex w-full max-w-[680px] flex-col gap-2">
             {isPinned ? (
-              <span className="inline-flex w-fit items-center gap-2 rounded-full bg-white/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-[#A06AFF]">
+              <span className="inline-flex w-fit items-center gap-2 rounded-full border border-tyrian/30 bg-tyrian/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-tyrian-light">
                 Закреплённый пост
               </span>
             ) : null}
