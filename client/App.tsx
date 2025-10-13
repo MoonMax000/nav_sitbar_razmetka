@@ -29,6 +29,7 @@ import SocialTweetComposer from "./pages/SocialTweetComposer";
 import PortfolioPage from "./pages/Portfolios";
 import HomePage from "./pages/Home";
 import ProfilePage from "./pages/ProfilePage";
+import OtherProfilePage from "./pages/OtherProfilePage";
 import { ClientLayout } from "./components/ClientLayout/ClientLayout";
 
 const queryClient = new QueryClient({
@@ -53,6 +54,7 @@ const App = () => (
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/home" element={<HomePage />} />
                     <Route path="/profile-page" element={<ProfilePage />} />
+                    <Route path="/other-profile" element={<OtherProfilePage />} />
                     <Route path="/social/home" element={<SocialFeed />} />
                     <Route path="/social/feed" element={<SocialFeed />} />
                     <Route path="/social/explore" element={<SocialExplore />} />
