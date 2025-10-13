@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { useCallback, useMemo, useState } from "react";
+import { type FC, useCallback, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import CreatePostVariants from "@/components/CreatePostBox/CreatePostVariants";
