@@ -78,13 +78,12 @@ const PostCard: FC<PostCardProps> = ({
     >
       <header className="flex w-full items-start justify-between gap-4">
         <div className="flex flex-1 items-start gap-3">
-          <div className="relative h-11 w-11 flex-shrink-0 overflow-hidden rounded-full bg-gradient-to-br from-[#A06AFF] to-[#482090] shadow-[0_10px_30px_-18px_rgba(72,32,144,0.9)]">
-            <img
-              src={effectiveAuthor.avatar}
-              alt={effectiveAuthor.name}
-              className="h-full w-full object-cover"
-            />
-          </div>
+          <UserAvatar
+            src={effectiveAuthor.avatar}
+            alt={effectiveAuthor.name}
+            size={44}
+            containerClassName="shadow-[0_10px_30px_-18px_rgba(72,32,144,0.9)]"
+          />
           <div className="flex flex-1 flex-col">
             <div className="flex items-center gap-2 text-[15px] font-semibold leading-tight text-white">
               <span>{effectiveAuthor.name}</span>
