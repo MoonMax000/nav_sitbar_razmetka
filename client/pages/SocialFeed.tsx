@@ -7,7 +7,7 @@ import FeedPost from "@/components/PostCard/VideoPost";
 import SocialRightSidebar from "@/components/SocialFeedWidgets/SocialRightSidebar";
 import {
   DEFAULT_SUGGESTED_PROFILES,
-  DEFAULT_TRENDING_TOPICS,
+  DEFAULT_NEWS_ITEMS,
 } from "@/components/SocialFeedWidgets/sidebarData";
 import {
   type FilterType,
@@ -115,7 +115,7 @@ const SocialFeed: FC = () => {
     ? "Подписывайтесь на трейдеров и команды в разделе «Исследовать», чтобы видеть их обновления."
     : isVideoFilterEmpty
       ? "Попробуйте показать все публикации или загляните позже — авторы уже готовят новые видео."
-      : "Здесь появятся свежие аналитические мате��иалы и треды сообщества.";
+      : "Здесь появятся свежие аналитические материалы и треды сообщества.";
 
   const emptyActionLabel = isFollowingTab
     ? "Найти авторов"
