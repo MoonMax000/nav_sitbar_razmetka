@@ -53,7 +53,6 @@ const FeedPost: FC<FeedPostProps> = ({
 }) => {
   const [expanded, setExpanded] = useState(!truncate);
   const [isFollowing, setIsFollowing] = useState(initialFollowing ?? false);
-  const [isHovered, setIsHovered] = useState(false);
 
   const formattedContent = useMemo(() => content ?? "", [content]);
   const shouldShowToggle = truncate && formattedContent.length > 260;
@@ -75,11 +74,6 @@ const FeedPost: FC<FeedPostProps> = ({
     setExpanded((prev) => !prev);
   };
 
-  const handleFollowClick = (event: MouseEvent<HTMLButtonElement>) => {
-    event.stopPropagation();
-    setIsFollowing((prev) => !prev);
-  };
-
   const handleMenuClick = (event: MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
   };
@@ -88,10 +82,6 @@ const FeedPost: FC<FeedPostProps> = ({
     sentiment === "bullish"
       ? "border-emerald-400/40 bg-emerald-400/10 text-emerald-300"
       : "border-rose-400/40 bg-rose-400/10 text-rose-300";
-
-  const followButtonClasses = isFollowing
-    ? "border border-[#f44] bg-[rgba(244,68,68,0.10)] text-[#f44] hover:bg-[rgba(244,68,68,0.20)]"
-    : "bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white shadow-[0_12px_30px_-18px_rgba(72,32,144,0.85)] hover:from-[#B57FFF] hover:to-[#5A2BA0]";
 
   const categoryLabel = category ?? (type === "video" ? "Video" : undefined);
   const hasMedia = Boolean(mediaUrl);
@@ -108,7 +98,11 @@ const FeedPost: FC<FeedPostProps> = ({
       )}
     >
       <header className="flex w-full items-start justify-between gap-4">
-        <UserHoverCard author={author} isFollowing={isFollowing} onFollowClick={handleFollowClick}>
+        <UserHoverCard
+          author={author}
+          isFollowing={isFollowing}
+          onFollowToggle={(nextState) => setIsFollowing(nextState)}
+        >
           <div className="flex flex-1 items-start gap-3">
             <UserAvatar
               src={author.avatar}
@@ -158,17 +152,6 @@ const FeedPost: FC<FeedPostProps> = ({
           </div>
         </UserHoverCard>
         <div className="flex items-center gap-2">
-          <button
-            onClick={handleFollowClick}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            className={cn(
-              "flex h-8 items-center justify-center gap-2.5 rounded-full px-4 text-xs font-bold transition-all duration-200",
-              followButtonClasses,
-            )}
-          >
-            {isFollowing ? (isHovered ? "Unfollow" : "Following") : "Follow"}
-          </button>
           <button
             type="button"
             onClick={handleMenuClick}
